@@ -1,12 +1,17 @@
 # Java 进阶知识总结
 
+[![license](https://img.shields.io/badge/license-Attribution--NonCommercial%204.0%20-brightgreen.svg)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
+[![GitHub forks](https://img.shields.io/github/forks/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/network)
+[![GitHub stars](https://img.shields.io/github/stars/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/stargazers)
+
+
 ## 分布式系统
 
-### 为什么要进行系统拆分
-- 为什么要进行系统拆分
-- 如何进行系统拆分
-- 拆分后不用 Dubbo 可以吗
-- Dubbo 和 thrift 有什么区别
+### 系统拆分
+- 为什么要进行系统拆分？
+- 如何进行系统拆分？
+- 拆分后不用 Dubbo 可以吗？
+- Dubbo 和 thrift 有什么区别？
 
 ### 分布式服务框架
 - 说一下 Dubbo 的工作原理？注册中心挂了可以继续通信吗？
@@ -90,8 +95,8 @@
 - 如何进行熔断？
 - 熔断框架都有哪些？具体实现原理知道吗？
 
-
-
+### 降级
+- 如何进行降级？
 
 
 
