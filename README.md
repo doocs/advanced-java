@@ -42,8 +42,8 @@
 - 如何设计一个高并发系统？
 
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
-- [为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点](/docs/high-concurrency/why-mq.md)？
-- 如何保证消息队列的高可用？
+- [为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点？](/docs/high-concurrency/why-mq.md)
+- [如何保证消息队列的高可用？](/docs/high-concurrency/how-to-ensure-high-availability-of-message-queues.md)
 - 如何保证消息不被重复消费（如何进行消息队列的幂等性问题）？
 - 如何保证消息的可靠性传输（如何处理消息丢失的问题）？
 - 如何保证消息的顺序性？
