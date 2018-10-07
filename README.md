@@ -1,9 +1,7 @@
 # Java 进阶知识总结
 
 [![license](https://img.shields.io/badge/license-Attribution--NonCommercial%204.0%20-brightgreen.svg)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
-[![GitHub forks](https://img.shields.io/github/forks/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/network)
-[![GitHub stars](https://img.shields.io/github/stars/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/stargazers)
-
+[![original](https://img.shields.io/badge/original-shishan-blue.svg)](https://github.com/doocs/advanced-java)
 
 ## 分布式系统
 
@@ -11,7 +9,7 @@
 - 为什么要进行系统拆分？
 - 如何进行系统拆分？
 - 拆分后不用 Dubbo 可以吗？
-- Dubbo 和 thrift 有什么区别？
+- Dubbo 和 Thrift 有什么区别？
 
 ### 分布式服务框架
 - 说一下 Dubbo 的工作原理？注册中心挂了可以继续通信吗？
@@ -43,10 +41,10 @@
 ### 高并发系统
 - 如何设计一个高并发系统？
 
-### 消息队列
-- 为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点？
+### [消息队列](/docs/high-concurrency/mq-interview.md)
+- [为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点](/docs/high-concurrency/why-mq.md)？
 - 如何保证消息队列的高可用？
-- 如何保证消息不被重复消费啊（如何进行消息队列的幂等性问题）？
+- 如何保证消息不被重复消费（如何进行消息队列的幂等性问题）？
 - 如何保证消息的可靠性传输（如何处理消息丢失的问题）？
 - 如何保证消息的顺序性？
 - 如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？
