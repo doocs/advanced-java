@@ -2,6 +2,7 @@
 
 [![license](https://img.shields.io/badge/license-Attribution--NonCommercial%204.0%20-brightgreen.svg)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![original](https://img.shields.io/badge/original-shishan-blue.svg)](https://github.com/doocs/advanced-java)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 ## 分布式系统
 
