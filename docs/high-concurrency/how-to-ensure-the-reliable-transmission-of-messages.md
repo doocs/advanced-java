@@ -7,15 +7,32 @@
 如果说你这个是用 MQ 来传递非常核心的消息，比如说计费、扣费的一些消息，那必须确保这个 MQ 传递过程中**绝对不会把计费消息给弄丢**。
 
 ## 面试题剖析
-咱们从 RabbitMQ 和 Kafka 分别来分析一下吧。
+数据的丢失问题，可能出现在生产者、MQ、消费者中，咱们从 RabbitMQ 和 Kafka 分别来分析一下吧。
 
 ### RabbitMQ
+![rabbitmq-message-lose](http://p9ucdlghd.bkt.clouddn.com/rabbitmq-message-lose.png)
 
 #### 生产者弄丢了数据
 
 生产者将数据发送到 RabbitMQ 的时候，可能数据就在半路给搞丢了，因为网络啥的问题，都有可能。
 
-此时可以选择用 RabbitMQ 提供的事务功能，就是生产者**发送数据之前**开启 RabbitMQ 事务`channel.txSelect`，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务`channel.txRollback`，然后重试发送消息；如果收到了消息，那么可以提交事务`channel.txCommit`。但是问题是，RabbitMQ 事务机制（同步）一搞，基本上吞吐量会下来，因为太耗性能。
+此时可以选择用 RabbitMQ 提供的事务功能，就是生产者**发送数据之前**开启 RabbitMQ 事务`channel.txSelect`，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务`channel.txRollback`，然后重试发送消息；如果收到了消息，那么可以提交事务`channel.txCommit`。
+```java
+// 开启事务
+channel.txSelect
+try {
+    // 这里发送消息
+} catch (Exception e) {
+    channel.txRollback
+
+    // 这里再次重发这条消息
+}
+
+// 提交事务
+channel.txCommit
+```
+
+但是问题是，RabbitMQ 事务机制（同步）一搞，基本上**吞吐量会下来，因为太耗性能**。
 
 所以一般来说，如果你要确保说写 RabbitMQ 的消息别丢，可以开启`confirm`模式，在生产者那里设置开启`confirm`模式之后，你每次写的消息都会分配一个唯一的 id，然后如果写入了 RabbitMQ 中，RabbitMQ 会给你回传一个`ack`消息，告诉你说这个消息 ok 了。如果 RabbitMQ 没能处理这个消息，会回调你一个`nack`接口，告诉你这个消息接收失败，你可以重试。而且你可以结合这个机制自己在内存里维护每个消息 id 的状态，如果超过一定时间还没接收到这个消息的回调，那么你可以重发。
 
@@ -37,12 +54,14 @@
 
 持久化可以跟生产者那边的`confirm`机制配合起来，只有消息被持久化到磁盘之后，才会通知生产者`ack`了，所以哪怕是在持久化到磁盘之前，RabbitMQ 挂了，数据丢了，生产者收不到`ack`，你也是可以自己重发的。
 
-> 哪怕是你给 RabbitMQ 开启了持久化机制，也有一种可能，就是这个消息写到了 RabbitMQ 中，但是还没来得及持久化到磁盘上，结果不巧，此时 RabbitMQ 挂了，就会导致内存里的一点点数据丢失。
+注意，哪怕是你给 RabbitMQ 开启了持久化机制，也有一种可能，就是这个消息写到了 RabbitMQ 中，但是还没来得及持久化到磁盘上，结果不巧，此时 RabbitMQ 挂了，就会导致内存里的一点点数据丢失。
 
 #### 消费端弄丢了数据
 RabbitMQ 如果丢失了数据，主要是因为你消费的时候，**刚消费到，还没处理，结果进程挂了**，比如重启了，那么就尴尬了，RabbitMQ 认为你都消费了，这数据就丢了。
 
 这个时候得用 RabbitMQ 提供的`ack`机制，简单来说，就是你关闭 RabbitMQ 的自动`ack`，可以通过一个 api 来调用就行，然后每次你自己代码里确保处理完的时候，再在程序里`ack`一把。这样的话，如果你还没处理完，不就没有`ack`？那 RabbitMQ 就认为你还没处理完，这个时候 RabbitMQ 会把这个消费分配给别的 consumer 去处理，消息是不会丢的。
+
+![rabbitmq-message-lose-solution](http://p9ucdlghd.bkt.clouddn.com/rabbitmq-message-lose-solution.png)
 
 ### Kafka
 
