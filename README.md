@@ -1,7 +1,7 @@
-# Java 进阶知识总结
+# Java 进阶知识学习
 
 [![license](https://img.shields.io/badge/license-Attribution--NonCommercial%204.0%20-brightgreen.svg)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
-[![original](https://img.shields.io/badge/original-shishan-blue.svg)](https://github.com/doocs/advanced-java)
+[![original](https://img.shields.io/badge/original-%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89-blue.svg)](https://github.com/doocs/advanced-java)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 ## 分布式系统
@@ -47,7 +47,7 @@
 - [如何保证消息队列的高可用？](/docs/high-concurrency/how-to-ensure-high-availability-of-message-queues.md)
 - [如何保证消息不被重复消费？（如何保证消息消费时的幂等性）](/docs/high-concurrency/how-to-ensure-that-messages-are-not-repeatedly-consumed.md)
 - [如何保证消息的可靠性传输？（如何处理消息丢失的问题）](/docs/high-concurrency/how-to-ensure-the-reliable-transmission-of-messages.md)
-- 如何保证消息的顺序性？
+- [如何保证消息的顺序性？](/docs/high-concurrency/how-to-ensure-the-order-of-messages.md)
 - 如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？
 - 如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路。
 
