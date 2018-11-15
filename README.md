@@ -58,8 +58,8 @@
 - es 生产集群的部署架构是什么？每个索引的数据量大概有多少？每个索引大概有多少个分片？
 
 ### [缓存](/docs/high-concurrency/why-cache.md)
-- 在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？
-- Redis 和 Memcached 有什么区别？Redis 的线程模型是什么？为什么单线程的 Redis 比多线程的 Memcached 效率要高得多？
+- [在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？](/docs/high-concurrency/why-cache.md)
+- [Redis 和 Memcached 有什么区别？Redis 的线程模型是什么？为什么单线程的 Redis 比多线程的 Memcached 效率要高得多？](/docs/high-concurrency/redis-single-thread-model.md)
 - Redis 都有哪些数据类型？分别在哪些场景下使用比较合适？
 - Redis 的过期策略都有哪些？手写一下 LRU 代码实现？
 - 如何保证 Redis 高并发、高可用、持久化？Redis的主从复制原理能介绍一下么？Redis 的哨兵原理能介绍一下么？
