@@ -60,7 +60,7 @@
 ### [缓存](/docs/high-concurrency/why-cache.md)
 - [在项目中缓存是如何使用的？缓存如果使用不当会造成什么后果？](/docs/high-concurrency/why-cache.md)
 - [Redis 和 Memcached 有什么区别？Redis 的线程模型是什么？为什么单线程的 Redis 比多线程的 Memcached 效率要高得多？](/docs/high-concurrency/redis-single-thread-model.md)
-- Redis 都有哪些数据类型？分别在哪些场景下使用比较合适？
+- [Redis 都有哪些数据类型？分别在哪些场景下使用比较合适？](/docs/high-concurrency/redis-data-types.md)
 - Redis 的过期策略都有哪些？手写一下 LRU 代码实现？
 - 如何保证 Redis 高并发、高可用、持久化？Redis的主从复制原理能介绍一下么？Redis 的哨兵原理能介绍一下么？
 - Redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？
