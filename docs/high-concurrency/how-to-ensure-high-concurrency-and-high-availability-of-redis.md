@@ -10,3 +10,4 @@
 如果你用 redis 缓存技术的话，肯定要考虑如何用 redis 来加多台机器，保证 redis 是高并发的，还有就是如何让 redis 保证自己不是挂掉以后就直接死掉了，即 redis 高可用。
 
 由于此节内容较多，因此，会分为多个小节进行讲解。
+- [redis 主从架构](/docs/high-concurrency/redis-master-slave.md)
