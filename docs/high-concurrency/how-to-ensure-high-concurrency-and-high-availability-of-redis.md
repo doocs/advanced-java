@@ -11,3 +11,4 @@
 
 由于此节内容较多，因此，会分为多个小节进行讲解。
 - [redis 主从架构](/docs/high-concurrency/redis-master-slave.md)
+- [redis 基于哨兵实现高可用](/docs/high-concurrency/redis-sentinel.md)

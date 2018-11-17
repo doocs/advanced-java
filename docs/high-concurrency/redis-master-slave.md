@@ -1,4 +1,4 @@
-# redis master-slave 架构
+# Redis 主从架构
 
 单机的 redis，能够承载的 QPS 大概就在上万到几万不等。对于缓存来说，一般都是用来支撑**读高并发**的。因此架构做成主从(master-slave)架构，一主多从，主负责写，并且将数据复制到其它的 slave 节点，从节点负责读。所有的**读请求全部走从节点**。这样也可以很轻松实现水平扩容，**支撑读高并发**。
 
@@ -7,11 +7,11 @@
 redis replication -> 主从架构 -> 读写分离 -> 水平扩容支撑读高并发
 
 ## redis replication 的核心机制
-- redis 采用异步方式复制数据到 slave 节点，不过 redis2.8 开始，slave node 会周期性地确认自己每次复制的数据量；
-- 一个 master node 是可以配置多个slave node的；
+- redis 采用**异步方式**复制数据到 slave 节点，不过 redis2.8 开始，slave node 会周期性地确认自己每次复制的数据量；
+- 一个 master node 是可以配置多个 slave node 的；
 - slave node 也可以连接其他的 slave node；
-- slave node 做复制的时候，是不会 block master node 的正常工作的
-- slave node在做复制的时候，也不会block对自己的查询操作，它会用旧的数据集来提供服务；但是复制完成的时候，需要删除旧数据集，加载新数据集，这个时候就会暂停对外服务了；
+- slave node 做复制的时候，不会 block master node 的正常工作；
+- slave node 在做复制的时候，也不会 block 对自己的查询操作，它会用旧的数据集来提供服务；但是复制完成的时候，需要删除旧数据集，加载新数据集，这个时候就会暂停对外服务了；
 - slave node 主要用来进行横向扩容，做读写分离，扩容的 slave node 可以提高读的吞吐量。
 
 注意，如果采用了主从架构，那么建议必须**开启** master node 的**持久化**，不建议用 slave node 作为 master node 的数据热备，因为那样的话，如果你关掉 master 的持久化，可能在 master 宕机重启的时候数据是空的，然后可能一经过复制， slave node 的数据也丢了。
@@ -21,7 +21,7 @@ redis replication -> 主从架构 -> 读写分离 -> 水平扩容支撑读高并
 ## redis 主从复制的核心原理
 当启动一个 slave node 的时候，它会发送一个 `PSYNC` 命令给 master node。
 
-如果这是 slave node 初次连接到 master node，那么会触发一次 `full resynchronization` 全量复制。此时 master 会启动一个后台线程，开始生成一份 `RDB` 快照文件，同时还会将从客户端 client 新收到的所有写命令缓存在内存中。`RDB` 文件生成完毕后， master 会将这个 `RDB` 发送给 slave，slave 会先写入本地磁盘，然后再从本地磁盘加载到内存中，接着 master 会将内存中缓存的写命令发送到 slave，slave 也会同步这些数据。slave node 如果跟 master node 有网络故障，断开了连接，会自动重连，连接之后 master node 仅会复制给 slave 部分缺少的数据。
+如果这是 slave node 初次连接到 master node，那么会触发一次 `full resynchronization` 全量复制。此时 master 会启动一个后台线程，开始生成一份 `RDB` 快照文件，同时还会将从客户端 client 新收到的所有写命令缓存在内存中。`RDB` 文件生成完毕后， master 会将这个 `RDB` 发送给 slave，slave 会先**写入本地磁盘，然后再从本地磁盘加载到内存**中，接着 master 会将内存中缓存的写命令发送到 slave，slave 也会同步这些数据。slave node 如果跟 master node 有网络故障，断开了连接，会自动重连，连接之后 master node 仅会复制给 slave 部分缺少的数据。
 
 ![redis-master-slave-replication](/img/redis-master-slave-replication.png)
 
@@ -53,14 +53,14 @@ slave node 内部有个定时任务，每秒检查是否有新的 master node �
 
 ### 全量复制
 - master 执行 bgsave ，在本地生成一份 rdb 快照文件。
-- master node 将 rdb 快照文件发送给 slave node，如果 rdb 复制时间超过 60秒（repl-timeout），那么 slave node 就会认为复制失败，可以适当调节大这个参数(对于千兆网卡的机器，一般每秒传输100MB，6G文件，很可能超过 60s)
+- master node 将 rdb 快照文件发送给 slave node，如果 rdb 复制时间超过 60秒（repl-timeout），那么 slave node 就会认为复制失败，可以适当调大这个参数(对于千兆网卡的机器，一般每秒传输 100MB，6G 文件，很可能超过 60s)
 - master node 在生成 rdb 时，会将所有新的写命令缓存在内存中，在 slave node 保存了 rdb 之后，再将新的写命令复制给 slave node。
-- 如果在复制期间，内存缓冲区持续消耗超过64MB，或者一次性超过256MB，那么停止复制，复制失败。
+- 如果在复制期间，内存缓冲区持续消耗超过 64MB，或者一次性超过 256MB，那么停止复制，复制失败。
 ```bash
 client-output-buffer-limit slave 256MB 64MB 60
 ```
-- slave node接收到 rdb 之后，清空自己的旧数据，然后重新加载 rdb 到自己的内存中，同时**基于旧的数据版本**对外提供服务。
-- 如果 slave node 开启了 AOF，那么会立即执行 BGREWRITEAOF，重写 AOF.
+- slave node 接收到 rdb 之后，清空自己的旧数据，然后重新加载 rdb 到自己的内存中，同时**基于旧的数据版本**对外提供服务。
+- 如果 slave node 开启了 AOF，那么会立即执行 BGREWRITEAOF，重写 AOF。
 
 ### 增量复制
 - 如果全量复制过程中，master-slave 网络连接断掉，那么 slave 重新连接 master 时，会触发增量复制。
@@ -68,8 +68,7 @@ client-output-buffer-limit slave 256MB 64MB 60
 - msater就是根据 slave 发送的 psync 中的 offset 来从 backlog 中获取数据的。
 
 ### heartbeat
-
-主从节点互相都会发送heartbeat信息。
+主从节点互相都会发送 heartbeat 信息。
 
 master 默认每隔 10秒 发送一次 heartbeat，slave node 每隔 1秒 发送一个 heartbeat。
 
@@ -77,7 +76,7 @@ master 默认每隔 10秒 发送一次 heartbeat，slave node 每隔 1秒 发送
 master 每次接收到写命令之后，先在内部写入数据，然后异步发送给 slave node。
 
 ## redis 如何才能做到高可用
-如果系统在 365天内，有 99.99% 的时间，都是可以哗哗对外提供服务的，那么就说系统是高可用的。
+如果系统在 365 天内，有 99.99% 的时间，都是可以哗哗对外提供服务的，那么就说系统是高可用的。
 
 一个 slave 挂掉了，是不会影响可用性的，还有其它的 slave 在提供相同数据下的相同的对外的查询服务。
 
