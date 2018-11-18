@@ -4,9 +4,7 @@
 [![original](https://img.shields.io/badge/original-%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89-blue.svg)](https://github.com/doocs/advanced-java)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-本系列知识出自中华石杉，石杉老师拥有 10 余年 BAT 一线大厂架构经验，简直神级人物。我对这部分知识做了一个系统的整理，方便学习查阅。
-
-> 微信公众号：石杉的架构笔记(shishan100)
+本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。
 
 ## 分布式系统
 
@@ -69,7 +67,7 @@
 - [如何保证 Redis 高并发、高可用？Redis 的主从复制原理能介绍一下么？Redis 的哨兵原理能介绍一下么？](/docs/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.md)
 - [Redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？](/docs/high-concurrency/redis-persistence.md)
 - [Redis 集群模式的工作原理能说一下么？在集群模式下，Redis 的 key 是如何寻址的？分布式寻址都有哪些算法？了解一致性 hash 算法吗？如何动态增加和删除一个节点？](/docs/high-concurrency/redis-cluster.md)
-- [了解什么是 Redis 的雪崩和穿透？Redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 Redis 的穿透？](/)
+- [了解什么是 Redis 的雪崩和穿透？Redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 Redis 的穿透？](/docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
 - 如何保证缓存与数据库的双写一致性？
 - Redis 的并发竞争问题是什么？如何解决这个问题？了解 Redis 事务的 CAS 方案吗？
 - 生产环境中的 Redis 是怎么部署的？
