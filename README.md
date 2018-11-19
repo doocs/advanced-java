@@ -13,7 +13,7 @@
 - Dubbo 和 Thrift 有什么区别？
 
 ### 分布式服务框架
-- 说一下 Dubbo 的工作原理？注册中心挂了可以继续通信吗？
+- [说一下 Dubbo 的工作原理？注册中心挂了可以继续通信吗？](/docs/distributed-system/dubbo-operating-principle.md)
 - Dubbo 支持哪些序列化协议？说一下 Hessian 的数据结构？PB知道吗？为什么 PB 的效率是最高的？
 - Dubbo 负载均衡策略和高可用策略都有哪些？动态代理策略呢？
 - Dubbo 的 spi 思想是什么？
