@@ -9,9 +9,7 @@
 ## [分布式系统](/docs/distributed-system/distributed-system-interview.md)
 
 ### 系统拆分
-- 为什么要进行系统拆分？
-- 如何进行系统拆分？
-- 拆分后不用 Dubbo 可以吗？
+- [为什么要进行系统拆分？如何进行系统拆分？拆分后不用 Dubbo 可以吗？](/docs/distributed-system/why-dubbo.md)
 - Dubbo 和 Thrift 有什么区别？
 
 ### 分布式服务框架
