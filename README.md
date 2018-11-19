@@ -6,7 +6,7 @@
 
 本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。
 
-## 分布式系统
+## [分布式系统](/docs/distributed-system/distributed-system-interview.md)
 
 ### 系统拆分
 - 为什么要进行系统拆分？
