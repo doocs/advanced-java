@@ -20,7 +20,7 @@
 - [如何基于 Dubbo 进行服务治理、服务降级、失败重试以及超时重试？](/docs/distributed-system/dubbo-service-management.md)
 - [分布式服务接口的幂等性如何设计（比如不能重复扣款）？](/docs/distributed-system/distributed-system-idempotency.md)
 - [分布式服务接口请求的顺序性如何保证？](/docs/distributed-system/distributed-system-request-sequence.md)
-- 如何自己设计一个类似 Dubbo 的 rpc 框架？
+- [如何自己设计一个类似 Dubbo 的 rpc 框架？](/docs/distributed-system/dubbo-rpc-design.md)
 
 ### 分布式锁
 - 使用 Redis 如何设计分布式锁？
