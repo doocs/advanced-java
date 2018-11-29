@@ -33,7 +33,7 @@
 - XA 的一致性如何保证？
 
 ### 分布式会话
-- 集群部署时的分布式 Session 如何实现？
+- [集群部署时的分布式 Session 如何实现？](/docs/distributed-system/distributed-session.md)
 
 
 ## 高并发架构
