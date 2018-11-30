@@ -36,7 +36,7 @@
 ## 高并发架构
 
 ### 高并发系统
-- 如何设计一个高并发系统？
+- [如何设计一个高并发系统？](/docs/high-concurrency/high-concurrency-design.md)
 
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
 - [为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点？](/docs/high-concurrency/why-mq.md)
