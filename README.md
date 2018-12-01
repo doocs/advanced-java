@@ -73,9 +73,7 @@
 - [分库分表之后，id 主键如何处理？](/docs/high-concurrency/database-shard-global-id-generate.md)
 
 ### 读写分离
-- 如何实现 MySQL 的读写分离？
-- MySQL 主从复制原理是啥？
-- 如何解决 MySQL 主从同步的延时问题？
+- [如何实现 MySQL 的读写分离？MySQL 主从复制原理是啥？如何解决 MySQL 主从同步的延时问题？](/docs/high-concurrency/mysql-read-write-separation.md)
 
 
 ## 高可用架构
