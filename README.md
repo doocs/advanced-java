@@ -12,7 +12,6 @@
 
 ### 系统拆分
 - [为什么要进行系统拆分？如何进行系统拆分？拆分后不用 Dubbo 可以吗？](/docs/distributed-system/why-dubbo.md)
-- Dubbo 和 Thrift 有什么区别？
 
 ### 分布式服务框架
 - [说一下 Dubbo 的工作原理？注册中心挂了可以继续通信吗？](/docs/distributed-system/dubbo-operating-principle.md)
@@ -50,7 +49,7 @@
 - [如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路。](/docs/high-concurrency/mq-design.md)
 
 ### 搜索引擎
-- es 的分布式架构原理能说一下么（es 是如何实现分布式的啊）？
+- [es 的分布式架构原理能说一下么（es 是如何实现分布式的啊）？](/docs/high-concurrency/es-architecture.md)
 - es 写入数据的工作原理是什么啊？es 查询数据的工作原理是什么啊？底层的 lucene 介绍一下呗？倒排索引了解吗？
 - es 在数据量很大的情况下（数十亿级别）如何提高查询效率啊？
 - es 生产集群的部署架构是什么？每个索引的数据量大概有多少？每个索引大概有多少个分片？
