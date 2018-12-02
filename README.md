@@ -6,8 +6,6 @@
 
 本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。
 
-可以关注石杉老师的微信公众号：**石杉的架构笔记** @shishan100，有很多干货噢~
-
 ## [分布式系统](/docs/distributed-system/distributed-system-interview.md)
 
 ### 系统拆分
@@ -50,8 +48,8 @@
 
 ### 搜索引擎
 - [es 的分布式架构原理能说一下么（es 是如何实现分布式的啊）？](/docs/high-concurrency/es-architecture.md)
-- [es 写入数据的工作原理是什么啊？es 查询数据的工作原理是什么啊？底层的 lucene 介绍一下呗？倒排索引了解吗？](/docs/high-concurrency/es-write-query-search.md)
-- es 在数据量很大的情况下（数十亿级别）如何提高查询效率啊？
+- [es 写入数据的工作原理是什么啊？es 查询数据的工作原理是什么啊？](/docs/high-concurrency/es-write-query-search.md)
+- [es 在数据量很大的情况下（数十亿级别）如何提高查询效率啊？](/docs/high-concurrency/es-optimizing-query-performance.md)
 - es 生产集群的部署架构是什么？每个索引的数据量大概有多少？每个索引大概有多少个分片？
 
 ### [缓存](/docs/high-concurrency/why-cache.md)
