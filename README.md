@@ -6,6 +6,8 @@
 
 本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。
 
+一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，玩一下入门 Demo，然后再开始每一块知识的学习。这样效果更好噢~
+
 ## 高并发架构
 
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
@@ -17,7 +19,7 @@
 - [如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？](/docs/high-concurrency/mq-time-delay-and-expired-failure.md)
 - [如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路。](/docs/high-concurrency/mq-design.md)
 
-### 搜索引擎
+### [搜索引擎](/docs/high-concurrency/es-introduction.md)
 - [es 的分布式架构原理能说一下么（es 是如何实现分布式的啊）？](/docs/high-concurrency/es-architecture.md)
 - [es 写入数据的工作原理是什么啊？es 查询数据的工作原理是什么啊？底层的 lucene 介绍一下呗？倒排索引了解吗？](/docs/high-concurrency/es-write-query-search.md)
 - [es 在数据量很大的情况下（数十亿级别）如何提高查询效率啊？](/docs/high-concurrency/es-optimizing-query-performance.md)
