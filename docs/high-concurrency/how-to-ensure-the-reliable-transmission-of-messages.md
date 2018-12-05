@@ -14,7 +14,7 @@
 
 #### 生产者弄丢了数据
 
-生产者将数据发送到 RabbitMQ 的时候，可能数据就在半路给搞丢了，因为网络啥的问题，都有可能。
+生产者将数据发送到 RabbitMQ 的时候，可能数据就在半路给搞丢了，因为网络问题啥的，都有可能。
 
 此时可以选择用 RabbitMQ 提供的事务功能，就是生产者**发送数据之前**开启 RabbitMQ 事务`channel.txSelect`，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务`channel.txRollback`，然后重试发送消息；如果收到了消息，那么可以提交事务`channel.txCommit`。
 ```java
@@ -47,7 +47,7 @@ channel.txCommit
 
 - 创建 queue 的时候将其设置为持久化<br>
 这样就可以保证 RabbitMQ 持久化 queue 的元数据，但是不会持久化 queue 里的数据。
-- 第二个是发送消息的时候将消息的`deliveryMode`设置为 2<br>
+- 第二个是发送消息的时候将消息的 `deliveryMode` 设置为 2<br>
 就是将消息设置为持久化的，此时 RabbitMQ 就会将消息持久化到磁盘上去。
 
 必须要同时设置这两个持久化才行，RabbitMQ 哪怕是挂了，再次重启，也会从磁盘上重启恢复 queue，恢复这个 queue 里的数据。
@@ -80,12 +80,12 @@ RabbitMQ 如果丢失了数据，主要是因为你消费的时候，**刚消费
 
 所以此时一般是要求起码设置如下 4 个参数：
 
-- 给 topic 设置 replication.factor 参数：这个值必须大于 1，要求每个 partition 必须有至少2个副本。
-- 在 Kafka 服务端设置 min.insync.replicas 参数：这个值必须大于 1，这个是要求一个 leader 至少感知到有至少一个 follower 还跟自己保持联系，没掉队，这样才能确保 leader 挂了还有一个 follower 吧。
-- 在 producer 端设置 acks=all：这个是要求每条数据，必须是**写入所有 replica 之后，才能认为是写成功了**。
-- 在 producer 端设置 retries=MAX（很大很大很大的一个值，无限次重试的意思）：这个是**要求一旦写入失败，就无限重试**，卡在这里了。
+- 给 topic 设置 `replication.factor` 参数：这个值必须大于 1，要求每个 partition 必须有至少2个副本。
+- 在 Kafka 服务端设置 `min.insync.replicas` 参数：这个值必须大于 1，这个是要求一个 leader 至少感知到有至少一个 follower 还跟自己保持联系，没掉队，这样才能确保 leader 挂了还有一个 follower 吧。
+- 在 producer 端设置 `acks=all`：这个是要求每条数据，必须是**写入所有 replica 之后，才能认为是写成功了**。
+- 在 producer 端设置 `retries=MAX`（很大很大很大的一个值，无限次重试的意思）：这个是**要求一旦写入失败，就无限重试**，卡在这里了。
 
 我们生产环境就是按照上述要求配置的，这样配置之后，至少在 Kafka broker 端就可以保证在 leader 所在 broker 发生故障，进行 leader 切换时，数据不会丢失。
 
 #### 生产者会不会弄丢数据？
-如果按照上述的思路设置了 ack=all，一定不会丢，要求是，你的 leader 接收到消息，所有的 follower 都同步到了消息之后，才认为本次写成功了。如果没满足这个条件，生产者会自动不断的重试，重试无限次。
+如果按照上述的思路设置了 `ack=all`，一定不会丢，要求是，你的 leader 接收到消息，所有的 follower 都同步到了消息之后，才认为本次写成功了。如果没满足这个条件，生产者会自动不断的重试，重试无限次。

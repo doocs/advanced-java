@@ -19,7 +19,7 @@ es 写入数据的工作原理是什么啊？es 查询数据的工作原理是�
 可以通过 `doc id` 来查询，会根据 `doc id` 进行 hash，判断出来当时把 `doc id` 分配到了哪个 shard 上面去，从那个 shard 去查询。
 
 - 客户端发送请求到**任意**一个 node，成为 `coordinate node`。
-- `coordinate node` 对 `doc id` 进行哈希路由，将请求转发到对应的 node，此时会使用 `round-robin` **随机轮询算法**，在 primary shard 以及其所有 replica 中随机选择一个，让读请求负载均衡。
+- `coordinate node` 对 `doc id` 进行哈希路由，将请求转发到对应的 node，此时会使用 `round-robin` **随机轮询算法**，在 `primary shard` 以及其所有 replica 中随机选择一个，让读请求负载均衡。
 - 接收请求的 node 返回 document 给 `coordinate node`。
 - `coordinate node` 返回 document 给客户端。
 
@@ -34,7 +34,7 @@ j2ee特别牛
 你根据 `java` 关键词来搜索，将包含 `java`的 `document` 给搜索出来。es 就会给你返回：java真好玩儿啊，java好难学啊。
 
 - 客户端发送请求到一个 `coordinate node`。
-- 协调节点将搜索请求转发到**所有**的 shard 对应的 primary shard 或 replica shard，都可以。
+- 协调节点将搜索请求转发到**所有**的 shard 对应的 `primary shard` 或 `replica shard`，都可以。
 - query phase：每个 shard 将自己的搜索结果（其实就是一些 `doc id`）返回给协调节点，由协调节点进行数据的合并、排序、分页等操作，产出最终结果。
 - fetch phase：接着由协调节点根据 `doc id` 去各个节点上**拉取实际**的 `document` 数据，最终返回给客户端。
 
