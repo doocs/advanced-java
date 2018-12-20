@@ -8,7 +8,6 @@
 
 一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，玩一下入门 Demo，然后再开始每一块知识的学习。这样效果更好噢~
 
-
 ## 高并发架构
 
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
@@ -51,8 +50,9 @@
 ### 高并发系统
 - [如何设计一个高并发系统？](/docs/high-concurrency/high-concurrency-design.md)
 
-## [分布式系统](/docs/distributed-system/distributed-system-interview.md)
+## 分布式系统
 
+### [面试连环炮](/docs/distributed-system/distributed-system-interview.md)
 ### 系统拆分
 - [为什么要进行系统拆分？如何进行系统拆分？拆分后不用 Dubbo 可以吗？](/docs/distributed-system/why-dubbo.md)
 
