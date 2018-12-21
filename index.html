@@ -11,25 +11,42 @@
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png?v=5.1.4">
 </head>
 <body>
-  <div id="app">Loading</div>
+  <div id="app">Welcome to Advanced-Java</div>
   <script>
     window.$docsify = {
       name: 'advanced-java',
       repo: 'doocs/advanced-java',
       maxLevel: 3,
       auto2top: true,
+      loadNavbar: true,
+      coverpage: true,
+      mergeNavbar: true,
       search: [
         '/',            // => /README.md
         '/guide',       // => /guide.md
         '/get-started', // => /get-started.md
-        '/zh-cn/',      // => /zh-cn/README.md
-        '/solution/coding-interview',
-        '/solution/the-beauty-of-programming'
+        '/zh-cn/'       // => /zh-cn/README.md
       ],
-      loadNavbar: true,
-      coverpage: true,
-      mergeNavbar: true
+      plugins: [
+        function (hook) {
+          var footer = [
+            '<hr/>',
+            '<footer>',
+            '<span>Copyright © 2018 <a href="https://github.com/yanglbme" target="_blank">yanglbme</a>. All rights reserved.</span>',
+            '</footer>'
+          ].join('')
+
+          hook.afterEach(function (html) {
+            return html + footer
+          })
+        }
+      ]
     }
+    
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('sw.js')
+    }
+
   </script>
   <script src="//unpkg.com/docsify"></script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
