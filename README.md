@@ -1,12 +1,14 @@
 # 互联网 Java 工程师进阶知识完全扫盲
 
 [![license](https://img.shields.io/badge/license-Attribution--NonCommercial%204.0%20-brightgreen.svg)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
-[![original](https://img.shields.io/badge/original-%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89-blue.svg)](https://github.com/doocs/advanced-java)
+[![original](https://img.shields.io/badge/original-%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89-orange.svg)](https://github.com/doocs/advanced-java)
+[![stars](https://img.shields.io/github/stars/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/stargazers)
+[![forks](https://img.shields.io/github/forks/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/network/members)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。By the way，微信公众号**石杉的架构笔记**（id:shishan100）有其它很多架构知识，墙裂推荐~
 
-一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，玩一下入门 Demo，然后再开始每一块知识的学习。这样效果更好噢~
+一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，跟着入门 Demo 玩一下，然后再开始每一块知识的学习，这样效果更好噢~
 
 ## 高并发架构
 
