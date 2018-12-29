@@ -4,7 +4,7 @@ Hystrix 实现资源隔离，有两种策略：
 - 线程池隔离
 - 信号量隔离
 
-对资源隔离这一块东西，而对于资源隔离，其实可以做一定的细粒度的一些控制。
+对资源隔离这一块东西，其实可以做一定细粒度的一些控制。
 
 ### execution.isolation.strategy
 指定了 HystrixCommand.run() 的资源隔离策略：`THREAD` or `SEMAPHORE`，一种基于线程池，一种基于信号量。
