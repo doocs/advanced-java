@@ -84,6 +84,7 @@
 - [电商网站详情页系统架构](/docs/high-availability/e-commerce-website-detail-page-architecture.md)
 - [Hystrix 线程池技术实现资源隔离](/docs/high-availability/hystrix-thread-pool-isolation.md)
 - [Hystrix 信号量机制实现资源隔离](/docs/high-availability/hystrix-semphore-isolation.md)
+- [Hystrix 隔离策略细粒度控制](/docs/high-availability/hystrix-execution-isolation.md)
 
 ### 高可用系统
 - 如何设计一个高可用系统？

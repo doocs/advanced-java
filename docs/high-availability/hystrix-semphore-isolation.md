@@ -58,11 +58,6 @@ public class LocationCache {
 
 写一个 GetCityNameCommand，策略设置为**信号量**。run() 方法中获取本地缓存。我们目的就是对获取本地缓存的代码进行资源隔离。
 ```java
-/**
- * @author bingo
- * @since 2018/12/29
- */
-
 public class GetCityNameCommand extends HystrixCommand<String> {
 
     private Long cityId;
