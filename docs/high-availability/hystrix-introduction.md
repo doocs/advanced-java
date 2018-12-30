@@ -16,6 +16,8 @@ Hystrix 是高可用性保障的一个框架。Netflix（可以认为是国外�
 
 时至今日，Netflix 中每天都有数十亿次的服务间调用，通过 Hystrix 框架在进行，而 Hystrix 也帮助 Netflix 网站提升了整体的可用性和稳定性。
 
+[2018 年 11 月，Hystrix 在其 Github 主页宣布，不再开放新功能，推荐开发者使用其他仍然活跃的开源项目](https://github.com/Netflix/Hystrix/blob/master/README.md#hystrix-status)。维护模式的转变绝不意味着 Hystrix 不再有价值。相反，Hystrix 激发了很多伟大的想法和项目，我们高可用的这一块知识还是会针对 Hystrix 进行讲解。
+
 ### Hystrix 的设计原则
 - 对依赖服务调用时出现的调用延迟和调用失败进行**控制和容错保护**。
 - 在复杂的分布式系统中，阻止某一个依赖服务的故障在整个系统中蔓延。比如某一个服务故障了，导致其它服务也跟着故障。
