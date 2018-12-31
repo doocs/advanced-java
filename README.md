@@ -9,7 +9,7 @@
 
 本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。By the way，微信公众号**石杉的架构笔记**（id:shishan100）有其它很多架构知识，墙裂推荐~
 
-一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，跟着入门 Demo 玩一下，然后再开始每一块知识的学习，这样效果更好噢~
+一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，跟着入门 Demo [玩](https://doocs.github.io/advanced-java/#/offer)一下，然后再开始每一块知识的学习，这样效果更好噢~
 
 ## 高并发架构
 
@@ -86,6 +86,7 @@
 - [Hystrix 信号量机制实现资源隔离](/docs/high-availability/hystrix-semphore-isolation.md)
 - [Hystrix 隔离策略细粒度控制](/docs/high-availability/hystrix-execution-isolation.md)
 - [深入 Hystrix 执行时内部原理](/docs/high-availability/hystrix-process.md)
+- [基于 request cache 请求缓存技术优化批量商品数据查询接口](/docs/high-availability/hystrix-request-cache.md)
 
 ### 高可用系统
 - 如何设计一个高可用系统？
