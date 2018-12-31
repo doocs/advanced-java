@@ -88,6 +88,7 @@ ProductInfo productInfo = getProductInfoCommand.execute();
 ```
 
 - HystrixObservableCommand.construct() 返回一个 Observable 对象，可以获取多条结果。
+
 ```java
 Observable<ProductInfo> observable = getProductInfosCommand.observe();
 
