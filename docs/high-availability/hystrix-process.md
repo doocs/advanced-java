@@ -1,15 +1,15 @@
 ## 深入 Hystrix 执行时内部原理
-前面我们了解了 Hystrix 最基本的支持高可用的技术：资源隔离+限流。
+前面我们了解了 Hystrix 最基本的支持高可用的技术：**资源隔离** + **限流**。
 
-- 创建 command
-- 执行这个 command
-- 配置这个 command 对应的 group 和线程池
+- 创建 command；
+- 执行这个 command；
+- 配置这个 command 对应的 group 和线程池。
 
 这里，我们要讲一下，你开始执行这个 command，调用了这个 command 的 execute() 方法之后，Hystrix 底层的执行流程和步骤以及原理是什么。
 
 在讲解这个流程的过程中，我会带出来 Hystrix 其他的一些核心以及重要的功能。
 
-这里是整个 8 大步骤的流程，我会对每个步骤进行细致的讲解。学习的过程中，对照着这个流程图，相信思路会比较清晰。
+这里是整个 8 大步骤的流程图，我会对每个步骤进行细致的讲解。学习的过程中，对照着这个流程图，相信思路会比较清晰。
 
 ![hystrix-process](/img/hystrix-process.png)
 
@@ -42,8 +42,8 @@ HystrixObservableCommand hystrixObservableCommand = new HystrixObservableCommand
 ```java
 K             value   = hystrixCommand.execute();
 Future<K>     fValue  = hystrixCommand.queue();
-Observable<K> oValue = hystrixObservableCommand.observe();         
-Observable<K> toOValue = hystrixObservableCommand.toObservable();  
+Observable<K> oValue = hystrixObservableCommand.observe();
+Observable<K> toOValue = hystrixObservableCommand.toObservable();
 ```
 
 execute() 实际上会调用 queue().get() 方法，可以看一下 Hystrix 源码。
@@ -114,7 +114,7 @@ observable.subscribe(new Observer<ProductInfo>() {
 });
 ```
 
-如果 HystrixCommand.run() 或者 HystrixObservableCommand.construct() 的执行时间超过了 timeout 时长的话，那么 command 所在的线程会抛出一个 TimeoutException，这时会执行 fallback 降级机制，不会去管 run() 或 construct() 返回的值了。另一种情况，如果 command 执行出错抛出了其它异常，那么也会走 fallback 降级。这两种情况下，Hystrix 会发送异常事件给断路器统计。
+如果 HystrixCommand.run() 或者 HystrixObservableCommand.construct() 的执行时间超过了 timeout 时长的话，那么 command 所在的线程会抛出一个 TimeoutException，这时会执行 fallback 降级机制，不会去管 run() 或 construct() 返回的值了。另一种情况，如果 command 执行出错抛出了其它异常，那么也会走 fallback 降级。这两种情况下，Hystrix 都会发送异常事件给断路器统计。
 
 **注意**，我们是不可能终止掉一个调用严重延迟的依赖服务的线程的，只能说给你抛出来一个 TimeoutException。
 
@@ -123,9 +123,9 @@ observable.subscribe(new Observer<ProductInfo>() {
 ![hystrix-process](/img/hystrix-process.png)
 
 ### 步骤七：断路健康检查
-Hystrix 会把每一个依赖服务的调用成功、失败、Reject、Timeout 等事件发送给 circuit breaker 断路器，断路器就会对这些事件的次数进行统计，根据异常事件发生的比例来决定是否要进行断路（熔断）。如果打开了断路器，那么在一段时间内，会直接断路，返回降级结果。
+Hystrix 会把每一个依赖服务的调用成功、失败、Reject、Timeout 等事件发送给 circuit breaker 断路器。断路器就会对这些事件的次数进行统计，根据异常事件发生的比例来决定是否要进行断路（熔断）。如果打开了断路器，那么在一段时间内，会直接断路，返回降级结果。
 
-如果在之后，断路器尝试执行 command，调用没有出错，返回了正常结果，那么 Hystrix 会把断路器关闭。
+如果在之后，断路器尝试执行 command，调用没有出错，返回了正常结果，那么 Hystrix 就会把断路器关闭。
 
 ### 步骤八：调用 fallback 降级机制
 在以下几种情况中，Hystrix 会调用 fallback 降级机制。
@@ -135,9 +135,9 @@ Hystrix 会把每一个依赖服务的调用成功、失败、Reject、Timeout �
 - command 执行超时；
 - run() 或者 construct() 抛出异常。
 
-一般在降级机制中，都建议给出一些默认的返回值，比如静态的一些代码逻辑，或者从内存中的缓存中提取一些数据，尽量在这里不要再进行网络请求了。
+一般在降级机制中，都建议给出一些默认的返回值，比如静态的一些代码逻辑，或者从内存中的缓存中提取一些数据，在这里尽量不要再进行网络请求了。
 
-即使在降级中，一定要进行网络调用，也应该将那个调用放在一个 HystrixCommand 中，进行隔离。
+即使在降级中，一定要进行网络调用的话，也应该将那个调用放在一个 HystrixCommand 中进行隔离。
 
 - HystrixCommand 中，实现 getFallback() 方法，可以提供降级机制。
 - HystrixObservableCommand 中，实现 resumeWithFallback() 方法，返回一个 Observable 对象，可以提供降级结果。
