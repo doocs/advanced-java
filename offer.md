@@ -123,4 +123,3 @@ HR
 ```
 
 [![get-up-and-study](/img/get-up-and-study.png)](https://doocs.github.io/advanced-java)
-                          
