@@ -72,7 +72,7 @@ public class EshopApplication {
 ```
 
 ### command 重写 getCacheKey() 方法
-在 GetProductInfoCommand 中，重写 getCacheKey() 方法，这样的话，每一次请求的结果，都会放在 Hystrix 请求上下文中。下一个同一个 productId 的数据请求，直接取缓存，无须再调用 run() 方法。
+在 GetProductInfoCommand 中，重写 getCacheKey() 方法，这样的话，每一次请求的结果，都会放在 Hystrix 请求上下文中。下一次同一个 productId 的数据请求，直接取缓存，无须再调用 run() 方法。
 
 ```java
 public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
