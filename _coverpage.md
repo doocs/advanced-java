@@ -1,6 +1,6 @@
 ![logo](img/icon.png)
 
-# Java 进阶面试
+# Java 进阶扫盲
 
 > 高并发 分布式 高可用
 
