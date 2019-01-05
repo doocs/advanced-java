@@ -88,6 +88,7 @@
 - [深入 Hystrix 执行时内部原理](/docs/high-availability/hystrix-process.md)
 - [基于 request cache 请求缓存技术优化批量商品数据查询接口](/docs/high-availability/hystrix-request-cache.md)
 - [基于本地缓存的 fallback 降级机制](/docs/high-availability/hystrix-fallback.md)
+- [深入 Hystrix 断路器执行原理](/docs/high-availability/hystrix-circuit-breaker.md)
 
 ### 高可用系统
 - 如何设计一个高可用系统？
