@@ -1,4 +1,5 @@
 ## 用 Hystrix 构建高可用服务架构
+参考 [Hystrix Home](https://github.com/Netflix/Hystrix/wiki#what)。
 
 ### Hystrix 是什么？
 在分布式系统中，每个服务都可能会调用很多其他服务，被调用的那些服务就是**依赖服务**，有的时候某些依赖服务出现故障也是很正常的。

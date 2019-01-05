@@ -172,7 +172,7 @@ ProductInfo(id=1, name=iphone7手机, price=5599.0, pictureList=a.jpg,b.jpg, spe
 
 之后的 9 次请求，都不会执行 run() 方法，也就不会打印以下信息。
 
-```
+```c
 调用接口查询商品数据，productId=-1
 ```
 
