@@ -27,14 +27,14 @@ index 相当于 mysql 里的一张表。而 type 没法跟 mysql 里去对比，
 
 很多情况下，一个 index 里可能就一个 type，但是确实如果说是一个 index 里有多个 type 的情况，你可以认为 index 是一个类别的表，具体的每个 type 代表了具体的一个 mysql 中的表。每个 type 有一个 mapping，如果你认为一个 type 是一个具体的一个表，index 代表多个 type 的同属于的一个类型，mapping 就是这个 type 的**表结构定义**，你在 mysql 中创建一个表，肯定是要定义表结构的，里面有哪些字段，每个字段是什么类型。实际上你往 index 里的一个 type 里面写的一条数据，叫做一条 document，一条 document 就代表了 mysql 中某个表里的一行，每个 document 有多个 field，每个 field 就代表了这个 document 中的一个字段的值。
 
-![es-index-type-mapping-document-field](/img/es-index-type-mapping-document-field.png)
+![es-index-type-mapping-document-field](/images/es-index-type-mapping-document-field.png)
 
 你搞一个索引，这个索引可以拆分成多个 `shard`，每个 shard 存储部分数据。
 
 
 接着就是这个 shard 的数据实际是有多个备份，就是说每个 shard 都有一个 `primary shard`，负责写入数据，但是还有几个 `replica shard`。`primary shard` 写入数据之后，会将数据同步到其他几个 `replica shard` 上去。
 
-![es-cluster](/img/es-cluster.png)
+![es-cluster](/images/es-cluster.png)
 
 通过这个 replica 的方案，每个 shard 的数据都有多个备份，如果某个机器宕机了，没关系啊，还有别的数据副本在别的机器上呢。高可用了吧。
 

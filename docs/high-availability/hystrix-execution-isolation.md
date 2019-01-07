@@ -86,7 +86,7 @@ HystrixThreadPoolProperties.Setter().withCoreSize(int value);
 ### queueSizeRejectionThreshold
 如果说线程池中的 10 个线程都在工作中，没有空闲的线程来做其它的事情，此时再有请求过来，会先进入队列积压。如果说队列积压满了，再有请求过来，就直接 reject，拒绝请求，执行 fallback 降级的逻辑，快速返回。
 
-![hystrix-thread-pool-queue](/img/hystrix-thread-pool-queue.png)
+![hystrix-thread-pool-queue](/images/hystrix-thread-pool-queue.png)
 
 控制 queue 满了之后 reject 的 threshold，因为 maxQueueSize 不允许热修改，因此提供这个参数可以热修改，控制队列的最大大小。
 

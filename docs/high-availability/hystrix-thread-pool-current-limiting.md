@@ -1,7 +1,7 @@
 ## 深入 Hystrix 线程池隔离与接口限流
 前面讲了 Hystrix 的 request cache 请求缓存、fallback 优雅降级、circuit breaker 断路器快速熔断，这一讲，我们来详细说说 Hystrix 的线程池隔离与接口限流。
 
-![hystrix-process](/img/hystrix-process.png)
+![hystrix-process](/images/hystrix-process.png)
 
 Hystrix 通过判断线程池或者信号量是否已满，超出容量的请求，直接 Reject 走降级，从而达到限流的作用。
 
@@ -12,7 +12,7 @@ Hystrix 采用了 Bulkhead Partition 舱壁隔离技术，来将外部依赖进�
 
 **舱壁隔离**，是说将船体内部空间区隔划分成若干个隔舱，一旦某几个隔舱发生破损进水，水流不会在其间相互流动，如此一来船舶在受损时，依然能具有足够的浮力和稳定性，进而减低立即沉船的危险。
 
-![bulkhead-partition](/img/bulkhead-partition.jpg)
+![bulkhead-partition](/images/bulkhead-partition.jpg)
 
 Hystrix 对每个外部依赖用一个单独的线程池，这样的话，如果对那个外部依赖调用延迟很严重，最多就是耗尽那个依赖自己的线程池而已，不会影响其他的依赖调用。
 
@@ -121,7 +121,7 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
 }
 ```
 
-我们模拟 25 个请求。前 8 个请求，调用接口时会直接被 hang 住 3s，那么后面的 10 的请求会先进入等待队列中等待前面的请求执行完毕。最后的 7 个请求过来，会直接被 reject，调用 fallback 降级逻辑。
+我们模拟 25 个请求。前 8 个请求，调用接口时会直接被 hang 住 3s，那么后面的 10 个请求会先进入等待队列中等待前面的请求执行完毕。最后的 7 个请求过来，会直接被 reject，调用 fallback 降级逻辑。
 
 ```java
 @SpringBootTest

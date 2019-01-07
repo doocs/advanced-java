@@ -1,4 +1,4 @@
-![logo](img/icon.png)
+![logo](images/icon.png)
 
 # Java 进阶扫盲
 

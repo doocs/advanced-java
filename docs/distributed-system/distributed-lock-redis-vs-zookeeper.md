@@ -53,7 +53,7 @@ end
 5. 要是锁建立失败了，那么就依次之前建立过的锁删除；
 6. 只要别人建立了一把分布式锁，你就得**不断轮询去尝试获取锁**。
 
-![redis-redlock](/img/redis-redlock.png)
+![redis-redlock](/images/redis-redlock.png)
 
 ### zk 分布式锁
 
