@@ -29,7 +29,7 @@ MQ、ES、Redis、Dubbo，上来先问你一些思考的问题，原理（kafka 
 - 第三步：consumer 调用 provider
 - 第四步：consumer 和 provider 都异步通知监控中心
 
-![dubbo-operating-principle](/img/dubbo-operating-principle.png)
+![dubbo-operating-principle](/images/dubbo-operating-principle.png)
 
 ### 注册中心挂了可以继续通信吗？
 可以，因为刚开始初始化的时候，消费者会将提供者的地址等信息**拉取到本地缓存**，所以注册中心挂了可以继续通信。

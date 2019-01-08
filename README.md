@@ -1,22 +1,20 @@
 # 互联网 Java 工程师进阶知识完全扫盲
-
 [![license](https://img.shields.io/badge/license-Attribution--NonCommercial%204.0%20-brightgreen.svg)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![original](https://img.shields.io/badge/original-%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89-orange.svg)](https://github.com/doocs/advanced-java)
 [![stars](https://img.shields.io/github/stars/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/stargazers)
 [![forks](https://img.shields.io/github/forks/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/network/members)
 [![issues](https://img.shields.io/github/issues/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。By the way，微信公众号**石杉的架构笔记**（id:shishan100）有其它很多架构知识，墙裂推荐~
 
-一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，跟着入门 Demo 玩一下，然后再开始每一块知识的学习，这样效果更好噢~
+一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，跟着入门 Demo [玩](https://doocs.github.io/advanced-java/#/offer)一下，然后再开始每一块知识的学习，这样效果更好噢~
 
 ## 高并发架构
-
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
 - [为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点？](/docs/high-concurrency/why-mq.md)
 - [如何保证消息队列的高可用？](/docs/high-concurrency/how-to-ensure-high-availability-of-message-queues.md)
-- [如何保证消息不被重复消费？（如何保证消息消费时的幂等性）](/docs/high-concurrency/how-to-ensure-that-messages-are-not-repeatedly-consumed.md)
+- [如何保证消息不被重复消费？（如何保证消息消费的幂等性）](/docs/high-concurrency/how-to-ensure-that-messages-are-not-repeatedly-consumed.md)
 - [如何保证消息的可靠性传输？（如何处理消息丢失的问题）](/docs/high-concurrency/how-to-ensure-the-reliable-transmission-of-messages.md)
 - [如何保证消息的顺序性？](/docs/high-concurrency/how-to-ensure-the-order-of-messages.md)
 - [如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？](/docs/high-concurrency/mq-time-delay-and-expired-failure.md)
@@ -54,7 +52,6 @@
 - [如何设计一个高并发系统？](/docs/high-concurrency/high-concurrency-design.md)
 
 ## 分布式系统
-
 ### [面试连环炮](/docs/distributed-system/distributed-system-interview.md)
 ### 系统拆分
 - [为什么要进行系统拆分？如何进行系统拆分？拆分后不用 Dubbo 可以吗？](/docs/distributed-system/why-dubbo.md)
@@ -67,7 +64,7 @@
 - [如何基于 Dubbo 进行服务治理、服务降级、失败重试以及超时重试？](/docs/distributed-system/dubbo-service-management.md)
 - [分布式服务接口的幂等性如何设计（比如不能重复扣款）？](/docs/distributed-system/distributed-system-idempotency.md)
 - [分布式服务接口请求的顺序性如何保证？](/docs/distributed-system/distributed-system-request-sequence.md)
-- [如何自己设计一个类似 Dubbo 的 rpc 框架？](/docs/distributed-system/dubbo-rpc-design.md)
+- [如何自己设计一个类似 Dubbo 的 RPC 框架？](/docs/distributed-system/dubbo-rpc-design.md)
 
 ### 分布式锁
 - [Zookeeper 都有哪些应用场景？](/docs/distributed-system/zookeeper-application-scenarios.md)
@@ -84,6 +81,13 @@
 - [电商网站详情页系统架构](/docs/high-availability/e-commerce-website-detail-page-architecture.md)
 - [Hystrix 线程池技术实现资源隔离](/docs/high-availability/hystrix-thread-pool-isolation.md)
 - [Hystrix 信号量机制实现资源隔离](/docs/high-availability/hystrix-semphore-isolation.md)
+- [Hystrix 隔离策略细粒度控制](/docs/high-availability/hystrix-execution-isolation.md)
+- [深入 Hystrix 执行时内部原理](/docs/high-availability/hystrix-process.md)
+- [基于 request cache 请求缓存技术优化批量商品数据查询接口](/docs/high-availability/hystrix-request-cache.md)
+- [基于本地缓存的 fallback 降级机制](/docs/high-availability/hystrix-fallback.md)
+- [深入 Hystrix 断路器执行原理](/docs/high-availability/hystrix-circuit-breaker.md)
+- [深入 Hystrix 线程池隔离与接口限流](/docs/high-availability/hystrix-thread-pool-current-limiting.md)
+- [基于 timeout 机制为服务接口调用超时提供安全保护](/docs/high-availability/hystrix-timeout.md)
 
 ### 高可用系统
 - 如何设计一个高可用系统？

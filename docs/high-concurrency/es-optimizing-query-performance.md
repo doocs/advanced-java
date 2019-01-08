@@ -10,9 +10,9 @@ es 在数据量很大的情况下（数十亿级别）如何提高查询效率�
 说实话，es 性能优化是没有什么银弹的，啥意思呢？就是**不要期待着随手调一个参数，就可以万能的应对所有的性能慢的场景**。也许有的场景是你换个参数，或者调整一下语法，就可以搞定，但是绝对不是所有场景都可以这样。
 
 ### 性能优化的杀手锏——filesystem cache
-你往es里写的数据，实际上都写到磁盘文件里去了，查询的时候，操作系统会将磁盘文件里的数据自动缓存到 `filesystem cache` 里面去。
+你往 es 里写的数据，实际上都写到磁盘文件里去了，查询的时候，操作系统会将磁盘文件里的数据自动缓存到 `filesystem cache` 里面去。
 
-![es-search-process](/img/es-search-process.png)
+![es-search-process](/images/es-search-process.png)
 
 es 的搜索引擎严重依赖于底层的 `filesystem cache`，你如果给 `filesystem cache` 更多的内存，尽量让内存可以容纳所有的 `idx segment file ` 索引数据文件，那么你搜索的时候就基本都是走内存的，性能会非常高。
 

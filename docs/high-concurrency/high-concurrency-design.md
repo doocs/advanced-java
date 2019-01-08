@@ -37,7 +37,7 @@
 - 读写分离
 - ElasticSearch
 
-![high-concurrency-system-design](/img/high-concurrency-system-design.png)
+![high-concurrency-system-design](/images/high-concurrency-system-design.png)
 
 ### 系统拆分
 将一个系统拆分为多个子系统，用 dubbo 来搞。然后每个系统连一个数据库，这样本来就一个库，现在多个数据库，不也可以扛高并发么。
