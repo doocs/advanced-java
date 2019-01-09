@@ -102,7 +102,8 @@
 ### 降级
 - 如何进行降级？
 
-## 微服务架构【额外新增，待补充】
+## 微服务架构
+- [微服务架构整个章节内容属额外新增，会陆续补充完善]()
 - [关于微服务架构的描述](/docs/micro-services/microservices-introduction.md)
 
 ### Spring Cloud 微服务架构
