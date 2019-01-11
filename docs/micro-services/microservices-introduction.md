@@ -1,6 +1,6 @@
 # 微服务
-> 翻译自 [Martin Fowler](https://martinfowler.com/) 网站 [Microservices](https://martinfowler.com/articles/microservices.html)  一文。<br>
-阅读需要耐心。
+> 翻译自 [Martin Fowler](https://martinfowler.com/) 网站 [Microservices](https://martinfowler.com/articles/microservices.html)  一文，阅读需要耐心。<br>
+本人水平有限，翻译若有不当之处，欢迎指出。
 
 过去几年中出现了“微服务架构”这一术语，它描述了将软件应用程序设计为若干个可独立部署的服务套件的特定方法。尽管这种架构风格尚未有精确的定义，但围绕业务能力、自动部署、端点智能以及语言和数据的分散控制等组织来说，它们还是存在着某些共同特征。
 
@@ -49,7 +49,7 @@
 
 ![PreferFunctionalStaffOrganization](/images/PreferFunctionalStaffOrganization.png)
 
-以这种方式组建的一家公司是 www.comparethemarket.com。跨职能团队负责构建和运营每个产品，每个产品拆分为多个独立的服务，彼此通过消息总线来通信。
+以这种方式组建的一家公司是 [www.comparethemarket.com](http://www.comparethemarket.com/)。跨职能团队负责构建和运营每个产品，每个产品拆分为多个独立的服务，彼此通过消息总线来通信。
 
 大型单片应用程序也可以围绕业务功能进行模块化，尽管这不是常见的情况。当然，我们会敦促构建单块应用系统的大型团队根据业务线来将自己分解为若干小团队。我们在这里看到的主要问题是，它们往往围绕太多的上下文进行组织。如果单体跨越了模块边界，对团队的个体成员来说，很难将它们装入短期的记忆中。此外，我们看到模块化生产线需要大量的规则来执行。服务组件所要求的更加明确的分离，使得它更容易保持团队边界清晰。
 
