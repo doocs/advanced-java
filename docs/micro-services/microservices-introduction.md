@@ -1,6 +1,5 @@
 # 微服务
-> 翻译自 [Martin Fowler](https://martinfowler.com/) 网站 [Microservices](https://martinfowler.com/articles/microservices.html)  一文，阅读需要耐心。<br>
-本人水平有限，翻译若有不当之处，欢迎指出。
+> 翻译自 [Martin Fowler](https://martinfowler.com/) 网站 [Microservices](https://martinfowler.com/articles/microservices.html)  一文。文章篇幅较长，阅读需要一点耐心。<br> 本人水平有限，若有不妥之处，还请各位帮忙指正，谢谢。
 
 过去几年中出现了“微服务架构”这一术语，它描述了将软件应用程序设计为若干个可独立部署的服务套件的特定方法。尽管这种架构风格尚未有精确的定义，但围绕业务能力、自动部署、端点智能以及语言和数据的分散控制等组织来说，它们还是存在着某些共同特征。
 
