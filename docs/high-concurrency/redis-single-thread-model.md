@@ -32,7 +32,7 @@ redis 内部使用文件事件处理器 `file event handler`，这个文件事�
 
 来看客户端与 redis 的一次通信过程：
 
-![redis-single-thread-model](/img/redis-single-thread-model.png)
+![redis-single-thread-model](/images/redis-single-thread-model.png)
 
 客户端 socket01 向 redis 的 server socket 请求建立连接，此时 server socket 会产生一个 `AE_READABLE` 事件，IO 多路复用程序监听到 server socket 产生的事件后，将该事件压入队列中。文件事件分派器从队列中获取该事件，交给**连接应答处理器**。连接应答处理器会创建一个能与客户端通信的 socket01，并将该 socket01 的 `AE_READABLE` 事件与命令请求处理器关联。
 

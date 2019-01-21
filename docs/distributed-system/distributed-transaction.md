@@ -18,15 +18,15 @@
 ### 两阶段提交方案/XA方案
 所谓的 XA 方案，即：两阶段提交，有一个**事务管理器**的概念，负责协调多个数据库（资源管理器）的事务，事务管理器先问问各个数据库你准备好了吗？如果每个数据库都回复 ok，那么就正式提交事务，在各个数据库上执行操作；如果任何其中一个数据库回答不 ok，那么就回滚事务。
 
-这种分布式事务方案，比较适合单块应用里，跨多个库的分布式事务，而且因为严重依赖于数据库层面来搞定复杂的事务，效率很低，绝对不适合高并发的场景。如果要玩儿，那么基于 `spring + JTA` 就可以搞定，自己随便搜个 demo 看看就知道了。
+这种分布式事务方案，比较适合单块应用里，跨多个库的分布式事务，而且因为严重依赖于数据库层面来搞定复杂的事务，效率很低，绝对不适合高并发的场景。如果要玩儿，那么基于 `Spring + JTA` 就可以搞定，自己随便搜个 demo 看看就知道了。
 
-这个方案，我们很少用，一般来说**某个系统内部如果出现跨多个库**的这么一个操作，是**不合规**的。我可以给大家介绍一下， 现在微服务，一个大的系统分成几百个服务，几十个服务。一般来说，我们的规定和规范，是要求**每个服务只能操作自己对应的一个数据库**。
+这个方案，我们很少用，一般来说**某个系统内部如果出现跨多个库**的这么一个操作，是**不合规**的。我可以给大家介绍一下， 现在微服务，一个大的系统分成几十个甚至几百个服务。一般来说，我们的规定和规范，是要求**每个服务只能操作自己对应的一个数据库**。
 
 如果你要操作别的服务对应的库，不允许直连别的服务的库，违反微服务架构的规范，你随便交叉胡乱访问，几百个服务的话，全体乱套，这样的一套服务是没法管理的，没法治理的，可能会出现数据被别人改错，自己的库被别人写挂等情况。
 
 如果你要操作别人的服务的库，你必须是通过**调用别的服务的接口**来实现，绝对不允许交叉访问别人的数据库。
 
-![distributed-transacion-XA](/img/distributed-transaction-XA.png)
+![distributed-transacion-XA](/images/distributed-transaction-XA.png)
 
 ### TCC 方案
 TCC 的全称是：Try、Confirm、Cancel。
@@ -43,7 +43,7 @@ TCC 的全称是：Try、Confirm、Cancel。
 
 但是说实话，一般尽量别这么搞，自己手写回滚逻辑，或者是补偿逻辑，实在太恶心了，那个业务代码很难维护。
 
-![distributed-transacion-TCC](/img/distributed-transaction-TCC.png)
+![distributed-transacion-TCC](/images/distributed-transaction-TCC.png)
 
 ### 本地消息表
 本地消息表其实是国外的 ebay 搞出来的这么一套思想。
@@ -59,7 +59,7 @@ TCC 的全称是：Try、Confirm、Cancel。
 
 这个方案说实话最大的问题就在于**严重依赖于数据库的消息表来管理事务**啥的，会导致如果是高并发场景咋办呢？咋扩展呢？所以一般确实很少用。
 
-![distributed-transaction-local-message-table](/img/distributed-transaction-local-message-table.png)
+![distributed-transaction-local-message-table](/images/distributed-transaction-local-message-table.png)
 
 ### 可靠消息最终一致性方案
 这个的意思，就是干脆不要用本地的消息表了，直接基于 MQ 来实现事务。比如阿里的 RocketMQ 就支持消息事务。
@@ -73,7 +73,7 @@ TCC 的全称是：Try、Confirm、Cancel。
 5. 这个方案里，要是系统 B 的事务失败了咋办？重试咯，自动不断重试直到成功，如果实在是不行，要么就是针对重要的资金类业务进行回滚，比如 B 系统本地回滚后，想办法通知系统 A 也回滚；或者是发送报警由人工来手工回滚和补偿。
 6. 这个还是比较合适的，目前国内互联网公司大都是这么玩儿的，要不你举用 RocketMQ 支持的，要不你就自己基于类似 ActiveMQ？RabbitMQ？自己封装一套类似的逻辑出来，总之思路就是这样子的。
 
-![distributed-transaction-reliable-message](/img/distributed-transaction-reliable-message.png)
+![distributed-transaction-reliable-message](/images/distributed-transaction-reliable-message.png)
 
 ### 最大努力通知方案
 这个方案的大致意思就是：
@@ -83,7 +83,7 @@ TCC 的全称是：Try、Confirm、Cancel。
 3. 要是系统 B 执行成功就 ok 了；要是系统 B 执行失败了，那么最大努力通知服务就定时尝试重新调用系统 B，反复 N 次，最后还是不行就放弃。
 
 ### 你们公司是如何处理分布式事务的？
-如果你真的被问到，可以这么说，我们某某特别严格的场景，用的是 TCC 来保证强一致性；然后其他的一些场景基于阿里的 RocketMQ 来实现了分布式事务。
+如果你真的被问到，可以这么说，我们某某特别严格的场景，用的是 TCC 来保证强一致性；然后其他的一些场景基于阿里的 RocketMQ 来实现分布式事务。
 
 你找一个严格资金要求绝对不能错的场景，你可以说你是用的 TCC 方案；如果是一般的分布式事务场景，订单插入之后要调用库存服务更新库存，库存数据没有资金那么的敏感，可以用可靠消息最终一致性方案。
 

@@ -80,11 +80,11 @@ mycat 这种 proxy 层方案的**缺点在于需要部署**，自己运维一套
 
 **水平拆分**的意思，就是把一个表的数据给弄到多个库的多个表里去，但是每个库的表结构都一样，只不过每个库表放的数据是不同的，所有库表的数据加起来就是全部数据。水平拆分的意义，就是将数据均匀放更多的库里，然后用多个库来抗更高的并发，还有就是用多个库的存储容量来进行扩容。
 
-![database-split-horizon](/img/database-split-horizon.png)
+![database-split-horizon](/images/database-split-horizon.png)
 
 **垂直拆分**的意思，就是**把一个有很多字段的表给拆分成多个表**，**或者是多个库上去**。每个库表的结构都不一样，每个库表都包含部分字段。一般来说，会**将较少的访问频率很高的字段放到一个表里去**，然后**将较多的访问频率很低的字段放到另外一个表里去**。因为数据库是有缓存的，你访问频率高的行字段越少，就可以在缓存里缓存更多的行，性能就越好。这个一般在表层面做的较多一些。
 
-![database-split-vertically](/img/database-split-vertically.png)
+![database-split-vertically](/images/database-split-vertically.png)
 
 这个其实挺常见的，不一定我说，大家很多同学可能自己都做过，把一个大表拆开，订单表、订单支付表、订单商品表。
 

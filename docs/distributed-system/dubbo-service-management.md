@@ -17,7 +17,7 @@
 
 那就需要基于 dubbo 做的分布式系统中，对各个服务之间的调用自动记录下来，然后自动将**各个服务之间的依赖关系和调用链路生成出来**，做成一张图，显示出来，大家才可以看到对吧。
 
-![dubbo-service-invoke-road](/img/dubbo-service-invoke-road.png)
+![dubbo-service-invoke-road](/images/dubbo-service-invoke-road.png)
 
 #### 2. 服务访问压力以及时长统计
 需要自动统计**各个接口和服务之间的调用次数以及访问延时**，而且要分成两个级别。
@@ -88,14 +88,13 @@ public class HelloServiceImpl implements HelloService {
 
 我们调用接口失败的时候，可以通过 `mock` 统一返回 null。
 
-mock 的值也可以修改为 true，然后再跟接口同一个路径下实现一个 Mock 类，命名规则是 `接口名称+Mock` 后缀。然后在 Mock 类里实现自己的降级逻辑。
+mock 的值也可以修改为 true，然后再跟接口同一个路径下实现一个 Mock 类，命名规则是 “接口名称+`Mock`” 后缀。然后在 Mock 类里实现自己的降级逻辑。
 ```java
 public class HelloServiceMock implements HelloService {
 
     public void sayHello() {
         // 降级逻辑
     }
-
 }
 
 ```
@@ -109,9 +108,9 @@ public class HelloServiceMock implements HelloService {
 
 举个栗子。
 
-某个服务的接口，要耗费 5s，你这边不能干等着，你这边配置了 timeout之后，我等待2s，还没返回，我直接就撤了，不能干等你。
+某个服务的接口，要耗费 5s，你这边不能干等着，你这边配置了 timeout 之后，我等待 2s，还没返回，我直接就撤了，不能干等你。
 
 可以结合你们公司具体的场景来说说你是怎么设置这些参数的：
 
-- `timeout`：一般设置为 `200ms`，我们认为不能超过 `200ms`还没返回。
+- `timeout`：一般设置为 `200ms`，我们认为不能超过 `200ms` 还没返回。
 - `retries`：设置 retries，一般是在读请求的时候，比如你要查询个数据，你可以设置个 retries，如果第一次没读到，报错，重试指定的次数，尝试再次读取。

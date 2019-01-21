@@ -111,6 +111,6 @@ public String getProductInfos(String productIds) {
 
 我们回过头来，看看 Hystrix 线程池技术是如何实现资源隔离的。
 
-![hystrix-thread-pool-isolation](/img/hystrix-thread-pool-isolation.png)
+![hystrix-thread-pool-isolation](/images/hystrix-thread-pool-isolation.png)
 
 从 Nginx 开始，缓存都失效了，那么 Nginx 通过缓存服务去调用商品服务。缓存服务默认的线程大小是 10 个，最多就只有 10 个线程去调用商品服务的接口。即使商品服务接口故障了，最多就只有 10 个线程会 hang 死在调用商品服务接口的路上，缓存服务的 tomcat 内其它的线程还是可以用来调用其它的服务，干其它的事情。

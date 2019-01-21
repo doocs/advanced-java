@@ -81,7 +81,7 @@ hessian=com.alibaba.dubbo.rpc.protocol.hessian.HessianProtocol
 
 provider 启动的时候，就会加载到我们 jar 包里的`my=com.bingo.MyProtocol` 这行配置里，接着会根据你的配置使用你定义好的 MyProtocol 了，这个就是简单说明一下，你通过上述方式，可以替换掉大量的 dubbo 内部的组件，就是扔个你自己的 jar 包，然后配置一下即可。
 
-![dubbo-spi](/img/dubbo-spi.png)
+![dubbo-spi](/images/dubbo-spi.png)
 
 dubbo 里面提供了大量的类似上面的扩展点，就是说，你如果要扩展一个东西，只要自己写个 jar，让你的 consumer 或者是 provider 工程，依赖你的那个 jar，在你的 jar 里指定目录下配置好接口名称对应的文件，里面通过 `key=实现类`。
 
