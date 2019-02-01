@@ -15,7 +15,11 @@ session 是啥？浏览器有个 cookie，在一段时间内这个 cookie 都存
 
 单块系统的时候这么玩儿 session 没问题，但是你要是分布式系统呢，那么多的服务，session 状态在哪儿维护啊？
 
-其实方法很多，但是常见常用的是两种：
+其实方法很多，但是常见常用的是几种：
+
+### 完全不用Session
+
+使用JWT Token储存用户身份，然后再从数据库或者Cache中获取其他的信息。这样无论请求分配到哪个服务器都无所谓。
 
 ### tomcat + redis
 这个其实还挺方便的，就是使用 session 的代码，跟以前一样，还是基于 tomcat 原生的 session 支持即可，然后就是用一个叫做 `Tomcat  RedisSessionManager` 的东西，让所有我们部署的 tomcat 都将 session 数据存储到 redis 即可。
