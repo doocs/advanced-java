@@ -17,9 +17,9 @@ session 是啥？浏览器有个 cookie，在一段时间内这个 cookie 都存
 
 其实方法很多，但是常见常用的是几种：
 
-### 完全不用Session
+### 完全不用 session
 
-使用JWT Token储存用户身份，然后再从数据库或者Cache中获取其他的信息。这样无论请求分配到哪个服务器都无所谓。
+使用 JWT Token 储存用户身份，然后再从数据库或者 cache 中获取其他的信息。这样无论请求分配到哪个服务器都无所谓。
 
 ### tomcat + redis
 这个其实还挺方便的，就是使用 session 的代码，跟以前一样，还是基于 tomcat 原生的 session 支持即可，然后就是用一个叫做 `Tomcat  RedisSessionManager` 的东西，让所有我们部署的 tomcat 都将 session 数据存储到 redis 即可。
@@ -131,4 +131,4 @@ public class TestController {
 
 上面的代码就是 ok 的，给 sping session 配置基于 redis 来存储 session 数据，然后配置了一个 spring session 的过滤器，这样的话，session 相关操作都会交给 spring session 来管了。接着在代码中，就用原生的 session 操作，就是直接基于 spring sesion 从 redis 中获取数据了。
 
-实现分布式的会话，有很多种很多种方式，我说的只不过比较常见的两种方式，tomcat + redis 早期比较常用，但是会重耦合到 tomcat 中；近些年，通过 spring session 来实现。
+实现分布式的会话，有很多种很多种方式，我说的只不过比较常见的几种方式，tomcat + redis 早期比较常用，但是会重耦合到 tomcat 中；近些年，通过 spring session 来实现。
