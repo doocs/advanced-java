@@ -15,7 +15,7 @@ session 是啥？浏览器有个 cookie，在一段时间内这个 cookie 都存
 
 单块系统的时候这么玩儿 session 没问题，但是你要是分布式系统呢，那么多的服务，session 状态在哪儿维护啊？
 
-其实方法很多，但是常见常用的是几种：
+其实方法很多，但是常见常用的是以下几种：
 
 ### 完全不用 session
 
@@ -131,4 +131,4 @@ public class TestController {
 
 上面的代码就是 ok 的，给 sping session 配置基于 redis 来存储 session 数据，然后配置了一个 spring session 的过滤器，这样的话，session 相关操作都会交给 spring session 来管了。接着在代码中，就用原生的 session 操作，就是直接基于 spring sesion 从 redis 中获取数据了。
 
-实现分布式的会话，有很多种很多种方式，我说的只不过比较常见的几种方式，tomcat + redis 早期比较常用，但是会重耦合到 tomcat 中；近些年，通过 spring session 来实现。
+实现分布式的会话有很多种方式，我说的只不过是比较常见的几种方式，tomcat + redis 早期比较常用，但是会重耦合到 tomcat 中；近些年，通过 spring session 来实现。
