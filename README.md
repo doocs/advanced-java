@@ -10,6 +10,8 @@
 
 一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，跟着入门 Demo [玩](https://doocs.github.io/advanced-java/#/offer)一下，然后再开始每一块知识的学习，这样效果更好噢~
 
+推荐：《大型网站技术架构_核心原理与案例分析——李智慧》
+
 ## 高并发架构
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
 - [为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点？](/docs/high-concurrency/why-mq.md)
