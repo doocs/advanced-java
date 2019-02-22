@@ -8,9 +8,7 @@
 
 本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。By the way，微信公众号**石杉的架构笔记**（id:shishan100）有其它很多架构知识，墙裂推荐~
 
-一点小建议：学习本系列知识之前，如果你完全没接触过 `MQ`、`ES`、`Redis`、`Dubbo`、`Hystrix` 等，那么我建议你可以先在网上搜一下每一块知识的快速入门，跟着入门 Demo [玩](https://doocs.github.io/advanced-java/#/offer)一下，然后再开始每一块知识的学习，这样效果更好噢~
-
-推荐：《大型网站技术架构_核心原理与案例分析——李智慧》
+配合《大型网站技术架构_核心原理与案例分析——李智慧》食用，[效果更佳](https://doocs.github.io/advanced-java/#/offer)。
 
 ## 高并发架构
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
