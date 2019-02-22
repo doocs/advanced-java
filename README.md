@@ -6,9 +6,7 @@
 [![issues](https://img.shields.io/github/issues/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-本系列知识出自中华石杉，我对这部分知识做了一个系统的整理，方便学习查阅。By the way，微信公众号**石杉的架构笔记**（id:shishan100）有其它很多架构知识，墙裂推荐~
-
-配合《大型网站技术架构_核心原理与案例分析——李智慧》食用，[效果更佳](https://doocs.github.io/advanced-java/#/offer)。
+本系列知识出自中华石杉，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)等领域知识。我对这部分知识做了一个系统的整理，方便学习查阅。配合《大型网站技术架构——李智慧》食用，[效果更佳](https://doocs.github.io/advanced-java/#/offer)。
 
 ## 高并发架构
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
