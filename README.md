@@ -6,7 +6,9 @@
 [![issues](https://img.shields.io/github/issues/doocs/advanced-java.svg)](https://github.com/doocs/advanced-java/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-本系列知识出自中华石杉，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)等领域知识。我对这部分知识做了一个系统的整理，方便学习查阅。配合《大型网站技术架构——李智慧》食用，[效果更佳](https://doocs.github.io/advanced-java/#/offer)。
+本系列知识出自中华石杉，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)等领域知识。我对这部分知识做了一个[系统的整理](https://github.com/doocs/advanced-java/issues/1)，方便学习查阅。配合《大型网站技术架构——李智慧》食用，[效果更佳](https://doocs.github.io/advanced-java/#/offer)。
+
+学习之前，先来看看 [Issues 讨论区](https://github.com/doocs/advanced-java/issues/9#issue-394275038)的技术面试官是怎么说的吧。
 
 ## 高并发架构
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
