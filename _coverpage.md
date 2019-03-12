@@ -1,4 +1,4 @@
-![logo](images/icon.png)
+[![logo](images/icon.png)](https://github.com/doocs/advanced-java)
 
 # Java 进阶扫盲
 
