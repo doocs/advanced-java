@@ -65,7 +65,7 @@ client-output-buffer-limit slave 256MB 64MB 60
 ### 增量复制
 - 如果全量复制过程中，master-slave 网络连接断掉，那么 slave 重新连接 master 时，会触发增量复制。
 - master 直接从自己的 backlog 中获取部分丢失的数据，发送给 slave node，默认 backlog 就是 1MB。
-- msater 就是根据 slave 发送的 psync 中的 offset 来从 backlog 中获取数据的。
+- master 就是根据 slave 发送的 psync 中的 offset 来从 backlog 中获取数据的。
 
 ### heartbeat
 主从节点互相都会发送 heartbeat 信息。
