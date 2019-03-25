@@ -77,8 +77,9 @@ hessian=com.alibaba.dubbo.rpc.protocol.hessian.HessianProtocol
 
 然后自己搞一个 `dubbo provider` 工程，在这个工程里面依赖你自己搞的那个 jar，然后在 spring 配置文件里给个配置：
 
+```xml
 <dubbo:protocol name=”my” port=”20000” />
-
+```
 provider 启动的时候，就会加载到我们 jar 包里的`my=com.bingo.MyProtocol` 这行配置里，接着会根据你的配置使用你定义好的 MyProtocol 了，这个就是简单说明一下，你通过上述方式，可以替换掉大量的 dubbo 内部的组件，就是扔个你自己的 jar 包，然后配置一下即可。
 
 ![dubbo-spi](/images/dubbo-spi.png)
