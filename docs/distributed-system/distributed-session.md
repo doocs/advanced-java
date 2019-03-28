@@ -4,12 +4,12 @@
 ## 面试官心理分析
 面试官问了你一堆 dubbo 是怎么玩儿的，你会玩儿 dubbo 就可以把单块系统弄成分布式系统，然后分布式之后接踵而来的就是一堆问题，最大的问题就是**分布式事务**、**接口幂等性**、**分布式锁**，还有最后一个就是**分布式 session**。
 
-当然了，分布式系统中的问题何止这么一点，非常之多，复杂度很高，但是这里就是说下常见的几个，也是面试的时候常问的几个。
+当然了，分布式系统中的问题何止这么一点，非常之多，复杂度很高，这里只是说一下常见的几个问题，也是面试的时候常问的几个。
 
 ## 面试题剖析
 session 是啥？浏览器有个 cookie，在一段时间内这个 cookie 都存在，然后每次发请求过来都带上一个特殊的 `jsessionid cookie`，就根据这个东西，在服务端可以维护一个对应的 session 域，里面可以放点数据。
 
-一般只要你没关掉浏览器，cookie 还在，那么对应的那个 session 就在，但是如果 cookie 没了，session 也就没了。常见于什么购物车之类的东西，还有登录状态保存之类的。
+一般的话只要你没关掉浏览器，cookie 还在，那么对应的那个 session 就在，但是如果 cookie 没了，session 也就没了。常见于什么购物车之类的东西，还有登录状态保存之类的。
 
 这个不多说了，懂 Java 的都该知道这个。
 
@@ -49,8 +49,7 @@ session 是啥？浏览器有个 cookie，在一段时间内这个 cookie 都存
 还可以用上面这种方式基于 redis 哨兵支持的 redis 高可用集群来保存 session 数据，都是 ok 的。
 
 ### spring session + redis
-
-第一种方式会与 tomcat 容器重耦合，如果我要将 web 容器迁移成 jetty，难道还要重新把 jetty 都配置一遍？
+上面所说的第二种方式会与 tomcat 容器重耦合，如果我要将 web 容器迁移成 jetty，难道还要重新把 jetty 都配置一遍？
 
 因为上面那种 tomcat + redis 的方式好用，但是会**严重依赖于web容器**，不好将代码移植到其他 web 容器上去，尤其是你要是换了技术栈咋整？比如换成了 spring cloud 或者是 spring boot 之类的呢？
 
@@ -107,20 +106,17 @@ session 是啥？浏览器有个 cookie，在一段时间内这个 cookie 都存
 
 示例代码：
 ```java
-@Controller
+@RestController
 @RequestMapping("/test")
 public class TestController {
 
     @RequestMapping("/putIntoSession")
-    @ResponseBody
     public String putIntoSession(HttpServletRequest request, String username) {
-        request.getSession().setAttribute("name",  “leo”);
-
+        request.getSession().setAttribute("name",  "leo");
         return "ok";
     }
 
     @RequestMapping("/getFromSession")
-    @ResponseBody
     public String getFromSession(HttpServletRequest request, Model model){
         String name = request.getSession().getAttribute("name");
         return name;
