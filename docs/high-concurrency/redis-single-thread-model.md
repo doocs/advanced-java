@@ -23,6 +23,7 @@ redis 相比 memcached 来说，拥有[更多的数据结构](/docs/high-concurr
 redis 内部使用文件事件处理器 `file event handler`，这个文件事件处理器是单线程的，所以 redis 才叫做单线程的模型。它采用 IO 多路复用机制同时监听多个 socket，将产生事件的 socket 压入内存队列中，事件分派器根据 socket 上的事件类型来选择对应的事件处理器进行处理。
 
 文件事件处理器的结构包含 4 个部分：
+
 - 多个 socket
 - IO 多路复用程序
 - 文件事件分派器

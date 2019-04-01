@@ -8,7 +8,7 @@
 
 **失败重试**，分布式系统中网络请求如此频繁，要是因为网络问题不小心失败了一次，是不是要重试？
 
-**超时重试**，同上，如果不小心网络慢一点，超时了，如何重试？
+**超时重试**，跟上面一样，如果不小心网络慢一点，超时了，如何重试？
 
 ## 面试题剖析
 ### 服务治理
@@ -40,17 +40,13 @@
 
 ```java
 public interface HelloService {
-
    void sayHello();
-
 }
 
 public class HelloServiceImpl implements HelloService {
-
     public void sayHello() {
         System.out.println("hello world......");
     }
-	
 }
 
 ```
@@ -91,7 +87,6 @@ public class HelloServiceImpl implements HelloService {
 mock 的值也可以修改为 true，然后再跟接口同一个路径下实现一个 Mock 类，命名规则是 “接口名称+`Mock`” 后缀。然后在 Mock 类里实现自己的降级逻辑。
 ```java
 public class HelloServiceMock implements HelloService {
-
     public void sayHello() {
         // 降级逻辑
     }
