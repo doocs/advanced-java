@@ -18,7 +18,6 @@ session 是啥？浏览器有个 cookie，在一段时间内这个 cookie 都存
 其实方法很多，但是常见常用的是以下几种：
 
 ### 完全不用 session
-
 使用 JWT Token 储存用户身份，然后再从数据库或者 cache 中获取其他的信息。这样无论请求分配到哪个服务器都无所谓。
 
 ### tomcat + redis
@@ -53,7 +52,7 @@ session 是啥？浏览器有个 cookie，在一段时间内这个 cookie 都存
 
 因为上面那种 tomcat + redis 的方式好用，但是会**严重依赖于web容器**，不好将代码移植到其他 web 容器上去，尤其是你要是换了技术栈咋整？比如换成了 spring cloud 或者是 spring boot 之类的呢？
 
-所以现在比较好的还是基于 Java 一站式解决方案，也就是 spring。人家 spring 基本上包掉了大部分我们需要使用的框架，spirng cloud 做微服务，spring boot 做脚手架，所以用 sping session 是一个很好的选择。
+所以现在比较好的还是基于 Java 一站式解决方案，也就是 spring。人家 spring 基本上承包了大部分我们需要使用的框架，spirng cloud 做微服务，spring boot 做脚手架，所以用 sping session 是一个很好的选择。
 
 在 pom.xml 中配置：
 ```xml
