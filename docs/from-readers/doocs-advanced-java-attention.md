@@ -2,11 +2,11 @@
 项目需要有一个统一的内容提交规范，没有规范的项目将会是一团乱麻，维护起来也会很费劲儿。以下列出了几个小点，看似很多，实则非常容易做到，供朋友们参考。
 
 ## 关于文件命名与存放位置
-文件请以 “`GitHub ID` + 文章主题” 命名，确保每位朋友的提交内容不会冲突。文章主题统一采用**英文**命名，请勿使用中文或者中式英语，文件类型统一选择 `.md`。**文件命名、存放位置不规范的文章将不予采纳**。
+文件请以 “`GitHub ID` + 文章主题” 命名，确保每位朋友的提交内容不会冲突。文章主题统一采用**英文**命名，请勿使用中文或者中式英语，文件类型统一选择 `.md`。
 
 给个示例。某位朋友的 GitHub ID 是 [SnailClimb](https://github.com/snailclimb)，想分享一篇关于 Kafka 实践相关的文章，那么文件名可以是 `snailclimb-kafka-in-action.md`。
 
-最终文件存放于 `/from-readers` 目录下，即与[本文件](/docs/from-readers/doocs-advanced-java-attention.md)处于同一级别。
+最终文件存放于 `/from-readers/` 目录下，即与[本文件](/docs/from-readers/doocs-advanced-java-attention.md)处于同一级别。**文件命名、存放位置不规范的文章将不予采纳**。
 
 ## 关于文章内容
 仅收录与此项目主题相关的优质文章，可以是[高并发](https://github.com/doocs/advanced-java#高并发架构)、[分布式](https://github.com/doocs/advanced-java#分布式系统)、[高可用](https://github.com/doocs/advanced-java#高可用架构)、[微服务](https://github.com/doocs/advanced-java#高并发架构微服务架构)等相关领域的内容。**其它主题的文章将不会被采纳**。
