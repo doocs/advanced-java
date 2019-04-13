@@ -14,6 +14,25 @@
 ## 关于文章排版
 请注意文章排版的美观性。中英文之间、中文与数字之间用空格隔开是最基本的。图片统一使用 `![](/images/icon.png)` 进行相对引用，并同时存放于根目录 `images` 和本专区目录 `from-readers/images` **两个位置**（这是为了在 GitHub 和 GitHub Page 都能正常显示图片）。具体文章书写规范请参考《[中文技术文档的写作规范](https://github.com/ruanyf/document-style-guide)》
 
+以下是基本文章结构参考。
+
+```markdown
+# 这是文章标题
+- Author: [GitHub ID](https://github.com/your-github-id)
+- Description: 文章的描述信息。
+- ...
+
+## 这是一级索引
+...
+### 这是二级索引
+...
+
+## 这是一级索引
+...
+### 这是二级索引
+...
+```
+
 ## 关于 Git 提交信息
 Git 提交信息统一使用英文，本项目遵从 Angular JS Git 提交规范。e.g.
 
@@ -21,4 +40,4 @@ Git 提交信息统一使用英文，本项目遵从 Angular JS Git 提交规范
 git commit -m "docs(from-readers): add an article about Kafka"
 ```
 
-Git 提交不规范的文章将不予采纳。
+Git 提交信息不规范的 PR 将不予合并。
