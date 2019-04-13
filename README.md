@@ -4,7 +4,7 @@
 [![open-source-organization](https://badgen.net/badge/organization/join%20us/pink)](https://github.com/doocs/intro)
 [![reading](https://badgen.net/badge/books/read%20together/cyan)](https://github.com/doocs/technical-books)
 [![leetcode](https://badgen.net/badge/leetcode/coding%20together/cyan)](https://github.com/doocs/leetcode)
-[![sharing](https://badgen.net/badge/readers/sharing%20together/cyan)](https://github.com/doocs/advanced-java/blob/master/docs/from-readers/README.md)
+[![sharing](https://badgen.net/badge/readers/share%20together/cyan)](https://github.com/doocs/advanced-java/blob/master/docs/from-readers/README.md)
 [![stars](https://badgen.net/github/stars/doocs/advanced-java)](https://github.com/doocs/advanced-java/stargazers)
 [![forks](https://badgen.net/github/forks/doocs/advanced-java)](https://github.com/doocs/advanced-java/network/members)
 [![contributors](https://badgen.net/github/contributors/doocs/advanced-java)](https://github.com/doocs/advanced-java/tree/master/docs/from-readers#contributors)
