@@ -81,6 +81,7 @@
 
 ### 分布式会话
 - [集群部署时的分布式 Session 如何实现？](/docs/distributed-system/distributed-session.md)
+- [json web token]https://juejin.im/post/59d5bbebf265da066c233d0e
 
 ## 高可用架构
 - [Hystrix 介绍](/docs/high-availability/hystrix-introduction.md)
