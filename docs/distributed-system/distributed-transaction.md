@@ -29,7 +29,7 @@
 ![distributed-transacion-XA](/images/distributed-transaction-XA.png)
 
 ### TCC 方案
-TCC 的全称是：Try、Confirm、Cancel。
+TCC 的全称是：`Try`、`Confirm`、`Cancel`。
 
 - Try 阶段：这个阶段说的是对各个服务的资源做检测以及对资源进行**锁定或者预留**。
 - Confirm 阶段：这个阶段说的是在各个服务中**执行实际的操作**。
@@ -41,7 +41,7 @@ TCC 的全称是：Try、Confirm、Cancel。
 
 而且最好是你的各个业务执行的时间都比较短。
 
-但是说实话，一般尽量别这么搞，自己手写回滚逻辑，或者是补偿逻辑，实在太恶心了，那个业务代码很难维护。
+但是说实话，一般尽量别这么搞，自己手写回滚逻辑，或者是补偿逻辑，实在太恶心了，那个业务代码是很难维护的。
 
 ![distributed-transacion-TCC](/images/distributed-transaction-TCC.png)
 
@@ -57,7 +57,7 @@ TCC 的全称是：Try、Confirm、Cancel。
 5. 如果 B 系统处理失败了，那么就不会更新消息表状态，那么此时 A 系统会定时扫描自己的消息表，如果有未处理的消息，会再次发送到 MQ 中去，让 B 再次处理；
 6. 这个方案保证了最终一致性，哪怕 B 事务失败了，但是 A 会不断重发消息，直到 B 那边成功为止。
 
-这个方案说实话最大的问题就在于**严重依赖于数据库的消息表来管理事务**啥的，会导致如果是高并发场景咋办呢？咋扩展呢？所以一般确实很少用。
+这个方案说实话最大的问题就在于**严重依赖于数据库的消息表来管理事务**啥的，如果是高并发场景咋办呢？咋扩展呢？所以一般确实很少用。
 
 ![distributed-transaction-local-message-table](/images/distributed-transaction-local-message-table.png)
 
