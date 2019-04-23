@@ -2,8 +2,8 @@
 [Doocs/advanced-java](https://github.com/doocs/advanced-java) 欢迎各位开发朋友们分享自己或他人的实践经验与总结。如果你想参与，请参考[提交注意事项](/docs/from-readers/doocs-advanced-java-attention.md)。感谢 [@jerryldh](https://github.com/jerryldh), [@BigBlackSheep](https://github.com/BigBlackSheep), [@sunyuanpinggithub](https://github.com/sunyuanpinggithub) 等多位朋友的反馈，具体请参考 [#46](https://github.com/doocs/advanced-java/issues/46)。
 
 ## Articles
-- [仅作示例，第一个提交的朋友请同时删除这两个示例并替换为自己的文章标题](/docs/from-readers/doocs-advanced-java-attention.md)
-- [仅作示例，第一个提交的朋友请同时删除这两个示例并替换为自己的文章标题](/docs/from-readers/doocs-advanced-java-attention.md)
+- [示例文章](/docs/from-readers/doocs-advanced-java-attention.md)
+- [示例文章](/docs/from-readers/doocs-advanced-java-attention.md)
 
 ## Contributors
 This project exists thanks to all the people who contribute.
