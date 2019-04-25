@@ -1,5 +1,5 @@
 # 互联网 Java 工程师[进阶](https://doocs.gitee.io/advanced-java/#/advanced)知识完全扫盲
-[![license](https://badgen.net/badge/license/Attribution-ShareAlike%204.0%20International/green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
+[![license](https://badgen.net/badge/license/CC-BY-SA%204.0/green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/orange)](https://github.com/doocs/advanced-java)
 [![open-source-organization](https://badgen.net/badge/organization/join%20us/138c7b)](https://github.com/doocs/intro)
 [![reading](https://badgen.net/badge/books/read%20together/cyan)](https://github.com/doocs/technical-books)
