@@ -1,9 +1,9 @@
 # 互联网 Java 工程师[进阶](https://doocs.gitee.io/advanced-java/#/advanced)知识完全扫盲
 [![license](https://badgen.net/badge/license/Attribution-ShareAlike%204.0%20International/green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/orange)](https://github.com/doocs/advanced-java)
-[![open-source-organization](https://badgen.net/badge/organization/join%20us/pink)](https://github.com/doocs/intro)
+[![open-source-organization](https://badgen.net/badge/organization/join%20us/138c7b)](https://github.com/doocs/intro)
 [![reading](https://badgen.net/badge/books/read%20together/cyan)](https://github.com/doocs/technical-books)
-[![leetcode](https://badgen.net/badge/leetcode/coding%20together/cyan)](https://github.com/doocs/leetcode)
+[![coding](https://badgen.net/badge/leetcode/coding%20together/cyan)](https://github.com/doocs/leetcode)
 [![sharing](https://badgen.net/badge/readers/share%20together/cyan)](https://github.com/doocs/advanced-java/blob/master/docs/from-readers/README.md)
 [![stars](https://badgen.net/github/stars/doocs/advanced-java)](https://github.com/doocs/advanced-java/stargazers)
 [![forks](https://badgen.net/github/forks/doocs/advanced-java)](https://github.com/doocs/advanced-java/network/members)
