@@ -16,6 +16,8 @@
 |---|---|---|
 | 1 | [MySQL 面试题](https://jsbintask.cn/2019/02/17/interview/interview-high-concurrency-design/) | jsbintask |
 | 2 | [消息队列面试题](https://blog.51cto.com/13904503/2351522) | Java邵先生 |
+| 3 | [高并发架构消息队列面试题解析](https://www.cnblogs.com/yuxiang1/p/10542569.html) | 手留余香-博客园 |
+| 4 | [消息中间件面试题：消息中间件的高可用](https://www.jianshu.com/p/92862edc7c51) | jsbintask-简书 |
 
 
 ### 公众号
@@ -31,5 +33,6 @@
 |---|---|---|
 
 ### 知乎
-| # | 文章 | 抄袭者 |
-|---|---|---|
+| # | 文章 | 抄袭者 | 备注 |
+|---|---|---|---|
+| 1 | [Java消息队列三道面试题详解！](https://zhuanlan.zhihu.com/p/62739616) | Java高级架构解析 | 严重抄袭 |
