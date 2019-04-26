@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/doocs/leetcode"><img src="./images/advanced-java-doocs-shishan.png" alt="维权行动"></a>
+  <a href="https://github.com/doocs/advanced-java"><img src="./images/advanced-java-doocs-shishan.png" alt="维权行动"></a>
 </p>
 
 ## 声明
@@ -14,7 +14,9 @@
 ### 博客
 | # | 文章 | 抄袭者 |
 |---|---|---|
-| 1 | [如何实现 MySQL 的读写分离？MySQL 主从复制原理是啥？如何解决 MySQL 主从同步的延时问题？](https://jsbintask.cn/2019/02/17/interview/interview-high-concurrency-design/) | jsbintask |
+| 1 | [MySQL 面试题](https://jsbintask.cn/2019/02/17/interview/interview-high-concurrency-design/) | jsbintask |
+| 2 | [消息队列面试题](https://blog.51cto.com/13904503/2351522) | Java邵先生 |
+
 
 ### 公众号
 | # | 文章 | 抄袭者 |
