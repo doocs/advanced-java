@@ -1,4 +1,7 @@
-# 维权行动
+<p align="center">
+  <a href="https://github.com/doocs/leetcode"><img src="./images/advanced-java-doocs-shishan.png" alt="维权行动"></a>
+</p>
+
 ## 声明
 读者朋友们，你们好。[advanced-java](https://github.com/doocs/advanced-java) 项目自创建以来，一直收到很多读者的反馈，也在不断改进、完善内容，只希望可以用心做得更好。然而，网上抄袭、侵权的现象普遍存在，我想，不能任由这种恶劣行为肆虐。
 
