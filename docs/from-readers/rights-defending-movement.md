@@ -18,6 +18,7 @@
 | 2 | [消息队列面试题](https://blog.51cto.com/13904503/2351522) | Java邵先生 |
 | 3 | [高并发架构消息队列面试题解析](https://www.cnblogs.com/yuxiang1/p/10542569.html) | 手留余香-博客园 |
 | 4 | [消息中间件面试题：消息中间件的高可用](https://www.jianshu.com/p/92862edc7c51) | jsbintask-简书 |
+| 5 | [深入 Hystrix 执行时内部原理](https://www.jianshu.com/p/1a14401e219f) | kevin0016-简书 |
 
 
 ### 公众号
