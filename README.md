@@ -1,4 +1,4 @@
-# 互联网 Java 工程师[进阶](https://doocs.gitee.io/advanced-java/#/advanced)知识完全扫盲
+# 互联网 Java 工程师[进阶](https://doocs.gitee.io/advanced-java/#/advanced)知识完全扫盲<sup>[©](https://github.com/doocs/advanced-java)</sup>
 [![license](https://badgen.net/badge/license/CC-BY-SA%204.0/green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/orange)](https://github.com/doocs/advanced-java)
 [![notice](https://badgen.net/badge/notice/%E7%BB%B4%E6%9D%83%E8%A1%8C%E5%8A%A8/red)](/docs/from-readers/rights-defending-movement.md)
