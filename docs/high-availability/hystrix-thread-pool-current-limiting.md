@@ -58,8 +58,8 @@ semaphore 技术可以用来限流和削峰，但是不能用来对调研延迟�
 
 在 command 内部，写死代码，做一个 sleep，比如 sleep 3s。
 
-- withCoreSize：设置线程池大小
-- withMaxQueueSize：设置等待队列大小
+- withCoreSize：设置线程池大小。
+- withMaxQueueSize：设置等待队列大小。
 - withQueueSizeRejectionThreshold：这个与 withMaxQueueSize 配合使用，等待队列的大小，取得是这两个参数的较小值。
 
 如果只设置了线程池大小，另外两个 queue 相关参数没有设置的话，等待队列是处于关闭的状态。
