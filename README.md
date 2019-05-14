@@ -5,11 +5,11 @@
 [![open-source-organization](https://badgen.net/badge/organization/join%20us/138c7b)](https://github.com/doocs/intro)
 [![reading](https://badgen.net/badge/books/read%20together/cyan)](https://github.com/doocs/technical-books)
 [![coding](https://badgen.net/badge/leetcode/coding%20together/cyan)](https://github.com/doocs/leetcode)
-[![sharing](https://badgen.net/badge/readers/share%20together/cyan)](https://github.com/doocs/advanced-java/blob/master/docs/from-readers/README.md)
 [![stars](https://badgen.net/github/stars/doocs/advanced-java)](https://github.com/doocs/advanced-java/stargazers)
 [![forks](https://badgen.net/github/forks/doocs/advanced-java)](https://github.com/doocs/advanced-java/network/members)
 [![contributors](https://badgen.net/github/contributors/doocs/advanced-java)](https://github.com/doocs/advanced-java/tree/master/docs/from-readers#contributors)
 [![help-wanted](https://badgen.net/github/label-issues/doocs/advanced-java/help%20wanted/open)](https://github.com/doocs/advanced-java/labels/help%20wanted)
+[![gitee](https://badgen.net/badge/gitee/for%20Chinese%20developers/red)](https://gitee.com/doocs/advanced-java)
 [![issues](https://badgen.net/github/open-issues/doocs/advanced-java)](https://github.com/doocs/advanced-java/issues)
 [![PRs Welcome](https://badgen.net/badge/PRs/welcome/green)](http://makeapullrequest.com)
 
