@@ -2,7 +2,7 @@
 [![license](https://badgen.net/badge/license/CC-BY-SA%204.0/green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/orange)](https://github.com/doocs/advanced-java)
 [![notice](https://badgen.net/badge/notice/%E7%BB%B4%E6%9D%83%E8%A1%8C%E5%8A%A8/red)](/docs/from-readers/rights-defending-movement.md)
-[![open-source-organization](https://badgen.net/badge/organization/join%20us/138c7b)](https://github.com/doocs/intro)
+[![wechat-group](https://badgen.net/badge/chat/%E6%89%AB%E7%A0%81%E8%BF%9B%E5%85%A5/138c7b)](https://github.com/doocs/advanced-java/issues/70)
 [![reading](https://badgen.net/badge/books/read%20together/cyan)](https://github.com/doocs/technical-books)
 [![coding](https://badgen.net/badge/leetcode/coding%20together/cyan)](https://github.com/doocs/leetcode)
 [![stars](https://badgen.net/github/stars/doocs/advanced-java)](https://github.com/doocs/advanced-java/stargazers)
