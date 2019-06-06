@@ -32,22 +32,54 @@ dubbo 负载均衡策略和集群容错策略都有哪些？动态代理策略�
 
 ### dubbo 集群容错策略
 #### failover cluster 模式
-失败自动切换，自动重试其他机器，默认就是这个，常见于读操作。（失败重试其它机器）
+失败自动切换，自动重试其他机器，**默认**就是这个，常见于读操作。（失败重试其它机器）
 
-#### failfast cluster模式
-一次调用失败就立即失败，常见于写操作。（调用失败就立即失败）
+可以通过以下几种方式配置重试次数：
+
+```xml
+<dubbo:service retries="2" />
+```
+
+或者
+
+```xml
+<dubbo:reference retries="2" />
+```
+
+或者
+
+```xml
+<dubbo:reference>
+    <dubbo:method name="findFoo" retries="2" />
+</dubbo:reference>
+```
+
+#### failfast cluster 模式
+一次调用失败就立即失败，常见于非幂等性的写操作，比如新增一条记录（调用失败就立即失败）
 
 #### failsafe cluster 模式
 出现异常时忽略掉，常用于不重要的接口调用，比如记录日志。
+
+配置示例如下：
+
+```xml
+<dubbo:service cluster="failsafe" />
+```
+
+或者
+
+```xml
+<dubbo:reference cluster="failsafe" />
+```
 
 #### failback cluster 模式
 失败了后台自动记录请求，然后定时重发，比较适合于写消息队列这种。
 
 #### forking cluster 模式
-**并行调用**多个 provider，只要一个成功就立即返回。
+**并行调用**多个 provider，只要一个成功就立即返回。常用于实时性要求比较高的读操作，但是会浪费更多的服务资源，可通过 `forks="2"` 来设置最大并行数。
 
 #### broadcacst cluster
-逐个调用所有的 provider。
+逐个调用所有的 provider。任何一个 provider 出错则报错（从`2.1.0` 版本开始支持）。通常用于通知所有提供者更新缓存或日志等本地资源信息。
 
 ### dubbo动态代理策略
 默认使用 javassist 动态字节码生成，创建代理类。但是可以通过 spi 扩展机制配置自己的动态代理策略。

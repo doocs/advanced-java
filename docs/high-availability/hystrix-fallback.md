@@ -42,6 +42,7 @@ public class BrandCache {
 
     /**
      * brandId 获取 brandName
+     *
      * @param brandId 品牌id
      * @return 品牌名
      */
