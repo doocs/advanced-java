@@ -10,7 +10,6 @@ This project exists thanks to all the people who contribute.
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
-| <center> [<img src="https://avatars3.githubusercontent.com/u/21008209?v=4" width="80px;"/>](https://github.com/yanglbme) </center> | <center> [<img src="https://avatars3.githubusercontent.com/u/31427850?v=4" width="80px;"/>](https://github.com/ImgBotApp) </center> | <center> [<img src="https://avatars3.githubusercontent.com/u/14137033?v=4" width="80px;"/>](https://github.com/lianghao208) </center> | <center> [<img src="https://avatars3.githubusercontent.com/u/5753574?v=4" width="80px;"/>](https://github.com/tccbest) </center> | <center> [<img src="https://avatars3.githubusercontent.com/u/15058152?v=4" width="80px;"/>](https://github.com/sheldonyss) </center> | <center> [<img src="https://avatars3.githubusercontent.com/u/44314231?v=4" width="80px;"/>](https://github.com/igayhub) </center> | <center> [<img src="https://avatars3.githubusercontent.com/u/25682169?v=4" width="80px;"/>](https://github.com/naah69) </center> | |
-|---|---|---|---|---|---|---|---|
+<a href="https://github.com/doocs/leetcode/graphs/contributors"><img src="https://opencollective.com/advanced-java/contributors.svg?width=890&button=false" /></a>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
