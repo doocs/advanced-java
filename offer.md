@@ -1,4 +1,4 @@
-[![where-is-my-offer](/img/where-is-my-offer.png)](https://doocs.github.io/advanced-java)
+[![where-is-my-offer](/images/where-is-my-offer.png)](https://doocs.github.io/advanced-java/#/offer)
 
 <p align="center"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1321616516&auto=1&height=66"></iframe></p>
 
@@ -91,6 +91,35 @@ HR
 燃烧我的卡路里
 
 我要变成收割机
+
+
+                              _.._        ,------------.
+                           ,'      `.    ( We want you! )
+                          /  __) __` \    `-,----------'
+                         (  (`-`(-')  ) _.-'
+                         /)  \  = /  (
+                        /'    |--' .  \
+                       (  ,---|  `-.)__`
+                        )(  `-.,--'   _`-.
+                       '/,'          (  Uu",
+                        (_       ,    `/,-' )
+                        `.__,  : `-'/  /`--'
+                          |     `--'  |
+                          `   `-._   /
+                           \        (
+                           /\ .      \.  offer
+                          / |` \     ,-\
+                         /  \| .)   /   \
+                        ( ,'|\    ,'     :
+                        | \,`.`--"/      }
+                        `,'    \  |,'    /
+                       / "-._   `-/      |
+                       "-.   "-.,'|     ;
+                      /        _/["---'""]
+                     :        /  |"-     '
+                     '           |      /
+                                 `      |
+       
 ```
 
-[![get-up-and-study](/img/get-up-and-study.png)](https://doocs.github.io/advanced-java)
+[![get-up-and-study](/images/get-up-and-study.png)](https://doocs.github.io/advanced-java)

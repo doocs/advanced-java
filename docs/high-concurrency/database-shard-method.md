@@ -20,7 +20,7 @@
 
 但是这个方案比较 low，谁都能干，我们来看看高大上一点的方案。
 
-![database-shard-method-1](/img/database-shard-method-1.png)
+![database-shard-method-1](/images/database-shard-method-1.png)
 
 ### 双写迁移方案
 这个是我们常用的一种迁移方案，比较靠谱一些，不用停机，不用看北京凌晨 4 点的风景。
@@ -33,4 +33,4 @@
 
 接着当数据完全一致了，就 ok 了，基于仅仅使用分库分表的最新代码，重新部署一次，不就仅仅基于分库分表在操作了么，还没有几个小时的停机时间，很稳。所以现在基本玩儿数据迁移之类的，都是这么干的。
 
-![database-shard-method-2](/img/database-shard-method-2.png)
+![database-shard-method-2](/images/database-shard-method-2.png)
