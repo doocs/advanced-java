@@ -5,7 +5,7 @@
 
 ![simple-distributed-system-oa](/images/simple-distributed-system-oa.png)
 
-> 这两年开始兴起和流行 Spring Cloud，刚流行，还没开始普及，目前普及的是 dubbo，因此这里也主要讲 dubbo。
+> 近几年开始兴起和流行 Spring Cloud，刚流行，还没开始普及，目前普及的是 dubbo，因此这里也主要讲 dubbo。
 
 面试官可能会问你以下问题。
 ### 为什么要进行系统拆分？
