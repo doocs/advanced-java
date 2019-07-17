@@ -45,7 +45,7 @@ redis 内部使用文件事件处理器 `file event handler`，这个文件事�
 
 如果此时客户端准备好接收返回结果了，那么 redis 中的 socket01 会产生一个 `AE_WRITABLE` 事件，同样压入队列中，事件分派器找到相关联的命令回复处理器，由命令回复处理器对 socket01 输入本次操作的一个结果，比如 `ok`，之后解除 socket01 的 `AE_WRITABLE` 事件与命令回复处理器的关联。
 
-这样便完成了一次通信。
+这样便完成了一次通信。关于 Redis 的一次通信过程，推荐读者阅读《[Redis 设计与实现——黄健宏](https://github.com/doocs/technical-books#database)》进行系统学习。
 
 ### 为啥 redis 单线程模型也能效率这么高？
 - 纯内存操作。
