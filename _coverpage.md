@@ -6,4 +6,4 @@
 
 [Doocs](https://github.com/doocs/intro)
 [GitHub](https://github.com/yanglbme)
-[Get Started](#互联网-java-工程师进阶知识完全扫盲)
+[Get Started](#互联网-java-工程师进阶知识完全扫盲©)
