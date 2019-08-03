@@ -103,7 +103,7 @@
 ### 熔断
 - 如何进行熔断？
 - 熔断框架都有哪些？具体实现原理知道吗？
-- [如何做技术选型？选用 Sentinel 还是 Hystrix？](/docs/high-availability/sentinel-vs-hystrix.md)
+- [熔断框架如何做技术选型？选用 Sentinel 还是 Hystrix？](/docs/high-availability/sentinel-vs-hystrix.md)
 
 ### 降级
 - 如何进行降级？
