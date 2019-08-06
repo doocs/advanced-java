@@ -75,6 +75,7 @@
     * 3.4 熔断
         * 3.4.1 如何进行熔断？
         * 3.4.2 熔断框架都有哪些？具体实现原理知道吗？
+        * [3.4.3 如何做技术选型？选用 Sentinel 还是 Hystrix？](/docs/high-availability/sentinel-vs-hystrix.md)
     * 3.5 降级
         * 3.5.1 如何进行降级？
 * Part4 微服务架构
