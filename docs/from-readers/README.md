@@ -10,6 +10,6 @@ This project exists thanks to all the people who contribute.
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
-<a href="https://github.com/doocs/leetcode/graphs/contributors"><img src="https://opencollective.com/advanced-java/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/doocs/advanced-java/graphs/contributors"><img src="https://opencollective.com/advanced-java/contributors.svg?width=890&button=false" /></a>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
