@@ -23,6 +23,8 @@ Sentinel 项目地址：https://github.com/alibaba/Sentinel
 ### 1. 资源模型和执行模型上的对比
 Hystrix 的资源模型设计上采用了命令模式，将对外部资源的调用和 fallback 逻辑封装成一个命令对象 `HystrixCommand` 或 `HystrixObservableCommand`，其底层的执行是基于 RxJava 实现的。每个 Command 创建时都要指定 `commandKey` 和 `groupKey`（用于区分资源）以及对应的隔离策略（线程池隔离 or 信号量隔离）。线程池隔离模式下需要配置线程池对应的参数（线程池名称、容量、排队超时等），然后 Command 就会在指定的线程池按照指定的容错策略执行；信号量隔离模式下需要配置最大并发数，执行 Command 时 Hystrix 就会限制其并发调用。
 
+**注**：关于 Hystrix 的详细介绍及代码演示，可以参考本项目[高可用架构](/docs/high-availability/README.md)-Hystrix 部分的详细说明。
+
 Sentinel 的设计则更为简单。相比 Hystrix Command 强依赖隔离规则，Sentinel 的资源定义与规则配置的耦合度更低。Hystrix 的 Command 强依赖于隔离规则配置的原因是隔离规则会直接影响 Command 的执行。在执行的时候 Hystrix 会解析 Command 的隔离规则来创建 RxJava Scheduler 并在其上调度执行，若是线程池模式则 Scheduler 底层的线程池为配置的线程池，若是信号量模式则简单包装成当前线程执行的 Scheduler。
 
 而 Sentinel 则不一样，开发的时候只需要考虑这个方法/代码是否需要保护，置于用什么来保护，可以任何时候动态实时的区修改。
