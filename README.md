@@ -113,6 +113,7 @@
 - [微服务架构整个章节内容属额外新增，后续抽空更新，也欢迎读者们参与补充完善](https://github.com/doocs/advanced-java)
 - [关于微服务架构的描述](/docs/micro-services/microservices-introduction.md)
 - [从单体式架构迁移到微服务架构](/docs/micro-services/migrating-from-a-monolithic-architecture-to-a-microservices-architecture.md)
+- [微服务的事件驱动数据管理](/docs/micro-services/event-driven-data-management-for-microservices.md)
 
 ### Spring Cloud 微服务架构
 - 什么是微服务？微服务之间是如何独立通讯的？
