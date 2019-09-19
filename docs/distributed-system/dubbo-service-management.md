@@ -8,7 +8,7 @@
 
 **失败重试**，分布式系统中网络请求如此频繁，要是因为网络问题不小心失败了一次，是不是要重试？
 
-**超时重试**，同上，如果不小心网络慢一点，超时了，如何重试？
+**超时重试**，跟上面一样，如果不小心网络慢一点，超时了，如何重试？
 
 ## 面试题剖析
 ### 服务治理
@@ -31,28 +31,23 @@
 - 服务分层（避免循环依赖）
 - 调用链路失败监控和报警
 - 服务鉴权
-- 每个服务的可用性的监控（接口调用成功率？几个9？99.99%，99.9%，99%。）
+- 每个服务的可用性的监控（接口调用成功率？几个 9？99.99%，99.9%，99%）
 
 ### 服务降级
-比如说服务 A调用服务 B，结果服务 B 挂掉了，服务 A 重试几次调用服务 B，还是不行，那么直接降级，走一个备用的逻辑，给用户返回响应。
+比如说服务 A 调用服务 B，结果服务 B 挂掉了，服务 A 重试几次调用服务 B，还是不行，那么直接降级，走一个备用的逻辑，给用户返回响应。
 
 举个栗子，我们有接口 `HelloService`。`HelloServiceImpl` 有该接口的具体实现。
 
 ```java
 public interface HelloService {
-
    void sayHello();
-
 }
 
 public class HelloServiceImpl implements HelloService {
-
     public void sayHello() {
         System.out.println("hello world......");
     }
-	
 }
-
 ```
 
 ```xml
@@ -89,14 +84,13 @@ public class HelloServiceImpl implements HelloService {
 我们调用接口失败的时候，可以通过 `mock` 统一返回 null。
 
 mock 的值也可以修改为 true，然后再跟接口同一个路径下实现一个 Mock 类，命名规则是 “接口名称+`Mock`” 后缀。然后在 Mock 类里实现自己的降级逻辑。
+
 ```java
 public class HelloServiceMock implements HelloService {
-
     public void sayHello() {
         // 降级逻辑
     }
 }
-
 ```
 
 ### 失败重试和超时重试
