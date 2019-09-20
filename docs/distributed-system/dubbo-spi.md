@@ -12,7 +12,7 @@ spi，简单来说，就是 `service provider interface`，说白了是什么意
 
 举个栗子。
 
-你有一个接口A。A1/A2/A3 分别是接口A的不同实现。你通过配置 `接口A=实现A2`，那么在系统实际运行的时候，会加载你的配置，用实现A2实例化一个对象来提供服务。
+你有一个接口 A。A1/A2/A3 分别是接口A的不同实现。你通过配置 `接口 A = 实现 A2`，那么在系统实际运行的时候，会加载你的配置，用实现 A2 实例化一个对象来提供服务。
 
 spi 机制一般用在哪儿？**插件扩展的场景**，比如说你开发了一个给别人使用的开源框架，如果你想让别人自己写个插件，插到你的开源框架里面，从而扩展某个功能，这个时候 spi 思想就用上了。
 
@@ -77,8 +77,9 @@ hessian=com.alibaba.dubbo.rpc.protocol.hessian.HessianProtocol
 
 然后自己搞一个 `dubbo provider` 工程，在这个工程里面依赖你自己搞的那个 jar，然后在 spring 配置文件里给个配置：
 
+```xml
 <dubbo:protocol name=”my” port=”20000” />
-
+```
 provider 启动的时候，就会加载到我们 jar 包里的`my=com.bingo.MyProtocol` 这行配置里，接着会根据你的配置使用你定义好的 MyProtocol 了，这个就是简单说明一下，你通过上述方式，可以替换掉大量的 dubbo 内部的组件，就是扔个你自己的 jar 包，然后配置一下即可。
 
 ![dubbo-spi](/images/dubbo-spi.png)

@@ -19,7 +19,7 @@ es 中存储数据的**基本单位是索引**，比如说你现在要在 es 中
 index -> type -> mapping -> document -> field。
 ```
 
-这样吧，为了做个更直白的介绍，我在这里做个类比。
+这样吧，为了做个更直白的介绍，我在这里做个类比。但是切记，不要划等号，类比只是为了便于理解。
 
 index 相当于 mysql 里的一张表。而 type 没法跟 mysql 里去对比，一个 index 里可以有多个 type，每个 type 的字段都是差不多的，但是有一些略微的差别。假设有一个 index，是订单 index，里面专门是放订单数据的。就好比说你在 mysql 中建表，有些订单是实物商品的订单，比如一件衣服、一双鞋子；有些订单是虚拟商品的订单，比如游戏点卡，话费充值。就两种订单大部分字段是一样的，但是少部分字段可能有略微的一些差别。
 
@@ -29,8 +29,7 @@ index 相当于 mysql 里的一张表。而 type 没法跟 mysql 里去对比，
 
 ![es-index-type-mapping-document-field](/images/es-index-type-mapping-document-field.png)
 
-你搞一个索引，这个索引可以拆分成多个 `shard`，每个 shard 存储部分数据。
-
+你搞一个索引，这个索引可以拆分成多个 `shard`，每个 shard 存储部分数据。拆分多个 shard 是有好处的，一是**支持横向扩展**，比如你数据量是 3T，3 个 shard，每个 shard 就 1T 的数据，若现在数据量增加到 4T，怎么扩展，很简单，重新建一个有 4 个 shard 的索引，将数据导进去；二是**提高性能**，数据分布在多个 shard，即多台服务器上，所有的操作，都会在多台机器上并行分布式执行，提高了吞吐量和性能。
 
 接着就是这个 shard 的数据实际是有多个备份，就是说每个 shard 都有一个 `primary shard`，负责写入数据，但是还有几个 `replica shard`。`primary shard` 写入数据之后，会将数据同步到其他几个 `replica shard` 上去。
 
