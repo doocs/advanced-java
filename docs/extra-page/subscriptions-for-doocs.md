@@ -1,7 +1,7 @@
 # Doocs 开源社区的公众号来了
 GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专注于挖掘 IT 技术知识，助力开发者成长。
 
-<div align="center">
+<div style="text-align:center;">
   <img src="./images/qrcode_for_doocs.jpg" width="200px;"/>
 </div>
 
@@ -14,7 +14,7 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 - **内容原创**：所有技术文章均原创发布，不随意从网上复制粘贴一些文章，确保质量。
 - **定期更新**：每周输出 1-2 篇文章，保证一定的更新频率。
 
-<div align="center">
+<div style="text-align:center;">
   <img src="./images/article-demo.png" width="300px;"/>
 </div>
 
@@ -23,6 +23,6 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 
 **注意**，群内禁止一切垃圾广告信息，包括小程序助力信息、小游戏、社群推广、公众号推广、支付宝推广码等；交流 GitHub、开发相关，可以自由分享一些开发相关知识，但不提倡整天水群，建议还是多花点时间提升自己。
 
-<div align="center">
+<div style="text-align:center;">
   <img src="./images/wechat-group-for-doocs.png" width="300px;"/>
 </div>
