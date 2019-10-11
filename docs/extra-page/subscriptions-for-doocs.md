@@ -5,6 +5,8 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
   <img src="./images/qrcode_for_doocs.jpg" width="200px;"/>
 </div>
 
+来成为公众号的首批粉丝吗？一定不会辜负你们的期待。
+
 ## 为什么选择公众号？
 微信公众号的**原创保护功能**做得比较好，内容阅读也比较方便。
 
@@ -17,6 +19,16 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 <div style="text-align:center;">
   <img src="./images/article-demo.png" width="300px;"/>
 </div>
+
+## 目前都有哪些文章？
+因为刚刚推出公众号，目前有以下几篇文章，来先睹为快吧：
+
+- [一文带你搞懂 “缓存策略”](https://mp.weixin.qq.com/s/47A_iXY_nArURwUTPHr2IQ)
+- [Java Getter/Setter “防坑指南”](https://mp.weixin.qq.com/s/TZqcAw7NTlcvU-p930-eHA)
+- [太棒了，GitHub Review 代码能力小升级](https://mp.weixin.qq.com/s/Lok0epqn91Q51ygZo_FLkg)
+- [巧用 Redis Hyperloglog，轻松统计 UV 数据](https://mp.weixin.qq.com/s/w1r-M6YVvQSfUtzO_xe44Q)
+
+后续将推出一系列原创干货文章，敬请期待。
 
 ## 是否有交流群？
 有的，目前微信群“**Doocs的技术朋友们**”已经接近 200 号人，如果你希望加入，请通过微信与我联系。
