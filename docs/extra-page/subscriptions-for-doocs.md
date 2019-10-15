@@ -23,6 +23,7 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 ## 目前都有哪些文章？
 因为刚刚推出公众号，目前有以下几篇文章，来先睹为快吧：
 
+- [厉害了，原来 Redisson 这么好用！](https://mp.weixin.qq.com/s/lpZ7eRdImy0MyTEVH68HYw)
 - [一文带你搞懂 “缓存策略”](https://mp.weixin.qq.com/s/47A_iXY_nArURwUTPHr2IQ)
 - [Java Getter/Setter “防坑指南”](https://mp.weixin.qq.com/s/TZqcAw7NTlcvU-p930-eHA)
 - [太棒了，GitHub Review 代码能力小升级](https://mp.weixin.qq.com/s/Lok0epqn91Q51ygZo_FLkg)
