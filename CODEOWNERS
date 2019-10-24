@@ -1,2 +1,5 @@
-docs/* @yanglbme
-images/* @yanglbme
+.html @yanglbme
+.md @yanglbme
+
+docs/ @yanglbme
+images/ @yanglbme
