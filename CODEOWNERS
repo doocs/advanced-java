@@ -1,5 +1,7 @@
-.html @yanglbme
-.md @yanglbme
+*.md        @yanglbme
+*.html      @yanglbme
+LICENSE     @yanglbme
+.gitignore  @yanglbme
 
-docs/ @yanglbme
-images/ @yanglbme
+docs/       @yanglbme
+images/     @yanglbme
