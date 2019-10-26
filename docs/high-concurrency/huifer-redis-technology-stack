@@ -1,0 +1,294 @@
+# Redis 技术栈
+- Author: [HuiFer](https://github.com/huifer)
+- Description: 该文章介绍redis相关技术栈，统筹规划学习路径
+
+## 安装
+### yum & apt
+- `apt-get install Redis-server`
+- `yum install Redis`
+
+### 编译
+1. 下载
+- `wget http://download.Redis.io/releases/Redis-5.0.5.tar.gz`
+2. 编译
+```
+  tar -zxvf Redis-5.0.5.tar.gz
+  cd Redis-5.0.5
+  make && make install
+```
+3. 配置
+- `vim Redis.conf`
+4. 启动
+- Redis-server
+5. 关闭
+- Redis-cli shutdown
+
+## key 命令
+### keys
+- 搜索key根据匹配模式,例如: keys *
+### exists
+- 判断key是否存在,存在返回1,不存在返回0
+### del
+- 删除key
+### type
+- 获取key类型
+### randomkey
+- 随机返回key
+### expire
+- 设置key过期时间
+### sortzh
+- 字符串排序
+- 数字排序
+
+## 服务端命令
+### flushall
+- 强制清空所有key(目标对象所有数据库)
+### flushdb
+- 清空当前数据库
+### client list
+- 连接信息列表
+### client kill
+- 关闭ip:port客户端
+### ping
+- 判断是否正常运行,正常运行返回pong
+
+
+## 数据类型(操作命令非完整)
+### string
+- 一个key最大存储512M的数据
+#### 操作方法
+- get /set(单key操作)
+- mget / mset(多key操作)
+- getrange 获取指定下标范围内的字符串
+- setrange 设置指定下标范围内的字符串
+- setex => set expire 组合
+- incr 自增1
+- incrby 自增指定数字
+- decr 自减1
+- decrby 自减指定数字
+- append 追加字符串
+- strlen 返回字符串长度
+
+### list
+- blpop key 删除并获取第一个元素
+- brpop key 删除并获取最后一个元素
+- brpoplpush source destination 复制列表从source -> destination
+- lindex key index 根据key 和index 获取value
+- llen key 获取key的列表长度
+- lpop key 从左侧出列
+- lpush key value 从左侧入列
+- lrange key start stop 根据start,stop获取key一定范围内的列表
+- lset key index value 根据key + index 设置value
+- lrem key count value 删除列表元素
+- rpush等不做赘述
+
+### set
+- sadd key value 向key插入值
+- scard key 获取集合成员数量
+- sdiff key1 key2 返回集合差集
+- sinter key1 key2 返回集合交集
+- sunion key1 key2 返回集合并集
+- sismember key value 判断集合中是否包含value
+- smembers key 返回集合
+- srem key value 删除集合中的一个value
+
+
+### hash
+- hget key filed 获取hash中指定key->filed的值
+- hgetall key 获取hash中指定key的所有制
+- hexists key filed 查看是否存在filed
+- hdel key filed 删除指定key下的filed
+- hkeys key 获取所有filed
+- hset key filed value 设置key->filed->value
+
+### sortedSet
+- zadd key source member 向key追加source,member
+- zcard key 获取成员数量
+
+
+
+## 数据存储(持久化)
+### RDB
+> 将某个时间点的所有数据都以二进制形式存放到硬盘上
+  - 可以将快照复制到其它服务器从而创建具有相同数据的服务器副本.
+  - 如果系统发生故障,将会丢失最后一次创建快照之后的数据.
+  - 如果数据量很大,保存快照的时间会很长,建议异步写入.
+  - 存在的问题:时间、性能开销大,不可控且容易丢失数据.
+- 同步机制
+    - save 命令,阻塞其他命令,直到save命令结束
+    - bgsave 命令,异步化,创建子线程进行持久化,不会阻塞其他命令
+- 自动化触发
+    - 根据修改数量、时间进行命令执行
+    - save 900 1 # 900秒之内,对数据库进行了一次修改就执行 bgsave 命令
+    - save 300 10 # 300秒之内,对数据库进行了十次修改就执行 bgsave 命令
+    - save 60 10000 # 60秒之内,对数据库进行了一万次修改就执行 bgsav e命令
+
+### AOF
+>将写命令添加到 AOF 文件(Append Only File)的末尾(MySQL Binlog、HBase HLog).
+
+- 随着服务器写请求的增多,AOF 文件会越来越大.Redis 提供了一种将 AOF 重写的特性,能够去除 AOF 文件中的冗余写命令
+- 使用 AOF 持久化需要设置同步选项,从而确保写命令什么时候会同步到磁盘文件上.这是因为对文件进行写入并不会马上将内容同步到磁盘上,而是先存储到缓冲区,然后由操作系统决定什么时候同步到磁盘.
+#### 同步机制
+- always 每个命令都同步
+- eversec 每秒同步
+- no 操作系统决定同步时间
+#### AOF重写
+- 对多条原生命令进行优化,重写成简化的命令以减少磁盘占用量、提高故障恢复效率.
+- 当 AOF 文件过大或增长速度过快时自动触发
+- 配置
+    - auto-aof-rewrite-min-size:AOF 文件重写需要的大小
+    - auto-aof-rewrite-percentage:AOF 文件增长率
+
+    - aofcurrentsize:AOF 当前大小
+    - aof-base-size:AOF 上次启动和重写的大小
+- 触发条件
+    - aof_current_size > auto-aof-rewrite-min-size
+    - aof_current_size - aof_base_size/aof_base_size > auto-aof-rewrite-percentage
+
+## 集群
+### 主从复制
+#### 主从链(拓扑结构)
+![主从](https://user-images.githubusercontent.com/26766909/67539461-d1a26c00-f714-11e9-81ae-61fa89faf156.png)
+
+![主从](https://user-images.githubusercontent.com/26766909/67539485-e0891e80-f714-11e9-8980-d253239fcd8b.png)
+
+#### 复制模式
+- 全量复制:master 全部同步到 slave
+- 部分复制:slave 数据丢失进行备份
+
+#### 问题点
+- 同步故障
+    - 复制数据延迟(不一致)
+    - 读取过期数据(Slave 不能删除数据)
+    - 从节点故障
+    - 主节点故障
+- 配置不一致
+    - maxmemory 不一致:丢失数据
+    - 优化参数不一致:内存不一致.
+- 避免全量复制
+    - 选择小主节点(分片)、低峰期间操作.
+    - 如果节点运行 id 不匹配(如主节点重启、运行 id 发送变化),此时要执行全量复制,应该配合哨兵和集群解决.
+    - 主从复制挤压缓冲区不足产生的问题(网络中断,部分复制无法满足),可增大复制缓冲区( rel_backlog_size 参数).
+- 复制风暴
+
+### 哨兵机制
+#### 拓扑图
+![image](https://user-images.githubusercontent.com/26766909/67539495-f0086780-f714-11e9-9eab-c11a163ac6c0.png)
+
+#### 节点下线
+- 客观下线
+    - 所有 Sentinel 节点对 Redis 节点失败要达成共识,即超过 quorum 个统一.
+- 主管下线
+    - 即 Sentinel 节点对 Redis 节点失败的偏见,超出超时时间认为 Master 已经宕机.
+#### leader选举
+- 选举出一个 Sentinel 作为 Leader:集群中至少有三个 Sentinel 节点,但只有其中一个节点可完成故障转移.通过以下命令可以进行失败判定或领导者选举.
+- 选举流程
+    1. 每个主观下线的 Sentinel 节点向其他 Sentinel 节点发送命令,要求设置它为领导者.
+    1. 收到命令的 Sentinel 节点如果没有同意通过其他 Sentinel 节点发送的命令,则同意该请求,否则拒绝.
+    1. 如果该 Sentinel 节点发现自己的票数已经超过 Sentinel 集合半数且超过 quorum,则它成为领导者.
+    1. 如果此过程有多个 Sentinel 节点成为领导者,则等待一段时间再重新进行选举.
+#### 故障转移
+- 转移流程
+    1. Sentinel 选出一个合适的 Slave 作为新的 Master(slaveof no one 命令).
+    1. 向其余 Slave 发出通知,让它们成为新 Master 的 Slave( parallel-syncs 参数).
+    1. 等待旧 Master 复活,并使之称为新 Master 的 Slave.
+    1. 向客户端通知 Master 变化.
+- 从 Slave 中选择新 Master 节点的规则(slave 升级成 master 之后)
+    1. 选择 slave-priority 最高的节点.
+    1. 选择复制偏移量最大的节点(同步数据最多).
+    1. 选择 runId 最小的节点.
+#### 读写分离
+#### 定时任务
+- 每 1s 每个 Sentinel 对其他 Sentinel 和 Redis 执行 ping,进行心跳检测.
+- 每 2s 每个 Sentinel 通过 Master 的 Channel 交换信息(pub - sub).
+- 每 10s 每个 Sentinel 对 Master 和 Slave 执行 info,目的是发现 Slave 节点、确定主从关系.
+
+### 分布式集群(Cluster)
+#### 拓扑图
+
+![image](https://user-images.githubusercontent.com/26766909/67539510-f8f93900-f714-11e9-9d8d-08afdecff95a.png)
+
+#### 通讯
+##### 集中式
+> 将集群元数据(节点信息、故障等等)几种存储在某个节点上.
+- 优势
+    1. 元数据的更新读取具有很强的时效性,元数据修改立即更新
+- 劣势
+    1. 数据集中存储
+##### Gossip
+![image](https://user-images.githubusercontent.com/26766909/67539546-16c69e00-f715-11e9-9891-1e81b6af624c.png)
+
+- [Gossip 协议](https://www.jianshu.com/p/8279d6fd65bb)
+
+#### 寻址分片
+##### hash取模
+- hash(key)%机器数量
+- 问题
+    1. 机器宕机,造成数据丢失,数据读取失败
+    1. 伸缩性
+##### 一致性hash
+- ![image](https://user-images.githubusercontent.com/26766909/67539595-352c9980-f715-11e9-8e4a-9d9c04027785.png)
+
+- 问题
+    1. 一致性哈希算法在节点太少时，容易因为节点分布不均匀而造成缓存热点的问题。
+        - 解决方案
+            - 可以通过引入虚拟节点机制解决：即对每一个节点计算多个 hash，每个计算结果位置都放置一个虚拟节点。这样就实现了数据的均匀分布，负载均衡。
+##### hash槽
+- CRC16(key)%16384
+- 
+![image](https://user-images.githubusercontent.com/26766909/67539610-3fe72e80-f715-11e9-8e0d-ea58bc965795.png)
+
+
+
+
+
+
+## 使用场景
+### 热点数据
+### 会话维持 session
+### 分布式锁 SETNX
+### 表缓存
+### 消息队列 list
+### 计数器 string
+
+
+
+
+
+## 缓存设计
+### 更新策略
+- LRU、LFU、FIFO 算法自动清除:一致性最差,维护成本低.
+- 超时自动清除(key expire):一致性较差,维护成本低.
+- 主动更新:代码层面控制生命周期,一致性最好,维护成本高.
+### 更新一致性
+- 读请求:先读缓存,缓存没有的话,就读数据库,然后取出数据后放入缓存,同时返回响应.
+- 写请求:先删除缓存,然后再更新数据库(避免大量地写、却又不经常读的数据导致缓存频繁更新).
+### 缓存粒度
+- 通用性:全量属性更好.
+- 占用空间:部分属性更好.
+- 代码维护成本.
+
+### 缓存穿透
+> 当大量的请求无命中缓存、直接请求到后端数据库(业务代码的 bug、或恶意攻击),同时后端数据库也没有查询到相应的记录、无法添加缓存.
+  这种状态会一直维持,流量一直打到存储层上,无法利用缓存、还会给存储层带来巨大压力.
+>
+#### 解决方案
+1. 请求无法命中缓存、同时数据库记录为空时在缓存添加该 key 的空对象(设置过期时间)，缺点是可能会在缓存中添加大量的空值键(比如遭到恶意攻击或爬虫)，而且缓存层和存储层数据短期内不一致；
+1. 使用布隆过滤器在缓存层前拦截非法请求、自动为空值添加黑名单(同时可能要为误判的记录添加白名单).但需要考虑布隆过滤器的维护(离线生成/ 实时生成).
+### 缓存雪崩
+> 缓存崩溃时请求会直接落到数据库上,很可能由于无法承受大量的并发请求而崩溃,此时如果只重启数据库,或因为缓存重启后没有数据,新的流量进来很快又会把数据库击倒
+>
+#### 出现后应对
+- 事前:Redis 高可用,主从 + 哨兵,Redis Cluster,避免全盘崩溃.
+- 事中:本地 ehcache 缓存 + hystrix 限流 & 降级,避免数据库承受太多压力.
+- 事后:Redis 持久化,一旦重启,自动从磁盘上加载数据,快速恢复缓存数据.
+#### 请求过程
+1. 用户请求先访问本地缓存,无命中后再访问 Redis,如果本地缓存和 Redis 都没有再查数据库,并把数据添加到本地缓存和 Redis；
+1. 由于设置了限流,一段时间范围内超出的请求走降级处理(返回默认值,或给出友情提示).
+
+
+## 事件型驱动
+### 文件
+### 时间
+### 调度&执行
+
