@@ -1,20 +1,22 @@
-# 互联网 Java 工程师[进阶](https://doocs.gitee.io/advanced-java/#/advanced)知识完全扫盲
-[![license](https://badgen.net/badge/license/CC-BY-SA%204.0/green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
+# 互联网 Java 工程师进阶知识完全扫盲<sup>[©](https://github.com/yanglbme)</sup>
+[![license](https://badgen.net/github/license/doocs/advanced-java?color=green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/orange)](https://github.com/doocs/advanced-java)
-[![open-source-organization](https://badgen.net/badge/organization/join%20us/138c7b)](https://github.com/doocs/intro)
+[![notice](https://badgen.net/badge/notice/%E7%BB%B4%E6%9D%83%E8%A1%8C%E5%8A%A8/red)](/docs/from-readers/rights-defending-movement.md)
+[![wechat-group](https://badgen.net/badge/chat/%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81/138c7b)](https://github.com/doocs/advanced-java/issues/70)
 [![reading](https://badgen.net/badge/books/read%20together/cyan)](https://github.com/doocs/technical-books)
 [![coding](https://badgen.net/badge/leetcode/coding%20together/cyan)](https://github.com/doocs/leetcode)
-[![sharing](https://badgen.net/badge/readers/share%20together/cyan)](https://github.com/doocs/advanced-java/blob/master/docs/from-readers/README.md)
+[![doocs](https://badgen.net/badge/organization/join%20us/cyan)](https://doocs.github.io/#/?id=how-to-join)
 [![stars](https://badgen.net/github/stars/doocs/advanced-java)](https://github.com/doocs/advanced-java/stargazers)
-[![forks](https://badgen.net/github/forks/doocs/advanced-java)](https://github.com/doocs/advanced-java/network/members)
 [![contributors](https://badgen.net/github/contributors/doocs/advanced-java)](https://github.com/doocs/advanced-java/tree/master/docs/from-readers#contributors)
 [![help-wanted](https://badgen.net/github/label-issues/doocs/advanced-java/help%20wanted/open)](https://github.com/doocs/advanced-java/labels/help%20wanted)
 [![issues](https://badgen.net/github/open-issues/doocs/advanced-java)](https://github.com/doocs/advanced-java/issues)
 [![PRs Welcome](https://badgen.net/badge/PRs/welcome/green)](http://makeapullrequest.com)
 
-本系列知识出自中华石杉，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)等领域知识。我对这部分知识做了一个系统的整理，方便学习查阅。配合《[大型网站技术架构](https://github.com/doocs/technical-books#architecture)——李智慧》、《[Redis 设计与实现](https://github.com/doocs/technical-books#database)——[黄健宏](https://github.com/huangz1990)》食用，[效果更佳](https://doocs.gitee.io/advanced-java/#/offer)。
+本项目大部分内容来自中华石杉，版权归作者所有，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)等领域知识。我([@yanglbme](https://github.com/yanglbme))对这部分知识做了一个系统的整理，方便学习查阅。配合《[大型网站技术架构](https://github.com/doocs/technical-books#architecture)——李智慧》、《[Redis 设计与实现](https://github.com/doocs/technical-books#database)——[黄健宏](https://github.com/huangz1990)》、《[Redis 深度历险](https://github.com/doocs/technical-books#database)——钱文品》、《[亿级流量网站架构核心技术](https://github.com/doocs/technical-books#architecture)——张开涛》食用，[效果更佳](https://doocs.github.io/advanced-java/#/docs/extra-page/offer)。
 
-学习之前，先来看看 [Issues 讨论区](https://github.com/doocs/advanced-java/issues/9#issue-394275038)的技术面试官是怎么说的吧。本项目也欢迎各位开发者朋友来[分享自己的一些想法和实践经验](/docs/from-readers/README.md)。
+学习之前，先来看看 [Issues 讨论区](https://github.com/doocs/advanced-java/issues/9#issue-394275038)的技术面试官是怎么说的吧。本项目也欢迎各位开发者朋友到 [Issues 讨论区](https://github.com/doocs/advanced-java/issues)分享自己的一些想法和实践经验，参与或加入开源组织请看[这里](https://github.com/doocs/advanced-java/issues/61)，你也访问 [GitHub Page](https://doocs.github.io)  详细了解一下 Doocs。
+
+[另外，我还将在这里更新内容，感兴趣的朋友可以进来看看。](/docs/extra-page/subscriptions-for-doocs.md)
 
 ## 高并发架构
 ### [消息队列](/docs/high-concurrency/mq-interview.md)
@@ -104,6 +106,7 @@
 ### 熔断
 - 如何进行熔断？
 - 熔断框架都有哪些？具体实现原理知道吗？
+- [熔断框架如何做技术选型？选用 Sentinel 还是 Hystrix？](/docs/high-availability/sentinel-vs-hystrix.md)
 
 ### 降级
 - 如何进行降级？
@@ -111,6 +114,8 @@
 ## 微服务架构
 - [微服务架构整个章节内容属额外新增，后续抽空更新，也欢迎读者们参与补充完善](https://github.com/doocs/advanced-java)
 - [关于微服务架构的描述](/docs/micro-services/microservices-introduction.md)
+- [从单体式架构迁移到微服务架构](/docs/micro-services/migrating-from-a-monolithic-architecture-to-a-microservices-architecture.md)
+- [微服务的事件驱动数据管理](/docs/micro-services/event-driven-data-management-for-microservices.md)
 
 ### Spring Cloud 微服务架构
 - 什么是微服务？微服务之间是如何独立通讯的？

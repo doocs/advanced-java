@@ -40,9 +40,9 @@ HystrixObservableCommand hystrixObservableCommand = new HystrixObservableCommand
 - toObservable()：返回一个 Observable 对象，如果我们订阅这个对象，就会执行 command 并且获取返回结果。
 
 ```java
-K             value   = hystrixCommand.execute();
-Future<K>     fValue  = hystrixCommand.queue();
-Observable<K> oValue = hystrixObservableCommand.observe();
+K             value    = hystrixCommand.execute();
+Future<K>     fValue   = hystrixCommand.queue();
+Observable<K> oValue   = hystrixObservableCommand.observe();
 Observable<K> toOValue = hystrixObservableCommand.toObservable();
 ```
 
@@ -106,7 +106,8 @@ observable.subscribe(new Observer<ProductInfo>() {
 
     /**
      * 获取完一条数据，就回调一次这个方法
-     * @param productInfo
+     * 
+     * @param productInfo 商品信息
      */
     @Override
     public void onNext(ProductInfo productInfo) {

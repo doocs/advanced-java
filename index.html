@@ -2,25 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>让我们同步进阶</title>
+  <title>互联网 Java 工程师进阶知识完全扫盲</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="advanced-java">
+  <meta name="keywords" content="doc,docs,doocs,documentation,github,gitee,advanced-java,yanglbme">
+  <meta name="description" content="互联网 Java 工程师进阶知识完全扫盲，项目维护者：杨立滨">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 </head>
 <body>
-  <div id="app">Welcome to Advanced-Java</div>
+  <nav>
+    <ul>
+      <li>分类
+        <ul>
+          <li><a href="#/?id=高并发架构">高并发</a></li>
+          <li><a href="#/?id=分布式系统">分布式</a></li>
+          <li><a href="#/?id=高可用架构">高可用</a></li>
+          <li><a href="#/?id=微服务架构">微服务</a></li>
+          <li><a href="#/docs/from-readers/README">读者说</a></li>
+        </ul>
+      </li>
+      <li>页面
+        <ul>
+          <li><a href="#">封面</a></li>
+          <li><a href="#/README">首页</a></li>
+          <li><a href="#/docs/extra-page/advanced">进阶</a></li>
+          <li><a href="#/docs/extra-page/offer">Offer</a></li>
+          <li><a href="https://github.com/doocs" target="_blank">Doocs</a></li>
+          <li><a href="https://github.com/yanglbme" target="_blank">Author</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+  </nav>
+  <div id="app">本系列知识由 Doocs 开源社区总结发布</div>
   <script>
     window.$docsify = {
       name: 'advanced-java',
       repo: 'doocs/advanced-java',
       maxLevel: 3,
       auto2top: true,
-      loadNavbar: true,
       coverpage: true,
-      mergeNavbar: true,
+      coverpage: 'docs/extra-page/cover.md',
       search: [
         '/'
       ],
@@ -29,7 +53,7 @@
           var footer = [
             '<hr/>',
             '<footer>',
-            '<span>Copyright © 2018-2019 <a href="https://github.com/yanglbme" target="_blank">yanglbme</a>. All rights reserved.</span><br>Welcome to join <a href="https://github.com/doocs/intro" target="_blank">Doocs Open Source organization</a>.',
+            '<span>Copyright © 2018-2019 <a href="https://github.com/doocs" target="_blank">Doocs</a>. All rights reserved.</span><br>Welcome to join the <a href="https://github.com/doocs/intro" target="_blank">Doocs Open Source organization</a>.',
             '</footer>'
           ].join('')
 
@@ -39,13 +63,7 @@
         }
       ]
     }
-    
-    if (typeof navigator.serviceWorker !== 'undefined') {
-      navigator.serviceWorker.register('sw.js')
-    }
-
   </script>
-  <!-- <script src="//unpkg.com/docsify"></script> -->
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-c.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
