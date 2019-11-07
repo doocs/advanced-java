@@ -118,7 +118,7 @@
 - [微服务的事件驱动数据管理](/docs/micro-services/event-driven-data-management-for-microservices.md)
 
 ### Spring Cloud 微服务架构
-- 什么是微服务？微服务之间是如何独立通讯的？
+- [什么是微服务？微服务之间是如何独立通讯的？](/docs/micro-services/huifer-what's-microservice-how-to-communicate.md)
 - Spring Cloud 和 Dubbo 有哪些区别？
 - Spring Boot 和 Spring Cloud，谈谈你对它们的理解？
 - 什么是服务熔断？什么是服务降级？
