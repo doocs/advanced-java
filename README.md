@@ -101,7 +101,7 @@
 - 如何设计一个高可用系统？
 
 ### 限流
-- 如何限流？在工作中是怎么做的？说一下具体的实现？
+- [如何限流？在工作中是怎么做的？说一下具体的实现？](/docs/high-concurrency/huifer-how-to-limit-current.md)
 
 ### 熔断
 - 如何进行熔断？
@@ -118,11 +118,12 @@
 - [微服务的事件驱动数据管理](/docs/micro-services/event-driven-data-management-for-microservices.md)
 
 ### Spring Cloud 微服务架构
-- 什么是微服务？微服务之间是如何独立通讯的？
+- [什么是微服务？微服务之间是如何独立通讯的？](/docs/micro-services/huifer-what's-microservice-how-to-communicate.md)
 - Spring Cloud 和 Dubbo 有哪些区别？
 - Spring Boot 和 Spring Cloud，谈谈你对它们的理解？
 - 什么是服务熔断？什么是服务降级？
 - 微服务的优缺点分别是什么？说一下你在项目开发中碰到的坑？
-- 你所知道的微服务技术栈都有哪些？
+- [你所知道的微服务技术栈都有哪些？](/docs/micro-services/huifer-micro-services-technology-stack%20.md)
+- [微服务治理策略](/docs/micro-services/huifer-micro-service-governance.md)
 - Eureka 和 Zookeeper 都可以提供服务注册与发现的功能，它们有什么区别？
 - ......
