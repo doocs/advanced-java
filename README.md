@@ -127,3 +127,11 @@
 - [微服务治理策略](/docs/micro-services/huifer-micro-service-governance.md)
 - Eureka 和 Zookeeper 都可以提供服务注册与发现的功能，它们有什么区别？
 - ......
+
+---
+
+GitHub 技术社区 Doocs 旗下唯一公众号，欢迎关注，专注于分享有价值的文章。
+
+<div style="text-align:center;">
+  <img src="./images/qrcode_for_doocs.jpg" width="200px;"/>
+</div>
