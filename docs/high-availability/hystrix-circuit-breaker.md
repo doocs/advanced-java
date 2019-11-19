@@ -1,17 +1,34 @@
 ## 深入 Hystrix 断路器执行原理
 
-### RequestVolumeThreshold
+### 状态机
+
+Hystrix 断路器有三种状态，分别是关闭（Closed）、打开（Open）与半开（Half-Open），三种状态转化关系如下：
+
+![image-20191104211642271](./images/hystrix-circuit-breaker-state-machine.png)
+
+1. `Closed` 断路器关闭：调用下游的请求正常通过
+2. `Open` 断路器打开：阻断对下游服务的调用，直接走 Fallback 逻辑
+3. `Half-Open` 断路器处于半开状态：[SleepWindowInMilliseconds](#circuitBreaker.sleepWindowInMilliseconds)
+
+### [Enabled](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitbreakerenabled)
+
+```java
+HystrixCommandProperties.Setter()
+    .withCircuitBreakerEnabled(boolean)
+```
+
+控制断路器是否工作，包括跟踪依赖服务调用的健康状况，以及对异常情况过多时是否允许触发断路。默认值 `true`。
+
+### [circuitBreaker.requestVolumeThreshold](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitbreakerrequestvolumethreshold)
 
 ```java
 HystrixCommandProperties.Setter()
     .withCircuitBreakerRequestVolumeThreshold(int)
 ```
 
-表示在滑动窗口中，至少有多少个请求，才可能触发断路。
+表示在一次统计的**时间滑动窗口中（这个参数也很重要，下面有说到）**，至少经过多少个请求，才可能触发断路，默认值 20。**经过 Hystrix 断路器的流量只有在超过了一定阈值后，才有可能触发断路。**比如说，要求在 10s 内经过断路器的流量必须达到 20 个，而实际经过断路器的请求有 19 个，即使这 19 个请求全都失败，也不会去判断要不要断路。
 
-Hystrix 经过断路器的流量超过了一定的阈值，才有可能触发断路。比如说，要求在 10s 内经过断路器的流量必须达到 20 个，而实际经过断路器的流量才 10 个，那么根本不会去判断要不要断路。
-
-### ErrorThresholdPercentage
+### [circuitBreaker.errorThresholdPercentage](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitBreaker.errorThresholdPercentage)
 
 ```java
 HystrixCommandProperties.Setter()
@@ -20,29 +37,18 @@ HystrixCommandProperties.Setter()
 
 表示异常比例达到多少，才会触发断路，默认值是 50(%)。
 
-如果断路器统计到的异常调用的占比超过了一定的阈值，比如说在 10s 内，经过断路器的流量达到了 30 个，同时其中异常访问的数量也达到了一定的比例，比如 60% 的请求都是异常（报错 / 超时 / reject），就会开启断路。
-
-### SleepWindowInMilliseconds
+#### [circuitBreaker.sleepWindowInMilliseconds](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitbreakersleepwindowinmilliseconds)
 
 ```java
 HystrixCommandProperties.Setter()
     .withCircuitBreakerSleepWindowInMilliseconds(int)
 ```
 
-断路开启，也就是由 close 转换到 open 状态（close -> open）。那么之后在 `SleepWindowInMilliseconds` 时间内，所有经过该断路器的请求全部都会被断路，不调用后端服务，直接走 fallback 降级机制。
+断路器状态由 Close 转换到 Open，在之后 `SleepWindowInMilliseconds` 时间内，所有经过该断路器的请求会被断路，不调用后端服务，直接走 Fallback 降级机制，默认值 5000(ms)。
 
-而在该参数时间过后，断路器会变为 `half-open` 半开闭状态，尝试让一条请求经过断路器，看能不能正常调用。如果调用成功了，那么就自动恢复，断路器转为 close 状态。
+而在该参数时间过后，断路器会变为 `Half-Open` 半开闭状态，尝试让一条请求经过断路器，看能不能正常调用。如果调用成功了，那么就自动恢复，断路器转为 Close 状态。
 
-### Enabled
-
-```java
-HystrixCommandProperties.Setter()
-    .withCircuitBreakerEnabled(boolean)
-```
-
-控制是否允许断路器工作，包括跟踪依赖服务调用的健康状况，以及对异常情况过多时是否允许触发断路。默认值是 `true`。
-
-### ForceOpen
+### [ForceOpen](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitbreakerforceopen)
 
 ```java
 HystrixCommandProperties.Setter()
@@ -51,7 +57,7 @@ HystrixCommandProperties.Setter()
 
 如果设置为 true 的话，直接强迫打开断路器，相当于是手动断路了，手动降级，默认值是 `false`。
 
-### ForceClosed
+### [ForceClosed](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitbreakerforceclosed)
 
 ```java
 HystrixCommandProperties.Setter()
@@ -59,6 +65,14 @@ HystrixCommandProperties.Setter()
 ```
 
 如果设置为 true，直接强迫关闭断路器，相当于手动停止断路了，手动升级，默认值是 `false`。
+
+### Metrics 统计器
+
+与 Hystrix 断路器紧密协作的，还有另一个重要组件 —— **统计器（Metrics）**。统计器中最重要的参数要数滑动窗口（[metrics.rollingStats.timeInMilliseconds](https://github.com/Netflix/Hystrix/wiki/Configuration#metricsrollingstatstimeinmilliseconds)）以及桶（[metrics.rollingStats.numBuckets](https://github.com/Netflix/Hystrix/wiki/Configuration#metricsrollingstatsnumbuckets)）了，这里引用[一段博文](https://zhenbianshu.github.io/2018/09/hystrix_configuration_analysis.html)来解释滑动窗口（默认值是 10000 ms）：
+
+> 一位乘客坐在正在行驶的列车的靠窗座位上，列车行驶的公路两侧种着一排挺拔的白杨树，随着列车的前进，路边的白杨树迅速从窗口滑过。我们用每棵树来代表一个请求，用列车的行驶代表时间的流逝，那么，列车上的这个窗口就是一个典型的滑动窗口，这个乘客能通过窗口看到的白杨树就是 Hystrix 要统计的数据。
+
+Hystrix 并不是只要有一条请求经过就去统计，而是将整个滑动窗口均分为 numBuckets 份，时间每经过一份就去统计一次。**在经过一个时间窗口后，才会判断断路器状态要不要开启，请看下面的例子。**
 
 ## 实例 Demo
 
@@ -179,3 +193,8 @@ ProductInfo(id=1, name=iphone7手机, price=5599.0, pictureList=a.jpg,b.jpg, spe
 而是直接走降级逻辑，调用 getFallback() 执行。
 
 休眠了 3s 后，我们在之后的 70 次请求中，都传入 productId 为 1。由于我们前面设置了 3000ms 过后断路器变为 `half-open` 状态。因此 Hystrix 会尝试执行请求，发现成功了，那么断路器关闭，之后的所有请求也都能正常调用了。
+
+### 参考内容
+
+1. [Hystrix issue 1459](https://github.com/Netflix/Hystrix/issues/1459)
+2. [Hystrix Metrics](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics)
