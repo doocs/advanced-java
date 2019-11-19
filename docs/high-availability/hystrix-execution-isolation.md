@@ -17,7 +17,7 @@ HystrixCommandProperties.Setter().withExecutionIsolationStrategy(ExecutionIsolat
 HystrixCommandProperties.Setter().withExecutionIsolationStrategy(ExecutionIsolationStrategy.SEMAPHORE)
 ```
 
-线程池机制，每个 command 运行在一个线程中，限流是通过线程池的大小来控制的；信号量机制，command 是运行在调用线程中，通过信号量的容量来进行限流。
+线程池机制，每个 command 运行在一个线程中，限流是通过线程池的大小来控制的；信号量机制，command 是运行在调用线程中（也就是 Tomcat 的线程池），通过信号量的容量来进行限流。
 
 如何在线程池和信号量之间做选择？
 
@@ -33,7 +33,7 @@ HystrixCommandProperties.Setter().withExecutionIsolationStrategy(ExecutionIsolat
 每一个 command，都可以设置一个自己的名称 command key，同时可以设置一个自己的组 command group。
 ```java
 private static final Setter cachedSetter = Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
-                                                .andCommandKey(HystrixCommandKey.Factory.asKey("HelloWorld")); 
+                                                 .andCommandKey(HystrixCommandKey.Factory.asKey("HelloWorld")); 
 
 public CommandHelloWorld(String name) {
     super(cachedSetter);
@@ -49,8 +49,8 @@ ThreadPoolKey 代表了一个 HystrixThreadPool，用来进行统一监控、统
 如果不想直接用 command group，也可以手动设置 ThreadPool 的名称。
 ```java
 private static final Setter cachedSetter = Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
-                                                .andCommandKey(HystrixCommandKey.Factory.asKey("HelloWorld"))
-                                                .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("HelloWorldPool"));
+                                                 .andCommandKey(HystrixCommandKey.Factory.asKey("HelloWorld"))
+                                                 .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("HelloWorldPool"));
 
 public CommandHelloWorld(String name) {
     super(cachedSetter);
@@ -59,13 +59,13 @@ public CommandHelloWorld(String name) {
 ```
 
 ### command key & command group & command thread pool
-**command key** ，代表了一类 command，一般来说，代表了底层的依赖服务的一个接口。
+**command key** ，代表了一类 command，一般来说，代表了下游依赖服务的某个接口。
 
-**command group** ，代表了某一个底层的依赖服务，这是很合理的，一个依赖服务可能会暴露出来多个接口，每个接口就是一个 command key。command group 在逻辑上去组织起来一堆 command key 的调用、统计信息、成功次数、timeout 超时次数、失败次数等，可以看到某一个服务整体的一些访问情况。一般来说，**推荐**根据一个服务区划分出一个线程池，command key 默认都是属于同一个线程池的。
+**command group** ，代表了某一个下游依赖服务，这是很合理的，一个依赖服务可能会暴露出来多个接口，每个接口就是一个 command key。command group 在逻辑上对一堆 command key 的调用次数、成功次数、timeout 次数、失败次数等进行统计，可以看到某一个服务整体的一些访问情况。**一般来说，推荐根据一个服务区划分出一个线程池，command key 默认都是属于同一个线程池的。**
 
-比如说你以一个服务为粒度，估算出来这个服务每秒的所有接口加起来的整体 `QPS` 在 100 左右，你调用这个服务，当前这个服务部署了 10 个服务实例，每个服务实例上，其实用这个 command group 对应这个服务，给一个线程池，量大概在 10 个左右就可以了，你对整个服务的整体的访问 QPS 就大概在每秒 100 左右。
+比如说有一个服务 A，你估算出来服务 A 每秒所有接口加起来的整体 `QPS` 在 100 左右，你有一个服务 B 去调用服务 A。你的服务 B 部署了 10 个实例，每个实例上，用 command group 去对应下游服务 A。给一个线程池，量大概是 10 就可以了，这样服务 B 对服务 A 整体的访问 QPS 就大概是每秒 100 了。
 
-但是，如果说 command group 对应了一个服务，而这个服务暴露出来的几个接口，访问量很不一样，差异非常之大。你可能就希望在这个服务 command group 内部，包含的对应多个接口的 command key，做一些细粒度的资源隔离。就是说，对同一个服务的不同接口，使用不同的线程池。
+但是，如果说 command group 对应了一个服务，而这个服务暴露出来的几个接口，访问量很不一样，差异非常之大。你可能就希望在这个服务对应 command group 的内部，包含对应多个接口的 command key，做一些细粒度的资源隔离。**就是说，希望对同一个服务的不同接口，使用不同的线程池。**
 
 ```
 command key -> command group
@@ -86,7 +86,7 @@ HystrixThreadPoolProperties.Setter().withCoreSize(int value);
 ### queueSizeRejectionThreshold
 如果说线程池中的 10 个线程都在工作中，没有空闲的线程来做其它的事情，此时再有请求过来，会先进入队列积压。如果说队列积压满了，再有请求过来，就直接 reject，拒绝请求，执行 fallback 降级的逻辑，快速返回。
 
-![hystrix-thread-pool-queue](/images/hystrix-thread-pool-queue.png)
+![hystrix-thread-pool-queue](./images/hystrix-thread-pool-queue.png)
 
 控制 queue 满了之后 reject 的 threshold，因为 maxQueueSize 不允许热修改，因此提供这个参数可以热修改，控制队列的最大大小。
 
