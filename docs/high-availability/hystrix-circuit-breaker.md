@@ -198,4 +198,3 @@ ProductInfo(id=1, name=iphone7手机, price=5599.0, pictureList=a.jpg,b.jpg, spe
 
 1. [Hystrix issue 1459](https://github.com/Netflix/Hystrix/issues/1459)
 2. [Hystrix Metrics](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics)
-3. 
