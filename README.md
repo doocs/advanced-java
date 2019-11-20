@@ -130,6 +130,16 @@
 
 ---
 
+## 贡献者
+感谢以下所有朋友对本仓库做出的贡献。
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<a href="https://github.com/doocs/advanced-java/graphs/contributors"><img src="https://opencollective.com/advanced-java/contributors.svg?width=890&button=false" /></a>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## 公众号
 GitHub 技术社区 Doocs 旗下唯一公众号，欢迎关注，专注于分享有价值的文章。
 
 <div style="text-align:center;">
