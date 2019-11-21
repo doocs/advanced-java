@@ -140,8 +140,19 @@
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## 公众号
-GitHub 技术社区 Doocs 旗下唯一公众号，欢迎关注，专注于分享有价值的文章。
+GitHub 技术社区 Doocs 旗下唯一公众号，欢迎关注，专注于分享有价值的文章；当然，也可以加我个人微信（备注：GitHub）。
 
-<div style="text-align:center;">
-  <img src="./images/qrcode_for_doocs.jpg" width="200px;"/>
-</div>
+<table>
+    <tr>
+      <td align="center" style="width: 80px;">
+        <a href="https://github.com/doocs">
+          <img src="./images/qrcode_for_doocs.jpg" style="width: 200px;">
+        </a><br>
+      </td>
+      <td align="center" style="width: 80px;">
+        <a href="https://github.com/yanglbme">
+          <img src="./images/qrcode_for_yanglbme.jpg" style="width: 200px;">
+        </a><br>
+      </td>
+    </tr>
+</table>
