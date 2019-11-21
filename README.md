@@ -146,12 +146,12 @@ GitHub 技术社区 Doocs 旗下唯一公众号，欢迎关注，专注于分享
     <tr>
       <td align="center" style="width: 80px;">
         <a href="https://github.com/doocs">
-          <img src="./images/qrcode_for_doocs.jpg" style="width: 200px;">
+          <img src="./images/qrcode-for-doocs.jpg" style="width: 200px;">
         </a><br>
       </td>
       <td align="center" style="width: 80px;">
         <a href="https://github.com/yanglbme">
-          <img src="./images/qrcode_for_yanglbme.jpg" style="width: 200px;">
+          <img src="./images/qrcode-for-yanglbme.jpg" style="width: 200px;">
         </a><br>
       </td>
     </tr>
