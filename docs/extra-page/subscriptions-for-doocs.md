@@ -23,6 +23,7 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 ## 目前都有哪些文章？
 因为刚刚推出公众号，目前有以下几篇文章，来先睹为快吧：
 
+- [刷掉 90% 候选人的互联网大厂海量数据面试题（附题解 + 方法总结）](https://mp.weixin.qq.com/s/rjGqxUvrEqJNlo09GrT1Dw)
 - [好用！期待已久的文本块功能究竟如何在 Java 13 中发挥作用？](https://mp.weixin.qq.com/s/kalGv5T8AZGxTnLHr2wDsA)
 - [2019 GitHub 开源贡献排行榜新鲜出炉！微软谷歌领头，阿里跻身前 12！](https://mp.weixin.qq.com/s/_q812aGD1b9QvZ2WFI0Qgw)
 - [Google 搜索的即时自动补全功能究竟是如何“工作”的？](https://mp.weixin.qq.com/s/YlMISSc3Sn890BzTLytcLA)
