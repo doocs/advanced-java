@@ -2,7 +2,7 @@
 [![license](https://badgen.net/github/license/doocs/advanced-java?color=green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/orange)](https://github.com/doocs/advanced-java)
 [![notice](https://badgen.net/badge/notice/%E7%BB%B4%E6%9D%83%E8%A1%8C%E5%8A%A8/red)](/docs/from-readers/rights-defending-movement.md)
-[![wechat-group](https://badgen.net/badge/chat/%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81/138c7b)](https://github.com/doocs/advanced-java/issues/70)
+[![wechat-group](https://badgen.net/badge/chat/%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81/138c7b)](#公众号)
 [![reading](https://badgen.net/badge/books/read%20together/cyan)](https://github.com/doocs/technical-books)
 [![coding](https://badgen.net/badge/leetcode/coding%20together/cyan)](https://github.com/doocs/leetcode)
 [![doocs](https://badgen.net/badge/organization/join%20us/cyan)](https://doocs.github.io/#/?id=how-to-join)
@@ -152,7 +152,7 @@
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## 公众号
-GitHub 技术社区 Doocs 旗下唯一公众号，欢迎关注，专注于分享有价值的文章；当然，也可以加我个人微信（备注：GitHub）。
+GitHub 技术社区 Doocs 旗下唯一公众号“Doocs 开源社区”，欢迎关注，专注于分享有价值的文章；当然，也可以加我个人微信（备注：GitHub）。
 
 <table>
     <tr>
