@@ -65,10 +65,6 @@ zk 分布式锁，其实可以做的比较简单，就是某个节点尝试创�
 ```java
 /**
  * ZooKeeperSession
- * 
- * @author bingo
- * @since 2018/11/29
- *
  */
 public class ZooKeeperSession {
 
@@ -141,11 +137,7 @@ public class ZooKeeperSession {
     }
 
     /**
-     * 建立zk session的watcher
-     * 
-     * @author bingo
-     * @since 2018/11/29
-     *
+     * 建立 zk session 的 watcher
      */
     private class ZooKeeperWatcher implements Watcher {
 
@@ -165,10 +157,6 @@ public class ZooKeeperSession {
 
     /**
      * 封装单例的静态内部类
-     * 
-     * @author bingo
-     * @since 2018/11/29
-     *
      */
     private static class Singleton {
 
@@ -207,6 +195,7 @@ public class ZooKeeperSession {
 也可以采用另一种方式，创建临时顺序节点：
 
 如果有一把锁，被多个人给竞争，此时多个人会排队，第一个拿到锁的人会执行，然后释放锁；后面的每个人都会去监听**排在自己前面**的那个人创建的 node 上，一旦某个人释放了锁，排在自己后面的人就会被 zookeeper 给通知，一旦被通知了之后，就 ok 了，自己就获取到了锁，就可以执行代码了。
+
 ```java
 public class ZooKeeperDistributedLock implements Watcher {
 

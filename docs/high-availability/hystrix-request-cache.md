@@ -9,7 +9,7 @@ Hystrix command 执行时 8 大步骤第三步，就是检查 Request cache 是�
 
 举个栗子。比如说我们在一次请求上下文中，请求获取 productId 为 1 的数据，第一次缓存中没有，那么会从商品服务中获取数据，返回最新数据结果，同时将数据缓存在内存中。后续同一次请求上下文中，如果还有获取 productId 为 1 的数据的请求，直接从缓存中取就好了。
 
-![hystrix-request-cache](/images/hystrix-request-cache.png)
+![hystrix-request-cache](./images/hystrix-request-cache.png)
 
 HystrixCommand 和 HystrixObservableCommand 都可以指定一个缓存 key，然后 Hystrix 会自动进行缓存，接着在同一个 request context 内，再次访问的话，就会直接取用缓存。
 
