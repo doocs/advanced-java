@@ -1,7 +1,7 @@
 ## 深入 Hystrix 线程池隔离与接口限流
 前面讲了 Hystrix 的 request cache 请求缓存、fallback 优雅降级、circuit breaker 断路器快速熔断，这一讲，我们来详细说说 Hystrix 的线程池隔离与接口限流。
 
-![hystrix-process](/images/hystrix-process.png)
+![hystrix-process](./images/hystrix-process.png)
 
 Hystrix 通过判断线程池或者信号量是否已满，超出容量的请求，直接 Reject 走降级，从而达到限流的作用。
 
@@ -12,7 +12,7 @@ Hystrix 采用了 Bulkhead Partition 舱壁隔离技术，来将外部依赖进�
 
 **舱壁隔离**，是说将船体内部空间区隔划分成若干个隔舱，一旦某几个隔舱发生破损进水，水流不会在其间相互流动，如此一来船舶在受损时，依然能具有足够的浮力和稳定性，进而减低立即沉船的危险。
 
-![bulkhead-partition](/images/bulkhead-partition.jpg)
+![bulkhead-partition](./images/bulkhead-partition.jpg)
 
 Hystrix 对每个外部依赖用一个单独的线程池，这样的话，如果对那个外部依赖调用延迟很严重，最多就是耗尽那个依赖自己的线程池而已，不会影响其他的依赖调用。
 
@@ -49,7 +49,7 @@ Hystrix 对每个外部依赖用一个单独的线程池，这样的话，如果
 
 我们可以用 Hystrix semaphore 技术来实现对某个依赖服务的并发访问量的限制，而不是通过线程池/队列的大小来限制流量。
 
-semaphore 技术可以用来限流和削峰，但是不能用来对调研延迟的服务进行 timeout 和隔离。
+semaphore 技术可以用来限流和削峰，但是不能用来对调用延迟的服务进行 timeout 和隔离。
 
 `execution.isolation.strategy` 设置为 `SEMAPHORE`，那么 Hystrix 就会用 semaphore 机制来替代线程池机制，来对依赖服务的访问进行限流。如果通过 semaphore 调用的时候，底层的网络调用延迟很严重，那么是无法 timeout 的，只能一直 block 住。一旦请求数量超过了 semaphore 限定的数量之后，就会立即开启限流。
 
@@ -58,8 +58,8 @@ semaphore 技术可以用来限流和削峰，但是不能用来对调研延迟�
 
 在 command 内部，写死代码，做一个 sleep，比如 sleep 3s。
 
-- withCoreSize：设置线程池大小
-- withMaxQueueSize：设置等待队列大小
+- withCoreSize：设置线程池大小。
+- withMaxQueueSize：设置等待队列大小。
 - withQueueSizeRejectionThreshold：这个与 withMaxQueueSize 配合使用，等待队列的大小，取得是这两个参数的较小值。
 
 如果只设置了线程池大小，另外两个 queue 相关参数没有设置的话，等待队列是处于关闭的状态。
