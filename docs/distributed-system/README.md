@@ -22,3 +22,25 @@
 
 ## 分布式会话
 - [集群部署时的分布式 Session 如何实现？](/docs/distributed-system/distributed-session.md)
+
+---
+
+## 公众号
+GitHub 技术社区 Doocs 旗下唯一公众号“Doocs 开源社区”，欢迎关注，专注于分享有价值的文章；当然，也可以加我个人微信（备注：GitHub）。
+
+<table>
+    <tr>
+      <td align="center" style="width: 200px;">
+        <a href="https://github.com/doocs">
+          <img src="./images/qrcode-for-doocs.jpg" style="width: 400px;"><br>
+          <sub>公众平台</sub>
+        </a><br>
+      </td>
+      <td align="center" style="width: 200px;">
+        <a href="https://github.com/yanglbme">
+          <img src="./images/qrcode-for-yanglbme.jpg" style="width: 400px;"><br>
+          <sub>个人微信</sub>
+        </a><br>
+      </td>
+    </tr>
+</table>

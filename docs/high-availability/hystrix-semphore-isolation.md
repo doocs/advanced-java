@@ -13,14 +13,14 @@ Hystrix 实现资源隔离，主要有两种技术：
 ### 信号量机制
 信号量的资源隔离只是起到一个开关的作用，比如，服务 A 的信号量大小为 10，那么就是说它同时只允许有 10 个 tomcat 线程来访问服务 A，其它的请求都会被拒绝，从而达到资源隔离和限流保护的作用。
 
-![hystrix-semphore](/images/hystrix-semphore.png)
+![hystrix-semphore](./images/hystrix-semphore.png)
 
 ### 线程池与信号量区别
 线程池隔离技术，并不是说去控制类似 tomcat 这种 web 容器的线程。更加严格的意义上来说，Hystrix 的线程池隔离技术，控制的是 tomcat 线程的执行。Hystrix 线程池满后，会确保说，tomcat 的线程不会因为依赖服务的接口调用延迟或故障而被 hang 住，tomcat 其它的线程不会卡死，可以快速返回，然后支撑其它的事情。
 
 线程池隔离技术，是用 Hystrix 自己的线程去执行调用；而信号量隔离技术，是直接让 tomcat 线程去调用依赖服务。信号量隔离，只是一道关卡，信号量有多少，就允许多少个 tomcat 线程通过它，然后去执行。
 
-![hystrix-semphore-thread-pool](/images/hystrix-semphore-thread-pool.png)
+![hystrix-semphore-thread-pool](./images/hystrix-semphore-thread-pool.png)
 
 **适用场景**：
 - **线程池技术**，适合绝大多数场景，比如说我们对依赖服务的网络请求的调用和访问、需要对调用的 timeout 进行控制（捕捉 timeout 超时异常）。

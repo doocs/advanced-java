@@ -11,7 +11,7 @@
 
 这里是整个 8 大步骤的流程图，我会对每个步骤进行细致的讲解。学习的过程中，对照着这个流程图，相信思路会比较清晰。
 
-![hystrix-process](/images/hystrix-process.png)
+![hystrix-process](./images/new-hystrix-process.jpg)
 
 ### 步骤一：创建 command
 一个 HystrixCommand 或 HystrixObservableCommand 对象，代表了对某个依赖服务发起的一次请求或者调用。创建的时候，可以在构造函数中传入任何需要的参数。
@@ -64,9 +64,7 @@ final Future<R> delegate = toObservable().toBlocking().toFuture();
 
 也就是说，先通过 toObservable() 获得 Future 对象，然后调用 Future 的 get() 方法。那么，其实无论是哪种方式执行 command，最终都是依赖于 toObservable() 去执行的。
 
-![hystrix-process](/images/hystrix-process.png)
-
-### 步骤三：检查是否开启缓存
+### 步骤三：检查是否开启缓存（不太常用）
 从这一步开始，就进入到 Hystrix 底层运行原理啦，看一下 Hystrix 一些更高级的功能和特性。
 
 如果这个 command 开启了请求缓存 Request Cache，而且这个调用的结果在缓存中存在，那么直接从缓存中返回结果。否则，继续往后的步骤。
@@ -121,8 +119,6 @@ observable.subscribe(new Observer<ProductInfo>() {
 **注意**，我们是不可能终止掉一个调用严重延迟的依赖服务的线程的，只能说给你抛出来一个 TimeoutException。
 
 如果没有 timeout，也正常执行的话，那么调用线程就会拿到一些调用依赖服务获取到的结果，然后 Hystrix 也会做一些 logging 记录和 metric 度量统计。
-
-![hystrix-process](/images/hystrix-process.png)
 
 ### 步骤七：断路健康检查
 Hystrix 会把每一个依赖服务的调用成功、失败、Reject、Timeout 等事件发送给 circuit breaker 断路器。断路器就会对这些事件的次数进行统计，根据异常事件发生的比例来决定是否要进行断路（熔断）。如果打开了断路器，那么在接下来一段时间内，会直接断路，返回降级结果。
