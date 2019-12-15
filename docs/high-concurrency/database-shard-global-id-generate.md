@@ -28,7 +28,7 @@
 适合的场景：如果你是要随机生成个什么文件名、编号之类的，你可以用 UUID，但是作为主键是不能用 UUID 的。
 
 ```java
-UUID.randomUUID().toString().replace(“-”, “”) -> sfsdf23423rr234sfdaf
+UUID.randomUUID().toString().replace("-", "") -> sfsdf23423rr234sfdaf
 ```
 
 ### 获取系统当前时间
