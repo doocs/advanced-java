@@ -7,8 +7,8 @@
 作用：快速开发服务。
 
 - Spring
-- SpringMvc
-- SpringBoot
+- Spring MVC
+- Spring Boot
 
 [官网](https://spring.io/)，Spring 目前是 JavaWeb 开发人员必不可少的一个框架，SpringBoot 简化了 Spring 开发的配置目前也是业内主流开发框架。
 
@@ -61,11 +61,11 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
 作用: 批量处理同类型数据或事物
 
 #### Spring Batch
-- [官网 ](官网)
+- [官网](官网)
 ### 定时任务
 > 作用: 定时做什么.
 #### Quartz
-- [官网 ](http://www.quartz-scheduler.org/)
+- [官网](http://www.quartz-scheduler.org/)
 
 
 ### 微服务调用 (协议)
@@ -77,7 +77,7 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
 - 它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC 不依赖于具体的网络传输协议，tcp、udp 等都可以。
 
 #### gRPC
-- [官网 ](https://www.grpc.io/)
+- [官网](https://www.grpc.io/)
 - > A high-performance, open-source universal RPC framework
   > 所谓 RPC(remote procedure call 远程过程调用) 框架实际是提供了一套机制，使得应用程序之间可以进行通信，而且也遵从 server/client 模型。使用的时候客户端调用 server 端提供的接口就像是调用本地的函数一样。
 #### RMI
@@ -108,34 +108,28 @@ Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所�
 
 
 ### 服务的负载均衡
-> 作用:降低服务压力,增加吞吐量
+> 作用：降低服务压力,增加吞吐量
 #### Ribbon
 - >Spring Cloud Ribbon 是一个基于 HTTP 和 TCP 的客户端负载均衡工具,它基于 Netflix Ribbon 实现
   >
 - [GitHub](https://github.com/Netflix/ribbon)
 #### Nginx
--   > Nginx (engine x) 是一个高性能的 HTTP 和反向代理 web 服务器,同时也提供了 IMAP/POP3/SMTP 服务
-    >
-    >
+Nginx (engine x) 是一个高性能的 HTTP 和反向代理 web 服务器,同时也提供了 IMAP/POP3/SMTP 服务
+
 - [GitHub](https://github.com/nginx/nginx)
 #### Nginx 与 Ribbon 区别
 1. Nginx 属于服务端负载均衡,Ribbon 属于客户端负载均衡.Nginx 作用与 Tomcat,Ribbon 作用与各个服务之间的调用 (RPC)
 
-
-
-
-
-
 ### 消息队列
 > 作用: 解耦业务,异步化处理数据
 #### Kafka
-- [官网 ](http://kafka.apache.org/)
+- [官网](http://kafka.apache.org/)
 #### RabbitMQ
-- [官网 ](https://www.rabbitmq.com/)
+- [官网](https://www.rabbitmq.com/)
 #### RocketMQ
-- [官网 ](http://rocketmq.apache.org/)
+- [官网](http://rocketmq.apache.org/)
 #### activeMQ
-- [官网 ](http://activemq.apache.org/)
+- [官网](http://activemq.apache.org/)
 
 
 ### 日志采集 (elk)
@@ -161,9 +155,9 @@ Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所�
 #### Zabbix
 - [GitHub](https://github.com/jjmartres/Zabbix)
 #### Nagios
-- [官网 ](https://www.nagios.org/)
+- [官网](https://www.nagios.org/)
 #### Metrics
-- [官网 ](https://metrics.dropwizard.io)
+- [官网](https://metrics.dropwizard.io)
 
 ### 服务链路追踪
 > 作用:明确服务之间的调用关系
@@ -178,29 +172,29 @@ Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所�
 > 作用: 存储数据
 #### 关系型数据库
 ##### MySql
-- [官网 ](https://www.mysql.com/)
+- [官网](https://www.mysql.com/)
 ##### Oracle
-- [官网 ](https://www.oracle.com/index.html)
+- [官网](https://www.oracle.com/index.html)
 ##### MsSql
-- [官网 ](https://docs.microsoft.com/zh-cn/sql/?view=sql-server-ver15)
+- [官网](https://docs.microsoft.com/zh-cn/sql/?view=sql-server-ver15)
 ##### PostgreSql
-- [官网 ](https://www.postgresql.org/)
+- [官网](https://www.postgresql.org/)
 #### 非关系型数据库
 ##### Mongodb
-- [官网 ](https://www.mongodb.com/)
+- [官网](https://www.mongodb.com/)
 ##### Elasticsearch
 - [GitHub](https://github.com/elastic/elasticsearch)
 ### 缓存
 > 作用: 存储数据
 #### redis
-- [官网 ](https://redis.io/)
+- [官网](https://redis.io/)
 
 ### 分库分表
 > 作用: 数据库分库分表方案.
 #### shardingsphere
-- [官网 ](http://shardingsphere.apache.org/)
+- [官网](http://shardingsphere.apache.org/)
 #### Mycat
-- [官网 ](http://www.mycat.io/)
+- [官网](http://www.mycat.io/)
 
 
 
@@ -208,10 +202,10 @@ Spring Cloud Netflix 的微服务都是以 HTTP 接口的形式暴露的，所�
 ### 服务部署
 > 作用: 将项目快速部署、上线、持续集成.
 #### Docker
-- [官网 ](http://www.docker.com/)
+- [官网](http://www.docker.com/)
 #### Jenkins
-- [官网 ](https://jenkins.io/zh/)
+- [官网](https://jenkins.io/zh/)
 #### Kubernetes(K8s)
-- [官网 ](https://kubernetes.io/)
+- [官网](https://kubernetes.io/)
 #### Mesos
-- [官网 ](http://mesos.apache.org/)
+- [官网](http://mesos.apache.org/)
