@@ -13,8 +13,8 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 后续我的所有原创文章，将第一时间通过微信公众号“Doocs开源社区”发布。如果其他公众号号主希望转载内容，请在公众号聊天窗口处发消息与我说明，或者直接添加我的个人微信(YLB0109)进行交流。
 
 ## 公众号的定位是怎样的？
-- **内容原创**：所有技术文章均原创发布，不随意从网上复制粘贴一些文章，确保质量。
-- **定期更新**：每周输出 1-2 篇文章，保证一定的更新频率。
+- **内容高质**：不随意从网上复制粘贴一些文章，即便是转载的技术文章，也要确保质量。
+- **定期更新**：尽量在每周输出 1-2 篇文章，保证一定的更新频率。
 
 <div style="text-align:center;">
   <img src="./images/article-demo.png" width="300px;"/>
@@ -34,6 +34,7 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 - [Java Getter/Setter “防坑指南”](https://mp.weixin.qq.com/s/TZqcAw7NTlcvU-p930-eHA)
 - [太棒了，GitHub Review 代码能力小升级](https://mp.weixin.qq.com/s/Lok0epqn91Q51ygZo_FLkg)
 - [巧用 Redis Hyperloglog，轻松统计 UV 数据](https://mp.weixin.qq.com/s/w1r-M6YVvQSfUtzO_xe44Q)
+- [如何开启「GitHub+码云」双工作流模式？](https://mp.weixin.qq.com/s/byxAjr3-ifWfDYQcR7YA8Q)
 
 后续将推出一系列原创干货文章，敬请期待。
 
