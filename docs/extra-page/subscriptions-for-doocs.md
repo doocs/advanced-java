@@ -24,6 +24,7 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 因为刚刚推出公众号，目前有以下几篇文章，来先睹为快吧：
 
 - [技术面试是否要看面经？面试官/面试者有话说！](https://mp.weixin.qq.com/s/fNiUmbY395rsPdEC0QDIrw)
+- [如何破解极验滑动验证码？成功率 100%！](https://mp.weixin.qq.com/s/Fsl6qYN5Dw4s6Du893MkFQ)
 - [免费且好用的图床，就你了，「图壳」！](https://mp.weixin.qq.com/s/0HhgHLo_tTRFZcC-CVjDbw)
 - [阿里又一个 20k+ stars 开源项目诞生，恭喜 fastjson！](https://mp.weixin.qq.com/s/RNKDCK2KoyeuMeEs6GUrow)
 - [刷掉 90% 候选人的互联网大厂海量数据面试题（附题解 + 方法总结）](https://mp.weixin.qq.com/s/rjGqxUvrEqJNlo09GrT1Dw)
