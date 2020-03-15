@@ -8,6 +8,7 @@
   <meta name="description" content="互联网 Java 工程师进阶知识完全扫盲，项目维护者：杨立滨">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//unpkg.com/docsify-dark-mode@0.6.1/dist/style.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 </head>
@@ -41,7 +42,7 @@
   <script>
     window.$docsify = {
       name: 'advanced-java',
-      repo: 'doocs/advanced-java',
+      // repo: 'doocs/advanced-java',
       maxLevel: 3,
       auto2top: true,
       coverpage: true,
@@ -49,6 +50,11 @@
       search: [
         '/'
       ],
+      darkMode: {
+        light: {
+          toggleBtnBg: '#42b983'
+        }
+      },
       plugins: [
         function (hook) {
           var footer = [
@@ -76,5 +82,6 @@
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+  <script src="//unpkg.com/docsify-dark-mode@0.6.1/dist/index.js"></script>
 </body>
 </html>
