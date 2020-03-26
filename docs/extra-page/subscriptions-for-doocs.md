@@ -23,6 +23,7 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs开源社区**”，专
 ## 目前都有哪些文章？
 因为刚刚推出公众号，目前有以下几篇文章，来先睹为快吧：
 
+- [硬核！亿级流量秒杀系统设计](https://mp.weixin.qq.com/s/Mo_knIRBQQL2s-D2aieZLg)
 - [技术面试是否要看面经？面试官/面试者有话说！](https://mp.weixin.qq.com/s/fNiUmbY395rsPdEC0QDIrw)
 - [如何破解极验滑动验证码？成功率 100%！](https://mp.weixin.qq.com/s/Fsl6qYN5Dw4s6Du893MkFQ)
 - [免费且好用的图床，就你了，「图壳」！](https://mp.weixin.qq.com/s/0HhgHLo_tTRFZcC-CVjDbw)
