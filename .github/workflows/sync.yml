@@ -8,8 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-        
     - name: Sync to Gitee
       uses: wearerequired/git-mirror-action@master
       env:
@@ -18,9 +16,9 @@ jobs:
           source-repo: "git@github.com:doocs/advanced-java.git"
           destination-repo: "git@gitee.com:Doocs/advanced-java.git"
 
-    - name: Rebuild Gitee Pages
-      uses: mizuka-wu/gitee-pages-action@v1.0.0
+    - name: Build Gitee Pages
+      uses: yanglbme/gitee-pages-action@v1.0.0
       with:
-          repository: doocs/advanced-java
-          cookie: ${{ secrets.GITEE_COOKIE }}
+          gitee-repo: doocs/advanced-java
+          gitee-login-cookie: ${{ secrets.GITEE_COOKIE }}
           branch: master
