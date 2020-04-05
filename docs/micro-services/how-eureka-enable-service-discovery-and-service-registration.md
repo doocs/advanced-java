@@ -20,11 +20,11 @@ At Netflix, Eureka is used for the following purposes apart from playing a criti
 ## 服务注册中心（Eureka Server） 
 我们在项目中引入 `Eureka Server` 的相关依赖，然后在启动类加上注解 `@EnableEurekaServer`，就可以将其作为注册中心，启动服务后访问页面如下：
 
-![eureka-server-homepage.png](/images/eureka-server-homepage.png)
+![eureka-server-homepage.png](./images/eureka-server-homepage.png)
 
 我们继续添加两个模块 `service-provider`，`service-consumer`，然后在启动类加上注解 `@EnableEurekaClient` 并指定注册中心地址为我们刚刚启动的 `Eureka Server`，再次访问可以看到两个服务都已经注册进来了。
 
-![eureka-instance-registered-currently.png](/images/eureka-instance-registered-currently.png)
+![eureka-instance-registered-currently.png](./images/eureka-instance-registered-currently.png)
 
 `Demo` 仓库地址：https://github.com/mghio/depth-in-springcloud
 
@@ -33,7 +33,7 @@ At Netflix, Eureka is used for the following purposes apart from playing a criti
 ### 服务注册（Register）
 注册中心提供了服务注册接口，用于当有新的服务启动后进行调用来实现服务注册，或者心跳检测到服务状态异常时，变更对应服务的状态。服务注册就是发送一个 `POST` 请求带上当前实例信息到类 `ApplicationResource` 的 `addInstance` 方法进行服务注册。
 
-![eureka-server-applicationresource-addinstance.png](/images/eureka-server-applicationresource-addinstance.png)
+![eureka-server-applicationresource-addinstance.png](./images/eureka-server-applicationresource-addinstance.png)
 
 可以看到方法调用了类 `PeerAwareInstanceRegistryImpl` 的 `register` 方法，该方法主要分为两步：
 1. 调用父类 `AbstractInstanceRegistry` 的 `register` 方法把当前服务注册到注册中心
@@ -41,34 +41,34 @@ At Netflix, Eureka is used for the following purposes apart from playing a criti
 
 服务注册信息保存在一个嵌套的 `map` 中，它的结构如下：
 
-![eureka-server-registry-structure.png](/images/eureka-server-registry-structure.png)
+![eureka-server-registry-structure.png](./images/eureka-server-registry-structure.png)
 
 第一层 `map` 的 `key` 是应用名称（对应 `Demo` 里的 `SERVICE-PROVIDER`），第二层 `map` 的 `key` 是应用对应的实例名称（对应 `Demo` 里的 `mghio-mbp:service-provider:9999`），一个应用可以有多个实例，主要调用流程如下图所示：
 
-![eureka-server-register-sequence-chart.png](/images/eureka-server-register-sequence-chart.png)
+![eureka-server-register-sequence-chart.png](./images/eureka-server-register-sequence-chart.png)
 
 ### 服务续约（Renew）
 服务续约会由服务提供者（比如 `Demo` 中的 `service-provider`）定期调用，类似于心跳，用来告知注册中心 `Eureka Server` 自己的状态，避免被 `Eureka Server` 认为服务时效将其剔除下线。服务续约就是发送一个 `PUT` 请求带上当前实例信息到类 `InstanceResource` 的 `renewLease` 方法进行服务续约操作。
 
-![eureka-server-instanceresource-renew.png](/images/eureka-server-instanceresource-renew.png)
+![eureka-server-instanceresource-renew.png](./images/eureka-server-instanceresource-renew.png)
 
 进入到 `PeerAwareInstanceRegistryImpl` 的 `renew` 方法可以看到，服务续约步骤大体上和服务注册一致，先更新当前 `Eureka Server` 节点的状态，服务续约成功后再用异步的方式同步状态到其它 `Eureka Server` 节上，主要调用流程如下图所示：
 
-![eureka-server-renew-sequence-chart.png](/images/eureka-server-renew-sequence-chart.png)
+![eureka-server-renew-sequence-chart.png](./images/eureka-server-renew-sequence-chart.png)
 
 ### 服务下线（Cancel）
 当服务提供者（比如 `Demo` 中的 `service-provider`）停止服务时，会发送请求告知注册中心 `Eureka Server` 进行服务剔除下线操作，防止服务消费者从注册中心调用到不存在的服务。服务下线就是发送一个 `DELETE` 请求带上当前实例信息到类 `InstanceResource` 的 `cancelLease` 方法进行服务剔除下线操作。
 
-![eureka-server-instanceresource-cancellease.png](/images/eureka-server-instanceresource-cancellease.png)
+![eureka-server-instanceresource-cancellease.png](./images/eureka-server-instanceresource-cancellease.png)
 
 进入到 `PeerAwareInstanceRegistryImpl` 的 `cancel` 方法可以看到，服务续约步骤大体上和服务注册一致，先在当前 `Eureka Server` 节点剔除下线该服务，服务下线成功后再用异步的方式同步状态到其它 `Eureka Server` 节上，主要调用流程如下图所示：
 
-![eureka-server-cancellease-sequence-chart.png](/images/eureka-server-cancellease-sequence-chart.png)
+![eureka-server-cancellease-sequence-chart.png](./images/eureka-server-cancellease-sequence-chart.png)
 
 ### 服务剔除（Eviction）
 服务剔除是注册中心 `Eureka Server` 在启动时就启动一个守护线程 `evictionTimer` 来定期（默认为 `60` 秒）执行检测服务的，判断标准就是超过一定时间没有进行 `Renew` 的服务，默认的失效时间是 `90` 秒，也就是说当一个已注册的服务在 `90` 秒内没有向注册中心 `Eureka Server` 进行服务续约（Renew），就会被从注册中心剔除下线。失效时间可以通过配置 `eureka.instance.leaseExpirationDurationInSeconds` 进行修改，定期执行检测服务可以通过配置 `eureka.server.evictionIntervalTimerInMs` 进行修改，主要调用流程如下图所示：
 
-![eureka-server-evict-sequence-chart.png](/images/eureka-server-evict-sequence-chart.png)
+![eureka-server-evict-sequence-chart.png](./images/eureka-server-evict-sequence-chart.png)
 
 
 ## 服务提供者（Service Provider）
@@ -77,17 +77,17 @@ At Netflix, Eureka is used for the following purposes apart from playing a criti
 ### 服务注册（Register）
 一个服务要对外提供服务，首先要在注册中心 `Eureka Server` 进行服务相关信息注册，能进行这一步的前提是你要配置 `eureka.client.register-with-eureka=true`，这个默认值为 `true`，注册中心不需要把自己注册到注册中心去，把这个配置设为 `false`，这个调用比较简单，主要调用流程如下图所示：
 
-![eureka-service-provider-register-sequence-chart.png](/images/eureka-server-register-sequence-chart.png)
+![eureka-service-provider-register-sequence-chart.png](./images/eureka-server-register-sequence-chart.png)
 
 ### 服务续约（Renew）
 服务续约是由服务提供者方定期（默认为 `30` 秒）发起心跳的，主要是用来告知注册中心 `Eureka Server` 自己状态是正常的还活着，可以通过配置 `eureka.instance.lease-renewal-interval-in-seconds` 来修改，当然服务续约的前提是要配置 `eureka.client.register-with-eureka=true`，将该服务注册到注册中心中去，主要调用流程如下图所示：
 
-![eureka-service-provider-renew-sequence-chart.png](/images/eureka-service-provider-renew-sequence-chart.png)
+![eureka-service-provider-renew-sequence-chart.png](./images/eureka-service-provider-renew-sequence-chart.png)
 
 ### 服务下线（Cancel）
 当服务提供者方服务停止时，要发送 `DELETE` 请求告知注册中心 `Eureka Server` 自己已经下线，好让注册中心将自己剔除下线，防止服务消费方从注册中心获取到不可用的服务。这个过程实现比较简单，在类 `DiscoveryClient` 的 `shutdown` 方法加上注解 `@PreDestroy`，当服务停止时会自动触发服务剔除下线，执行服务下线逻辑，主要调用流程如下图所示：
 
-![eureka-service-provider-cancel-sequence-chart.png](/images/eureka-service-provider-cancel-sequence-chart.png)
+![eureka-service-provider-cancel-sequence-chart.png](./images/eureka-service-provider-cancel-sequence-chart.png)
 
 
 ## 服务消费者（Service Consumer）
@@ -96,16 +96,16 @@ At Netflix, Eureka is used for the following purposes apart from playing a criti
 ### 获取服务列表（Fetch）
 服务消费者方启动之后首先肯定是要先从注册中心 `Eureka Server` 获取到可用的服务列表同时本地也会缓存一份。这个获取服务列表的操作是在服务启动后 `DiscoverClient` 类实例化的时候执行的。
 
-![eureka-service-consumer-fetchregistry.png](/images/eureka-service-consumer-fetchregistry.png)
+![eureka-service-consumer-fetchregistry.png](./images/eureka-service-consumer-fetchregistry.png)
 
 可以看出，能发生这个获取服务列表的操作前提是要保证配置了 `eureka.client.fetch-registry=true`，该配置的默认值为 `true`，主要调用流程如下图所示：
 
-![eureka-service-consumer-fetch-sequence-chart.png](/images/eureka-service-consumer-fetch-sequence-chart.png)
+![eureka-service-consumer-fetch-sequence-chart.png](./images/eureka-service-consumer-fetch-sequence-chart.png)
 
 ### 更新服务列表（Update）
 由上面的 `获取服务列表（Fetch）` 操作过程可知，本地也会缓存一份，所以这里需要定期的去到注册中心 `Eureka Server` 获取服务的最新配置，然后比较更新本地缓存，这个更新的间隔时间可以通过配置 `eureka.client.registry-fetch-interval-seconds` 修改，默认为 `30` 秒，能进行这一步更新服务列表的前提是你要配置 `eureka.client.register-with-eureka=true`，这个默认值为 `true`。主要调用流程如下图所示：
 
-![eureka-service-consumer-update-sequence-chart.png](/images/eureka-service-consumer-update-sequence-chart.png)
+![eureka-service-consumer-update-sequence-chart.png](./images/eureka-service-consumer-update-sequence-chart.png)
 
 
 ## 总结

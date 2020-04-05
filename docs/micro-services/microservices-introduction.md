@@ -13,7 +13,7 @@
 
 单体应用程序可以取得成功，但越来越多的人对它们感到不满——尤其是在将更多应用程序部署到云的时候。变更周期被捆绑在一起——即使只是对应用程序的一小部分进行了更改，也需要重建和部署整个单体应用。随着时间的推移，通常很难保持良好的模块化结构，也更难以保持应该只影响该模块中的一个模块的更改。对系统进行扩展时，不得不扩展整个应用系统，而不能仅扩展该系统中需要更多资源的那些部分。
 
-![sketch](/images/sketch.png)
+![sketch](./images/sketch.png)
 
 这些不满催生了微服务架构风格：将应用程序构建为服务套件。除了服务可独立部署、独立扩展的事实之外，每个服务还提供了一个牢固的模块边界，甚至允许以不同的编程语言编写不同的服务。他们也可以由不同的团队管理。
 
@@ -42,11 +42,11 @@
 
 > 任何设计系统（广义上的）的组织都会产生一种设计，其结构是组织通信结构的副本。<br> —— 梅尔文•康威，1967年
 
-![conways-law](/images/conways-law.png)
+![conways-law](./images/conways-law.png)
 
 微服务采用不同的划分方式，它是围绕业务功能将系统拆分为多个服务 。这些服务为该业务领域采用广泛的软件实现，包括用户界面、持久化存储和任何外部协作。因此，团队是跨职能的，包括开发所需的全部技能：用户体验、数据库和项目管理。
 
-![PreferFunctionalStaffOrganization](/images/PreferFunctionalStaffOrganization.png)
+![PreferFunctionalStaffOrganization](./images/PreferFunctionalStaffOrganization.png)
 
 以这种方式组建的一家公司是 [www.comparethemarket.com](http://www.comparethemarket.com/)。跨职能团队负责构建和运营每个产品，每个产品拆分为多个独立的服务，彼此通过消息总线来通信。
 
@@ -98,7 +98,7 @@ Netflix 是遵循这一理念的一个很好的例子。尤其是，以库的形
 
 和概念模型的去中心化决策一样，微服务也去中心化数据存储决策。虽然单体应用程序更喜欢单一的逻辑数据库做持久化存储，但企业往往倾向于一系列应用程序共用一个单一的数据库——这些决定是供应商授权许可的商业模式驱动的。微服务更倾向于让每个服务管理自己的数据库，或者同一数据库技术的不同实例，或完全不同的数据库系统 - 这就是所谓的[混合持久化](https://martinfowler.com/bliki/PolyglotPersistence.html)(Polyglot Persistence)。你可以在单体应用程序中使用混合持久化，但它更常出现在为服务里。
 
-![decentralised-data](/images/decentralised-data.png)
+![decentralised-data](./images/decentralised-data.png)
 
 对跨微服务的数据来说，去中心化责任对管理升级有影响。处理更新的常用方法是在更新多个资源时使用事务来保证一致性。这个方法通常用在单体中。
 
@@ -111,7 +111,7 @@ Netflix 是遵循这一理念的一个很好的例子。尤其是，以库的形
 
 许多使用微服务构建的产品或系统都是由具有丰富的持续交付和持续集成经验的团队构建的。以这种方式构建软件的团队广泛使用基础设施自动化技术。如下面显示的构建管道所示。
 
-![basic-pipeline](/images/basic-pipeline.png)
+![basic-pipeline](./images/basic-pipeline.png)
 
 由于这并不是一篇关于持续交付的文章，我们在这里只关注持续交付的几个关键特性。我们希望有尽可能多的信心确保我们的软件正常运行，因此我们进行了大量的**自动化测试**。想让软件达到“晋级”(Promotion)状态从而“推上”流水线，就意味着要在每一个新的环境中，对软件进行**自动化部署**。
 
@@ -119,7 +119,7 @@ Netflix 是遵循这一理念的一个很好的例子。尤其是，以库的形
 
 我们看到团队大量的基础设施自动化的另一个领域是在管理生产环境中的微服务。与我们上面的断言（只要部署很无聊）相比，单体和微服务之间没有太大的区别，但是每个部署的运行环境可能会截然不同。
 
-![micro-deployment](/images/micro-deployment.png)
+![micro-deployment](./images/micro-deployment.png)
 
 ### 设计时为故障做好准备
 使用服务作为组件的结果是，需要设计应用程序以便它们能够容忍服务的失败。如果服务提供者商不可用，任何服务呼叫都可能失败，客户必须尽可能优雅地对此做出响应。与单体设计相比，这是一个缺点，因为它这会引入额外的复杂性来处理它。结果是微服务团队不断反思服务失败是如何影响用户体验的。Netflix 的 [Simian Army](https://github.com/Netflix/SimianArmy) 能够引发服务甚至数据中心的故障在工作日发生故障，从而来测试应用程序的弹性和监控能力。

@@ -29,7 +29,7 @@
 ### 最初级的缓存不一致问题及解决方案
 问题：先更新数据库，再删除缓存。如果删除缓存失败了，那么会导致数据库中是新数据，缓存中是旧数据，数据就出现了不一致。
 
-![redis-junior-inconsistent](/images/redis-junior-inconsistent.png)
+![redis-junior-inconsistent](./images/redis-junior-inconsistent.png)
 
 解决思路：先删除缓存，再更新数据库。如果数据库更新失败了，那么数据库中是旧数据，缓存中是空的，那么数据不会不一致。因为读的时候缓存没有，所以去读了数据库中的旧数据，然后更新到缓存中。
 

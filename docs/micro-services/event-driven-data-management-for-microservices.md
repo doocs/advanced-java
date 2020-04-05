@@ -21,7 +21,7 @@
 
 相反的，微服务架构下，订单和客户表分别是相对应服务的私有表，如下图所示：
 
-![service table](/images/Private-table-of-the-corresponding-service.png)
+![service table](./images/Private-table-of-the-corresponding-service.png)
 
 订单服务不能直接访问客户表，只能通过客户服务发布的 API 来访问。订单服务也可以使用 distributed transactions, 也就是周知的两阶段提交 (2PC)。然而，2PC 在现在应用中不是可选性。根据 CAP 理论，必须在可用性（availability）和 ACID 一致性（consistency）之间做出选择，availability 一般是更好的选择。但是，许多现代科技，例如许多 NoSQL 数据库，并不支持 2PC。在服务和数据库之间维护数据一致性是非常根本的需求，因此我们需要找其他的方案。
 
@@ -35,15 +35,15 @@
 
 1. 订单服务创建一个带有 NEW 状态的 Order （订单），发布了一个 “Order Created Event（创建订单）” 的事件。
 
-![Order-Created-Event](/images/Order-Created-Event.png)
+![Order-Created-Event](./images/Order-Created-Event.png)
 
 2. 客户服务消费 Order Created Event 事件，为此订单预留信用，发布 “Credit Reserved Event（信用预留）” 事件。
 
-![Credit-Reserved-Event](/images/Credit-Reserved-Event.png)
+![Credit-Reserved-Event](./images/Credit-Reserved-Event.png)
 
 3. 订单服务消费 Credit Reserved Event ，改变订单的状态为 OPEN。
 
-![Status-is-OPEN](/images/Status-is-OPEN.png)
+![Status-is-OPEN](./images/Status-is-OPEN.png)
 
 更复杂的场景可以引入更多步骤，例如在检查用户信用的同时预留库存等。
 
@@ -51,7 +51,7 @@
 
 亦可以使用事件来维护不同微服务拥有数据预连接（pre-join）的实现视图。维护此视图的服务订阅相关事件并且更新视图。例如，客户订单视图更新服务（维护客户订单视图）会订阅由客户服务和订单服务发布的事件。
 
-![pre-join](/images/pre-join.png)
+![pre-join](./images/pre-join.png)
 
 当客户订单视图更新服务收到客户或者订单事件，就会更新 客户订单视图数据集。可以使用文档数据库（例如 MongoDB）来实现客户订单视图，为每个用户存储一个文档。客户订单视图查询服务负责响应对客户以及最近订单（通过查询客户订单视图数据集）的查询。
 
@@ -65,7 +65,7 @@
 
 获得原子性的一个方法是对发布事件应用采用 multi-step process involving only local transactions，技巧在于一个 EVENT 表，此表在存储业务实体数据库中起到消息列表功能。应用发起一个（本地）数据库交易，更新业务实体状态，向 EVENT 表中插入一个事件，然后提交此次交易。另外一个独立应用进程或者线程查询此 EVENT 表，向消息代理发布事件，然后使用本地交易标志此事件为已发布，如下图所示：
 
-![multi-step process](/images/multi-step-process.png)
+![multi-step process](./images/multi-step-process.png)
 
 订单服务向 ORDER 表插入一行，然后向 EVENT 表中插入 Order Created event，事件发布线程或者进程查询 EVENT 表，请求未发布事件，发布他们，然后更新 EVENT 表标志此事件为已发布。
 
@@ -77,7 +77,7 @@
 
 另外一种不需要 2PC 而获得线程或者进程发布事件原子性的方式就是挖掘数据库交易或者提交日志。应用更新数据库，在数据库交易日志中产生变化，交易日志挖掘进程或者线程读这些交易日志，将日志发布给消息代理。如下图所见：
 
-![No-2PC-required](/images/No-2PC-required.png)
+![No-2PC-required](./images/No-2PC-required.png)
 
 此方法的例子如 LinkedIn Databus 项目，Databus 挖掘 Oracle 交易日志，根据变化发布事件，LinkedIn 使用 Databus 来保证系统内各记录之间的一致性。
 
@@ -93,7 +93,7 @@ Event sourcing （事件源）通过使用根本不同的事件中心方式来�
 
 为了理解事件源工作方式，考虑事件实体作为一个例子。传统方式中，每个订单映射为 ORDER 表中一行，例如在 ORDER_LINE_ITEM 表中。但是对于事件源方式，订单服务以事件状态改变方式存储一个订单：创建的，已批准的，已发货的，取消的；每个事件包括足够数据来重建订单状态。
 
-![Event-sourcing](/images/Event-sourcing.png)
+![Event-sourcing](./images/Event-sourcing.png)
 
 事件是长期保存在事件数据库中，提供 API 添加和获取实体事件。事件存储跟之前描述的消息代理类似，提供 API 来订阅事件。事件存储将事件递送到所有感兴趣的订阅者，事件存储是事件驱动微服务架构的基干。
 

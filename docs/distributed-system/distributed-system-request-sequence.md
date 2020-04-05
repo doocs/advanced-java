@@ -13,7 +13,7 @@
 
 下面我给个我们用过的方案吧，简单来说，首先你得用 dubbo 的一致性 hash 负载均衡策略，将比如某一个订单 id 对应的请求都给分发到某个机器上去，接着就是在那个机器上，因为可能还是多线程并发执行的，你可能得立即将某个订单 id 对应的请求扔一个**内存队列**里去，强制排队，这样来确保他们的顺序性。
 
-![distributed-system-request-sequence](/images/distributed-system-request-sequence.png)
+![distributed-system-request-sequence](./images/distributed-system-request-sequence.png)
 
 但是这样引发的后续问题就很多，比如说要是某个订单对应的请求特别多，造成某台机器成**热点**怎么办？解决这些问题又要开启后续一连串的复杂技术方案......曾经这类问题弄的我们头疼不已，所以，还是建议什么呢？
 

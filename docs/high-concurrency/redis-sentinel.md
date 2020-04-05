@@ -63,7 +63,7 @@ sentinel，中文名是哨兵。哨兵是 redis 集群架构中非常重要的�
 
 因为 master->slave 的复制是异步的，所以可能有部分数据还没复制到 slave，master 就宕机了，此时这部分数据就丢失了。
 
-![async-replication-data-lose-case](/images/async-replication-data-lose-case.png)
+![async-replication-data-lose-case](./images/async-replication-data-lose-case.png)
 
 - 脑裂导致的数据丢失
 
@@ -71,7 +71,7 @@ sentinel，中文名是哨兵。哨兵是 redis 集群架构中非常重要的�
 
 此时虽然某个 slave 被切换成了 master，但是可能 client 还没来得及切换到新的 master，还继续向旧 master 写数据。因此旧 master 再次恢复的时候，会被作为一个 slave 挂到新的 master 上去，自己的数据会清空，重新从新的 master 复制数据。而新的 master 并没有后来 client 写入的数据，因此，这部分数据也就丢失了。
 
-![redis-cluster-split-brain](/images/redis-cluster-split-brain.png)
+![redis-cluster-split-brain](./images/redis-cluster-split-brain.png)
 
 ### 数据丢失问题的解决方案
 进行如下配置：

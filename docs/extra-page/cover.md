@@ -1,4 +1,4 @@
-[![logo](images/icon.png)](https://github.com/doocs/advanced-java)
+[![logo](./images/icon.png)](https://github.com/doocs/advanced-java)
 
 # 互联网 Java 工程师进阶知识完全扫盲
 

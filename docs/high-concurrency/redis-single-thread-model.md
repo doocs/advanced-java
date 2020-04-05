@@ -33,7 +33,7 @@ redis 内部使用文件事件处理器 `file event handler`，这个文件事�
 
 来看客户端与 redis 的一次通信过程：
 
-![redis-single-thread-model](/images/redis-single-thread-model.png)
+![redis-single-thread-model](./images/redis-single-thread-model.png)
 
 要明白，通信是通过 socket 来完成的，不懂的同学可以先去看一看 socket 网络编程。
 

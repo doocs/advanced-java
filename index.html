@@ -22,7 +22,6 @@
           <li><a href="#/?id=高可用架构">高可用</a></li>
           <li><a href="#/?id=微服务架构">微服务</a></li>
           <li><a href="#/?id=海量数据处理">海量数据</a></li>
-          <li><a href="#/docs/from-readers/README">读者说</a></li>
         </ul>
       </li>
       <li>页面
@@ -31,8 +30,6 @@
           <li><a href="#/README">首页</a></li>
           <li><a href="#/docs/extra-page/advanced">进阶</a></li>
           <li><a href="#/docs/extra-page/offer">Offer</a></li>
-          <li><a href="https://github.com/doocs" target="_blank">Doocs</a></li>
-          <li><a href="https://github.com/yanglbme" target="_blank">Author</a></li>
         </ul>
       </li>
     </ul>
@@ -47,6 +44,13 @@
       auto2top: true,
       coverpage: true,
       coverpage: 'docs/extra-page/cover.md',
+      loadSidebar: 'summary.md',
+      pagination: {
+        previousText: '上一篇',
+        nextText: '下一篇',
+        crossChapter: true,
+        crossChapterText: true
+      },
       search: [
         '/'
       ],
@@ -83,5 +87,6 @@
   <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
   <script src="//unpkg.com/docsify-dark-mode@0.6.1/dist/index.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>

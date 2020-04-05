@@ -26,7 +26,7 @@
 
 如果你要操作别人的服务的库，你必须是通过**调用别的服务的接口**来实现，绝对不允许交叉访问别人的数据库。
 
-![distributed-transacion-XA](/images/distributed-transaction-XA.png)
+![distributed-transacion-XA](./images/distributed-transaction-XA.png)
 
 ### TCC 方案
 TCC 的全称是：`Try`、`Confirm`、`Cancel`。
@@ -43,7 +43,7 @@ TCC 的全称是：`Try`、`Confirm`、`Cancel`。
 
 但是说实话，一般尽量别这么搞，自己手写回滚逻辑，或者是补偿逻辑，实在太恶心了，那个业务代码是很难维护的。
 
-![distributed-transacion-TCC](/images/distributed-transaction-TCC.png)
+![distributed-transacion-TCC](./images/distributed-transaction-TCC.png)
 
 ### 本地消息表
 本地消息表其实是国外的 ebay 搞出来的这么一套思想。
@@ -59,7 +59,7 @@ TCC 的全称是：`Try`、`Confirm`、`Cancel`。
 
 这个方案说实话最大的问题就在于**严重依赖于数据库的消息表来管理事务**啥的，如果是高并发场景咋办呢？咋扩展呢？所以一般确实很少用。
 
-![distributed-transaction-local-message-table](/images/distributed-transaction-local-message-table.png)
+![distributed-transaction-local-message-table](./images/distributed-transaction-local-message-table.png)
 
 ### 可靠消息最终一致性方案
 这个的意思，就是干脆不要用本地的消息表了，直接基于 MQ 来实现事务。比如阿里的 RocketMQ 就支持消息事务。
@@ -73,7 +73,7 @@ TCC 的全称是：`Try`、`Confirm`、`Cancel`。
 5. 这个方案里，要是系统 B 的事务失败了咋办？重试咯，自动不断重试直到成功，如果实在是不行，要么就是针对重要的资金类业务进行回滚，比如 B 系统本地回滚后，想办法通知系统 A 也回滚；或者是发送报警由人工来手工回滚和补偿。
 6. 这个还是比较合适的，目前国内互联网公司大都是这么玩儿的，要不你就用 RocketMQ 支持的，要不你就自己基于类似 ActiveMQ？RabbitMQ？自己封装一套类似的逻辑出来，总之思路就是这样子的。
 
-![distributed-transaction-reliable-message](/images/distributed-transaction-reliable-message.png)
+![distributed-transaction-reliable-message](./images/distributed-transaction-reliable-message.png)
 
 ### 最大努力通知方案
 这个方案的大致意思就是：

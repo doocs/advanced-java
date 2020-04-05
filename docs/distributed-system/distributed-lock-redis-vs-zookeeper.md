@@ -54,7 +54,7 @@ end
 5. 要是锁建立失败了，那么就依次之前建立过的锁删除；
 6. 只要别人建立了一把分布式锁，你就得**不断轮询去尝试获取锁**。
 
-![redis-redlock](/images/redis-redlock.png)
+![redis-redlock](./images/redis-redlock.png)
 
 [Redis 官方](https://redis.io/)给出了以上两种基于 Redis 实现分布式锁的方法，详细说明可以查看：https://redis.io/topics/distlock 。
 
