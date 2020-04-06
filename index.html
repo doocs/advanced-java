@@ -39,21 +39,33 @@
   <script>
     window.$docsify = {
       name: 'advanced-java',
-      // repo: 'doocs/advanced-java',
+      repo: 'doocs/advanced-java',
       maxLevel: 3,
       auto2top: true,
       coverpage: true,
       coverpage: 'docs/extra-page/cover.md',
       loadSidebar: 'summary.md',
+      alias: {
+        '/.*/.*/summary': 'summary.md',
+        '/.*/summary.md': 'summary.md'
+      },
       pagination: {
         previousText: '上一篇',
         nextText: '下一篇',
         crossChapter: true,
         crossChapterText: true
       },
-      search: [
-        '/'
-      ],
+      search: {
+        maxAge: 1800000,
+        paths: [
+          '/docs/high-concurrency/',
+          '/docs/distributed-system/',
+          '/docs/high-availability/',
+          '/docs/micor-services/',
+          '/docs/big-data/',
+        ],
+        depth: 3
+      },
       darkMode: {
         light: {
           toggleBtnBg: '#42b983'
