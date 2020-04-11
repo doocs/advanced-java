@@ -17,7 +17,7 @@ jobs:
           destination-repo: "git@gitee.com:Doocs/advanced-java.git"
 
     - name: Build Gitee Pages
-      uses: yanglbme/gitee-pages-action@v1.1.0
+      uses: yanglbme/gitee-pages-action@master
       with:
           gitee-username: yanglbme
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
