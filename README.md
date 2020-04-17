@@ -19,6 +19,10 @@
 
 [另外，我还将在这里更新内容，感兴趣的朋友可以进来看看](/docs/extra-page/subscriptions-for-doocs.md)，深入源码学习请关注[“源码猎人”项目](https://github.com/doocs/source-code-hunter)，LeetCode、《剑指 Offer（第 2 版）》、《程序员面试金典（第 6 版）》笔面试高频题题解，尽在 [leetcode 项目](https://github.com/doocs/leetcode)！
 
+- Netlify: https://adjava.netlify.app
+- Gitee Pages: https://doocs.gitee.io/advanced-java
+- GitHub Pages: https://doocs.github.io/advanced-java
+
 ## 高并发架构
 ### [消息队列](./docs/high-concurrency/mq-interview.md)
 - [为什么使用消息队列？消息队列有什么优点和缺点？Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么优点和缺点？](./docs/high-concurrency/why-mq.md)
