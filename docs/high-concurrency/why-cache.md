@@ -33,7 +33,7 @@ mysql 这么重的数据库，压根儿设计不是让你玩儿高并发的，�
 ### 用了缓存之后会有什么不良后果？
 常见的缓存问题有以下几个：
 - [缓存与数据库双写不一致](/docs/high-concurrency/redis-consistence.md)
-- [缓存雪崩、缓存穿透](/docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
+- [缓存雪崩、缓存穿透、缓存击穿](/docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
 - [缓存并发竞争](/docs/high-concurrency/redis-cas.md)
 
 后面再详细说明。
