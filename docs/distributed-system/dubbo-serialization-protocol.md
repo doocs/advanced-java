@@ -36,7 +36,7 @@ dubbo 支持哪些通信协议？支持哪些序列化协议？说一下 Hessian
 
 - http 协议
 
-走 json 序列化。
+走表单序列化。
 
 - webservice
 
