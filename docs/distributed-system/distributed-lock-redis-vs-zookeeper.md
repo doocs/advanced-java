@@ -17,17 +17,17 @@
 
 #### redis 最普通的分布式锁
 
-第一个最普通的实现方式，就是在 redis 里使用 `setnx` 命令创建一个 key，这样就算加锁。
+第一个最普通的实现方式，就是在 redis 里使用 `SET key value [EX seconds] [PX milliseconds] NX` 创建一个 key，这样就算加锁。其中：
 
+- `NX`：表示只有 `key` 不存在的时候才会设置成功，如果此时 redis 中存在这个 `key`，那么设置失败，返回 `nil`。
+- `EX seconds`：设置 `key` 的过期时间，精确到秒级。意思是 `seconds` 秒后锁自动释放，别人创建的时候如果发现已经有了就不能加锁了。
+- `PX milliseconds`：同样是设置 `key` 的过期时间，精确到毫秒级。
+
+比如执行以下命令：
 
 ```r
-SET resource_name my_random_value NX PX 30000
+SET resource_name my_random_value PX 30000 NX
 ```
-
-执行这个命令就 ok。
-
-- `NX`：表示只有 `key` 不存在的时候才会设置成功。（如果此时 redis 中存在这个 key，那么设置失败，返回 `nil`）
-- `PX 30000`：意思是 30s 后锁自动释放。别人创建的时候如果发现已经有了就不能加锁了。
 
 释放锁就是删除 key ，但是一般可以用 `lua` 脚本删除，判断 value 一样才删除：
 
