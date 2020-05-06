@@ -1,4 +1,5 @@
 - 高并发架构
+
     - [消息队列](./docs/high-concurrency/mq-interview.md)
         - [为什么使用消息队列？](./docs/high-concurrency/why-mq.md)
         - [如何保证消息队列的高可用？](./docs/high-concurrency/how-to-ensure-high-availability-of-message-queues.md)
@@ -39,7 +40,7 @@
     - 高并发系统
         - [如何设计一个高并发系统？](./docs/high-concurrency/high-concurrency-design.md)
 
-- 分布式系统
+* 分布式系统
     - [面试连环炮](./docs/distributed-system/distributed-system-interview.md)
     - 系统拆分
         - [为什么要进行系统拆分？](./docs/distributed-system/why-dubbo.md)
@@ -64,7 +65,7 @@
     - 分布式会话
         - [集群分布式 Session 如何实现？](./docs/distributed-system/distributed-session.md)
 
-- 高可用架构
+* 高可用架构
     - 基于 Hystrix 实现高可用
         - [Hystrix 介绍](./docs/high-availability/hystrix-introduction.md)
         - [电商网站详情页系统架构](./docs/high-availability/e-commerce-website-detail-page-architecture.md)
@@ -92,7 +93,7 @@
     - 降级
         - 如何进行降级？
 
-- 微服务架构
+* 微服务架构
     - 微服务的一些概念
         - [关于微服务架构的描述](./docs/micro-services/microservices-introduction.md)
         - [从单体式架构迁移到微服务架构](./docs/micro-services/migrating-from-a-monolithic-architecture-to-a-microservices-architecture.md)
@@ -110,7 +111,7 @@
         - Eureka 和 Zookeeper 都可以提供服务注册与发现的功能，它们有什么区别？
         - [谈谈服务发现组件 Eureka 的主要调用过程？](/docs/micro-services/how-eureka-enable-service-discovery-and-service-registration.md)
 
-- 海量数据处理
+* 海量数据处理
     - 10 道经典的海量数据处理面试题
         - [如何从大量的 URL 中找出相同的 URL？](./docs/big-data/find-common-urls.md)
         - [如何从大量数据中找出高频词？](./docs/big-data/find-top-100-words.md)

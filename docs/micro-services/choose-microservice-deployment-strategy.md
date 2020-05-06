@@ -100,10 +100,10 @@ Lambda 函数 是无状态服务。一般通过激活 AWS 服务处理请求。�
 
 有四种方法激活 Lambda 函数：
 
-- 直接方式，使用 web 服务请求
-- 自动方式，回应例如 AWS S3，DynamoDB，Kinesis 或者 Simple Email Service 等产生的事件
-- 自动方式，通过 AWS API 网关来处理应用客户端发出的 HTTP 请求​
-- 定时方式，通过 cron 响应​--很像定时器方式
+* 直接方式，使用 web 服务请求
+* 自动方式，回应例如 AWS S3，DynamoDB，Kinesis 或者 Simple Email Service 等产生的事件
+* 自动方式，通过 AWS API 网关来处理应用客户端发出的 HTTP 请求​
+* 定时方式，通过 cron 响应​--很像定时器方式
 
 可以看出，AWS Lambda 是一种很方便部署微服务的方式。基于请求计费方式意味着用户只需要承担处理自己业务那部分的负载；另外，因为不需要了解基础架构，用户只需要开发自己的应用。
 
