@@ -186,7 +186,6 @@
 GitHub 技术社区 [Doocs](https://github.com/doocs) 旗下唯一公众号「**Doocs开源社区**」​，欢迎扫码关注，**专注分享技术领域相关知识及行业最新资讯**。当然，也可以加我个人微信（备注：GitHub），拉你进技术交流群。
 
 <table>
-
     <tr>
       <td align="center" style="width: 200px;">
         <a href="https://github.com/doocs">
@@ -201,5 +200,4 @@ GitHub 技术社区 [Doocs](https://github.com/doocs) 旗下唯一公众号「**
         </a><br>
       </td>
     </tr>
-
 </table>

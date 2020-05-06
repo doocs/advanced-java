@@ -72,15 +72,28 @@
         }
       },
       plugins: [
-        function (hook) {
-          var footer = [
-            '<hr/>',
-            '<footer>',
-            '<span>Copyright © 2018-2020 <a href="https://github.com/doocs" target="_blank">Doocs</a>. All rights reserved.',
-            '</footer>'
-          ].join('')
+        function (hook, vm) {
+          hook.beforeEach(function (html) {
+            const en = vm.route.file.indexOf('README_EN') > -1
+            if (/githubusercontent\.com/.test(vm.route.file)) {
+              url = vm.route.file
+                .replace('raw.githubusercontent.com', 'github.com')
+                .replace(/\/master/, '/blob/master')
+            } else {
+              url = 'https://github.com/doocs/advanced-java/blob/master/' + vm.route.file
+            }
+            const edit = en ? 'Edit on GitHub' : '在 GitHub 编辑'
+            const editHtml = `[:memo: ${edit}](${url})\n`
+            return editHtml + html
+          })
 
           hook.afterEach(function (html) {
+            const footer = [
+              '<hr/>',
+              '<footer>',
+              '<span>Copyright © 2018-2020 <a href="https://github.com/doocs" target="_blank">Doocs</a>. All rights reserved.',
+              '</footer>'
+            ].join('')
             return html + footer
           })
         }
