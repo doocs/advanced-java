@@ -2,16 +2,19 @@
 如何保证 redis 的高并发和高可用？redis 的主从复制原理能介绍一下么？redis 的哨兵原理能介绍一下么？
 
 ## 面试官心理分析
+
 其实问这个问题，主要是考考你，redis 单机能承载多高并发？如果单机扛不住如何扩容扛更多的并发？redis 会不会挂？既然 redis 会挂那怎么保证 redis 是高可用的？
 
 其实针对的都是项目中你肯定要考虑的一些问题，如果你没考虑过，那确实你对生产系统中的问题思考太少。
 
 ## 面试题剖析
+
 如果你用 redis 缓存技术的话，肯定要考虑如何用 redis 来加多台机器，保证 redis 是高并发的，还有就是如何让 redis 保证自己不是挂掉以后就直接死掉了，即 redis 高可用。
 
 由于此节内容较多，因此，会分为两个小节进行讲解。
-- [redis 主从架构](/docs/high-concurrency/redis-master-slave.md)
-- [redis 基于哨兵实现高可用](/docs/high-concurrency/redis-sentinel.md)
+
+* [redis 主从架构](/docs/high-concurrency/redis-master-slave.md)
+* [redis 基于哨兵实现高可用](/docs/high-concurrency/redis-sentinel.md)
 
 redis 实现**高并发**主要依靠**主从架构**，一主多从，一般来说，很多项目其实就足够了，单主用来写入数据，单机几万 QPS，多从用来查询数据，多个从实例可以提供每秒 10w 的 QPS。
 
