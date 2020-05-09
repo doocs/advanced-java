@@ -1,0 +1,24 @@
+name: Sync
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sync to Gitee
+      uses: wearerequired/git-mirror-action@master
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+      with:
+          source-repo: "git@github.com:doocs/advanced-java.git"
+          destination-repo: "git@gitee.com:Doocs/advanced-java.git"
+
+    - name: Build Gitee Pages
+      uses: yanglbme/gitee-pages-action@master
+      with:
+          gitee-username: yanglbme
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: doocs/advanced-java

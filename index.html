@@ -2,50 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Java 进阶扫盲</title>
+  <title>互联网 Java 工程师进阶知识完全扫盲</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="advanced-java">
+  <meta name="keywords" content="doc,docs,doocs,documentation,github,gitee,advanced-java,yanglbme">
+  <meta name="description" content="互联网 Java 工程师进阶知识完全扫盲，项目维护者：杨立滨">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//unpkg.com/docsify-dark-mode@0.6.1/dist/style.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 </head>
 <body>
-  <div id="app">Welcome to Advanced-Java</div>
+  <nav>
+    <ul>
+      <li>分类
+        <ul>
+          <li><a href="#/?id=高并发架构">高并发</a></li>
+          <li><a href="#/?id=分布式系统">分布式</a></li>
+          <li><a href="#/?id=高可用架构">高可用</a></li>
+          <li><a href="#/?id=微服务架构">微服务</a></li>
+          <li><a href="#/?id=海量数据处理">海量数据</a></li>
+        </ul>
+      </li>
+      <li>页面
+        <ul>
+          <li><a href="#">封面</a></li>
+          <li><a href="#/README">首页</a></li>
+          <li><a href="#/docs/extra-page/advanced">进阶</a></li>
+          <li><a href="#/docs/extra-page/offer">Offer</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+  </nav>
+  <div id="app">本系列知识由 Doocs 开源社区总结发布</div>
   <script>
     window.$docsify = {
       name: 'advanced-java',
       repo: 'doocs/advanced-java',
       maxLevel: 3,
       auto2top: true,
-      loadNavbar: true,
       coverpage: true,
-      mergeNavbar: true,
-      search: [
-        '/'
-      ],
+      coverpage: 'docs/extra-page/cover.md',
+      loadSidebar: 'summary.md',
+      alias: {
+        '/.*/.*/summary': 'summary.md',
+        '/.*/summary.md': 'summary.md'
+      },
+      pagination: {
+        previousText: '上一篇',
+        nextText: '下一篇',
+        crossChapter: true,
+        crossChapterText: true
+      },
+      search: {
+        maxAge: 1800000,
+        paths: [
+          '/docs/high-concurrency/',
+          '/docs/distributed-system/',
+          '/docs/high-availability/',
+          '/docs/micor-services/',
+          '/docs/big-data/',
+        ],
+        depth: 3
+      },
+      darkMode: {
+        light: {
+          toggleBtnBg: '#42b983'
+        }
+      },
       plugins: [
-        function (hook) {
-          var footer = [
-            '<hr/>',
-            '<footer>',
-            '<span>Copyright © 2018-2019 <a href="https://github.com/yanglbme" target="_blank">yanglbme</a>. All rights reserved.</span>',
-            '</footer>'
-          ].join('')
+        function (hook, vm) {
+          hook.beforeEach(function (html) {
+            const en = vm.route.file.indexOf('README_EN') > -1
+            if (/githubusercontent\.com/.test(vm.route.file)) {
+              url = vm.route.file
+                .replace('raw.githubusercontent.com', 'github.com')
+                .replace(/\/master/, '/blob/master')
+            } else {
+              url = 'https://github.com/doocs/advanced-java/blob/master/' + vm.route.file
+            }
+            const edit = en ? 'Edit on GitHub' : '在 GitHub 编辑'
+            const editHtml = `[:memo: ${edit}](${url})\n`
+            return editHtml + html
+          })
 
           hook.afterEach(function (html) {
+            const footer = [
+              '<hr/>',
+              '<footer>',
+              '<span>Copyright © 2018-2020 <a href="https://github.com/doocs" target="_blank">Doocs</a>. All rights reserved.',
+              '</footer>'
+            ].join('')
             return html + footer
           })
         }
       ]
     }
-    
-    if (typeof navigator.serviceWorker !== 'undefined') {
-      navigator.serviceWorker.register('sw.js')
-    }
-
   </script>
-  <!-- <script src="//unpkg.com/docsify"></script> -->
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-c.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
@@ -57,5 +111,7 @@
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+  <script src="//unpkg.com/docsify-dark-mode@0.6.1/dist/index.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>
