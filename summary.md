@@ -10,10 +10,10 @@
         - [如何设计一个消息队列？](./docs/high-concurrency/mq-design.md)
 
     - [搜索引擎](./docs/high-concurrency/es-introduction.md)
-        - [es 的分布式架构原理是什么？](./docs/high-concurrency/es-architecture.md)
-        - [es 写入数据的工作原理是什么？](./docs/high-concurrency/es-write-query-search.md)
-        - [es 在数十亿级别数量下如何提高查询效率？](./docs/high-concurrency/es-optimizing-query-performance.md)
-        - [es 生产集群的部署架构是什么？](./docs/high-concurrency/es-production-cluster.md)
+        - [ES 的分布式架构原理是什么？](./docs/high-concurrency/es-architecture.md)
+        - [ES 写入数据的工作原理是什么？](./docs/high-concurrency/es-write-query-search.md)
+        - [ES 在数十亿级别数量下如何提高查询效率？](./docs/high-concurrency/es-optimizing-query-performance.md)
+        - [ES 生产集群的部署架构是什么？](./docs/high-concurrency/es-production-cluster.md)
 
     - 缓存
         - [在项目中缓存是如何使用的？](./docs/high-concurrency/why-cache.md)
@@ -23,7 +23,7 @@
         - [如何保证 Redis 高并发、高可用？](./docs/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.md)
         - [Redis 的持久化有哪几种方式？](./docs/high-concurrency/redis-persistence.md)
         - [Redis 集群模式的工作原理能说一下么？](./docs/high-concurrency/redis-cluster.md)
-        - [redis 的雪崩、穿透和击穿，如何应对？](./docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
+        - [Redis 的雪崩、穿透和击穿，如何应对？](./docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
         - [如何保证缓存与数据库双写一致性？](./docs/high-concurrency/redis-consistence.md)
         - [如何解决 Redis 的并发竞争问题？](./docs/high-concurrency/redis-cas.md)
         - [生产环境中的 Redis 是怎么部署的？](./docs/high-concurrency/redis-production-environment.md)
@@ -49,7 +49,7 @@
         - [说一下 Dubbo 的工作原理？](./docs/distributed-system/dubbo-operating-principle.md)
         - [Dubbo 支持哪些序列化协议？](./docs/distributed-system/dubbo-serialization-protocol.md)
         - [Dubbo 负载均衡策略和集群容错策略？](./docs/distributed-system/dubbo-load-balancing.md)
-        - [Dubbo 的 spi 思想是什么？](./docs/distributed-system/dubbo-spi.md)
+        - [Dubbo 的 SPI 思想是什么？](./docs/distributed-system/dubbo-spi.md)
         - [如何基于 Dubbo 进行服务治理？](./docs/distributed-system/dubbo-service-management.md)
         - [分布式服务接口的幂等性如何设计？](./docs/distributed-system/distributed-system-idempotency.md)
         - [分布式服务接口请求的顺序性如何保证？](./docs/distributed-system/distributed-system-request-sequence.md)

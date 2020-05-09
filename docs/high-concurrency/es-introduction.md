@@ -1,19 +1,19 @@
-## lucene 和 es 的前世今生
-lucene 是最先进、功能最强大的搜索库。如果直接基于 lucene 开发，非常复杂，即便写一些简单的功能，也要写大量的 Java 代码，需要深入理解原理。
+## Lucene 和 ES 的前世今生
+Lucene 是最先进、功能最强大的搜索库。如果直接基于 Lucene 开发，非常复杂，即便写一些简单的功能，也要写大量的 Java 代码，需要深入理解原理。
 
-elasticsearch 基于 lucene，隐藏了 lucene 的复杂性，提供了简单易用的 restful api / Java api 接口（另外还有其他语言的 api 接口）。
+ElasticSearch 基于 Lucene，隐藏了 lucene 的复杂性，提供了简单易用的 RESTful api / Java api 接口（另外还有其他语言的 api 接口）。
 
 * 分布式的文档存储引擎
 * 分布式的搜索引擎和分析引擎
 * 分布式，支持 PB 级数据
 
-## es 的核心概念
+## ES 的核心概念
 
 ### Near Realtime
 近实时，有两层意思：
 
 * 从写入数据到数据可以被搜索到有一个小延迟（大概是 1s）
-* 基于 es 执行搜索和分析可以达到秒级
+* 基于 ES 执行搜索和分析可以达到秒级
 
 ### Cluster 集群
 
@@ -25,7 +25,7 @@ Node 是集群中的一个节点，节点也有一个名称，默认是随机分
 
 ### Document & field
 
-文档是 es 中最小的数据单元，一个 document 可以是一条客户数据、一条商品分类数据、一条订单数据，通常用 json 数据结构来表示。每个 index 下的 type，都可以存储多条 document。一个 document 里面有多个 field，每个 field 就是一个数据字段。
+文档是 ES 中最小的数据单元，一个 document 可以是一条客户数据、一条商品分类数据、一条订单数据，通常用 json 数据结构来表示。每个 index 下的 type，都可以存储多条 document。一个 document 里面有多个 field，每个 field 就是一个数据字段。
 
 ``` json
 {
@@ -47,7 +47,7 @@ Node 是集群中的一个节点，节点也有一个名称，默认是随机分
 
 ### shard
 
-单台机器无法存储大量数据，es 可以将一个索引中的数据切分为多个 shard，分布在多台服务器上存储。有了 shard 就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。每个 shard 都是一个 lucene index。
+单台机器无法存储大量数据，ES 可以将一个索引中的数据切分为多个 shard，分布在多台服务器上存储。有了 shard 就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。每个 shard 都是一个 lucene index。
 
 ### replica
 
@@ -57,9 +57,9 @@ Node 是集群中的一个节点，节点也有一个名称，默认是随机分
 
 ![es-cluster-0](./images/es-cluster-0.png)
 
-## es 核心概念 vs. db 核心概念
+## ES 核心概念 vs. DB 核心概念
 
-| es | db |
+| ES | DB |
 |---|---|
 | index | 数据库 |
 | type | 数据表 |
