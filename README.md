@@ -37,10 +37,10 @@
 
 ### [搜索引擎](./docs/high-concurrency/es-introduction.md)
 
-* [es 的分布式架构原理能说一下么（es 是如何实现分布式的啊）？](./docs/high-concurrency/es-architecture.md)
-* [es 写入数据的工作原理是什么啊？es 查询数据的工作原理是什么啊？底层的 lucene 介绍一下呗？倒排索引了解吗？](./docs/high-concurrency/es-write-query-search.md)
-* [es 在数据量很大的情况下（数十亿级别）如何提高查询效率啊？](./docs/high-concurrency/es-optimizing-query-performance.md)
-* [es 生产集群的部署架构是什么？每个索引的数据量大概有多少？每个索引大概有多少个分片？](./docs/high-concurrency/es-production-cluster.md)
+* [ES 的分布式架构原理能说一下么（ES 是如何实现分布式的啊）？](./docs/high-concurrency/es-architecture.md)
+* [ES 写入数据的工作原理是什么啊？ES 查询数据的工作原理是什么啊？底层的 Lucene 介绍一下呗？倒排索引了解吗？](./docs/high-concurrency/es-write-query-search.md)
+* [ES 在数据量很大的情况下（数十亿级别）如何提高查询效率啊？](./docs/high-concurrency/es-optimizing-query-performance.md)
+* [ES 生产集群的部署架构是什么？每个索引的数据量大概有多少？每个索引大概有多少个分片？](./docs/high-concurrency/es-production-cluster.md)
 
 ### 缓存
 
@@ -51,7 +51,7 @@
 * [如何保证 Redis 高并发、高可用？Redis 的主从复制原理能介绍一下么？Redis 的哨兵原理能介绍一下么？](./docs/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.md)
 * [Redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？](./docs/high-concurrency/redis-persistence.md)
 * [Redis 集群模式的工作原理能说一下么？在集群模式下，Redis 的 key 是如何寻址的？分布式寻址都有哪些算法？了解一致性 hash 算法吗？如何动态增加和删除一个节点？](./docs/high-concurrency/redis-cluster.md)
-* [了解什么是 redis 的雪崩、穿透和击穿？Redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 Redis 的穿透？](./docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
+* [了解什么是 Redis 的雪崩、穿透和击穿？Redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 Redis 的穿透？](./docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
 * [如何保证缓存与数据库的双写一致性？](./docs/high-concurrency/redis-consistence.md)
 * [Redis 的并发竞争问题是什么？如何解决这个问题？了解 Redis 事务的 CAS 方案吗？](./docs/high-concurrency/redis-cas.md)
 * [生产环境中的 Redis 是怎么部署的？](./docs/high-concurrency/redis-production-environment.md)
