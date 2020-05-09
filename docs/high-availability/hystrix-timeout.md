@@ -5,7 +5,7 @@
 
 Peter Steiner 说过，"[On the Internet, nobody knows you're a dog](https://en.wikipedia.org/wiki/On_the_Internet,_nobody_knows_you%27re_a_dog)"，也就是说在互联网的另外一头，你都不知道甚至坐着一条狗。
 
-![220px-Internet_dog.jpg](/images/220px-Internet_dog.jpg)
+![220px-Internet_dog.jpg](./images/220px-Internet_dog.jpg)
 
 像特别复杂的分布式系统，特别是在大公司里，多个团队、大型协作，你可能都不知道服务是谁的，很可能说开发服务的那个哥儿们甚至是一个实习生。依赖服务的接口性能可能很不稳定，有时候 2ms，有时候 200ms，甚至 2s，都有可能。
 

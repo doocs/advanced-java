@@ -2,20 +2,26 @@
 dubbo 负载均衡策略和集群容错策略都有哪些？动态代理策略呢？
 
 ## 面试官心理分析
+
 继续深问吧，这些都是用 dubbo 必须知道的一些东西，你得知道基本原理，知道序列化是什么协议，还得知道具体用 dubbo 的时候，如何负载均衡，如何高可用，如何动态代理。
 
 说白了，就是看你对 dubbo 熟悉不熟悉：
-- dubbo 工作原理：服务注册、注册中心、消费者、代理通信、负载均衡；
-- 网络通信、序列化：dubbo 协议、长连接、NIO、hessian 序列化协议；
-- 负载均衡策略、集群容错策略、动态代理策略：dubbo 跑起来的时候一些功能是如何运转的？怎么做负载均衡？怎么做集群容错？怎么生成动态代理？
-- dubbo SPI 机制：你了解不了解 dubbo 的 SPI 机制？如何基于 SPI 机制对 dubbo 进行扩展？
+
+* dubbo 工作原理：服务注册、注册中心、消费者、代理通信、负载均衡；
+* 网络通信、序列化：dubbo 协议、长连接、NIO、hessian 序列化协议；
+* 负载均衡策略、集群容错策略、动态代理策略：dubbo 跑起来的时候一些功能是如何运转的？怎么做负载均衡？怎么做集群容错？怎么生成动态代理？
+* dubbo SPI 机制：你了解不了解 dubbo 的 SPI 机制？如何基于 SPI 机制对 dubbo 进行扩展？
 
 ## 面试题剖析
-### dubbo 负载均衡策略
-#### random loadbalance
-默认情况下，dubbo 是 random load balance ，即**随机**调用实现负载均衡，可以对 provider 不同实例**设置不同的权重**，会按照权重来负载均衡，权重越大分配流量越高，一般就用这个默认的就可以了。
 
-#### roundrobin loadbalance
+### dubbo 负载均衡策略
+
+#### RandomLoadBalance
+
+默认情况下，dubbo 是 RandomLoadBalance ，即**随机**调用实现负载均衡，可以对 provider 不同实例**设置不同的权重**，会按照权重来负载均衡，权重越大分配流量越高，一般就用这个默认的就可以了。
+
+#### RoundRobinLoadBalance
+
 这个的话默认就是均匀地将流量打到各个机器上去，但是如果各个机器的性能不一样，容易导致性能差的机器负载过高。所以此时需要调整权重，让性能差的机器承载权重小一些，流量少一些。
 
 举个栗子。
@@ -24,62 +30,75 @@ dubbo 负载均衡策略和集群容错策略都有哪些？动态代理策略�
 
 这个时候，可以给两台 8 核 16G 的机器设置权重 4，给剩余 1 台 4 核 8G 的机器设置权重 2。
 
-#### leastactive loadbalance
+#### LeastActiveLoadBalance
+
 这个就是自动感知一下，如果某个机器性能越差，那么接收的请求越少，越不活跃，此时就会给**不活跃的性能差的机器更少的请求**。
 
-#### consistanthash loadbalance
+#### ConsistentHashLoadBalance
+
 一致性 Hash 算法，相同参数的请求一定分发到一个 provider 上去，provider 挂掉的时候，会基于虚拟节点均匀分配剩余的流量，抖动不会太大。**如果你需要的不是随机负载均衡**，是要一类请求都到一个节点，那就走这个一致性 Hash 策略。
 
+> 关于 dubbo 负载均衡策略更加详细的描述，可以查看官网 http://dubbo.apache.org/zh-cn/docs/source_code_guide/loadbalance.html 。
+
 ### dubbo 集群容错策略
-#### failover cluster 模式
+
+#### Failover Cluster 模式
 失败自动切换，自动重试其他机器，**默认**就是这个，常见于读操作。（失败重试其它机器）
 
 可以通过以下几种方式配置重试次数：
 
-```xml
+``` xml
 <dubbo:service retries="2" />
 ```
 
 或者
 
-```xml
+``` xml
 <dubbo:reference retries="2" />
 ```
 
 或者
 
-```xml
+``` xml
 <dubbo:reference>
     <dubbo:method name="findFoo" retries="2" />
 </dubbo:reference>
 ```
 
-#### failfast cluster 模式
+#### Failfast Cluster 模式
+
 一次调用失败就立即失败，常见于非幂等性的写操作，比如新增一条记录（调用失败就立即失败）
 
-#### failsafe cluster 模式
+#### Failsafe Cluster 模式
+
 出现异常时忽略掉，常用于不重要的接口调用，比如记录日志。
 
 配置示例如下：
 
-```xml
+``` xml
 <dubbo:service cluster="failsafe" />
 ```
 
 或者
 
-```xml
+``` xml
 <dubbo:reference cluster="failsafe" />
 ```
 
-#### failback cluster 模式
+#### Failback Cluster 模式
+
 失败了后台自动记录请求，然后定时重发，比较适合于写消息队列这种。
 
-#### forking cluster 模式
+#### Forking Cluster 模式
+
 **并行调用**多个 provider，只要一个成功就立即返回。常用于实时性要求比较高的读操作，但是会浪费更多的服务资源，可通过 `forks="2"` 来设置最大并行数。
 
-#### broadcacst cluster
-逐个调用所有的 provider。任何一个 provider 出错则报错（从`2.1.0` 版本开始支持）。通常用于通知所有提供者更新缓存或日志等本地资源信息。
+#### Broadcast Cluster 模式
 
-### dubbo动态代理策略
+逐个调用所有的 provider。任何一个 provider 出错则报错（从 `2.1.0` 版本开始支持）。通常用于通知所有提供者更新缓存或日志等本地资源信息。
+
+> 关于 dubbo 集群容错策略更加详细的描述，可以查看官网 http://dubbo.apache.org/zh-cn/docs/source_code_guide/cluster.html 。
+
+### dubbo 动态代理策略
+
 默认使用 javassist 动态字节码生成，创建代理类。但是可以通过 spi 扩展机制配置自己的动态代理策略。
