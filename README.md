@@ -142,6 +142,7 @@
 * [从单体式架构迁移到微服务架构](./docs/micro-services/migrating-from-a-monolithic-architecture-to-a-microservices-architecture.md)
 * [微服务的事件驱动数据管理](./docs/micro-services/event-driven-data-management-for-microservices.md)
 * [选择微服务部署策略](./docs/micro-services/choose-microservice-deployment-strategy.md)
+* [微服务架构的优势与不足](./docs/micro-services/advantages-and-disadvantages-of-microservice.md)
 
 ### Spring Cloud 微服务架构
 
