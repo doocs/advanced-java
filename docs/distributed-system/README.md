@@ -16,6 +16,7 @@
 * [分布式服务接口的幂等性如何设计（比如不能重复扣款）？](/docs/distributed-system/distributed-system-idempotency.md)
 * [分布式服务接口请求的顺序性如何保证？](/docs/distributed-system/distributed-system-request-sequence.md)
 * [如何自己设计一个类似 Dubbo 的 RPC 框架？](/docs/distributed-system/dubbo-rpc-design.md)
+* [CAP定理的P是什么](/docs/distributed-system/distributed-system-cap.md)
 
 ## 分布式锁
 
