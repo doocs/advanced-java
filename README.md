@@ -14,9 +14,9 @@
 [![PRs Welcome](https://badgen.net/badge/PRs/welcome/green)](http://makeapullrequest.com)
 [![doocs](https://badgen.net/badge/organization/join%20us/green)](https://doocs.github.io/#/?id=how-to-join)
 
-本项目大部分内容来自中华石杉，版权归作者所有，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)、[海量数据处理](#海量数据处理)等领域知识。我([@yanglbme](https://github.com/yanglbme))对这部分知识做了一个系统的整理，方便学习查阅。
+本项目大部分内容来自中华石杉，版权归作者所有，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)、[海量数据处理](#海量数据处理)等领域知识。[我](https://github.com/yanglbme)对这部分知识做了一个系统的整理，方便学习查阅。
 
-学习之前，先来看看 [Issues 讨论区](https://github.com/doocs/advanced-java/issues/9#issue-394275038)的技术面试官是怎么说的吧。本项目也欢迎各位开发者朋友到 [Issues 讨论区](https://github.com/doocs/advanced-java/issues)分享自己的一些想法和实践经验。
+学习之前，先来看看 [Issues 讨论区](https://github.com/doocs/advanced-java/issues/9#issue-394275038)的技术面试官是怎么说的吧。本项目也欢迎各位开发者朋友到 Issues 讨论区分享自己的一些想法和实践经验。
 
 * Netlify: https://adjava.netlify.app
 * Gitee Pages: https://doocs.gitee.io/advanced-java
@@ -181,24 +181,3 @@
 <a href="https://opencollective.com/doocs/contributors.svg?width=890&button=true"><img src="https://opencollective.com/doocs/contributors.svg?width=890&button=false" /></a>
 
 <!-- ALL-CONTRIBUTORS-LIST: END -->
-
-## 公众号
-
-GitHub 技术社区 [Doocs](https://github.com/doocs) 旗下唯一公众号「**Doocs开源社区**」​，欢迎扫码关注，**专注分享技术领域相关知识及行业最新资讯**。当然，也可以加我个人微信（备注：GitHub），拉你进技术交流群。
-
-<table>
-    <tr>
-      <td align="center" style="width: 200px;">
-        <a href="https://github.com/doocs">
-          <img src="./images/qrcode-for-doocs.jpg" style="width: 400px;"><br>
-          <sub>公众平台</sub>
-        </a><br>
-      </td>
-      <td align="center" style="width: 200px;">
-        <a href="https://github.com/yanglbme">
-          <img src="./images/qrcode-for-yanglbme.jpg" style="width: 400px;"><br>
-          <sub>个人微信</sub>
-        </a><br>
-      </td>
-    </tr>
-</table>
