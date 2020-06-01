@@ -181,3 +181,26 @@
 <a href="https://opencollective.com/doocs/contributors.svg?width=890&button=true"><img src="https://opencollective.com/doocs/contributors.svg?width=890&button=false" /></a>
 
 <!-- ALL-CONTRIBUTORS-LIST: END -->
+
+---
+
+## 公众号
+
+GitHub 技术社区 [Doocs](https://github.com/doocs) 旗下唯一公众号「**Doocs开源社区**」​，欢迎扫码关注，**专注分享技术领域相关知识及行业最新资讯**。当然，也可以加我个人微信（备注：GitHub），拉你进技术交流群。
+
+<table>
+    <tr>
+      <td align="center" style="width: 200px;">
+        <a href="https://github.com/doocs">
+          <img src="./images/qrcode-for-doocs.jpg" style="width: 400px;"><br>
+          <sub>公众平台</sub>
+        </a><br>
+      </td>
+      <td align="center" style="width: 200px;">
+        <a href="https://github.com/yanglbme">
+          <img src="./images/qrcode-for-yanglbme.jpg" style="width: 400px;"><br>
+          <sub>个人微信</sub>
+        </a><br>
+      </td>
+    </tr>
+</table>

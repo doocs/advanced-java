@@ -87,7 +87,9 @@
             }
             const edit = en ? 'Edit on GitHub' : '在 GitHub 编辑'
             const editHtml = `[:memo: ${edit}](${url})\n`
-
+            if (vm.route.path == '/') {
+              return editHtml + content;
+            }
             const subscription = `
 ## 公众号
 
@@ -110,7 +112,6 @@ GitHub 技术社区 [Doocs](https://github.com/doocs) 旗下唯一公众号「**
     </tr>
 </table>
             `
-
             return editHtml + content + `\n` + subscription
           })
 
