@@ -6,6 +6,8 @@
 
 > **Asynchronous (异步)**: A business transaction done over multiple HTTP request/response exchanges, which means that the initial HTTP response **does not provide all data and associated resources resulting from the transaction**, such data and resources **can be obtained in subsequent interactions**.
 
+---
+
 ### **问题域**
 
 **HTTP 是一个同步协议：**
@@ -19,6 +21,8 @@
 
 - **复杂的服务编排**， 比如一个请求需要通过**调用多个 downstream 系统来更新或者创建一个资源**（一个 long running 的 http 连接，可能会影响 web server 的性能或者 API gateway 的性能）。
 - **系统的可用性和稳定性**， 比如一个后端系统，响应非常的慢，不稳定，甚至不可用（一个请求响应时间长短，直接影响到用户体验和转化率）。
+
+---
 
 ### **方法域**
 
@@ -35,6 +39,8 @@
 
 ![orchestration and choreography](./images/async-notification.webp)
 
+---
+
 ### **什么时候使用异步呢？**
 
 1. **根据HTTP操作来判断：**
@@ -50,6 +56,8 @@
 - 如果你的 API 操作，小于1秒，则可以选择同步。  
 
     P.S: 关于响应时间，根据用户行为调查，发现用户在等待大约5秒左右，就会失去耐心; 关于 HTTP Client 的 timeout 设置，浏览器，客户端 JS 库，服务器端 http client 库，他们的 timeout 设置都不一样，从20s到几分钟都有。
+
+---
 
 ### **辅助决策树**
 
