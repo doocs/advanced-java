@@ -64,7 +64,7 @@
           '/docs/high-concurrency/',
           '/docs/distributed-system/',
           '/docs/high-availability/',
-          '/docs/micor-services/',
+          '/docs/micro-services/',
           '/docs/big-data/',
         ],
         depth: 3
@@ -85,8 +85,12 @@
             } else {
               url = 'https://github.com/doocs/advanced-java/blob/master/' + vm.route.file
             }
-            const edit = en ? 'Edit on GitHub' : '在 GitHub 编辑'
-            const editHtml = `[:memo: ${edit}](${url})\n`
+
+            const github = `[GitHub](${url})`
+            const gitee = `[Gitee](${url.replace("github", "gitee")})`
+            
+            const editHtml = en ? `:memo: 在 ${github} / ${gitee} 编辑\n` : `:memo: Edit on ${github} / ${gitee}\n`;
+
             if (vm.route.path == '/') {
               return editHtml + content;
             }
