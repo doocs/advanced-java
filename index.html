@@ -89,7 +89,7 @@
             const github = `[GitHub](${url})`
             const gitee = `[Gitee](${url.replace("github", "gitee")})`
             
-            const editHtml = en ? `:memo: 在 ${github} / ${gitee} 编辑\n` : `:memo: Edit on ${github} / ${gitee}\n`;
+            const editHtml = en ? `:memo: Edit on ${github} / ${gitee}\n` : `:memo: 在 ${github} / ${gitee} 编辑\n`;
 
             if (vm.route.path == '/') {
               return editHtml + content;
