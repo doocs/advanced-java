@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>互联网 Java 工程师进阶知识完全扫盲</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="keywords" content="doc,docs,doocs,documentation,github,gitee,advanced-java,yanglbme">
   <meta name="description" content="互联网 Java 工程师进阶知识完全扫盲，项目维护者：杨立滨">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//unpkg.com/docsify-dark-mode@0.6.1/dist/style.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 </head>
+
 <body>
   <nav>
     <ul>
@@ -20,7 +24,7 @@
           <li><a href="#/?id=分布式系统">分布式</a></li>
           <li><a href="#/?id=高可用架构">高可用</a></li>
           <li><a href="#/?id=微服务架构">微服务</a></li>
-          <li><a href="#/docs/from-readers/README">读者说</a></li>
+          <li><a href="#/?id=海量数据处理">海量数据</a></li>
         </ul>
       </li>
       <li>页面
@@ -29,12 +33,10 @@
           <li><a href="#/README">首页</a></li>
           <li><a href="#/docs/extra-page/advanced">进阶</a></li>
           <li><a href="#/docs/extra-page/offer">Offer</a></li>
-          <li><a href="https://github.com/doocs" target="_blank">Doocs</a></li>
-          <li><a href="https://github.com/yanglbme" target="_blank">Author</a></li>
         </ul>
       </li>
     </ul>
-    
+
   </nav>
   <div id="app">本系列知识由 Doocs 开源社区总结发布</div>
   <script>
@@ -45,19 +47,84 @@
       auto2top: true,
       coverpage: true,
       coverpage: 'docs/extra-page/cover.md',
-      search: [
-        '/'
-      ],
+      loadSidebar: 'summary.md',
+      alias: {
+        '/.*/.*/summary': 'summary.md',
+        '/.*/summary.md': 'summary.md'
+      },
+      pagination: {
+        previousText: '上一篇',
+        nextText: '下一篇',
+        crossChapter: true,
+        crossChapterText: true
+      },
+      search: {
+        maxAge: 1800000,
+        paths: [
+          '/docs/high-concurrency/',
+          '/docs/distributed-system/',
+          '/docs/high-availability/',
+          '/docs/micro-services/',
+          '/docs/big-data/',
+        ],
+        depth: 3
+      },
+      darkMode: {
+        light: {
+          toggleBtnBg: '#42b983'
+        }
+      },
       plugins: [
-        function (hook) {
-          var footer = [
-            '<hr/>',
-            '<footer>',
-            '<span>Copyright © 2018-2019 <a href="https://github.com/doocs" target="_blank">Doocs</a>. All rights reserved.</span><br>Welcome to join the <a href="https://github.com/doocs/intro" target="_blank">Doocs Open Source organization</a>.',
-            '</footer>'
-          ].join('')
+        function (hook, vm) {
+          hook.beforeEach(function (content) {
+            const en = vm.route.file.indexOf('README_EN') > -1
+            if (/githubusercontent\.com/.test(vm.route.file)) {
+              url = vm.route.file
+                .replace('raw.githubusercontent.com', 'github.com')
+                .replace(/\/master/, '/blob/master')
+            } else {
+              url = 'https://github.com/doocs/advanced-java/blob/master/' + vm.route.file
+            }
+
+            const github = `[GitHub](${url})`
+            const gitee = `[Gitee](${url.replace("github", "gitee")})`
+            
+            const editHtml = en ? `:memo: Edit on ${github} / ${gitee}\n` : `:memo: 在 ${github} / ${gitee} 编辑\n`;
+
+            if (vm.route.path == '/') {
+              return editHtml + content;
+            }
+            const subscription = `
+## 公众号
+
+[Doocs](https://github.com/doocs) 技术社区旗下唯一公众号「**Doocs开源社区**」​，欢迎扫码关注，**专注分享技术领域相关知识及业内最新资讯**。当然，也可以加我个人微信（备注：GitHub），拉你进技术交流群。
+
+<table>
+    <tr>
+      <td align="center" style="width: 200px;">
+        <a href="https://github.com/doocs">
+          <img src="./images/qrcode-for-doocs.jpg" style="width: 400px;"><br>
+          <sub>公众平台</sub>
+        </a><br>
+      </td>
+      <td align="center" style="width: 200px;">
+        <a href="https://github.com/yanglbme">
+          <img src="./images/qrcode-for-yanglbme.jpg" style="width: 400px;"><br>
+          <sub>个人微信</sub>
+        </a><br>
+      </td>
+    </tr>
+</table>
+            `
+            return editHtml + content + `\n` + subscription
+          })
 
           hook.afterEach(function (html) {
+            const footer = [
+              '<footer>',
+              '<span>Copyright © 2018-2020 <a href="https://github.com/doocs" target="_blank">Doocs</a>. All rights reserved.',
+              '</footer>'
+            ].join('')
             return html + footer
           })
         }
@@ -75,5 +142,8 @@
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/emoji.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.js"></script>
+  <script src="//unpkg.com/docsify-dark-mode@0.6.1/dist/index.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
+
 </html>
