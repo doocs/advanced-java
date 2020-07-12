@@ -2,17 +2,17 @@
 
 [![actions status](https://github.com/doocs/advanced-java/workflows/Sync/badge.svg)](https://github.com/doocs/advanced-java/actions)
 [![license](https://badgen.net/github/license/doocs/advanced-java?color=green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
-[![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/orange)](https://github.com/doocs/advanced-java)
-[![wechat-group](https://badgen.net/badge/chat/%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81/138c7b)](#公众号)
-[![reading](https://badgen.net/badge/books/read%20together/cyan)](https://github.com/doocs/technical-books)
-[![coding](https://badgen.net/badge/leetcode/coding%20together/cyan)](https://github.com/doocs/leetcode)
-[![notice](https://badgen.net/badge/notice/%E7%BB%B4%E6%9D%83%E8%A1%8C%E5%8A%A8/red)](/docs/extra-page/rights-defending-action.md)
-[![stars](https://badgen.net/github/stars/doocs/advanced-java)](https://github.com/doocs/advanced-java/stargazers)
-[![contributors](https://badgen.net/github/contributors/doocs/advanced-java)](https://github.com/doocs/advanced-java/tree/master/docs/from-readers#contributors)
-[![help-wanted](https://badgen.net/github/label-issues/doocs/advanced-java/help%20wanted/open)](https://github.com/doocs/advanced-java/labels/help%20wanted)
-[![issues](https://badgen.net/github/open-issues/doocs/advanced-java)](https://github.com/doocs/advanced-java/issues)
 [![PRs Welcome](https://badgen.net/badge/PRs/welcome/green)](http://makeapullrequest.com)
 [![doocs](https://badgen.net/badge/organization/join%20us/green)](https://doocs.github.io/#/?id=how-to-join)
+[![stars](https://badgen.net/github/stars/doocs/advanced-java)](https://github.com/doocs/advanced-java/stargazers)
+[![forks](https://badgen.net/github/forks/doocs/advanced-java)](https://github.com/doocs/advanced-java/network/members)
+[![contributors](https://badgen.net/github/contributors/doocs/advanced-java)](https://github.com/doocs/advanced-java/tree/master/docs/from-readers#contributors)
+[![issues](https://badgen.net/github/open-issues/doocs/advanced-java)](https://github.com/doocs/advanced-java/issues)
+[![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/red)](https://github.com/doocs/advanced-java)
+[![notice](https://badgen.net/badge/notice/%E7%BB%B4%E6%9D%83%E8%A1%8C%E5%8A%A8/red)](/docs/extra-page/rights-defending-action.md)
+[![wechat-group](https://badgen.net/badge/chat/%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81/cyan)](#公众号)
+[![coding](https://badgen.net/badge/leetcode/%e4%b8%80%e8%b5%b7%e5%88%b7%e9%a2%98/cyan)](https://github.com/doocs/leetcode)
+
 
 本项目大部分内容来自中华石杉，版权归作者所有，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)、[海量数据处理](#海量数据处理)等领域知识。[我](https://github.com/yanglbme)对这部分知识做了一个系统的整理，方便学习查阅。
 
@@ -88,7 +88,7 @@
 * [分布式服务接口的幂等性如何设计（比如不能重复扣款）？](./docs/distributed-system/distributed-system-idempotency.md)
 * [分布式服务接口请求的顺序性如何保证？](./docs/distributed-system/distributed-system-request-sequence.md)
 * [如何自己设计一个类似 Dubbo 的 RPC 框架？](./docs/distributed-system/dubbo-rpc-design.md)
-* [CAP定理的P是什么](./docs/distributed-system/distributed-system-cap.md)
+* [CAP 定理的 P 是什么？](./docs/distributed-system/distributed-system-cap.md)
 
 ### 分布式锁
 
