@@ -11,7 +11,7 @@
 [![original](https://badgen.net/badge/original/%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89/red)](https://github.com/doocs/advanced-java)
 [![notice](https://badgen.net/badge/notice/%E7%BB%B4%E6%9D%83%E8%A1%8C%E5%8A%A8/red)](/docs/extra-page/rights-defending-action.md)
 [![wechat-group](https://badgen.net/badge/chat/%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81/cyan)](#公众号)
-[![coding](https://badgen.net/badge/leetcode/%e4%b8%80%e8%b5%b7%e5%88%b7%e9%a2%98/cyan)](https://github.com/doocs/leetcode)
+[![coding](https://badgen.net/badge/leetcode/%E5%88%B7%E9%A2%98%E5%B0%8F%E9%98%9F/cyan)](https://github.com/doocs/leetcode)
 
 
 本项目大部分内容来自中华石杉，版权归作者所有，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)、[海量数据处理](#海量数据处理)等领域知识。[我](https://github.com/yanglbme)对这部分知识做了一个系统的整理，方便学习查阅。
@@ -192,7 +192,7 @@ Doocs 技术社区，致力于打造一个内容完整、持续成长的互联�
 
 <!-- ALL-CONTRIBUTORS-LIST: START - Do not remove or modify this section -->
 
-<a href="https://opencollective.com/doocs/contributors.svg?width=890&button=true"><img src="https://opencollective.com/doocs/contributors.svg?width=890&button=false" /></a>
+<a href="https://opencollective.com/doocs/contributors.svg?width=890&button=true"><img src="https://opencollective.com/doocs/contributors.svg?width=1080&button=false" /></a>
 
 <!-- ALL-CONTRIBUTORS-LIST: END -->
 
