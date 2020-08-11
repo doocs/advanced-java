@@ -18,11 +18,11 @@
 
 REST 请求在微服务中是最为常用的一种通讯方式, 它依赖于 HTTP\HTTPS 协议。RESTFUL 的特点是：
 
-1\. 每一个 URI 代表 1 种资源
-2\. 客户端使用 GET、POST、PUT、DELETE 4 个表示操作方式的动词对服务端资源进行操作:  GET 用来获取资源, POST 用来新建资源\(也可以用于更新资源\), PUT 用来更新资源, DELETE 用来删除资源
-3\. 通过操作资源的表现形式来操作资源
-4\. 资源的表现形式是 XML 或者 HTML
-5\. 客户端与服务端之间的交互在请求之间是无状态的,从客户端到服务端的每个请求都必须包含理解请求所必需的信息
+1. 每一个 URI 代表 1 种资源
+2. 客户端使用 GET、POST、PUT、DELETE 4 个表示操作方式的动词对服务端资源进行操作:  GET 用来获取资源, POST 用来新建资源（也可以用于更新资源）, PUT 用来更新资源, DELETE 用来删除资源
+3. 通过操作资源的表现形式来操作资源
+4. 资源的表现形式是 XML 或者 HTML
+5. 客户端与服务端之间的交互在请求之间是无状态的,从客户端到服务端的每个请求都必须包含理解请求所必需的信息
 
 举个例子，有一个服务方提供了如下接口：
 
@@ -90,7 +90,6 @@ import java.util.concurrent.Executors;
 
 /**
  * RPC 服务端用来注册远程方法的接口和实现类
- * @Date: 2019-11-04
  */
 public class RPCServer {
     private static ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
@@ -195,7 +194,6 @@ import java.net.Socket;
 
 /**
  * RPC 客户端
- * @Date: 2019-11-04
  */
 public class RPCclient<T> {
     /**
@@ -265,9 +263,7 @@ import com.huifer.admin.rpc.TinterfaceImpl;
 
 import java.net.InetSocketAddress;
 
-/**
- * @Date: 2019-11-04
- */
+
 public class RunTest {
     public static void main(String[] args) {
         new Thread(new Runnable() {
@@ -292,5 +288,4 @@ public class RunTest {
 
 #### 消息中间件
 
-> 常见的消息中间件有 Kafka、ActiveMQ、RabbitMQ、RocketMQ , 常见的协议有AMQP、MQTTP、STOMP、XMPP. 这里不对消息队列进行拓展了, 具体如何使用还是请移步官网.
->
+常见的消息中间件有 Kafka、ActiveMQ、RabbitMQ、RocketMQ , 常见的协议有 AMQP、MQTTP、STOMP、XMPP。这里不对消息队列进行拓展了，具体如何使用还是请移步官网。
