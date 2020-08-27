@@ -1,4 +1,5 @@
 - 高并发架构
+
     - [消息队列](./docs/high-concurrency/mq-interview.md)
         - [为什么使用消息队列？](./docs/high-concurrency/why-mq.md)
         - [如何保证消息队列的高可用？](./docs/high-concurrency/how-to-ensure-high-availability-of-message-queues.md)
@@ -9,10 +10,10 @@
         - [如何设计一个消息队列？](./docs/high-concurrency/mq-design.md)
 
     - [搜索引擎](./docs/high-concurrency/es-introduction.md)
-        - [es 的分布式架构原理是什么？](./docs/high-concurrency/es-architecture.md)
-        - [es 写入数据的工作原理是什么？](./docs/high-concurrency/es-write-query-search.md)
-        - [es 在数十亿级别数量下如何提高查询效率？](./docs/high-concurrency/es-optimizing-query-performance.md)
-        - [es 生产集群的部署架构是什么？](./docs/high-concurrency/es-production-cluster.md)
+        - [ES 的分布式架构原理是什么？](./docs/high-concurrency/es-architecture.md)
+        - [ES 写入数据的工作原理是什么？](./docs/high-concurrency/es-write-query-search.md)
+        - [ES 在数十亿级别数量下如何提高查询效率？](./docs/high-concurrency/es-optimizing-query-performance.md)
+        - [ES 生产集群的部署架构是什么？](./docs/high-concurrency/es-production-cluster.md)
 
     - 缓存
         - [在项目中缓存是如何使用的？](./docs/high-concurrency/why-cache.md)
@@ -22,7 +23,7 @@
         - [如何保证 Redis 高并发、高可用？](./docs/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.md)
         - [Redis 的持久化有哪几种方式？](./docs/high-concurrency/redis-persistence.md)
         - [Redis 集群模式的工作原理能说一下么？](./docs/high-concurrency/redis-cluster.md)
-        - [redis 的雪崩、穿透和击穿，如何应对？](./docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
+        - [Redis 的雪崩、穿透和击穿，如何应对？](./docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
         - [如何保证缓存与数据库双写一致性？](./docs/high-concurrency/redis-consistence.md)
         - [如何解决 Redis 的并发竞争问题？](./docs/high-concurrency/redis-cas.md)
         - [生产环境中的 Redis 是怎么部署的？](./docs/high-concurrency/redis-production-environment.md)
@@ -39,7 +40,7 @@
     - 高并发系统
         - [如何设计一个高并发系统？](./docs/high-concurrency/high-concurrency-design.md)
 
-- 分布式系统
+* 分布式系统
     - [面试连环炮](./docs/distributed-system/distributed-system-interview.md)
     - 系统拆分
         - [为什么要进行系统拆分？](./docs/distributed-system/why-dubbo.md)
@@ -48,11 +49,12 @@
         - [说一下 Dubbo 的工作原理？](./docs/distributed-system/dubbo-operating-principle.md)
         - [Dubbo 支持哪些序列化协议？](./docs/distributed-system/dubbo-serialization-protocol.md)
         - [Dubbo 负载均衡策略和集群容错策略？](./docs/distributed-system/dubbo-load-balancing.md)
-        - [Dubbo 的 spi 思想是什么？](./docs/distributed-system/dubbo-spi.md)
+        - [Dubbo 的 SPI 思想是什么？](./docs/distributed-system/dubbo-spi.md)
         - [如何基于 Dubbo 进行服务治理？](./docs/distributed-system/dubbo-service-management.md)
         - [分布式服务接口的幂等性如何设计？](./docs/distributed-system/distributed-system-idempotency.md)
         - [分布式服务接口请求的顺序性如何保证？](./docs/distributed-system/distributed-system-request-sequence.md)
         - [如何自己设计一个类似 Dubbo 的 RPC 框架？](./docs/distributed-system/dubbo-rpc-design.md)
+        - [CAP 定理的 P 是什么？](./docs/distributed-system/distributed-system-cap.md)
 
     - 分布式锁
         - [Zookeeper 都有哪些应用场景？](./docs/distributed-system/zookeeper-application-scenarios.md)
@@ -64,7 +66,7 @@
     - 分布式会话
         - [集群分布式 Session 如何实现？](./docs/distributed-system/distributed-session.md)
 
-- 高可用架构
+* 高可用架构
     - 基于 Hystrix 实现高可用
         - [Hystrix 介绍](./docs/high-availability/hystrix-introduction.md)
         - [电商网站详情页系统架构](./docs/high-availability/e-commerce-website-detail-page-architecture.md)
@@ -92,7 +94,7 @@
     - 降级
         - 如何进行降级？
 
-- 微服务架构
+* 微服务架构
     - 微服务的一些概念
         - [关于微服务架构的描述](./docs/micro-services/microservices-introduction.md)
         - [从单体式架构迁移到微服务架构](./docs/micro-services/migrating-from-a-monolithic-architecture-to-a-microservices-architecture.md)
@@ -110,7 +112,7 @@
         - Eureka 和 Zookeeper 都可以提供服务注册与发现的功能，它们有什么区别？
         - [谈谈服务发现组件 Eureka 的主要调用过程？](/docs/micro-services/how-eureka-enable-service-discovery-and-service-registration.md)
 
-- 海量数据处理
+* 海量数据处理
     - 10 道经典的海量数据处理面试题
         - [如何从大量的 URL 中找出相同的 URL？](./docs/big-data/find-common-urls.md)
         - [如何从大量数据中找出高频词？](./docs/big-data/find-top-100-words.md)
