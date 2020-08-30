@@ -52,6 +52,10 @@
 
 GitHub 技术社区 [Doocs](https://github.com/doocs) 旗下唯一公众号「**Doocs开源社区**」​，欢迎扫码关注，**专注分享技术领域相关知识及行业最新资讯**。当然，也可以加我个人微信（备注：GitHub），拉你进技术交流群。
 
+关注「**Doocs开源社区**」公众号，回复 **PDF**，即可获取本项目离线 PDF 文档（283 页精华），学习更加方便！
+
+![](./images/pdf.png)
+
 <table>
     <tr>
       <td align="center" style="width: 200px;">
