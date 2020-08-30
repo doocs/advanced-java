@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "convert": "docsify-pdf-converter"
+  },
+  "name": "advanced-java",
+  "description": "互联网 Java 工程师进阶知识完全扫盲@doocs，https://github.com/doocs/advanced-java",
+  "version": "1.0.0",
+  "main": ".docsifytopdfrc.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doocs/advanced-java.git"
+  },
+  "author": "yanglbme",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/doocs/advanced-java/issues"
+  },
+  "homepage": "https://github.com/doocs/advanced-java#readme",
+  "devDependencies": {
+    "docsify-pdf-converter": "^2.0.7"
+  }
+}
