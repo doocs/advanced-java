@@ -8,13 +8,9 @@
 第一个层面，是从**使用者**的角度。比如：
 
 - **string**
-
 - **list**
-
 - **hash**
-
 - **set**
-
 - **sorted set**
 
 这一层面也是 Redis **暴露给外部的调用接口**。
@@ -22,13 +18,9 @@
 第二个层面，是从**内部实现**的角度，属于更底层的实现。比如：
 
 - **dict**
-
 - **sds**
-
 - **ziplist**
-
 - **quicklist**
-
 - **skiplist**
 
 第一个层面的 “数据结构”，Redis的官方文档(http://redis.io/topics/data-types-intro)有详细的介绍。本文的重点在于讨论第二个层面，**Redis数据结构的内部实现**，以及**这两个层面的数据结构之间的关系**：Redis如何**通过组合第二个层面的各种基础数据结构来实现第一个层面的更高层的数据结构**。
@@ -100,41 +92,39 @@ typedef struct dict {
 
 <img src="./images/dict1.png" width="600" height="200" alt="skiplist1" align=center/>
 
-结合上面的代码和结构图，可以很清楚地看出dict的结构。一个dict由如下若干项组成：
+1. 结合上面的代码和结构图，可以很清楚地看出 dict 的结构。一个 **dict** 由如下若干项组成：
 
-- 一个指向dictType结构的指针（type）。它通过自定义的方式使得dict的key和value能够存储任何类型的数据。
+    - 一个**指向 dictType 结构的指针**（type）。它通过自定义的方式使得 dict 的 key 和 value 能够存储任何类型的数据。
 
-- 一个私有数据指针（privdata）。由调用者在创建dict的时候传进来。
+    - 一个**私有数据指针**（privdata）。由调用者在创建 dict 的时候传进来。私有数据指针（privdata）就是**在 dictType 的某些操作被调用时会传回给调用者**。
 
-- 两个哈希表（ht[2]）。只有在重哈希的过程中，ht[0]和ht[1]才都有效。而在平常情况下，只有ht[0]有效，ht[1]里面没有任何数据。上图表示的就是重哈希进行到中间某一步时的情况。
+    - **两个哈希表**（ht[2]）。**只有在重哈希的过程中，ht[0]和ht[1]才都有效**。而在平常情况下，只有 ht[0] 有效，ht[1] 里面没有任何数据。上图表示的就是重哈希进行到中间某一步时的情况。
 
-- 当前重哈希索引（rehashidx）。如果rehashidx = -1，表示当前没有在重哈希过程中；否则，表示当前正在进行重哈希，且它的值记录了当前重哈希进行到哪一步了。
+    - 当前**重哈希索引**（rehashidx）。如果 rehashidx = -1，表示当前没有在重哈希过程中；否则，表示当前正在进行重哈希，且它的值记录了**当前重哈希进行到哪一步了**。
 
-- 当前正在进行遍历的iterator的个数。这不是我们现在讨论的重点，暂时忽略。
+    - 当前正在进行遍历的 iterator 的个数。这不是我们现在讨论的重点，暂时忽略。
 
-dictType结构包含若干函数指针，用于dict的调用者对涉及key和value的各种操作进行自定义。这些操作包含：
+2. **dictType** 结构包含若干函数指针，用于 dict 的调用者对涉及 key 和 value 的各种操作进行自定义。这些操作包含：
 
-- hashFunction，对key进行哈希值计算的哈希算法。
+    - hashFunction，对 key 进行**哈希值计算**的哈希算法。
 
-- keyDup和valDup，分别定义key和value的拷贝函数，用于在需要的时候对key和value进行深拷贝，而不仅仅是传递对象指针。
+    - keyDup 和 valDup，分别定义 key 和 value 的**拷贝函数**，用于**在需要的时候对 key 和 value 进行深拷贝**，而不仅仅是传递对象指针。
 
-- keyCompare，定义两个key的比较操作，在根据key进行查找时会用到。
+    - keyCompare，定义两个 key 的**比较操作**，在**根据 key 进行查找**时会用到。
 
-- keyDestructor和valDestructor，分别定义对key和value的析构函数。
+    - keyDestructor 和 valDestructor，分别定义**对 key 和 value 的析构函数**。
 
-私有数据指针（privdata）就是在dictType的某些操作被调用时会传回给调用者。
+3. 需要详细察看的是 **dictht** 结构。它定义一个**哈希表的结构**，由如下若干项组成：
 
-需要详细察看的是dictht结构。它定义一个哈希表的结构，由如下若干项组成：
+    - 一个 dictEntry 指针数组（table）。**key 的哈希值最终映射到这个数组的某个位置上**（对应一个 bucket）。如果多个 key 映射到同一个位置，就发生了冲突，那么就拉出一个 **dictEntry 链表**。
 
-- 一个dictEntry指针数组（table）。key的哈希值最终映射到这个数组的某个位置上（对应一个bucket）。如果多个key映射到同一个位置，就发生了冲突，那么就拉出一个dictEntry链表。
+    - size：**标识 dictEntry 指针数组的长度**。它总是2的指数。
 
-- size：标识dictEntry指针数组的长度。它总是2的指数。
+    - sizemask：用于**将哈希值映射到 table 的位置索引**。它的值等于 (size-1)，比如7, 15, 31, 63，等等，也就是用二进制表示的各个 bit 全1的数字。每个 key 先经过 hashFunction 计算得到一个哈希值，然后**计算 (哈希值 & sizemask) 得到在 table 上的位置**。相当于计算取余 (哈希值 % size)。
 
-- sizemask：用于将哈希值映射到table的位置索引。它的值等于(size-1)，比如7, 15, 31, 63，等等，也就是用二进制表示的各个bit全1的数字。每个key先经过hashFunction计算得到一个哈希值，然后计算(哈希值 & sizemask)得到在table上的位置。相当于计算取余(哈希值 % size)。
+    - used：记录 dict 中**现有的数据个数**。它与 size 的比值就是**装载因子**（load factor）。**这个比值越大，哈希值冲突概率越高**。
 
-- used：记录dict中现有的数据个数。它与size的比值就是装载因子（load factor）。这个比值越大，哈希值冲突概率越高。
-
-dictEntry结构中包含k, v和指向链表下一项的next指针。k是void指针，这意味着它可以指向任何类型。v是个union，当它的值是uint64_t、int64_t或double类型时，就不再需要额外的存储，这有利于减少内存碎片。当然，v也可以是void指针，以便能存储任何类型的数据。
+4. dictEntry 结构中**包含 k, v 和指向链表下一项的 next 指针**。k 是 void 指针，这意味着它可以指向任何类型。v 是个 union，当它的值是 uint64_t、int64_t 或 double 类型时，就不再需要额外的存储，这有利于减少内存碎片。当然，v 也可以是 void 指针，以便能存储任何类型的数据。
 
 C语言的好处在于定义必须是由最底层向外的，因此我们可以看到一个明显的层次变化，于是笔者又画一图来展现具体的层次概念：
 
