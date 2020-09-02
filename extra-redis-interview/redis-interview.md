@@ -12,9 +12,9 @@
 
 ## **III. Redis的SDS和C中字符串相比有什么优势？**
 
-在C语言中使用N+1长度的字符数组来表示字符串，尾部使用'\0'作为结尾标志，对于此种实现无法满足Redis对于安全性、效率、丰富的功能的要求，因此Redis单独封装了SDS简单动态字符串结构。
+在C语言中使用 **N+1 长度**的字符数组来表示字符串，**尾部使用 '\0' 作为结尾标志**，对于此种实现无法满足 Redis 对于安全性、效率、丰富的功能的要求，因此 Redis 单独封装了 SDS 简单动态字符串结构。
 
-<img src="./images/redis01.png" width="700" height="200" alt="skiplist1" align=center/>
+<img src="./images/redis01.png" width="700" height="200" alt="redis01" align=center/>
 
 从图中可以知道sds本质分为三部分：header、buf、null结尾符，其中header可以认为是整个sds的指引部分，给定了使用的空间大小、最大分配大小等信息，再用一张网上的图来清晰看下sdshdr8的实例：
 
