@@ -57,6 +57,7 @@
 * [Redis 都有哪些数据类型？分别在哪些场景下使用比较合适？](./docs/high-concurrency/redis-data-types.md)
 * [Redis 的过期策略都有哪些？手写一下 LRU 代码实现？](./docs/high-concurrency/redis-expiration-policies-and-lru.md)
 * [如何保证 Redis 高并发、高可用？Redis 的主从复制原理能介绍一下么？Redis 的哨兵原理能介绍一下么？](./docs/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.md)
+* [Redis 主从架构是怎样的？](./docs/high-concurrency/redis-master-slave.md)
 * [Redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？](./docs/high-concurrency/redis-persistence.md)
 * [Redis 集群模式的工作原理能说一下么？在集群模式下，Redis 的 key 是如何寻址的？分布式寻址都有哪些算法？了解一致性 hash 算法吗？如何动态增加和删除一个节点？](./docs/high-concurrency/redis-cluster.md)
 * [了解什么是 Redis 的雪崩、穿透和击穿？Redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 Redis 的穿透？](./docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md)
