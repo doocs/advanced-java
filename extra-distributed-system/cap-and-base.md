@@ -119,7 +119,7 @@
 
 既然一个分布式系统无法同时满足一致性、可用性、分区容错性三个特点，所以我们就需要抛弃一样：
 
-<img src="./cap.png" width="700" height="200" alt="cap" align=center/>
+<img src="./cap.png" width="250" height="200" alt="cap" align=center/>
 
 用一张表格说明一下：
 | 选择 | 说明 |
