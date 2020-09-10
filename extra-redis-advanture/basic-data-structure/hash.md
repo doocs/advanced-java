@@ -40,9 +40,9 @@
 >
 > hset books golang "learning go programming" # 因为是更新操作，所以返回 0 
 (integer) 0
-> hget books golang "learning go programming"
-> hmset books java "effective java" python "learning python" golang "modern golang
-programming" # 批量 set 
+> hget books golang 
+> "learning go programming"
+> hmset books java "effective java" python "learning python" golang "modern golang programming" # 批量 set 
 OK
 ```
 
