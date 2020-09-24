@@ -14,9 +14,9 @@
 
 若数据总数为**偶数**，当这两个堆建好之后，**中位数就是这两个堆顶元素的平均值**。当数据总数为**奇数**时，根据两个堆的大小，**中位数一定在数据多的堆的堆顶**。
 
-``` java
+```java
 class MedianFinder {
-    
+
     private PriorityQueue<Integer> maxHeap;
     private PriorityQueue<Integer> minHeap;
 
@@ -25,14 +25,14 @@ class MedianFinder {
         maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
         minHeap = new PriorityQueue<>(Integer::compareTo);
     }
-    
+
     public void addNum(int num) {
         if (maxHeap.isEmpty() || maxHeap.peek() > num) {
             maxHeap.offer(num);
         } else {
             minHeap.offer(num);
         }
-        
+
         int size1 = maxHeap.size();
         int size2 = minHeap.size();
         if (size1 - size2 > 1) {
@@ -41,12 +41,12 @@ class MedianFinder {
             maxHeap.offer(minHeap.poll());
         }
     }
-    
+
     public double findMedian() {
         int size1 = maxHeap.size();
         int size2 = minHeap.size();
-        
-        return size1 == size2 
+
+        return size1 == size2
             ? (maxHeap.peek() + minHeap.peek()) * 1.0 / 2
             : (size1 > size2 ? maxHeap.peek() : minHeap.peek());
     }

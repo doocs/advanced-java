@@ -1,4 +1,5 @@
 ## 面试题
+
 如何保证 redis 的高并发和高可用？redis 的主从复制原理能介绍一下么？redis 的哨兵原理能介绍一下么？
 
 ## 面试官心理分析
@@ -13,8 +14,8 @@
 
 由于此节内容较多，因此，会分为两个小节进行讲解。
 
-* [redis 主从架构](/docs/high-concurrency/redis-master-slave.md)
-* [redis 基于哨兵实现高可用](/docs/high-concurrency/redis-sentinel.md)
+- [redis 主从架构](/docs/high-concurrency/redis-master-slave.md)
+- [redis 基于哨兵实现高可用](/docs/high-concurrency/redis-sentinel.md)
 
 redis 实现**高并发**主要依靠**主从架构**，一主多从，一般来说，很多项目其实就足够了，单主用来写入数据，单机几万 QPS，多从用来查询数据，多个从实例可以提供每秒 10w 的 QPS。
 

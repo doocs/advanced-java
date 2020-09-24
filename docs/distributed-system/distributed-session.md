@@ -1,4 +1,5 @@
 ## 面试题
+
 集群部署时的分布式 Session 如何实现？
 
 ## 面试官心理分析
@@ -25,11 +26,11 @@ Session 是啥？浏览器有个 Cookie，在一段时间内这个 Cookie 都存
 
 ### Tomcat + Redis
 
-这个其实还挺方便的，就是使用 Session 的代码，跟以前一样，还是基于 Tomcat 原生的 Session 支持即可，然后就是用一个叫做 `Tomcat  RedisSessionManager` 的东西，让所有我们部署的 Tomcat 都将 Session 数据存储到 Redis 即可。
+这个其实还挺方便的，就是使用 Session 的代码，跟以前一样，还是基于 Tomcat 原生的 Session 支持即可，然后就是用一个叫做 `Tomcat RedisSessionManager` 的东西，让所有我们部署的 Tomcat 都将 Session 数据存储到 Redis 即可。
 
 在 Tomcat 的配置文件中配置：
 
-``` xml
+```xml
 <Valve className="com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve" />
 
 <Manager className="com.orangefunction.tomcat.redissessions.RedisSessionManager"
@@ -37,7 +38,7 @@ Session 是啥？浏览器有个 Cookie，在一段时间内这个 Cookie 都存
          port="{redis.port}"
          database="{redis.dbnum}"
          maxInactiveInterval="60"/>
-```         
+```
 
 然后指定 Redis 的 host 和 port 就 ok 了。
 
@@ -61,7 +62,7 @@ Session 是啥？浏览器有个 Cookie，在一段时间内这个 Cookie 都存
 
 在 pom.xml 中配置：
 
-``` xml
+```xml
 <dependency>
   <groupId>org.springframework.session</groupId>
   <artifactId>spring-session-data-redis</artifactId>
@@ -76,7 +77,7 @@ Session 是啥？浏览器有个 Cookie，在一段时间内这个 Cookie 都存
 
 在 Spring 配置文件中配置：
 
-``` xml
+```xml
 <bean id="redisHttpSessionConfiguration"
      class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
     <property name="maxInactiveIntervalInSeconds" value="600"/>
@@ -100,7 +101,7 @@ Session 是啥？浏览器有个 Cookie，在一段时间内这个 Cookie 都存
 
 在 web.xml 中配置：
 
-``` xml
+```xml
 <filter>
     <filter-name>springSessionRepositoryFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -113,7 +114,7 @@ Session 是啥？浏览器有个 Cookie，在一段时间内这个 Cookie 都存
 
 示例代码：
 
-``` java
+```java
 @RestController
 @RequestMapping("/test")
 public class TestController {

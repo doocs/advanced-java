@@ -1,6 +1,6 @@
 # 微服务
 
-> 翻译自 [Martin Fowler](https://martinfowler.com/) 网站 [Microservices](https://martinfowler.com/articles/microservices.html)  一文。文章篇幅较长，阅读需要一点耐心。<br> 本人水平有限，若有不妥之处，还请各位帮忙指正，谢谢。
+> 翻译自 [Martin Fowler](https://martinfowler.com/) 网站 [Microservices](https://martinfowler.com/articles/microservices.html) 一文。文章篇幅较长，阅读需要一点耐心。<br> 本人水平有限，若有不妥之处，还请各位帮忙指正，谢谢。
 
 过去几年中出现了“微服务架构”这一术语，它描述了将软件应用程序设计为若干个可独立部署的服务套件的特定方法。尽管这种架构风格尚未有精确的定义，但围绕业务能力、自动部署、端点智能以及语言和数据的分散控制等组织来说，它们还是存在着某些共同特征。
 
@@ -44,7 +44,7 @@
 
 在将大型应用程序拆分为多个部分时，管理层往往侧重于技术层面，从而导致 UI 团队、服务器端逻辑团队、数据库团队的划分。当团队按照这些方式分开时，即便是简单的更改也可能导致跨团队项目的时间和预算批准。一个聪明的团队将围绕这个进行优化，“两害相权取其轻”——只需将逻辑强制应用到他们可以访问的任何应用程序中。换句话说，逻辑无处不在。这是康威定律[5]的一个例子。
 
-> 任何设计系统（广义上的）的组织都会产生一种设计，其结构是组织通信结构的副本。<br> —— 梅尔文•康威，1967年
+> 任何设计系统（广义上的）的组织都会产生一种设计，其结构是组织通信结构的副本。<br> —— 梅尔文•康威，1967 年
 
 ![conways-law](./images/conways-law.png)
 
@@ -96,7 +96,7 @@ Netflix 是遵循这一理念的一个很好的例子。尤其是，以库的形
 
 对于微服务社区来说，开销特别缺乏吸引力。这并不是说社区不重视服务合约。恰恰相反，因为他们有更多的合约。只是他们正在寻找不同的方式来管理这些合约。像 [Tolerant Reader](https://martinfowler.com/bliki/TolerantReader.html) 和 [Consumer-Driven Contracts](https://martinfowler.com/articles/consumerDrivenContracts.html) 这样的模式通常被用于微服务。这些援助服务合约在独立进化。执行消费者驱动的合约作为构建的一部分，增加了信心并对服务是否在运作提供了更快的反馈。事实上，我们知道澳大利亚的一个团队用消费者驱动的合约这种模式来驱动新业务的构建。他们使用简单的工具定义服务的合约。这已变成自动构建的一部分，即使新服务的代码还没写。服务仅在满足合约的时候才被创建出来 - 这是在构建新软件时避免 "YAGNI"[9] 困境的一个优雅的方法。围绕这些成长起来的技术和工具，通过减少服务间的临时耦合，限制了中心合约管理的需要。
 
-也许去中心化治理的最高境界就是亚马逊广为流传的 build it/run it 理念。团队要对他们构建的软件的各方面负责，包括 7*24 小时的运营。这一级别的责任下放绝对是不规范的，但我们看到越来越多的公司让开发团队负起更多责任。Netflix 是采用这一理念的另一家公司[11]。每天凌晨 3 点被传呼机叫醒无疑是一个强有力的激励，使你在写代码时关注质量。这是关于尽可能远离传统的集中治理模式的一些想法。
+也许去中心化治理的最高境界就是亚马逊广为流传的 build it/run it 理念。团队要对他们构建的软件的各方面负责，包括 7\*24 小时的运营。这一级别的责任下放绝对是不规范的，但我们看到越来越多的公司让开发团队负起更多责任。Netflix 是采用这一理念的另一家公司[11]。每天凌晨 3 点被传呼机叫醒无疑是一个强有力的激励，使你在写代码时关注质量。这是关于尽可能远离传统的集中治理模式的一些想法。
 
 ### 分散数据管理
 
@@ -202,7 +202,7 @@ Guardian 网站是设计和构建成单体应用程序的一个很好的例子�
 
 12: We are being a little disengenuous here. Obviously deploying more services, in more complex topologies is more difficult than deploying a single monolith. Fortunately, patterns reduce this complexity - investment in tooling is still a must though.
 
-13: In fact, Dan North refers to this style as *Replaceable Component Architecture* rather than microservices. Since this seems to talk to a subset of the characteristics we prefer the latter.
+13: In fact, Dan North refers to this style as _Replaceable Component Architecture_ rather than microservices. Since this seems to talk to a subset of the characteristics we prefer the latter.
 
 14: Kent Beck highlights this as one his design principles in [Implementation Patterns](https://www.amazon.com/gp/product/0321413091?ie=UTF8&tag=martinfowlerc-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0321413091).
 

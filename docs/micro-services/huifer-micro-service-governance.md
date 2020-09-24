@@ -1,7 +1,7 @@
 # 微服务治理策略
 
-* Author: [HuiFer](https://github.com/huifer)
-* Description: 该文简单介绍微服务的治理策略以及应用技术
+- Author: [HuiFer](https://github.com/huifer)
+- Description: 该文简单介绍微服务的治理策略以及应用技术
 
 ## 服务的注册和发现
 
@@ -20,10 +20,14 @@
 > 解决问题: 各个服务之间的沟通桥梁
 
 > 解决方法 :
+>
 > - 同步消息
+>
 > 1. rest
 > 1. rpc
+>
 > - 异步消息
+>
 > 1. MQ
 
 ## 配置管理

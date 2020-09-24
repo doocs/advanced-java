@@ -1,4 +1,5 @@
 ## 面试题
+
 如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？
 
 ## 面试官心理分析
@@ -21,7 +22,7 @@
 
 此时可以选择用 RabbitMQ 提供的事务功能，就是生产者**发送数据之前**开启 RabbitMQ 事务 `channel.txSelect` ，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务 `channel.txRollback` ，然后重试发送消息；如果收到了消息，那么可以提交事务 `channel.txCommit` 。
 
-``` java
+```java
 // 开启事务
 channel.txSelect
 try {
@@ -50,11 +51,11 @@ channel.txCommit
 
 设置持久化有**两个步骤**：
 
-* 创建 queue 的时候将其设置为持久化<br>
+- 创建 queue 的时候将其设置为持久化<br>
 
 这样就可以保证 RabbitMQ 持久化 queue 的元数据，但是它是不会持久化 queue 里的数据的。
 
-* 第二个是发送消息的时候将消息的 `deliveryMode` 设置为 2<br>
+- 第二个是发送消息的时候将消息的 `deliveryMode` 设置为 2<br>
 
 就是将消息设置为持久化的，此时 RabbitMQ 就会将消息持久化到磁盘上去。
 
@@ -75,6 +76,7 @@ RabbitMQ 如果丢失了数据，主要是因为你消费的时候，**刚消费
 ### Kafka
 
 #### 消费端弄丢了数据
+
 唯一可能导致消费者弄丢数据的情况，就是说，你消费到了这个消息，然后消费者那边**自动提交了 offset**，让 Kafka 以为你已经消费好了这个消息，但其实你才刚准备处理这个消息，你还没处理，你自己就挂了，此时这条消息就丢咯。
 
 这不是跟 RabbitMQ 差不多吗，大家都知道 Kafka 会自动提交 offset，那么只要**关闭自动提交** offset，在处理完之后自己手动提交 offset，就可以保证数据不会丢。但是此时确实还是**可能会有重复消费**，比如你刚处理完，还没提交 offset，结果自己挂了，此时肯定会重复消费一次，自己保证幂等性就好了。
@@ -89,10 +91,10 @@ RabbitMQ 如果丢失了数据，主要是因为你消费的时候，**刚消费
 
 所以此时一般是要求起码设置如下 4 个参数：
 
-* 给 topic 设置 `replication.factor` 参数：这个值必须大于 1，要求每个 partition 必须有至少 2 个副本。
-* 在 Kafka 服务端设置 `min.insync.replicas` 参数：这个值必须大于 1，这个是要求一个 leader 至少感知到有至少一个 follower 还跟自己保持联系，没掉队，这样才能确保 leader 挂了还有一个 follower 吧。
-* 在 producer 端设置 `acks=all` ：这个是要求每条数据，必须是**写入所有 replica 之后，才能认为是写成功了**。
-* 在 producer 端设置 `retries=MAX` （很大很大很大的一个值，无限次重试的意思）：这个是**要求一旦写入失败，就无限重试**，卡在这里了。
+- 给 topic 设置 `replication.factor` 参数：这个值必须大于 1，要求每个 partition 必须有至少 2 个副本。
+- 在 Kafka 服务端设置 `min.insync.replicas` 参数：这个值必须大于 1，这个是要求一个 leader 至少感知到有至少一个 follower 还跟自己保持联系，没掉队，这样才能确保 leader 挂了还有一个 follower 吧。
+- 在 producer 端设置 `acks=all` ：这个是要求每条数据，必须是**写入所有 replica 之后，才能认为是写成功了**。
+- 在 producer 端设置 `retries=MAX` （很大很大很大的一个值，无限次重试的意思）：这个是**要求一旦写入失败，就无限重试**，卡在这里了。
 
 我们生产环境就是按照上述要求配置的，这样配置之后，至少在 Kafka broker 端就可以保证在 leader 所在 broker 发生故障，进行 leader 切换时，数据不会丢失。
 

@@ -119,7 +119,7 @@ HR
                      :        /  |"-     '
                      '           |      /
                                  `      |
-       
+
 ```
 
 [![get-up-and-study](./images/get-up-and-study.png)](https://doocs.github.io/advanced-java)

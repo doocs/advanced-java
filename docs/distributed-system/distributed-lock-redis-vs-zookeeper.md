@@ -1,4 +1,5 @@
 ## 面试题
+
 一般实现分布式锁都有哪些方式？使用 Redis 如何设计分布式锁？使用 zk 来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？
 
 ## 面试官心理分析
@@ -13,9 +14,9 @@
 
 这个分布式锁有 3 个重要的考量点：
 
-* 互斥（只能有一个客户端获取锁）
-* 不能死锁
-* 容错（只要大部分 Redis 节点创建了这把锁就可以）
+- 互斥（只能有一个客户端获取锁）
+- 不能死锁
+- 容错（只要大部分 Redis 节点创建了这把锁就可以）
 
 #### Redis 最普通的分布式锁
 
@@ -33,7 +34,7 @@ SET resource_name my_random_value PX 30000 NX
 
 释放锁就是删除 key ，但是一般可以用 `lua` 脚本删除，判断 value 一样才删除：
 
-``` lua
+```lua
 -- 删除锁的时候，找到 key 对应的 value，跟自己传过去的 value 做比较，如果是一样的才删除。
 if redis.call("get",KEYS[1]) == ARGV[1] then
     return redis.call("del",KEYS[1])
@@ -65,7 +66,7 @@ end
 
 zk 分布式锁，其实可以做的比较简单，就是某个节点尝试创建临时 znode，此时创建成功了就获取了这个锁；这个时候别的客户端来创建锁会失败，只能**注册个监听器**监听这个锁。释放锁就是删除这个 znode，一旦释放掉就会通知客户端，然后有一个等待着的客户端就可以再次重新加锁。
 
-``` java
+```java
 /**
  * ZooKeeperSession
  */
@@ -93,7 +94,7 @@ public class ZooKeeperSession {
 
     /**
      * 获取分布式锁
-     * 
+     *
      * @param productId
      */
     public Boolean acquireDistributedLock(Long productId) {
@@ -126,7 +127,7 @@ public class ZooKeeperSession {
 
     /**
      * 释放掉一个分布式锁
-     * 
+     *
      * @param productId
      */
     public void releaseDistributedLock(Long productId) {
@@ -177,7 +178,7 @@ public class ZooKeeperSession {
 
     /**
      * 获取单例
-     * 
+     *
      * @return
      */
     public static ZooKeeperSession getInstance() {
@@ -198,7 +199,7 @@ public class ZooKeeperSession {
 
 如果有一把锁，被多个人给竞争，此时多个人会排队，第一个拿到锁的人会执行，然后释放锁；后面的每个人都会去监听**排在自己前面**的那个人创建的 node 上，一旦某个人释放了锁，排在自己后面的人就会被 ZooKeeper 给通知，一旦被通知了之后，就 ok 了，自己就获取到了锁，就可以执行代码了。
 
-``` java
+```java
 public class ZooKeeperDistributedLock implements Watcher {
 
     private ZooKeeper zk;
@@ -257,17 +258,17 @@ public class ZooKeeperDistributedLock implements Watcher {
 		    // locksRoot = locks
 		    // /locks/10000000000，/locks/10000000001，/locks/10000000002
             lockNode = zk.create(locksRoot + "/" + productId, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-   
+
             // 看看刚创建的节点是不是最小的节点
 	 	    // locks：10000000000，10000000001，10000000002
             List<String> locks = zk.getChildren(locksRoot, false);
             Collections.sort(locks);
-	
+
             if(lockNode.equals(locksRoot+"/"+ locks.get(0))){
                 //如果是最小的节点,则表示取得锁
                 return true;
             }
-	
+
             //如果不是最小的节点，找到比自己小1的节点
 	  int previousLockIndex = -1;
             for(int i = 0; i < locks.size(); i++) {
@@ -276,7 +277,7 @@ public class ZooKeeperDistributedLock implements Watcher {
 		    break;
 		}
 	   }
-	   
+
 	   this.waitNode = locks.get(previousLockIndex);
         } catch (KeeperException e) {
             throw new LockException(e);
@@ -327,8 +328,8 @@ public class ZooKeeperDistributedLock implements Watcher {
 
 ### redis 分布式锁和 zk 分布式锁的对比
 
-* redis 分布式锁，其实**需要自己不断去尝试获取锁**，比较消耗性能。
-* zk 分布式锁，获取不到锁，注册个监听器即可，不需要不断主动尝试获取锁，性能开销较小。
+- redis 分布式锁，其实**需要自己不断去尝试获取锁**，比较消耗性能。
+- zk 分布式锁，获取不到锁，注册个监听器即可，不需要不断主动尝试获取锁，性能开销较小。
 
 另外一点就是，如果是 Redis 获取锁的那个客户端 出现 bug 挂了，那么只能等待超时时间之后才能释放锁；而 zk 的话，因为创建的是临时 znode，只要客户端挂了，znode 就没了，此时就自动释放锁。
 

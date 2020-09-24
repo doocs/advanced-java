@@ -1,4 +1,5 @@
 ## 基于 request cache 请求缓存技术优化批量商品数据查询接口
+
 Hystrix command 执行时 8 大步骤第三步，就是检查 Request cache 是否有缓存。
 
 首先，有一个概念，叫做 Request Context 请求上下文，一般来说，在一个 web 应用中，如果我们用到了 Hystrix，我们会在一个 filter 里面，对每一个请求都施加一个请求上下文。就是说，每一次请求，就是一次请求上下文。然后在这次请求上下文中，我们会去执行 N 多代码，调用 N 多依赖服务，有的依赖服务可能还会调用好几次。
@@ -20,6 +21,7 @@ HystrixCommand 和 HystrixObservableCommand 都可以指定一个缓存 key，�
 我们对批量查询商品数据的接口，可以用 request cache 做一个优化，就是说一次请求，就是一次 request context，对相同的商品查询只执行一次，其余重复的都走 request cache。
 
 ### 实现 Hystrix 请求上下文过滤器并注册
+
 定义 HystrixRequestContextFilter 类，实现 Filter 接口。
 
 ```java
@@ -72,6 +74,7 @@ public class EshopApplication {
 ```
 
 ### command 重写 getCacheKey() 方法
+
 在 GetProductInfoCommand 中，重写 getCacheKey() 方法，这样的话，每一次请求的结果，都会放在 Hystrix 请求上下文中。下一次同一个 productId 的数据请求，直接取缓存，无须再调用 run() 方法。
 
 ```java
@@ -120,6 +123,7 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
 这里写了一个 flushCache() 方法，用于我们开发手动删除缓存。
 
 ### controller 调用 command 查询商品信息
+
 在一次 web 请求上下文中，传入商品 id 列表，查询多条商品数据信息。对于每个 productId，都创建一个 command。
 
 如果 id 列表没有去重，那么重复的 id，第二次查询的时候就会直接走缓存。
@@ -150,6 +154,7 @@ public class CacheController {
 ```
 
 ### 发起请求
+
 调用接口，查询多个商品的信息。
 
 ```
@@ -173,6 +178,7 @@ http://localhost:8080/getProductInfos?productIds=1,1,1,2,2,5
 第一次查询 productId=1 的数据，会调用接口进行查询，不是从缓存中取结果。而随后再出现查询 productId=1 的请求，就直接取缓存了，这样的话，效率明显高很多。
 
 ### 删除缓存
+
 我们写一个 UpdateProductInfoCommand，在更新商品信息之后，手动调用之前写的 flushCache()，手动将缓存删除。
 
 ```java

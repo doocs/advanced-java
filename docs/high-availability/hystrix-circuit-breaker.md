@@ -77,6 +77,7 @@ Hystrix 并不是只要有一条请求经过就去统计，而是将整个滑动
 ## 实例 Demo
 
 ### HystrixCommand 配置参数
+
 在 GetProductInfoCommand 中配置 Setter 断路器相关参数。
 
 - 滑动窗口中，最少 20 个请求，才可能触发断路。
@@ -132,6 +133,7 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
 ```
 
 ### 断路测试类
+
 我们在测试类中，前 30 次请求，传入 productId=-1，然后休眠 3s，之后 70 次请求，传入 productId=1。
 
 ```java

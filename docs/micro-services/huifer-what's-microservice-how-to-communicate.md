@@ -1,14 +1,14 @@
 # 什么是微服务？微服务之间是如何独立通讯的？
 
-* Author: [HuiFer](https://github.com/huifer)
-* Description: 介绍微服务的定义以及服务间的通信。
+- Author: [HuiFer](https://github.com/huifer)
+- Description: 介绍微服务的定义以及服务间的通信。
 
 ## 什么是微服务
 
-* 微服务架构是一个分布式系统, 按照业务进行划分成为不同的服务单元, 解决单体系统性能等不足。
-* 微服务是一种架构风格，一个大型软件应用由多个服务单元组成。系统中的服务单元可以单独部署，各个服务单元之间是松耦合的。
+- 微服务架构是一个分布式系统, 按照业务进行划分成为不同的服务单元, 解决单体系统性能等不足。
+- 微服务是一种架构风格，一个大型软件应用由多个服务单元组成。系统中的服务单元可以单独部署，各个服务单元之间是松耦合的。
 
-> 微服务概念起源:  [Microservices](https://martinfowler.com/articles/microservices.html)
+> 微服务概念起源: [Microservices](https://martinfowler.com/articles/microservices.html)
 
 ## 微服务之间是如何独立通讯的
 
@@ -19,14 +19,14 @@
 REST 请求在微服务中是最为常用的一种通讯方式, 它依赖于 HTTP\HTTPS 协议。RESTFUL 的特点是：
 
 1. 每一个 URI 代表 1 种资源
-2. 客户端使用 GET、POST、PUT、DELETE 4 个表示操作方式的动词对服务端资源进行操作:  GET 用来获取资源, POST 用来新建资源（也可以用于更新资源）, PUT 用来更新资源, DELETE 用来删除资源
+2. 客户端使用 GET、POST、PUT、DELETE 4 个表示操作方式的动词对服务端资源进行操作: GET 用来获取资源, POST 用来新建资源（也可以用于更新资源）, PUT 用来更新资源, DELETE 用来删除资源
 3. 通过操作资源的表现形式来操作资源
 4. 资源的表现形式是 XML 或者 HTML
 5. 客户端与服务端之间的交互在请求之间是无状态的,从客户端到服务端的每个请求都必须包含理解请求所必需的信息
 
 举个例子，有一个服务方提供了如下接口：
 
-``` java
+```java
 @RestController
 @RequestMapping("/communication")
 public class RestControllerDemo {
@@ -39,7 +39,7 @@ public class RestControllerDemo {
 
 另外一个服务需要去调用该接口，调用方只需要根据 API 文档发送请求即可获取返回结果。
 
-``` java
+```java
 @RestController
 @RequestMapping("/demo")
 public class RestDemo{
@@ -56,7 +56,7 @@ public class RestDemo{
 
 通过这样的方式可以实现服务之间的通讯。
 
-#### RPC TCP协议
+#### RPC TCP 协议
 
 RPC(Remote Procedure Call)远程过程调用，简单的理解是一个节点请求另一个节点提供的服务。它的工作流程是这样的：
 
@@ -68,14 +68,13 @@ RPC(Remote Procedure Call)远程过程调用，简单的理解是一个节点请
 6\. 执行过程完毕，将结果返回服务器句柄
 7\. 服务器句柄返回结果，调用远程主机的系统网络服务发送结果
 8\. 消息传回本地主机
-9\. 客户端句柄由本地主机的网络服务接收消息
-10. 客户端接收到调用语句返回的结果数据
+9\. 客户端句柄由本地主机的网络服务接收消息 10. 客户端接收到调用语句返回的结果数据
 
 举个例子。
 
 首先需要一个服务端：
 
-``` java
+```java
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -182,7 +181,7 @@ public class RPCServer {
 
 其次需要一个客户端：
 
-``` java
+```java
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -240,7 +239,7 @@ public class RPCclient<T> {
 
 再来一个测试的远程方法。
 
-``` java
+```java
 public interface Tinterface {
     String send(String msg);
 }
@@ -256,7 +255,7 @@ public class TinterfaceImpl implements Tinterface {
 
 测试代码如下：
 
-``` java
+```java
 
 import com.huifer.admin.rpc.Tinterface;
 import com.huifer.admin.rpc.TinterfaceImpl;

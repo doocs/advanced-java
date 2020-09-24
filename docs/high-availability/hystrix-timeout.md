@@ -1,4 +1,5 @@
 ## 基于 timeout 机制为服务接口调用超时提供安全保护
+
 一般来说，在调用依赖服务的接口的时候，比较常见的一个问题就是**超时**。超时是在一个复杂的分布式系统中，导致系统不稳定，或者系统抖动。出现大量超时，线程资源会被 hang 死，从而导致吞吐量大幅度下降，甚至服务崩溃。
 
 你去调用各种各样的依赖服务，特别是在大公司，你甚至都不认识开发一个服务的人，你都不知道那个人的技术水平怎么样，对那个人根本不了解。
@@ -12,6 +13,7 @@ Peter Steiner 说过，"[On the Internet, nobody knows you're a dog](https://en.
 如果你不对各种依赖服务接口的调用做超时控制，来给你的服务提供安全保护措施，那么很可能你的服务就被各种垃圾的依赖服务的性能给拖死了。大量的接口调用很慢，大量的线程被卡死。如果你做了资源的隔离，那么也就是线程池的线程被卡死，但其实我们可以做超时控制，没必要让它们全卡死。
 
 ### TimeoutMilliseconds
+
 在 Hystrix 中，我们可以手动设置 timeout 时长，如果一个 command 运行时间超过了设定的时长，那么就被认为是 timeout，然后 Hystrix command 标识为 timeout，同时执行 fallback 降级逻辑。
 
 `TimeoutMilliseconds` 默认值是 1000，也就是 1000ms。
@@ -22,6 +24,7 @@ HystrixCommandProperties.Setter()
 ```
 
 ### TimeoutEnabled
+
 这个参数用于控制是否要打开 timeout 机制，默认值是 true。
 
 ```java
@@ -30,6 +33,7 @@ HystrixCommandProperties.Setter()
 ```
 
 ## 实例 Demo
+
 我们在 command 中，将超时时间设置为 500ms，然后在 run() 方法中，设置休眠时间 1s，这样一个请求过来，直接休眠 1s，结果就会因为超时而执行降级逻辑。
 
 ```java

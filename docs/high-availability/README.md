@@ -1,4 +1,5 @@
 # 高可用架构
+
 - [Hystrix 介绍](./hystrix-introduction.md)
 - [电商网站详情页系统架构](./e-commerce-website-detail-page-architecture.md)
 - [Hystrix 线程池技术实现资源隔离](./hystrix-thread-pool-isolation.md)
@@ -12,25 +13,30 @@
 - [基于 timeout 机制为服务接口调用超时提供安全保护](./hystrix-timeout.md)
 
 ## 高可用系统
+
 - 如何设计一个高可用系统？
 
 ## 限流
+
 - 如何限流？在工作中是怎么做的？说一下具体的实现？
 
 ## 熔断
+
 - 如何进行熔断？
 - 熔断框架都有哪些？具体实现原理知道吗？
 - [熔断框架如何做技术选型？选用 Sentinel 还是 Hystrix？](/docs/high-availability/sentinel-vs-hystrix.md)
 
 ## 降级
+
 - 如何进行降级？
 
 ---
 
 ## 公众号
-GitHub 技术社区 [Doocs](https://github.com/doocs) 旗下唯一公众号「**Doocs开源社区**」​，欢迎扫码关注，**专注分享技术领域相关知识及行业最新资讯**。当然，也可以加我个人微信（备注：GitHub），拉你进技术交流群。
 
-关注「**Doocs开源社区**」公众号，回复 **PDF**，即可获取本项目离线 PDF 文档（283 页精华），学习更加方便！
+GitHub 技术社区 [Doocs](https://github.com/doocs) 旗下唯一公众号「**Doocs 开源社区**」​，欢迎扫码关注，**专注分享技术领域相关知识及行业最新资讯**。当然，也可以加我个人微信（备注：GitHub），拉你进技术交流群。
+
+关注「**Doocs 开源社区**」公众号，回复 **PDF**，即可获取本项目离线 PDF 文档（283 页精华），学习更加方便！
 
 ![](./images/pdf.png)
 

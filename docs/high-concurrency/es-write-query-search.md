@@ -1,4 +1,5 @@
 ## 面试题
+
 ES 写入数据的工作原理是什么啊？ES 查询数据的工作原理是什么啊？底层的 Lucene 介绍一下呗？倒排索引了解吗？
 
 ## 面试官心理分析
@@ -11,10 +12,10 @@ ES 写入数据的工作原理是什么啊？ES 查询数据的工作原理是�
 
 ### es 写数据过程
 
-* 客户端选择一个 node 发送请求过去，这个 node 就是 `coordinating node` （协调节点）。
-* `coordinating node` 对 document 进行**路由**，将请求转发给对应的 node（有 primary shard）。
-* 实际的 node 上的 `primary shard` 处理请求，然后将数据同步到 `replica node` 。
-* `coordinating node` 如果发现 `primary node` 和所有 `replica node` 都搞定之后，就返回响应结果给客户端。
+- 客户端选择一个 node 发送请求过去，这个 node 就是 `coordinating node` （协调节点）。
+- `coordinating node` 对 document 进行**路由**，将请求转发给对应的 node（有 primary shard）。
+- 实际的 node 上的 `primary shard` 处理请求，然后将数据同步到 `replica node` 。
+- `coordinating node` 如果发现 `primary node` 和所有 `replica node` 都搞定之后，就返回响应结果给客户端。
 
 ![es-write](./images/es-write.png)
 
@@ -22,27 +23,27 @@ ES 写入数据的工作原理是什么啊？ES 查询数据的工作原理是�
 
 可以通过 `doc id` 来查询，会根据 `doc id` 进行 hash，判断出来当时把 `doc id` 分配到了哪个 shard 上面去，从那个 shard 去查询。
 
-* 客户端发送请求到**任意**一个 node，成为 `coordinate node` 。
-* `coordinate node` 对 `doc id` 进行哈希路由，将请求转发到对应的 node，此时会使用 `round-robin` **随机轮询算法**，在 `primary shard` 以及其所有 replica 中随机选择一个，让读请求负载均衡。
-* 接收请求的 node 返回 document 给 `coordinate node` 。
-* `coordinate node` 返回 document 给客户端。
+- 客户端发送请求到**任意**一个 node，成为 `coordinate node` 。
+- `coordinate node` 对 `doc id` 进行哈希路由，将请求转发到对应的 node，此时会使用 `round-robin` **随机轮询算法**，在 `primary shard` 以及其所有 replica 中随机选择一个，让读请求负载均衡。
+- 接收请求的 node 返回 document 给 `coordinate node` 。
+- `coordinate node` 返回 document 给客户端。
 
 ### es 搜索数据过程
 
 es 最强大的是做全文检索，就是比如你有三条数据：
 
-``` 
+```
 java真好玩儿啊
 java好难学啊
 j2ee特别牛
 ```
 
-你根据 `java` 关键词来搜索，将包含 `java` 的 `document` 给搜索出来。es 就会给你返回：java真好玩儿啊，java好难学啊。
+你根据 `java` 关键词来搜索，将包含 `java` 的 `document` 给搜索出来。es 就会给你返回：java 真好玩儿啊，java 好难学啊。
 
-* 客户端发送请求到一个 `coordinate node` 。
-* 协调节点将搜索请求转发到**所有**的 shard 对应的 `primary shard` 或 `replica shard` ，都可以。
-* query phase：每个 shard 将自己的搜索结果（其实就是一些 `doc id` ）返回给协调节点，由协调节点进行数据的合并、排序、分页等操作，产出最终结果。
-* fetch phase：接着由协调节点根据 `doc id` 去各个节点上**拉取实际**的 `document` 数据，最终返回给客户端。
+- 客户端发送请求到一个 `coordinate node` 。
+- 协调节点将搜索请求转发到**所有**的 shard 对应的 `primary shard` 或 `replica shard` ，都可以。
+- query phase：每个 shard 将自己的搜索结果（其实就是一些 `doc id` ）返回给协调节点，由协调节点进行数据的合并、排序、分页等操作，产出最终结果。
+- fetch phase：接着由协调节点根据 `doc id` 去各个节点上**拉取实际**的 `document` 数据，最终返回给客户端。
 
 > 写请求是写入 primary shard，然后同步给所有的 replica shard；读请求可以从 primary shard 或 replica shard 读取，采用的是随机轮询算法。
 
@@ -102,29 +103,29 @@ buffer 每 refresh 一次，就会产生一个 `segment file` ，所以默认情
 
 有以下文档：
 
-| DocId | Doc |
-|---|---|
-| 1 | 谷歌地图之父跳槽 Facebook |
-| 2 | 谷歌地图之父加盟 Facebook |
-| 3 | 谷歌地图创始人拉斯离开谷歌加盟 Facebook |
-| 4 | 谷歌地图之父跳槽 Facebook 与 Wave 项目取消有关 |
-| 5 | 谷歌地图之父拉斯加盟社交网站 Facebook |
+| DocId | Doc                                            |
+| ----- | ---------------------------------------------- |
+| 1     | 谷歌地图之父跳槽 Facebook                      |
+| 2     | 谷歌地图之父加盟 Facebook                      |
+| 3     | 谷歌地图创始人拉斯离开谷歌加盟 Facebook        |
+| 4     | 谷歌地图之父跳槽 Facebook 与 Wave 项目取消有关 |
+| 5     | 谷歌地图之父拉斯加盟社交网站 Facebook          |
 
 对文档进行分词之后，得到以下**倒排索引**。
 
-| WordId | Word | DocIds |
-|---|---|---|
-| 1 | 谷歌 | 1, 2, 3, 4, 5 |
-| 2 | 地图 | 1, 2, 3, 4, 5 |
-| 3 | 之父 | 1, 2, 4, 5 |
-| 4 | 跳槽 | 1, 4 |
-| 5 | Facebook | 1, 2, 3, 4, 5 |
-| 6 | 加盟 | 2, 3, 5 |
-| 7 | 创始人 | 3 |
-| 8 | 拉斯 | 3, 5 |
-| 9 | 离开 | 3 |
-| 10 | 与 | 4 |
-| .. | .. | .. |
+| WordId | Word     | DocIds        |
+| ------ | -------- | ------------- |
+| 1      | 谷歌     | 1, 2, 3, 4, 5 |
+| 2      | 地图     | 1, 2, 3, 4, 5 |
+| 3      | 之父     | 1, 2, 4, 5    |
+| 4      | 跳槽     | 1, 4          |
+| 5      | Facebook | 1, 2, 3, 4, 5 |
+| 6      | 加盟     | 2, 3, 5       |
+| 7      | 创始人   | 3             |
+| 8      | 拉斯     | 3, 5          |
+| 9      | 离开     | 3             |
+| 10     | 与       | 4             |
+| ..     | ..       | ..            |
 
 另外，实用的倒排索引还可以记录更多的信息，比如文档频率信息，表示在文档集合中有多少个文档包含某个单词。
 
@@ -132,7 +133,7 @@ buffer 每 refresh 一次，就会产生一个 `segment file` ，所以默认情
 
 要注意倒排索引的两个重要细节：
 
-* 倒排索引中的所有词项对应一个或多个文档；
-* 倒排索引中的词项**根据字典顺序升序排列**
+- 倒排索引中的所有词项对应一个或多个文档；
+- 倒排索引中的词项**根据字典顺序升序排列**
 
 > 上面只是一个简单的栗子，并没有严格按照字典顺序升序排列。

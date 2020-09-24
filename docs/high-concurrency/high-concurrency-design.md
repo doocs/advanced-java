@@ -1,4 +1,5 @@
 ## 面试题
+
 如何设计一个高并发系统？
 
 ## 面试官心理分析
@@ -31,12 +32,12 @@
 
 可以分为以下 6 点：
 
-* 系统拆分
-* 缓存
-* MQ
-* 分库分表
-* 读写分离
-* ElasticSearch
+- 系统拆分
+- 缓存
+- MQ
+- 分库分表
+- 读写分离
+- ElasticSearch
 
 ![high-concurrency-system-design](./images/high-concurrency-system-design.png)
 

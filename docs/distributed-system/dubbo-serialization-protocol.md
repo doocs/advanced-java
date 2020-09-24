@@ -1,4 +1,5 @@
 ## 面试题
+
 dubbo 支持哪些通信协议？支持哪些序列化协议？说一下 Hessian 的数据结构？PB 知道吗？为什么 PB 的效率是最高的？
 
 ## 面试官心理分析
@@ -15,7 +16,7 @@ dubbo 支持哪些通信协议？支持哪些序列化协议？说一下 Hessian
 
 ### dubbo 支持不同的通信协议
 
-* dubbo 协议
+- dubbo 协议
 
 **默认**就是走 dubbo 协议，单一长连接，进行的是 NIO 异步通信，基于 hessian 作为序列化协议。使用的场景是：传输数据量小（每次请求在 100kb 以内），但是并发量很高。
 
@@ -29,19 +30,19 @@ dubbo 支持哪些通信协议？支持哪些序列化协议？说一下 Hessian
 
 ![dubbo-not-keep-connection](./images/dubbo-not-keep-connection.png)
 
-* rmi 协议
+- rmi 协议
 
 走 Java 二进制序列化，多个短连接，适合消费者和提供者数量差不多的情况，适用于文件的传输，一般较少用。
 
-* hessian 协议
+- hessian 协议
 
 走 hessian 序列化协议，多个短连接，适用于提供者数量比消费者数量还多的情况，适用于文件的传输，一般较少用。
 
-* http 协议
+- http 协议
 
 走表单序列化。
 
-* webservice
+- webservice
 
 走 SOAP 文本序列化。
 
@@ -53,24 +54,24 @@ dubbo 支持 hession、Java 二进制序列化、json、SOAP 文本序列化多�
 
 Hessian 的对象序列化机制有 8 种原始类型：
 
-* 原始二进制数据
-* boolean
-* 64-bit date（64 位毫秒值的日期）
-* 64-bit double
-* 32-bit int
-* 64-bit long
-* null
-* UTF-8 编码的 string
+- 原始二进制数据
+- boolean
+- 64-bit date（64 位毫秒值的日期）
+- 64-bit double
+- 32-bit int
+- 64-bit long
+- null
+- UTF-8 编码的 string
 
 另外还包括 3 种递归类型：
 
-* list for lists and arrays
-* map for maps and dictionaries
-* object for objects
+- list for lists and arrays
+- map for maps and dictionaries
+- object for objects
 
 还有一种特殊的类型：
 
-* ref：用来表示对共享对象的引用。
+- ref：用来表示对共享对象的引用。
 
 ### 为什么 PB 的效率是最高的？
 
