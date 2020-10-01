@@ -1,4 +1,4 @@
-# 互联网 Java 工程师进阶知识完全扫盲
+# 互联网 JAVA 15 工程师进阶知识完全扫盲
 
 [![actions status](https://github.com/doocs/advanced-java/workflows/Sync/badge.svg)](https://github.com/doocs/advanced-java/actions)
 [![license](https://badgen.net/github/license/doocs/advanced-java?color=green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
@@ -180,7 +180,7 @@
 
 ---
 
-## Doocs 社区优质项目
+## DOOCS 社区优质项目
 
 Doocs 技术社区，致力于打造一个内容完整、持续成长的互联网开发者学习生态圈！以下是 Doocs 旗下的一些优秀项目，欢迎各位开发者朋友持续保持关注。
 
