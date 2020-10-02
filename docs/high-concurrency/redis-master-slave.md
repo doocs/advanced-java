@@ -82,7 +82,7 @@ client-output-buffer-limit slave 256MB 64MB 60
 
 主从节点互相都会发送 heartbeat 信息。
 
-master 默认每隔 10 秒 发送一次 heartbeat，slave node 每隔 1 秒 发送一个 heartbeat。
+master 默认每隔 10 秒发送一次 heartbeat，slave node 每隔 1 秒发送一个 heartbeat。
 
 ### 异步复制
 
