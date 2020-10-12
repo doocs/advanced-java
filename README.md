@@ -21,11 +21,11 @@
 - Gitee Pages: https://doocs.gitee.io/advanced-java
 - GitHub Pages: https://doocs.github.io/advanced-java
 
-注：由于本项目站点基于 [Docsify](https://docsify.js.org) 构建，如果你希望在本地运行，请按照以下步骤进行操作：
+注：本项目站点基于 [Docsify](https://docsify.js.org) 构建，如果你希望在本地运行，请按照以下步骤进行操作：
 
 1. 安装 NodeJS 环境：https://nodejs.org/zh-cn/
-2. 安装 Docsify：`npm i docsify-cli -g`
-3. 使用 Git 克隆本项目到你的本地环境：`git clone git@github.com:doocs/advanced-java.git`
+2. 安装 [Docsify](https://docsify.js.org)：`npm i docsify-cli -g`
+3. 使用 Git 克隆(HTTPS / SSH / GitHub CLI)本项目到你的本地环境：`git clone git@github.com:doocs/advanced-java.git`
 4. 进入 `advanced-java` 根目录：`cd advanced-java`
 5. 执行命令，运行本项目：`docsify serve`
 
