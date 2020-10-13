@@ -27,7 +27,7 @@
 
 
 框架 | 所属
----|---|---
+---|---
 eureka | AP
 zookeeper | CP
 consul | CP
