@@ -21,3 +21,33 @@
 - P 的体现前提是得有分区情况存在
 
 > 文章来源：[维基百科 CAP 定理](https://zh.wikipedia.org/wiki/CAP%E5%AE%9A%E7%90%86)
+
+## 几个常用的 CAP 框架对比
+
+| 框架      | 所属 |
+| --------- | ---- |
+| Eureka    | AP   |
+| Zookeeper | CP   |
+| Consul    | CP   |
+
+### Eureka
+
+> Eureka 保证了可用性，实现最终一致性。
+
+Eureka 所有节点都是平等的所有数据都是相同的，且 Eureka 可以相互交叉注册。  
+Eureka client 使用内置轮询负载均衡器去注册，有一个检测间隔时间，如果在一定时间内没有收到心跳，才会移除该节点注册信息；如果客户端发现当前 Eureka 不可用，会切换到其他的节点，如果所有的 Eureka 都跪了，Eureka client 会使用最后一次数据作为本地缓存；所以以上的每种设计都是他不具备`一致性`的特性。
+
+注意：因为 EurekaAP 的特性和请求间隔同步机制，在服务更新时候一般会手动通过 Eureka 的 api 把当前服务状态设置为`offline`，并等待 2 个同步间隔后重新启动，这样就能保证服务更新节点对整体系统的影响
+
+### Zookeeper
+
+> 强一致性
+
+Zookeeper 在选举 leader 时会停止服务，只有成功选举 leader 成功后才能提供服务，选举时间较长；内部使用 paxos 选举投票机制，只有获取半数以上的投票才能成为 leader，否则重新投票，所以部署的时候最好集群节点不小于 3 的奇数个（但是谁能保证跪掉后节点也是基数个呢）；Zookeeper 健康检查一般是使用 tcp 长链接，在内部网络抖动时或者对应节点阻塞时候都会变成不可用，这里还是比较危险的；
+
+### Consul
+
+和 Zookeeper 一样数据 CP
+
+Consul 注册时候只有过半的节点都写入成功才认为注册成功；leader 挂掉时，重新选举期间整个 Consul 不可用,保证了强一致性但牺牲了可用性  
+有很多 blog 说 Consul 属于 ap，官方已经确认他为 CP 机制 原文地址：https://www.consul.io/docs/intro/vs/serf
