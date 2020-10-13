@@ -47,7 +47,9 @@ eureka client 使用内置轮询负载均衡器去注册，有一个检测间隔
 
 zk在选举leader时会停止服务，只有成功选举leader成功后才能提供服务，选举时间较长；内部使用paxos选举投票机制，只有获取半数以上的投票才能成为leader，否则重新投票，所以部署的时候最好集群节点不小于3的奇数个（但是谁能保证跪掉后节点也是基数个呢）；zk健康检查一般是使用tcp长链接，在内部网络抖动时或者对应节点阻塞时候都会变成不可用，这里还是比较危险的；
 
-#### consul
+### consul
 
-consul 注册时候只有过半的节点都写入成功才认为注册成功；leader挂掉时，重新选举期间整个consul不可用,保证了强一致性但牺牲了可用性
-https://www.consul.io/docs/intro/vs/serf
+和zk一样数据cp
+
+consul 注册时候只有过半的节点都写入成功才认为注册成功；leader挂掉时，重新选举期间整个consul不可用,保证了强一致性但牺牲了可用性  
+有很多blog说consul属于ap，官方已经确认他为cp机制 原文地址：https://www.consul.io/docs/intro/vs/serf
