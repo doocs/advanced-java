@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.repository == 'doocs/advanced-java'
     steps:
       - name: Sync To Gitee
         uses: wearerequired/git-mirror-action@master
