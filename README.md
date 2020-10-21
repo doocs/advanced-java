@@ -1,7 +1,7 @@
 # 互联网 Java 工程师进阶知识完全扫盲
 
-[![actions status](https://github.com/doocs/advanced-java/workflows/Sync/badge.svg)](https://github.com/doocs/advanced-java/actions)
-[![actions status](https://github.com/doocs/advanced-java/workflows/Prettier/badge.svg)](https://github.com/doocs/advanced-java/actions)
+[![actions status](https://github.com/doocs/advanced-java/workflows/Sync/badge.svg)](https://github.com/doocs/advanced-java/actions?query=workflow%3ASync)
+[![actions status](https://github.com/doocs/advanced-java/workflows/Prettier/badge.svg)](https://github.com/doocs/advanced-java/actions?query=workflow%3APrettier)
 [![license](https://badgen.net/github/license/doocs/advanced-java?color=green)](https://github.com/doocs/advanced-java/blob/master/LICENSE)
 [![PRs Welcome](https://badgen.net/badge/PRs/welcome/green)](http://makeapullrequest.com)
 [![doocs](https://badgen.net/badge/organization/join%20us/green)](https://doocs.github.io/#/?id=how-to-join)

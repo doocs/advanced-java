@@ -7,6 +7,7 @@ on:
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
+    if: github.repository == 'doocs/advanced-java'
     steps:
       - uses: actions/checkout@v2
       - uses: everlytic/branch-merge@1.1.0
