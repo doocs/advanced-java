@@ -29,10 +29,11 @@
 如果你同时希望在本地查看，请按照以下步骤进行操作：
 
 1. 安装 NodeJS 环境：https://nodejs.org/zh-cn/
-2. 安装 [Docsify](https://docsify.js.org)：`npm i docsify-cli -g`
-3. 使用 Git 克隆(HTTPS / SSH / GitHub CLI)本项目到你的本地环境：`git clone git@github.com:doocs/advanced-java.git`
-4. 进入 `advanced-java` 根目录：`cd advanced-java`
-5. 执行命令，运行本项目：`docsify serve`
+2. 安装 Docsify：`npm i docsify-cli -g`
+3. 使用 Git 克隆([HTTPS / SSH / GitHub CLI](https://docs.github.com/en/free-pro-team@latest/github/using-git/which-remote-url-should-i-use))本项目到你的本地环境：`git clone git@github.com:doocs/advanced-java.git`
+4. 进入 advanced-java 根目录：`cd advanced-java`
+5. 执行命令，启动一个本地服务器：`docsify serve`
+6. 浏览器访问地址：http://localhost:3000
 
 ## 高并发架构
 
