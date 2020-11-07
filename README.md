@@ -171,6 +171,7 @@
 - [微服务治理策略](./docs/micro-services/huifer-micro-service-governance.md)
 - Eureka 和 Zookeeper 都可以提供服务注册与发现的功能，它们有什么区别？
 - [谈谈服务发现组件 Eureka 的主要调用过程？](./docs/micro-services/how-eureka-enable-service-discovery-and-service-registration.md)
+- [spring-cloud-openfeign 重复代码解决方案](./docs/micro-services/openfeign-use.md)
 - ......
 
 ## 海量数据处理
