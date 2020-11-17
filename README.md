@@ -35,8 +35,6 @@
 5. 执行命令，启动一个本地服务器：`docsify serve`
 6. 浏览器访问地址：http://localhost:3000
 
-🔈：Doocs 新推出“[穿山甲链路追踪](https://github.com/doocs/pangolin-tracing)”项目，欢迎开发者朋友关注。
-
 ## 高并发架构
 
 ### [消息队列](./docs/high-concurrency/mq-interview.md)
