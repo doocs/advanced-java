@@ -2,7 +2,7 @@ name: Sync
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -23,3 +23,4 @@ jobs:
           gitee-username: yanglbme
           gitee-password: ${{ secrets.GITEE_PASSWORD }}
           gitee-repo: doocs/advanced-java
+          branch: main

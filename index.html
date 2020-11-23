@@ -105,10 +105,10 @@
               if (/githubusercontent\.com/.test(vm.route.file)) {
                 url = vm.route.file
                   .replace("raw.githubusercontent.com", "github.com")
-                  .replace(/\/master/, "/blob/master");
+                  .replace(/\/main/, "/blob/main");
               } else {
                 url =
-                  "https://github.com/doocs/advanced-java/blob/master/" +
+                  "https://github.com/doocs/advanced-java/blob/main/" +
                   vm.route.file;
               }
 
