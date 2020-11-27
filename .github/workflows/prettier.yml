@@ -1,10 +1,8 @@
 name: Prettier
 
 on:
-  pull_request:
   push:
-    branches:
-    - main
+    branches: [ main ]
 
 jobs:
   prettier:
@@ -20,6 +18,6 @@ jobs:
       uses: creyD/prettier_action@v3.0
       with:
         prettier_options: --write **/*.{html,js,md}
-        commit_message: 'docs: prettify code'
+        commit_message: 'style: prettify code'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

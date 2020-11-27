@@ -14,5 +14,5 @@ jobs:
         with:
           github_token: ${{ github.token }}
           source_ref: ${{ github.ref }}
-          target_branch: 'main'
+          target_branch: main
           commit_message_template: '[Automated] Merged {source_ref} into {target_branch}'
