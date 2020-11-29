@@ -37,7 +37,7 @@
 我们通过 MySQL 命令：
 
 ```sql
-show status
+show slave status
 ```
 
 查看 `Seconds_Behind_Master` ，可以看到从库复制主库的数据落后了几 ms。
