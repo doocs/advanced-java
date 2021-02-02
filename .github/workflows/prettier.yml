@@ -14,10 +14,10 @@ jobs:
       with:
         ref: ${{ github.head_ref }}
 
-    - name: Prettify code
-      uses: creyD/prettier_action@v3.2
+    - name: Prettify
+      uses: creyD/prettier_action@v3.3
       with:
-        prettier_options: --write **/*.{html,js,md}
-        commit_message: 'style: prettify code'
+        prettier_options: --write **/*.{md}
+        commit_message: 'style: prettify code or document'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
