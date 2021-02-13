@@ -326,6 +326,10 @@ public class ZooKeeperDistributedLock implements Watcher {
 }
 ```
 
+但是，使用 zk 临时节点会存在另一个问题：由于 zk 依靠 session 定期的心跳来维持客户端，如果客户端进入长时间的 GC，可能会导致 zk 认为客户端宕机而释放锁，让其他的客户端获取锁，但是客户端在 GC 恢复后，会认为自己还持有锁，从而可能出现多个客户端同时获取到锁的情形。[#209](https://github.com/doocs/advanced-java/issues/209)
+
+针对这种情况，可以通过 JVM 调优，尽量避免长时间 GC 的情况发生。
+
 ### redis 分布式锁和 zk 分布式锁的对比
 
 - redis 分布式锁，其实**需要自己不断去尝试获取锁**，比较消耗性能。
