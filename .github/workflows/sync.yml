@@ -2,7 +2,7 @@ name: Sync
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:

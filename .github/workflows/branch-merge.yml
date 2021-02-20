@@ -2,7 +2,7 @@ name: Merge Branch
 
 on:
   push:
-    branches: [ imgbot ]
+    branches: [imgbot]
 
 jobs:
   merge-branch:
@@ -15,4 +15,4 @@ jobs:
           github_token: ${{ github.token }}
           source_ref: ${{ github.ref }}
           target_branch: main
-          commit_message_template: '[Automated] Merged {source_ref} into {target_branch}'
+          commit_message_template: "[Automated] Merged {source_ref} into {target_branch}"
