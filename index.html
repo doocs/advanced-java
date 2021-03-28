@@ -10,7 +10,7 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@0.6.1/dist/style.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
 </head>
@@ -70,10 +70,20 @@
         ],
         depth: 3,
       },
-      darkMode: {
-        light: {
-          toggleBtnBg: "#42b983",
+      darklightTheme: {
+        defaultTheme: 'light',
+        siteFont: 'Source Sans Pro,Helvetica Neue,Arial,sans-serif',
+        codeFontFamily: 'Roboto Mono, Monaco, courier, monospace',
+        bodyFontSize: '15px',
+        dark: {
+          background: 'rgb(28,32,34)',
+          highlightColor: '#e96900',
+          codeBackgroudColor: 'rgb(34,39,46)',
+          codeTextColor: '#b4b4b4',
         },
+        light: {
+          highlightColor: '#e96900',
+        }
       },
       plugins: [
         function (hook, vm) {
@@ -145,12 +155,12 @@
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-java.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2.1.1/dist/docsify-copy-code.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@0.6.1/dist/index.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
 </body>
 
 </html>
