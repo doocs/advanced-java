@@ -169,6 +169,7 @@
 - [如何从 5 亿个数中找出中位数？](./docs/big-data/find-mid-value-in-500-millions.md)
 - [如何按照 query 的频度排序？](./docs/big-data/sort-the-query-strings-by-counts.md)
 - [如何找出排名前 500 的数？](./docs/big-data/find-rank-top-500-numbers.md)
+- [讲讲大数据中 TopK 问题的常用套路？](./docs/big-data/topk-problems-and-solutions.md)
 
 ---
 
