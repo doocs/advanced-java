@@ -1,5 +1,3 @@
-name：tgpcai
-
 ## 面试题
 
 有了解过redis rehash的过程吗？
