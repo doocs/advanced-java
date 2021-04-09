@@ -54,7 +54,7 @@
 - [如何保证缓存与数据库的双写一致性？](./docs/high-concurrency/redis-consistence.md)
 - [Redis 的并发竞争问题是什么？如何解决这个问题？了解 Redis 事务的 CAS 方案吗？](./docs/high-concurrency/redis-cas.md)
 - [生产环境中的 Redis 是怎么部署的？](./docs/high-concurrency/redis-production-environment.md)
-- [有了解过redis rehash的过程吗？](./docs/high-concurrency/redis-rehash.md)
+- [有了解过Redis rehash的过程吗？](./docs/high-concurrency/redis-rehash.md)
 
 ### 分库分表
 
