@@ -14,7 +14,7 @@ Redis 是以速度快，性能好著称的，我们知道 Redis 一开始的容�
 
 Redis 中字典的数据结构如下：
 
-```tex
+```c
 // 字典对应的数据结构，有关hash表的结构可以参考redis源码，再次就不进行描述
 typedef struct dict {
     dictType *type;  // 字典类型
