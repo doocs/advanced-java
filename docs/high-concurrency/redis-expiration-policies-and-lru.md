@@ -51,33 +51,44 @@ Redis 内存淘汰机制有以下几个：
 
 ### 手写一个 LRU 算法
 
+LRU 就是 Least Recently Used 的缩写，翻译过来就是“最近最少使用”。也就是说 LRU 算法会将最近最少用的缓存移除，让给最新使用的缓存。而往往最常读取的，也就是读取次数最多的，所以利用好 LRU 算法，我们能够提供对热点数据的缓存效率，能够提高缓存服务的内存使用率。
+
+那么如何实现呢？
+
+其实，实现的思路非常简单，就像下面这张图种描述的一样。
+
+![](./images/lru.png)
+
 你可以现场手写最原始的 LRU 算法，那个代码量太大了，似乎不太现实。
 
 不求自己纯手工从底层开始打造出自己的 LRU，但是起码要知道如何利用已有的 JDK 数据结构实现一个 Java 版的 LRU。
 
+![](./images/lru-cache.png)
+
 ```java
-class LRUCache<K, V> extends LinkedHashMap<K, V> {
-    private final int CACHE_SIZE;
+public class LRUCache<K, V> extends LinkedHashMap<K, V> {
+    private int capacity;
 
     /**
      * 传递进来最多能缓存多少数据
      *
-     * @param cacheSize 缓存大小
+     * @param capacity 缓存大小
      */
-    public LRUCache(int cacheSize) {
-        // true 表示让 linkedHashMap 按照访问顺序来进行排序，最近访问的放在头部，最老访问的放在尾部。
-        super((int) Math.ceil(cacheSize / 0.75) + 1, 0.75f, true);
-        CACHE_SIZE = cacheSize;
+    public LRUCache(int capacity) {
+        super(capacity, 0.75f, true);
+        this.capacity = capacity;
     }
 
     /**
-     * 钩子方法，通过put新增键值对的时候，若该方法返回true
-     * 便移除该map中最老的键和值
+     * 如果map中的数据量大于设定的最大容量，返回true，再新加入对象时删除最老的数据
+     *
+     * @param eldest 最老的数据项
+     * @return true则移除最老的数据
      */
     @Override
     protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-        // 当 map中的数据量大于指定的缓存个数的时候，就自动删除最老的数据。
-        return size() > CACHE_SIZE;
+        // 当 map中的数据量大于指定的缓存个数的时候，自动移除最老的数据
+        return size() > capacity;
     }
 }
 ```
