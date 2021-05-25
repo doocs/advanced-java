@@ -3,7 +3,7 @@
 GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs 开源社区**”，专注于挖掘 IT 技术知识，助力开发者成长。
 
 <div style="text-align:center; ">
-  <img src="./images/qrcode_for_doocs.jpg" width="200px; "/>
+  <img src="https://cdn.jsdelivr.net/gh/doocs/advanced-java@main/images/qrcode-for-doocs.jpg" style="width: 200px;"><br>
 </div>
 
 来成为公众号的首批粉丝吗？一定不会辜负你们的期待。
