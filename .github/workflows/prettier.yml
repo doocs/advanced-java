@@ -1,0 +1,23 @@
+name: Prettier
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    if: github.repository == 'doocs/advanced-java'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Prettify
+        uses: creyD/prettier_action@v3.3
+        with:
+          prettier_options: --write **/*.{md}
+          commit_message: "style: prettify code or document"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

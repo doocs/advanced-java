@@ -1,9 +1,7 @@
 <p align="center"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1334849028&auto=1&height=66"></iframe></p>
 <p align="center">本单曲受版权保护，可<a href="https://music.163.com/#/mv?id=10859500">点击观看 MV</a>。</p>
 
-
-> 受伤的得到疗愈，挣扎的得到出口<br>
-*Let those who hurt heal, let those who struggle find hope*.
+> 受伤的得到疗愈，挣扎的得到出口<br> > _Let those who hurt heal, let those who struggle find hope_.
 
 ```
 告别的时刻已到了
