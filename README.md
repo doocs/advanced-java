@@ -15,7 +15,9 @@
 
 本项目已开通 [Discussions](https://github.com/doocs/advanced-java/discussions) 功能。学习之前，先来看看 [Discussions 讨论区](https://github.com/doocs/advanced-java/discussions/9)的技术面试官是怎么说的吧。本项目欢迎各位开发者朋友到 [Discussions 讨论区](https://github.com/doocs/advanced-java/discussions)分享自己的一些想法和实践经验。也不妨 Star 关注 [doocs/advanced-java](https://github.com/doocs/advanced-java)，随时追踪项目最新动态。
 
-本项目基于 [Docsify](https://docsify.js.org) 进行构建，并同步部署（这里用到 [Gitee Pages Action](https://github.com/yanglbme/gitee-pages-action) 自动部署工具，非常好用的一个开源工具，欢迎 Star 关注）在以下三个站点：
+本项目基于 [Docsify](https://docsify.js.org) 进行构建，并使用开源小工具 [Gitee Pages Action](https://github.com/yanglbme/gitee-pages-action) 实现站点的自动部署更新。
+
+目前支持以下三个站点访问：
 
 - Netlify: https://adjava.netlify.app
 - Gitee Pages: https://doocs.gitee.io/advanced-java

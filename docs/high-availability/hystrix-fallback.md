@@ -65,7 +65,6 @@ public class BrandCache {
  * 获取品牌名称的command
  *
  */
-
 public class GetBrandNameCommand extends HystrixCommand<String> {
 
     private Long brandId;
