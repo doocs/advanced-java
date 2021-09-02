@@ -13,11 +13,9 @@
 
 本项目大部分内容来自中华石杉，版权归作者所有，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)、[海量数据处理](#海量数据处理)等领域知识。我对这部分知识做了一个系统的整理，方便学习查阅。
 
-本项目已开通 [Discussions](https://github.com/doocs/advanced-java/discussions) 功能。学习之前，先来看看 [Discussions 讨论区](https://github.com/doocs/advanced-java/discussions/9)的技术面试官是怎么说的吧。本项目欢迎各位开发者朋友到 [Discussions 讨论区](https://github.com/doocs/advanced-java/discussions)分享自己的一些想法和实践经验。也不妨 Star 关注 [doocs/advanced-java](https://github.com/doocs/advanced-java)，随时追踪项目最新动态。
+本项目已开通 Discussions 功能。学习之前，先来看看 [Discussions 讨论区](https://github.com/doocs/advanced-java/discussions/9)的技术面试官是怎么说的吧。本项目欢迎各位开发者朋友到 Discussions 讨论区分享自己的一些想法和实践经验。也不妨 Star 关注 [doocs/advanced-java](https://github.com/doocs/advanced-java)，随时追踪项目最新动态。
 
-本项目基于 [Docsify](https://docsify.js.org) 进行构建，并使用开源小工具 [Gitee Pages Action](https://github.com/yanglbme/gitee-pages-action) 实现站点的自动部署更新。
-
-目前支持以下三个站点访问：
+本项目基于 Docsify 进行构建，并使用开源小工具 [Gitee Pages Action](https://github.com/yanglbme/gitee-pages-action) 实现站点的自动部署更新。目前支持以下三个站点访问：
 
 - Netlify: https://adjava.netlify.app
 - Gitee Pages: https://doocs.gitee.io/advanced-java
