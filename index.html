@@ -141,11 +141,8 @@
           });
 
           hook.afterEach(function (html) {
-            const footer = [
-              "<footer>",
-              '<span>Copyright © 2018-2021 <a href="https://github.com/doocs" target="_blank">Doocs</a>. All rights reserved.',
-              "</footer>",
-            ].join("");
+            const currentYear = new Date().getFullYear()
+            const footer = `<footer><span>Copyright © 2018-${currentYear} <a href="https://github.com/doocs" target="_blank">Doocs</a>. All Rights Reserved</footer>`
             return html + footer;
           });
         },
