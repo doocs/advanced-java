@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "dev": "docsify serve --open",
     "convert": "docsify-pdf-converter"
   },
   "name": "advanced-java",
