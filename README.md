@@ -1,15 +1,12 @@
 # 互联网 Java 工程师进阶知识完全扫盲
 
-[![stars](https://img.shields.io/github/stars/doocs/advanced-java?color=42b883&logo=github&style=flat-square)](https://github.com/doocs/advanced-java/stargazers)
-[![forks](https://img.shields.io/github/forks/doocs/advanced-java?color=42b883&logo=github&style=flat-square)](https://github.com/doocs/advanced-java/network/members)
-[![actions status](https://img.shields.io/github/workflow/status/doocs/advanced-java/Sync?color=42b883&label=sync&logo=github&style=flat-square)](https://github.com/doocs/advanced-java/actions?query=workflow%3ASync)
-[![actions status](https://img.shields.io/github/workflow/status/doocs/advanced-java/Prettier?color=42b883&label=prettier&logo=github&style=flat-square)](https://github.com/doocs/advanced-java/actions?query=workflow%3APrettier)
-[![license](https://img.shields.io/github/license/doocs/advanced-java?color=42b883&style=flat-square)](./LICENSE)
-[![doocs](https://img.shields.io/badge/organization-join%20us-42b883?style=flat-square)](https://doocs.github.io/#/?id=how-to-join)
-[![original](https://img.shields.io/badge/original-%E4%B8%AD%E5%8D%8E%E7%9F%B3%E6%9D%89-42b883?style=flat-square)](https://github.com/doocs/advanced-java)
-[![notice](https://img.shields.io/badge/notice-%E7%BB%B4%E6%9D%83%E8%A1%8C%E5%8A%A8-42b883?style=flat-square)](./docs/extra-page/rights-defending-action.md)
-[![wechat-group](https://img.shields.io/badge/chat-%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81-42b883?style=flat-square)](#公众号)
-[![coding](https://img.shields.io/badge/leetcode-%E5%88%B7%E9%A2%98%E5%B0%8F%E9%98%9F-42b883?style=flat-square)](https://github.com/doocs/leetcode)
+[![stars](https://img.shields.io/github/stars/doocs/advanced-java?color=42b883&logo=github&style=flat-square&logoColor=ffffff)](https://github.com/doocs/advanced-java/stargazers)
+[![forks](https://img.shields.io/github/forks/doocs/advanced-java?color=42b883&logo=github&style=flat-square&logoColor=ffffff)](https://github.com/doocs/advanced-java/network/members)
+[![actions status](https://img.shields.io/github/workflow/status/doocs/advanced-java/Sync?color=42b883&label=sync&logo=githubactions&style=flat-square&logoColor=ffffff)](https://github.com/doocs/advanced-java/actions?query=workflow%3ASync)
+[![actions status](https://img.shields.io/github/workflow/status/doocs/advanced-java/Prettier?color=42b883&label=prettier&logo=githubactions&style=flat-square&logoColor=ffffff)](https://github.com/doocs/advanced-java/actions?query=workflow%3APrettier)
+[![license](https://img.shields.io/github/license/doocs/advanced-java?color=42b883&style=flat-square&logo=homeassistantcommunitystore&logoColor=ffffff)](./LICENSE)
+[![doocs](https://img.shields.io/badge/org-join%20us-42b883?style=flat-square&logo=homeassistantcommunitystore&logoColor=ffffff)](https://doocs.github.io/#/?id=how-to-join)
+[![discord-chat](https://img.shields.io/discord/901805669529825301.svg?logo=discord&color=42b883&style=flat-square&logoColor=ffffff)](https://discord.gg/qUFwPPEYEy)
 
 本项目大部分内容来自中华石杉，版权归作者所有，内容涵盖[高并发](#高并发架构)、[分布式](#分布式系统)、[高可用](#高可用架构)、[微服务](#微服务架构)、[海量数据处理](#海量数据处理)等领域知识。我对这部分知识做了一个系统的整理，方便学习查阅。
 
