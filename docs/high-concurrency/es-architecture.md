@@ -19,7 +19,7 @@ ElasticSearch 设计的理念就是分布式搜索引擎，底层其实还是基
 ES 中存储数据的**基本单位是索引**，比如说你现在要在 ES 中存储一些订单数据，你就应该在 ES 中创建一个索引 `order_idx` ，所有的订单数据就都写到这个索引里面去，一个索引差不多就是相当于是 mysql 里的一张表。
 
 ```
-index -> type -> mapping -> document -> field。
+index -> type -> mapping -> document -> field
 ```
 
 这样吧，为了做个更直白的介绍，我在这里做个类比。但是切记，不要划等号，类比只是为了便于理解。

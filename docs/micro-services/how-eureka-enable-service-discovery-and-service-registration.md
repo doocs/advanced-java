@@ -1,8 +1,5 @@
 # 服务发现组件 Eureka 的几个主要调用过程
 
-- Author: [mghio](https://www.mghio.cn)
-- Description: 该文主要讲述服务发现组件 Eureka 的几个主要调用过程
-
 ## 前言
 
 现在流行的微服务体系结构正在改变我们构建应用程序的方式，从单一的单体服务转变为越来越小的可单独部署的服务（称为 `微服务` ），共同构成了我们的应用程序。当进行一个业务时不可避免就会存在多个服务之间调用，假如一个服务 A 要访问在另一台服务器部署的服务 B，那么前提是服务 A 要知道服务 B 所在机器的 IP 地址和服务对应的端口，最简单的方式就是让服务 A 自己去维护一份服务 B 的配置（包含 IP 地址和端口等信息），但是这种方式有几个明显的缺点：随着我们调用服务数量的增加，配置文件该如何维护；缺乏灵活性，如果服务 B 改变 IP 地址或者端口，服务 A 也要修改相应的文件配置；还有一个就是进行服务的动态扩容或缩小不方便。
@@ -27,8 +24,6 @@ At Netflix, Eureka is used for the following purposes apart from playing a criti
 我们继续添加两个模块 `service-provider` ， `service-consumer` ，然后在启动类加上注解 `@EnableEurekaClient` 并指定注册中心地址为我们刚刚启动的 `Eureka Server` ，再次访问可以看到两个服务都已经注册进来了。
 
 ![eureka-instance-registered-currently.png](./images/eureka-instance-registered-currently.png)
-
-`Demo` 仓库地址：https://github.com/mghio/depth-in-springcloud
 
 可以看到 `Eureka` 的使用非常简单，只需要添加几个注解和配置就实现了服务注册和服务发现，接下来我们看看它是如何实现这些功能的。
 

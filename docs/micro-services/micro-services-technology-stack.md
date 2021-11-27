@@ -1,8 +1,5 @@
 # 微服务技术栈
 
-- Author: [HuiFer](https://github.com/huifer)
-- Description: 该文简单介绍微服务技术栈有哪些分别用来做什么。
-
 ## 技术栈
 
 ### 微服务开发

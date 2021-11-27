@@ -1,8 +1,5 @@
 # 微服务治理策略
 
-- Author：[HuiFer](https://github.com/huifer)
-- Description：该文简单介绍微服务的治理策略以及应用技术
-
 ## 服务的注册和发现
 
 解决问题：集中管理服务
