@@ -169,6 +169,12 @@
 - [如何找出排名前 500 的数？](./docs/big-data/find-rank-top-500-numbers.md)
 - [讲讲大数据中 TopK 问题的常用套路？](./docs/big-data/topk-problems-and-solutions.md)
 
+## Stars 趋势
+
+<a href="https://github.com/doocs/advanced-java/stargazers" target="_blank"><img src="./images/starcharts.svg" alt="Stargazers over time" /></a>
+
+注：本趋势图由 [actions-starcharts](https://github.com/MaoLongLong/actions-starcharts) 自动定时刷新。
+
 ---
 
 ## Doocs 社区优质项目
