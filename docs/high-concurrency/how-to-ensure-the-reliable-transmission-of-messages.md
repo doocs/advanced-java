@@ -20,21 +20,29 @@
 
 生产者将数据发送到 RabbitMQ 的时候，可能数据就在半路给搞丢了，因为网络问题啥的，都有可能。
 
-此时可以选择用 RabbitMQ 提供的事务功能，就是生产者**发送数据之前**开启 RabbitMQ 事务 `channel.txSelect` ，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务 `channel.txRollback` ，然后重试发送消息；如果收到了消息，那么可以提交事务 `channel.txCommit` 。
+此时可以选择用 RabbitMQ 提供的事务功能，就是生产者**发送数据之前**开启 RabbitMQ 事务 `channel.txSelect()` ，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务 `channel.txRollback()` ，然后重试发送消息；如果收到了消息，那么可以提交事务 `channel.txCommit()` 。
 
 ```java
-// 开启事务
-channel.txSelect
 try {
+    // 通过工厂创建连接
+    connection = factory.newConnection();
+    // 获取通道
+    channel = connection.createChannel();
+    // 开启事务
+    channel.txSelect();
+
     // 这里发送消息
-} catch (Exception e) {
-    channel.txRollback
+    channel.basicPublish(exchange, routingKey, MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes());
 
-    // 这里再次重发这条消息
+    // 模拟出现异常
+    int result = 1 / 0;
+
+    // 提交事务
+    channel.txCommit();
+} catch (IOException | TimeoutException e) {
+    // 捕捉异常，回滚事务
+    channel.txRollback();
 }
-
-// 提交事务
-channel.txCommit
 ```
 
 但是问题是，RabbitMQ 事务机制（同步）一搞，基本上**吞吐量会下来，因为太耗性能**。
@@ -45,19 +53,73 @@ channel.txCommit
 
 所以一般在生产者这块**避免数据丢失**，都是用 `confirm` 机制的。
 
+> 已经在 transaction 事务模式的 channel 是不能再设置成 confirm 模式的，即这两种模式是不能共存的。
+
+客户端实现生产者 `confirm` 有 3 种方式：
+
+1.**普通 confirm 模式**：每发送一条消息后，调用 `waitForConfirms()` 方法，等待服务器端 confirm，如果服务端返回 false 或者在一段时间内都没返回，客户端可以进行消息重发。
+
+```java
+channel.basicPublish(ConfirmConfig.exchangeName, ConfirmConfig.routingKey, MessageProperties.PERSISTENT_TEXT_PLAIN, ConfirmConfig.msg_10B.getBytes());
+if (!channel.waitForConfirms()) {
+    // 消息发送失败
+    // ...
+}
+```
+
+2.**批量 confirm 模式**：每发送一批消息后，调用 `waitForConfirms()` 方法，等待服务端 confirm。
+
+```java
+channel.confirmSelect();
+for (int i = 0; i < batchCount; ++i) {
+    channel.basicPublish(ConfirmConfig.exchangeName, ConfirmConfig.routingKey, MessageProperties.PERSISTENT_TEXT_PLAIN, ConfirmConfig.msg_10B.getBytes());
+}
+if (!channel.waitForConfirms()) {
+    // 消息发送失败
+    // ...
+}
+```
+
+3.**异步 confirm 模式**：提供一个回调方法，服务端 confirm 了一条或者多条消息后客户端会回调这个方法。
+
+```java
+SortedSet<Long> confirmSet = Collections.synchronizedSortedSet(new TreeSet<Long>());
+channel.confirmSelect();
+channel.addConfirmListener(new ConfirmListener() {
+    public void handleAck(long deliveryTag, boolean multiple) throws IOException {
+        if (multiple) {
+            confirmSet.headSet(deliveryTag + 1).clear();
+        } else {
+            confirmSet.remove(deliveryTag);
+        }
+    }
+
+    public void handleNack(long deliveryTag, boolean multiple) throws IOException {
+        System.out.println("Nack, SeqNo: " + deliveryTag + ", multiple: " + multiple);
+        if (multiple) {
+            confirmSet.headSet(deliveryTag + 1).clear();
+        } else {
+            confirmSet.remove(deliveryTag);
+        }
+    }
+});
+
+while (true) {
+    long nextSeqNo = channel.getNextPublishSeqNo();
+    channel.basicPublish(ConfirmConfig.exchangeName, ConfirmConfig.routingKey, MessageProperties.PERSISTENT_TEXT_PLAIN, ConfirmConfig.msg_10B.getBytes());
+    confirmSet.add(nextSeqNo);
+}
+```
+
 #### RabbitMQ 弄丢了数据
 
 就是 RabbitMQ 自己弄丢了数据，这个你必须**开启 RabbitMQ 的持久化**，就是消息写入之后会持久化到磁盘，哪怕是 RabbitMQ 自己挂了，**恢复之后会自动读取之前存储的数据**，一般数据不会丢。除非极其罕见的是，RabbitMQ 还没持久化，自己就挂了，**可能导致少量数据丢失**，但是这个概率较小。
 
 设置持久化有**两个步骤**：
 
-- 创建 queue 的时候将其设置为持久化<br>
+- 创建 queue 的时候将其设置为持久化。这样就可以保证 RabbitMQ 持久化 queue 的元数据，但是它是不会持久化 queue 里的数据的。
 
-这样就可以保证 RabbitMQ 持久化 queue 的元数据，但是它是不会持久化 queue 里的数据的。
-
-- 第二个是发送消息的时候将消息的 `deliveryMode` 设置为 2<br>
-
-就是将消息设置为持久化的，此时 RabbitMQ 就会将消息持久化到磁盘上去。
+- 第二个是发送消息的时候将消息的 `deliveryMode` 设置为 2。就是将消息设置为持久化的，此时 RabbitMQ 就会将消息持久化到磁盘上去。
 
 必须要同时设置这两个持久化才行，RabbitMQ 哪怕是挂了，再次重启，也会从磁盘上重启恢复 queue，恢复这个 queue 里的数据。
 
@@ -70,6 +132,8 @@ channel.txCommit
 RabbitMQ 如果丢失了数据，主要是因为你消费的时候，**刚消费到，还没处理，结果进程挂了**，比如重启了，那么就尴尬了，RabbitMQ 认为你都消费了，这数据就丢了。
 
 这个时候得用 RabbitMQ 提供的 `ack` 机制，简单来说，就是你必须关闭 RabbitMQ 的自动 `ack` ，可以通过一个 api 来调用就行，然后每次你自己代码里确保处理完的时候，再在程序里 `ack` 一把。这样的话，如果你还没处理完，不就没有 `ack` 了？那 RabbitMQ 就认为你还没处理完，这个时候 RabbitMQ 会把这个消费分配给别的 consumer 去处理，消息是不会丢的。
+
+> 为了保证消息从队列种可靠地到达消费者，RabbitMQ 提供了消息确认机制。消费者在声明队列时，可以指定 noAck 参数，当 noAck=false，RabbitMQ 会等待消费者显式发回 ack 信号后，才从内存（和磁盘，如果是持久化消息）中移去消息。否则，一旦消息被消费者消费，RabbitMQ 会在队列中立即删除它。
 
 ![rabbitmq-message-lose-solution](./images/rabbitmq-message-lose-solution.png)
 
