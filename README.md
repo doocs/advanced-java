@@ -209,13 +209,13 @@ Doocs 技术社区，致力于打造一个内容完整、持续成长的互联�
   <tr>
     <td align="center" style="width: 200px;">
       <a href="https://github.com/doocs">
-        <img src="https://cdn.jsdelivr.net/gh/doocs/advanced-java@main/images/qrcode-for-doocs.jpg" style="width: 400px;"><br>
+        <img src="./images/qrcode-for-doocs.jpg" style="width: 400px;"><br>
         <sub>公众平台</sub>
       </a><br>
     </td>
     <td align="center" style="width: 200px;">
       <a href="https://github.com/yanglbme">
-        <img src="https://cdn.jsdelivr.net/gh/doocs/advanced-java@main/images/qrcode-for-yanglbme.jpg" style="width: 400px;"><br>
+        <img src="./images/qrcode-for-yanglbme.jpg" style="width: 400px;"><br>
         <sub>个人微信</sub>
       </a><br>
     </td>
@@ -224,4 +224,4 @@ Doocs 技术社区，致力于打造一个内容完整、持续成长的互联�
 
 关注「**Doocs 开源社区**」公众号，回复 **PDF**，即可获取本项目离线 PDF 文档（283 页精华），学习更加方便！
 
-<img src="https://cdn.jsdelivr.net/gh/doocs/advanced-java@main/images/pdf.png" style="width: 600px;"><br>
+<img src="./images/pdf.png" style="width: 600px;"><br>
