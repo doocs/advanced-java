@@ -40,13 +40,13 @@
   <tr>
     <td align="center" style="width: 200px;">
       <a href="https://github.com/doocs">
-        <img src="https://fastly.jsdelivr.net/gh/doocs/advanced-java@main/images/qrcode-for-doocs.jpg" style="width: 400px;"><br>
+        <img src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/gh/doocs/advanced-java@main/images/qrcode-for-doocs.jpg" style="width: 400px;"><br>
         <sub>公众平台</sub>
       </a><br>
     </td>
     <td align="center" style="width: 200px;">
       <a href="https://github.com/yanglbme">
-        <img src="https://fastly.jsdelivr.net/gh/doocs/advanced-java@main/images/qrcode-for-yanglbme.jpg" style="width: 400px;"><br>
+        <img src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/gh/doocs/advanced-java@main/images/qrcode-for-yanglbme.jpg" style="width: 400px;"><br>
         <sub>个人微信</sub>
       </a><br>
     </td>
@@ -55,4 +55,4 @@
 
 关注「**Doocs 开源社区**」公众号，回复 **PDF**，即可获取本项目离线 PDF 文档（283 页精华），学习更加方便！
 
-<img src="https://fastly.jsdelivr.net/gh/doocs/advanced-java@main/images/pdf.png" style="width: 600px;"><br>
+<img src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/gh/doocs/advanced-java@main/images/pdf.png" style="width: 600px;"><br>
