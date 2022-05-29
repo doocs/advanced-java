@@ -50,9 +50,9 @@ Hessian 1 协议用于集成 Hessian 的服务，Hessian 底层采用 Http 通�
 
 基于 WebService 的远程调用协议，基于 Apache CXF 的 frontend-simple 和 transports-http 实现。走 SOAP 文本序列化。
 
-- memcached 协议 `memcached://`
+- memcache 协议 `memcache://`
 
-基于 memcached 实现的 RPC 协议。
+基于 memcache 实现的 RPC 协议。
 
 - redis 协议 `redis://`
 

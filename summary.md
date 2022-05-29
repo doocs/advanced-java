@@ -20,7 +20,7 @@
   - 缓存
 
     - [在项目中缓存是如何使用的？](/docs/high-concurrency/why-cache.md)
-    - [Redis 和 Memcached 有什么区别？](/docs/high-concurrency/redis-single-thread-model.md)
+    - [Redis 和 Memcache 有什么区别？](/docs/high-concurrency/redis-single-thread-model.md)
     - [Redis 都有哪些数据类型以及适用场景？](/docs/high-concurrency/redis-data-types.md)
     - [Redis 的过期策略都有哪些？](/docs/high-concurrency/redis-expiration-policies-and-lru.md)
     - [如何保证 Redis 高并发、高可用？](/docs/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.md)

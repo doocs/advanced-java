@@ -1,28 +1,28 @@
 ## 面试题
 
-Redis 和 Memcached 有什么区别？Redis 的线程模型是什么？为什么 Redis 单线程却能支撑高并发？
+Redis 和 Memcache 有什么区别？Redis 的线程模型是什么？为什么 Redis 单线程却能支撑高并发？
 
 ## 面试官心理分析
 
 这个是问 Redis 的时候，最基本的问题吧，Redis 最基本的一个内部原理和特点，就是 Redis 实际上是个**单线程工作模型**，你要是这个都不知道，那后面玩儿 Redis 的时候，出了问题岂不是什么都不知道？
 
-还有可能面试官会问问你 Redis 和 Memcached 的区别，但是 Memcached 是早些年各大互联网公司常用的缓存方案，但是现在近几年基本都是 Redis，没什么公司用 Memcached 了。
+还有可能面试官会问问你 Redis 和 Memcache 的区别，但是 Memcache 是早些年各大互联网公司常用的缓存方案，但是现在近几年基本都是 Redis，没什么公司用 Memcache 了。
 
 ## 面试题剖析
 
-### Redis 和 Memcached 有啥区别？
+### Redis 和 Memcache 有啥区别？
 
 #### Redis 支持复杂的数据结构
 
-Redis 相比 Memcached 来说，拥有[更多的数据结构](/docs/high-concurrency/redis-data-types.md)，能支持更丰富的数据操作。如果需要缓存能够支持更复杂的结构和操作， Redis 会是不错的选择。
+Redis 相比 Memcache 来说，拥有[更多的数据结构](/docs/high-concurrency/redis-data-types.md)，能支持更丰富的数据操作。如果需要缓存能够支持更复杂的结构和操作， Redis 会是不错的选择。
 
 #### Redis 原生支持集群模式
 
-在 Redis3.x 版本中，便能支持 cluster 模式，而 Memcached 没有原生的集群模式，需要依靠客户端来实现往集群中分片写入数据。
+在 Redis3.x 版本中，便能支持 cluster 模式，而 Memcache 没有原生的集群模式，需要依靠客户端来实现往集群中分片写入数据。
 
 #### 性能对比
 
-由于 Redis 只使用**单核**，而 Memcached 可以使用**多核**，所以平均每一个核上 Redis 在存储小数据时比 Memcached 性能更高。而在 100k 以上的数据中，Memcached 性能要高于 Redis。虽然 Redis 最近也在存储大数据的性能上进行优化，但是比起 Memcached，还是稍有逊色。
+由于 Redis 只使用**单核**，而 Memcache 可以使用**多核**，所以平均每一个核上 Redis 在存储小数据时比 Memcache 性能更高。而在 100k 以上的数据中，Memcache 性能要高于 Redis。虽然 Redis 最近也在存储大数据的性能上进行优化，但是比起 Memcache，还是稍有逊色。
 
 ### Redis 的线程模型
 
