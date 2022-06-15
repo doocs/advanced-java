@@ -1,13 +1,8 @@
 name: Compress
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "**.jpg"
-      - "**.jpeg"
-      - "**.png"
-      - "**.webp"
+  schedule:
+    - cron: "0 0 * * 3"
   workflow_dispatch:
 
 jobs:
@@ -19,18 +14,23 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Compress Images
-        uses: calibreapp/image-actions@master
+        id: calibre
+        uses: calibreapp/image-actions@main
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           compressOnly: true
 
       - name: Commit Files
+        if: |
+          steps.calibre.outputs.markdown != ''
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m "docs: optimize images" -a
+          git config --local user.email "szuyanglb@outlook.com"
+          git config --local user.name "yanglbme"
+          git commit -m "chore: auto compress images" -a
 
       - name: Push Changes
+        if: |
+          steps.calibre.outputs.markdown != ''
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
