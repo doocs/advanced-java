@@ -15,4 +15,4 @@ jobs:
           github_token: ${{ secrets.ACTION_TOKEN }}
           svg_path: images/starcharts.svg
           commit_message: "chore: auto update starcharts"
-          stars_change: "50"
+          stars_change: ${{ secrets.STARS_CHANGE }}
