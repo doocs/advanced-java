@@ -1,6 +1,6 @@
-# Doocs 开源社区的公众号来了
+# Doocs的公众号来了
 
-GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs 开源社区**”，专注于挖掘 IT 技术知识，助力开发者成长。
+GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs**”，专注于挖掘 IT 技术知识，助力开发者成长。
 
 <div style="text-align:center; ">
   <img src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/gh/doocs/advanced-java@main/images/qrcode-for-doocs.jpg" style="width: 200px;"><br>
@@ -12,7 +12,7 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs 开源社区**”，�
 
 微信公众号的**原创保护功能**做得比较好，内容阅读也比较方便。
 
-后续我的所有原创文章，将第一时间通过微信公众号“Doocs 开源社区”发布。如果其他公众号号主希望转载内容，请在公众号聊天窗口处发消息与我说明，或者直接添加我的个人微信(YLB0109)进行交流。
+后续我的所有原创文章，将第一时间通过微信公众号“Doocs”发布。如果其他公众号号主希望转载内容，请在公众号聊天窗口处发消息与我说明，或者直接添加我的个人微信(YLB0109)进行交流。
 
 ## 公众号的定位是怎样的？
 
