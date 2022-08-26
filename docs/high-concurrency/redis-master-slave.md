@@ -69,7 +69,7 @@ slave node 内部有个定时任务，每秒检查是否有新的 master node �
 client-output-buffer-limit slave 256MB 64MB 60
 ```
 
-- slave node 接收到 rdb 之后，清空自己的旧数据，然后重新加载 rdb 到自己的内存中，同时**基于旧的数据版本**对外提供服务。
+- slave node 接收到 rdb 之后，清空自己的旧数据，然后重新加载 rdb 到自己的内存中。注意，在清空旧数据之前，slave node 依然会**基于旧的数据版本**对外提供服务。
 - 如果 slave node 开启了 AOF，那么会立即执行 BGREWRITEAOF，重写 AOF。
 
 ### 增量复制
