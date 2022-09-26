@@ -10,11 +10,11 @@
 
 ```html
 <html>
-  <body>
-    商品名称：#{productName}<br />
-    商品价格：#{productPrice}<br />
-    商品描述：#{productDesc}
-  </body>
+    <body>
+        商品名称：#{productName}<br />
+        商品价格：#{productPrice}<br />
+        商品描述：#{productDesc}
+    </body>
 </html>
 ```
 

@@ -6,8 +6,8 @@
 
 解决方法：
 
-- Eureka
-- Zookeeper
+-   Eureka
+-   Zookeeper
 
 ## 负载均衡
 
@@ -15,8 +15,8 @@
 
 解决方法：
 
-- Nginx
-- Ribbon
+-   Nginx
+-   Ribbon
 
 ## 通讯
 
@@ -24,9 +24,9 @@
 
 解决方法：
 
-- REST（同步）
-- RPC（同步）
-- MQ（异步）
+-   REST（同步）
+-   RPC（同步）
+-   MQ（异步）
 
 ## 配置管理
 
@@ -34,9 +34,9 @@
 
 解决方法：
 
-- Nacos
-- Spring Cloud Config
-- Apollo
+-   Nacos
+-   Spring Cloud Config
+-   Apollo
 
 ## 容错和服务降级
 
@@ -44,7 +44,7 @@
 
 解决方法：
 
-- Hystrix
+-   Hystrix
 
 ## 服务依赖关系
 
@@ -58,8 +58,8 @@
 
 解决方法：
 
-- Swagger
-- Java doc
+-   Swagger
+-   Java doc
 
 ## 服务安全问题
 
@@ -67,9 +67,9 @@
 
 解决方法：
 
-- Oauth
-- Shiro
-- Spring Security
+-   Oauth
+-   Shiro
+-   Spring Security
 
 ## 流量控制
 
@@ -77,7 +77,7 @@
 
 解决方法：
 
-- Hystrix
+-   Hystrix
 
 ## 自动化测试
 
@@ -85,7 +85,7 @@
 
 解决方法：
 
-- junit
+-   junit
 
 ## 服务上线，下线的流程
 
@@ -105,8 +105,8 @@
 
 解决方法：
 
-- Docker
-- K8s
+-   Docker
+-   K8s
 
 ## 资源调度
 
@@ -114,9 +114,9 @@
 
 解决方法：
 
-- JVM 隔离
-- Classload 隔离
-- 硬件隔离
+-   JVM 隔离
+-   Classload 隔离
+-   硬件隔离
 
 ## 容量规划
 

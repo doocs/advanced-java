@@ -2,9 +2,9 @@
 
 前面我们了解了 Hystrix 最基本的支持高可用的技术：**资源隔离** + **限流**。
 
-- 创建 command；
-- 执行这个 command；
-- 配置这个 command 对应的 group 和线程池。
+-   创建 command；
+-   执行这个 command；
+-   配置这个 command 对应的 group 和线程池。
 
 这里，我们要讲一下，你开始执行这个 command，调用了这个 command 的 execute() 方法之后，Hystrix 底层的执行流程和步骤以及原理是什么。
 
@@ -18,8 +18,8 @@
 
 一个 HystrixCommand 或 HystrixObservableCommand 对象，代表了对某个依赖服务发起的一次请求或者调用。创建的时候，可以在构造函数中传入任何需要的参数。
 
-- HystrixCommand 主要用于仅仅会返回一个结果的调用。
-- HystrixObservableCommand 主要用于可能会返回多条结果的调用。
+-   HystrixCommand 主要用于仅仅会返回一个结果的调用。
+-   HystrixObservableCommand 主要用于可能会返回多条结果的调用。
 
 ```java
 // 创建 HystrixCommand
@@ -37,10 +37,10 @@ HystrixObservableCommand hystrixObservableCommand = new HystrixObservableCommand
 
 其中 execute() 和 queue() 方法仅仅对 HystrixCommand 适用。
 
-- execute()：调用后直接 block 住，属于同步调用，直到依赖服务返回单条结果，或者抛出异常。
-- queue()：返回一个 Future，属于异步调用，后面可以通过 Future 获取单条结果。
-- observe()：订阅一个 Observable 对象，Observable 代表的是依赖服务返回的结果，获取到一个那个代表结果的 Observable 对象的拷贝对象。
-- toObservable()：返回一个 Observable 对象，如果我们订阅这个对象，就会执行 command 并且获取返回结果。
+-   execute()：调用后直接 block 住，属于同步调用，直到依赖服务返回单条结果，或者抛出异常。
+-   queue()：返回一个 Future，属于异步调用，后面可以通过 Future 获取单条结果。
+-   observe()：订阅一个 Observable 对象，Observable 代表的是依赖服务返回的结果，获取到一个那个代表结果的 Observable 对象的拷贝对象。
+-   toObservable()：返回一个 Observable 对象，如果我们订阅这个对象，就会执行 command 并且获取返回结果。
 
 ```java
 K             value    = hystrixCommand.execute();
@@ -87,14 +87,14 @@ final Future<R> delegate = toObservable().toBlocking().toFuture();
 
 调用 HystrixObservableCommand 对象的 construct() 方法，或者 HystrixCommand 的 run() 方法来实际执行这个 command。
 
-- HystrixCommand.run() 返回单条结果，或者抛出异常。
+-   HystrixCommand.run() 返回单条结果，或者抛出异常。
 
 ```java
 // 通过command执行，获取最新一条商品数据
 ProductInfo productInfo = getProductInfoCommand.execute();
 ```
 
-- HystrixObservableCommand.construct() 返回一个 Observable 对象，可以获取多条结果。
+-   HystrixObservableCommand.construct() 返回一个 Observable 对象，可以获取多条结果。
 
 ```java
 Observable<ProductInfo> observable = getProductInfosCommand.observe();
@@ -139,30 +139,30 @@ Hystrix 会把每一个依赖服务的调用成功、失败、Reject、Timeout �
 
 在以下几种情况中，Hystrix 会调用 fallback 降级机制。
 
-- 断路器处于打开状态；
-- 线程池/队列/semaphore 满了；
-- command 执行超时；
-- run() 或者 construct() 抛出异常。
+-   断路器处于打开状态；
+-   线程池/队列/semaphore 满了；
+-   command 执行超时；
+-   run() 或者 construct() 抛出异常。
 
 一般在降级机制中，都建议给出一些默认的返回值，比如静态的一些代码逻辑，或者从内存中的缓存中提取一些数据，在这里尽量不要再进行网络请求了。
 
 在降级中，如果一定要进行网络调用的话，也应该将那个调用放在一个 HystrixCommand 中进行隔离。
 
-- HystrixCommand 中，实现 getFallback() 方法，可以提供降级机制。
-- HystrixObservableCommand 中，实现 resumeWithFallback() 方法，返回一个 Observable 对象，可以提供降级结果。
+-   HystrixCommand 中，实现 getFallback() 方法，可以提供降级机制。
+-   HystrixObservableCommand 中，实现 resumeWithFallback() 方法，返回一个 Observable 对象，可以提供降级结果。
 
 如果没有实现 fallback，或者 fallback 抛出了异常，Hystrix 会返回一个 Observable，但是不会返回任何数据。
 
 不同的 command 执行方式，其 fallback 为空或者异常时的返回结果不同。
 
-- 对于 execute()，直接抛出异常。
-- 对于 queue()，返回一个 Future，调用 get() 时抛出异常。
-- 对于 observe()，返回一个 Observable 对象，但是调用 subscribe() 方法订阅它时，立即抛出调用者的 onError() 方法。
-- 对于 toObservable()，返回一个 Observable 对象，但是调用 subscribe() 方法订阅它时，立即抛出调用者的 onError() 方法。
+-   对于 execute()，直接抛出异常。
+-   对于 queue()，返回一个 Future，调用 get() 时抛出异常。
+-   对于 observe()，返回一个 Observable 对象，但是调用 subscribe() 方法订阅它时，立即抛出调用者的 onError() 方法。
+-   对于 toObservable()，返回一个 Observable 对象，但是调用 subscribe() 方法订阅它时，立即抛出调用者的 onError() 方法。
 
 ### 不同的执行方式
 
-- execute()，获取一个 Future.get()，然后拿到单个结果。
-- queue()，返回一个 Future。
-- observe()，立即订阅 Observable，然后启动 8 大执行步骤，返回一个拷贝的 Observable，订阅时立即回调给你结果。
-- toObservable()，返回一个原始的 Observable，必须手动订阅才会去执行 8 大步骤。
+-   execute()，获取一个 Future.get()，然后拿到单个结果。
+-   queue()，返回一个 Future。
+-   observe()，立即订阅 Observable，然后启动 8 大执行步骤，返回一个拷贝的 Observable，订阅时立即回调给你结果。
+-   toObservable()，返回一个原始的 Observable，必须手动订阅才会去执行 8 大步骤。

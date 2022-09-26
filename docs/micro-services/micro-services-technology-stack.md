@@ -6,9 +6,9 @@
 
 作用：快速开发服务。
 
-- Spring
-- Spring MVC
-- Spring Boot
+-   Spring
+-   Spring MVC
+-   Spring Boot
 
 [Spring](https://spring.io/) 目前是 JavaWeb 开发人员必不可少的一个框架，SpringBoot 简化了 Spring 开发的配置目前也是业内主流开发框架。
 
@@ -18,9 +18,9 @@
 
 #### Eureka
 
-- Eureka Server : 提供服务注册服务, 各个节点启动后，会在 Eureka Server 中进行注册。
-- Eureka Client : 简化与 Eureka Server 的交互操作。
-- Spring Cloud Netflix : [GitHub](https://github.com/spring-cloud/spring-cloud-netflix)，[文档](https://cloud.spring.io/spring-cloud-netflix/reference/html/)
+-   Eureka Server : 提供服务注册服务, 各个节点启动后，会在 Eureka Server 中进行注册。
+-   Eureka Client : 简化与 Eureka Server 的交互操作。
+-   Spring Cloud Netflix : [GitHub](https://github.com/spring-cloud/spring-cloud-netflix)，[文档](https://cloud.spring.io/spring-cloud-netflix/reference/html/)
 
 #### Zookeeper
 
@@ -32,9 +32,9 @@
 
 Zookeeper 保证 CP，Eureka 保证 AP：
 
-- C：数据一致性；
-- A：服务可用性；
-- P：服务对网络分区故障的容错性，这三个特性在任何分布式系统中不能同时满足，最多同时满足两个。
+-   C：数据一致性；
+-   A：服务可用性；
+-   P：服务对网络分区故障的容错性，这三个特性在任何分布式系统中不能同时满足，最多同时满足两个。
 
 ### 微服务配置管理
 
@@ -78,12 +78,12 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
 
 #### Rest
 
-- 通过 HTTP/HTTPS 发送 Rest 请求进行数据交互
+-   通过 HTTP/HTTPS 发送 Rest 请求进行数据交互
 
 #### RPC
 
-- Remote Procedure Call
-- 它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC 不依赖于具体的网络传输协议，tcp、udp 等都可以。
+-   Remote Procedure Call
+-   它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。RPC 不依赖于具体的网络传输协议，tcp、udp 等都可以。
 
 #### [gRPC](https://www.grpc.io/)
 
@@ -93,8 +93,8 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
 
 #### RMI
 
-- Remote Method Invocation
-- 纯 Java 调用
+-   Remote Method Invocation
+-   纯 Java 调用
 
 ### 服务接口调用
 

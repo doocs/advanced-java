@@ -12,10 +12,10 @@ ES 写入数据的工作原理是什么啊？ES 查询数据的工作原理是�
 
 ### es 写数据过程
 
-- 客户端选择一个 node 发送请求过去，这个 node 就是 `coordinating node` （协调节点）。
-- `coordinating node` 对 document 进行**路由**，将请求转发给对应的 node（有 primary shard）。
-- 实际的 node 上的 `primary shard` 处理请求，然后将数据同步到 `replica node` 。
-- `coordinating node` 如果发现 `primary node` 和所有 `replica node` 都搞定之后，就返回响应结果给客户端。
+-   客户端选择一个 node 发送请求过去，这个 node 就是 `coordinating node` （协调节点）。
+-   `coordinating node` 对 document 进行**路由**，将请求转发给对应的 node（有 primary shard）。
+-   实际的 node 上的 `primary shard` 处理请求，然后将数据同步到 `replica node` 。
+-   `coordinating node` 如果发现 `primary node` 和所有 `replica node` 都搞定之后，就返回响应结果给客户端。
 
 ![es-write](./images/es-write.png)
 
@@ -23,10 +23,10 @@ ES 写入数据的工作原理是什么啊？ES 查询数据的工作原理是�
 
 可以通过 `doc id` 来查询，会根据 `doc id` 进行 hash，判断出来当时把 `doc id` 分配到了哪个 shard 上面去，从那个 shard 去查询。
 
-- 客户端发送请求到**任意**一个 node，成为 `coordinate node` 。
-- `coordinate node` 对 `doc id` 进行哈希路由，将请求转发到对应的 node，此时会使用 `round-robin` **随机轮询算法**，在 `primary shard` 以及其所有 replica 中随机选择一个，让读请求负载均衡。
-- 接收请求的 node 返回 document 给 `coordinate node` 。
-- `coordinate node` 返回 document 给客户端。
+-   客户端发送请求到**任意**一个 node，成为 `coordinate node` 。
+-   `coordinate node` 对 `doc id` 进行哈希路由，将请求转发到对应的 node，此时会使用 `round-robin` **随机轮询算法**，在 `primary shard` 以及其所有 replica 中随机选择一个，让读请求负载均衡。
+-   接收请求的 node 返回 document 给 `coordinate node` 。
+-   `coordinate node` 返回 document 给客户端。
 
 ### es 搜索数据过程
 
@@ -40,10 +40,10 @@ j2ee特别牛
 
 你根据 `java` 关键词来搜索，将包含 `java` 的 `document` 给搜索出来。es 就会给你返回：java 真好玩儿啊，java 好难学啊。
 
-- 客户端发送请求到一个 `coordinate node` 。
-- 协调节点将搜索请求转发到**所有**的 shard 对应的 `primary shard` 或 `replica shard` ，都可以。
-- query phase：每个 shard 将自己的搜索结果（其实就是一些 `doc id` ）返回给协调节点，由协调节点进行数据的合并、排序、分页等操作，产出最终结果。
-- fetch phase：接着由协调节点根据 `doc id` 去各个节点上**拉取实际**的 `document` 数据，最终返回给客户端。
+-   客户端发送请求到一个 `coordinate node` 。
+-   协调节点将搜索请求转发到**所有**的 shard 对应的 `primary shard` 或 `replica shard` ，都可以。
+-   query phase：每个 shard 将自己的搜索结果（其实就是一些 `doc id` ）返回给协调节点，由协调节点进行数据的合并、排序、分页等操作，产出最终结果。
+-   fetch phase：接着由协调节点根据 `doc id` 去各个节点上**拉取实际**的 `document` 数据，最终返回给客户端。
 
 > 写请求是写入 primary shard，然后同步给所有的 replica shard；读请求可以从 primary shard 或 replica shard 读取，采用的是随机轮询算法。
 
@@ -73,8 +73,8 @@ translog 日志文件的作用是什么？你执行 commit 操作之前，数据
 
 translog 其实也是先写入 os cache 的，默认每隔 5 秒刷一次到磁盘中去，所以默认情况下，可能有 5 秒的数据会仅仅停留在 buffer 或者 translog 文件的 os cache 中，如果此时机器挂了，会**丢失** 5 秒钟的数据。但是这样性能比较好，最多丢 5 秒的数据。也可以将 translog 设置成每次写操作必须是直接 `fsync` 到磁盘，但是性能会差很多。
 
-- `index.translog.sync_interval` 控制 translog 多久 fsync 到磁盘,最小为 100ms；
-- `index.translog.durability` translog 是每 5 秒钟刷新一次还是每次请求都 fsync，这个参数有 2 个取值：request(每次请求都执行 fsync,es 要等 translog fsync 到磁盘后才会返回成功)和 async(默认值，translog 每隔 5 秒钟 fsync 一次)。
+-   `index.translog.sync_interval` 控制 translog 多久 fsync 到磁盘,最小为 100ms；
+-   `index.translog.durability` translog 是每 5 秒钟刷新一次还是每次请求都 fsync，这个参数有 2 个取值：request(每次请求都执行 fsync,es 要等 translog fsync 到磁盘后才会返回成功)和 async(默认值，translog 每隔 5 秒钟 fsync 一次)。
 
 实际上你在这里，如果面试官没有问你 es 丢数据的问题，你可以在这里给面试官炫一把，你说，其实 es 第一是准实时的，数据写入 1 秒后可以搜索到；可能会丢失数据的。有 5 秒的数据，停留在 buffer、translog os cache、segment file os cache 中，而不在磁盘上，此时如果宕机，会导致 5 秒的**数据丢失**。
 
@@ -136,7 +136,7 @@ buffer 每 refresh 一次，就会产生一个 `segment file` ，所以默认情
 
 要注意倒排索引的两个重要细节：
 
-- 倒排索引中的所有词项对应一个或多个文档；
-- 倒排索引中的词项**根据字典顺序升序排列**
+-   倒排索引中的所有词项对应一个或多个文档；
+-   倒排索引中的词项**根据字典顺序升序排列**
 
 > 上面只是一个简单的栗子，并没有严格按照字典顺序升序排列。

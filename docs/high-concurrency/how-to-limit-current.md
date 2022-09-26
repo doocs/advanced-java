@@ -273,7 +273,7 @@ public class TokenBucket {
 
 ### spring cloud gateway
 
-- spring cloud gateway 默认使用 redis 进行限流，笔者一般只是修改修改参数属于拿来即用，并没有去从头实现上述那些算法。
+-   spring cloud gateway 默认使用 redis 进行限流，笔者一般只是修改修改参数属于拿来即用，并没有去从头实现上述那些算法。
 
 ```xml
 <dependency>
@@ -288,25 +288,25 @@ public class TokenBucket {
 
 ```yaml
 spring:
-  cloud:
-    gateway:
-      routes:
-        - id: requestratelimiter_route
+    cloud:
+        gateway:
+            routes:
+                - id: requestratelimiter_route
 
-          uri: lb://pigx-upms
-          order: 10000
-          predicates:
-            - Path=/admin/**
+                  uri: lb://pigx-upms
+                  order: 10000
+                  predicates:
+                      - Path=/admin/**
 
-          filters:
-            - name: RequestRateLimiter
+                  filters:
+                      - name: RequestRateLimiter
 
-              args:
-                redis-rate-limiter.replenishRate: 1 # 令牌桶的容积
-                redis-rate-limiter.burstCapacity: 3 # 流速 每秒
-                key-resolver: "#{@remoteAddrKeyResolver}" #SPEL表达式去的对应的bean
+                        args:
+                            redis-rate-limiter.replenishRate: 1 # 令牌桶的容积
+                            redis-rate-limiter.burstCapacity: 3 # 流速 每秒
+                            key-resolver: '#{@remoteAddrKeyResolver}' #SPEL表达式去的对应的bean
 
-            - StripPrefix=1
+                      - StripPrefix=1
 ```
 
 ```java
@@ -318,7 +318,7 @@ KeyResolver remoteAddrKeyResolver() {
 
 ### sentinel
 
-- 通过配置来控制每个 url 的流量
+-   通过配置来控制每个 url 的流量
 
 ```xml
 <dependency>
@@ -329,25 +329,25 @@ KeyResolver remoteAddrKeyResolver() {
 
 ```yaml
 spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-    sentinel:
-      transport:
-        dashboard: localhost:8080
-        port: 8720
-      datasource:
-        ds:
-          nacos:
-            server-addr: localhost:8848
-            dataId: spring-cloud-sentinel-nacos
-            groupId: DEFAULT_GROUP
-            rule-type: flow
-            namespace: xxxxxxxx
+    cloud:
+        nacos:
+            discovery:
+                server-addr: localhost:8848
+        sentinel:
+            transport:
+                dashboard: localhost:8080
+                port: 8720
+            datasource:
+                ds:
+                    nacos:
+                        server-addr: localhost:8848
+                        dataId: spring-cloud-sentinel-nacos
+                        groupId: DEFAULT_GROUP
+                        rule-type: flow
+                        namespace: xxxxxxxx
 ```
 
-- 配置内容在 nacos 上进行编辑
+-   配置内容在 nacos 上进行编辑
 
 ```json
 [
@@ -363,13 +363,13 @@ spring:
 ]
 ```
 
-- resource：资源名，即限流规则的作用对象。
-- limitApp：流控针对的调用来源，若为 default 则不区分调用来源。
-- grade：限流阈值类型，QPS 或线程数模式，0 代表根据并发数量来限流，1 代表根据 QPS 来进行流量控制。
-- count：限流阈值
-- strategy：判断的根据是资源自身，还是根据其它关联资源 (refResource)，还是根据链路入口
-- controlBehavior：流控效果（直接拒绝 / 排队等待 / 慢启动模式）
-- clusterMode：是否为集群模式
+-   resource：资源名，即限流规则的作用对象。
+-   limitApp：流控针对的调用来源，若为 default 则不区分调用来源。
+-   grade：限流阈值类型，QPS 或线程数模式，0 代表根据并发数量来限流，1 代表根据 QPS 来进行流量控制。
+-   count：限流阈值
+-   strategy：判断的根据是资源自身，还是根据其它关联资源 (refResource)，还是根据链路入口
+-   controlBehavior：流控效果（直接拒绝 / 排队等待 / 慢启动模式）
+-   clusterMode：是否为集群模式
 
 ### 总结
 

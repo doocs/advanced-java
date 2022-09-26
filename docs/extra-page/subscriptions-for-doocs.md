@@ -16,8 +16,8 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs**”，专注于挖掘
 
 ## 公众号的定位是怎样的？
 
-- **内容高质**：不随意从网上复制粘贴一些文章，即便是转载的技术文章，也要确保质量。
-- **定期更新**：尽量在每周输出 1-2 篇文章，保证一定的更新频率。
+-   **内容高质**：不随意从网上复制粘贴一些文章，即便是转载的技术文章，也要确保质量。
+-   **定期更新**：尽量在每周输出 1-2 篇文章，保证一定的更新频率。
 
 <div style="text-align:center; ">
   <img src="./images/article-demo.png" width="300px; "/>
@@ -27,21 +27,21 @@ GitHub 开源社区 Doocs 旗下唯一公众号“**Doocs**”，专注于挖掘
 
 因为刚刚推出公众号，目前有以下几篇文章，来先睹为快吧：
 
-- [硬核！亿级流量秒杀系统设计](https://mp.weixin.qq.com/s/Mo_knIRBQQL2s-D2aieZLg)
-- [技术面试是否要看面经？面试官/面试者有话说！](https://mp.weixin.qq.com/s/fNiUmbY395rsPdEC0QDIrw)
-- [如何破解极验滑动验证码？成功率 100%！](https://mp.weixin.qq.com/s/Fsl6qYN5Dw4s6Du893MkFQ)
-- [免费且好用的图床，就你了，「图壳」！](https://mp.weixin.qq.com/s/0HhgHLo_tTRFZcC-CVjDbw)
-- [阿里又一个 20k+ stars 开源项目诞生，恭喜 fastjson！](https://mp.weixin.qq.com/s/RNKDCK2KoyeuMeEs6GUrow)
-- [刷掉 90% 候选人的互联网大厂海量数据面试题（附题解 + 方法总结）](https://mp.weixin.qq.com/s/rjGqxUvrEqJNlo09GrT1Dw)
-- [好用！期待已久的文本块功能究竟如何在 Java 13 中发挥作用？](https://mp.weixin.qq.com/s/kalGv5T8AZGxTnLHr2wDsA)
-- [2019 GitHub 开源贡献排行榜新鲜出炉！微软谷歌领头，阿里跻身前 12！](https://mp.weixin.qq.com/s/_q812aGD1b9QvZ2WFI0Qgw)
-- [Google 搜索的即时自动补全功能究竟是如何“工作”的？](https://mp.weixin.qq.com/s/YlMISSc3Sn890BzTLytcLA)
-- [厉害了，原来 Redisson 这么好用！](https://mp.weixin.qq.com/s/lpZ7eRdImy0MyTEVH68HYw)
-- [一文带你搞懂 “缓存策略”](https://mp.weixin.qq.com/s/47A_iXY_nArURwUTPHr2IQ)
-- [Java Getter/Setter “防坑指南”](https://mp.weixin.qq.com/s/TZqcAw7NTlcvU-p930-eHA)
-- [太棒了，GitHub Review 代码能力小升级](https://mp.weixin.qq.com/s/Lok0epqn91Q51ygZo_FLkg)
-- [巧用 Redis Hyperloglog，轻松统计 UV 数据](https://mp.weixin.qq.com/s/w1r-M6YVvQSfUtzO_xe44Q)
-- [如何开启「GitHub+码云」双工作流模式？](https://mp.weixin.qq.com/s/byxAjr3-ifWfDYQcR7YA8Q)
+-   [硬核！亿级流量秒杀系统设计](https://mp.weixin.qq.com/s/Mo_knIRBQQL2s-D2aieZLg)
+-   [技术面试是否要看面经？面试官/面试者有话说！](https://mp.weixin.qq.com/s/fNiUmbY395rsPdEC0QDIrw)
+-   [如何破解极验滑动验证码？成功率 100%！](https://mp.weixin.qq.com/s/Fsl6qYN5Dw4s6Du893MkFQ)
+-   [免费且好用的图床，就你了，「图壳」！](https://mp.weixin.qq.com/s/0HhgHLo_tTRFZcC-CVjDbw)
+-   [阿里又一个 20k+ stars 开源项目诞生，恭喜 fastjson！](https://mp.weixin.qq.com/s/RNKDCK2KoyeuMeEs6GUrow)
+-   [刷掉 90% 候选人的互联网大厂海量数据面试题（附题解 + 方法总结）](https://mp.weixin.qq.com/s/rjGqxUvrEqJNlo09GrT1Dw)
+-   [好用！期待已久的文本块功能究竟如何在 Java 13 中发挥作用？](https://mp.weixin.qq.com/s/kalGv5T8AZGxTnLHr2wDsA)
+-   [2019 GitHub 开源贡献排行榜新鲜出炉！微软谷歌领头，阿里跻身前 12！](https://mp.weixin.qq.com/s/_q812aGD1b9QvZ2WFI0Qgw)
+-   [Google 搜索的即时自动补全功能究竟是如何“工作”的？](https://mp.weixin.qq.com/s/YlMISSc3Sn890BzTLytcLA)
+-   [厉害了，原来 Redisson 这么好用！](https://mp.weixin.qq.com/s/lpZ7eRdImy0MyTEVH68HYw)
+-   [一文带你搞懂 “缓存策略”](https://mp.weixin.qq.com/s/47A_iXY_nArURwUTPHr2IQ)
+-   [Java Getter/Setter “防坑指南”](https://mp.weixin.qq.com/s/TZqcAw7NTlcvU-p930-eHA)
+-   [太棒了，GitHub Review 代码能力小升级](https://mp.weixin.qq.com/s/Lok0epqn91Q51ygZo_FLkg)
+-   [巧用 Redis Hyperloglog，轻松统计 UV 数据](https://mp.weixin.qq.com/s/w1r-M6YVvQSfUtzO_xe44Q)
+-   [如何开启「GitHub+码云」双工作流模式？](https://mp.weixin.qq.com/s/byxAjr3-ifWfDYQcR7YA8Q)
 
 后续将推出一系列原创干货文章，敬请期待。
 
