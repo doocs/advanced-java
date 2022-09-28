@@ -272,7 +272,7 @@ public class ZooKeeperDistributedLock implements Watcher {
             // 如果不是最小的节点，找到比自己小1的节点
             int previousLockIndex = -1;
             for (int i = 0; i < locks.size(); i++) {
-                if (lockNode.equals(locksRoot + “ /”+locks.get(i))){
+                if (lockNode.equals(locksRoot + "/" +locks.get(i))){
                     previousLockIndex = i - 1;
                     break;
                 }

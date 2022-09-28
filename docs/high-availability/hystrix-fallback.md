@@ -32,7 +32,6 @@ Hystrix 出现以下四种情况，都会去调用 fallback 降级机制：
  * 品牌名称本地缓存
  *
  */
-
 public class BrandCache {
 
     private static Map<Long, String> brandMap = new HashMap<>();
