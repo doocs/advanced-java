@@ -253,32 +253,32 @@ public class ZooKeeperDistributedLock implements Watcher {
 
     public boolean tryLock() {
         try {
- 		    // 传入进去的locksRoot + “/” + productId
-		    // 假设productId代表了一个商品id，比如说1
-		    // locksRoot = locks
-		    // /locks/10000000000，/locks/10000000001，/locks/10000000002
+            // 传入进去的locksRoot + “/” + productId
+            // 假设productId代表了一个商品id，比如说1
+            // locksRoot = locks
+            // /locks/10000000000，/locks/10000000001，/locks/10000000002
             lockNode = zk.create(locksRoot + "/" + productId, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 
             // 看看刚创建的节点是不是最小的节点
-	 	    // locks：10000000000，10000000001，10000000002
+            // locks：10000000000，10000000001，10000000002
             List<String> locks = zk.getChildren(locksRoot, false);
             Collections.sort(locks);
 
-            if(lockNode.equals(locksRoot+"/"+ locks.get(0))){
-                //如果是最小的节点,则表示取得锁
+            if (lockNode.equals(locksRoot + "/" + locks.get(0))) {
+                // 如果是最小的节点,则表示取得锁
                 return true;
             }
 
-            //如果不是最小的节点，找到比自己小1的节点
-	  int previousLockIndex = -1;
-            for(int i = 0; i < locks.size(); i++) {
-		if(lockNode.equals(locksRoot + “/” + locks.get(i))) {
-	         	    previousLockIndex = i - 1;
-		    break;
-		}
-	   }
+            // 如果不是最小的节点，找到比自己小1的节点
+            int previousLockIndex = -1;
+            for (int i = 0; i < locks.size(); i++) {
+                if (lockNode.equals(locksRoot + “ /”+locks.get(i))){
+                    previousLockIndex = i - 1;
+                    break;
+                }
+            }
 
-	   this.waitNode = locks.get(previousLockIndex);
+            this.waitNode = locks.get(previousLockIndex);
         } catch (KeeperException e) {
             throw new LockException(e);
         } catch (InterruptedException e) {
