@@ -11,7 +11,7 @@ jobs:
     if: github.repository == 'doocs/advanced-java'
     steps:
       - name: Checkout Branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Compress Images
         id: calibre
