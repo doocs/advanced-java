@@ -2,7 +2,6 @@
 
 [![stars](https://img.shields.io/github/stars/doocs/advanced-java?color=42b883&logo=github&style=flat-square&logoColor=ffffff)](https://github.com/doocs/advanced-java/stargazers)
 [![forks](https://img.shields.io/github/forks/doocs/advanced-java?color=42b883&logo=github&style=flat-square&logoColor=ffffff)](https://github.com/doocs/advanced-java/network/members)
-[![actions status](https://img.shields.io/github/workflow/status/doocs/advanced-java/Sync?color=42b883&label=sync&logo=githubactions&style=flat-square&logoColor=ffffff)](https://github.com/doocs/advanced-java/actions?query=workflow%3ASync)
 [![license](https://img.shields.io/github/license/doocs/advanced-java?color=42b883&style=flat-square&logo=homeassistantcommunitystore&logoColor=ffffff)](./LICENSE)
 [![doocs](https://img.shields.io/badge/org-join%20us-42b883?style=flat-square&logo=homeassistantcommunitystore&logoColor=ffffff)](https://doocs.github.io/#/?id=how-to-join)
 
