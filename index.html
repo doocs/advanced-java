@@ -1,131 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <title>互联网 Java 工程师进阶知识完全扫盲 - Doocs 技术社区</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="keywords" content="doc,docs,doocs,documentation,github,gitee,advanced-java,yanglbme" />
-  <meta name="description" content="互联网 Java 工程师进阶知识完全扫盲，项目维护者：杨立滨" />
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-  <link rel="stylesheet" href="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/themes/vue.css" />
-  <link rel="stylesheet" href="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-darklight-theme@latest/dist/style.min.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
-  <style>
-    .markdown-section code {
-      font-weight: 400;
-    }
-
-    article>p>img {
-      background-color: #f4f4f4;
-    }
-  </style>
-</head>
-
-<body>
-  <nav>
-    <ul>
-      <li>
-        分类
-        <ul>
-          <li><a href="#/?id=高并发架构">高并发</a></li>
-          <li><a href="#/?id=分布式系统">分布式</a></li>
-          <li><a href="#/?id=高可用架构">高可用</a></li>
-          <li><a href="#/?id=微服务架构">微服务</a></li>
-          <li><a href="#/?id=海量数据处理">海量数据</a></li>
-        </ul>
-      </li>
-      <li>
-        页面
-        <ul>
-          <li><a href="#">封面</a></li>
-          <li><a href="#/README">首页</a></li>
-          <li><a href="#/docs/extra-page/advanced">进阶</a></li>
-          <li><a href="#/docs/extra-page/offer">Offer</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <div id="app">本系列知识由 Doocs 技术社区总结发布</div>
-  <script>
-    window.$docsify = {
-      name: "advanced-java",
-      maxLevel: 3,
-      auto2top: true,
-      coverpage: true,
-      coverpage: "docs/extra-page/cover.md",
-      loadSidebar: "summary.md",
-      alias: {
-        "/.*/.*/summary": "summary.md",
-        "/.*/summary.md": "summary.md",
-      },
-      pagination: {
-        previousText: "上一篇",
-        nextText: "下一篇",
-        crossChapter: true,
-        crossChapterText: true,
-      },
-      contributors: {
-        repo: 'doocs/advanced-java',
-        ignores: ['/README.md'],
-        image: {
-          margin: '0.2em',
-          isRound: true
-        }
-      },
-      search: {
-        maxAge: 1800000,
-        paths: [
-          "/docs/high-concurrency/",
-          "/docs/distributed-system/",
-          "/docs/high-availability/",
-          "/docs/micro-services/",
-          "/docs/big-data/",
-        ],
-        depth: 3,
-      },
-      darklightTheme: {
-        defaultTheme: 'light',
-        siteFont: 'Source Sans Pro,Helvetica Neue,Arial,sans-serif',
-        codeFontFamily: 'Roboto Mono, Monaco, courier, monospace',
-        bodyFontSize: '15px',
-        dark: {
-          background: 'rgb(28,32,34)',
-          highlightColor: '#e96900',
-          codeBackgroundColor: 'rgb(34,39,46)',
-          codeTextColor: '#b4b4b4',
-        },
-        light: {
-          highlightColor: '#e96900',
-        }
-      },
-      plugins: [
-        function (hook, vm) {
-          hook.beforeEach(function (content) {
-            const en = vm.route.file.indexOf("README_EN") > -1;
-            if (/githubusercontent\.com/.test(vm.route.file)) {
-              url = vm.route.file
-                .replace("raw.githubusercontent.com", "github.com")
-                .replace(/\/main/, "/blob/main");
-            } else {
-              url =
-                "https://github.com/doocs/advanced-java/blob/main/" +
-                vm.route.file;
+    <head>
+        <meta charset="UTF-8" />
+        <title>互联网 Java 工程师进阶知识完全扫盲 - Doocs 技术社区</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta
+            name="keywords"
+            content="doc,docs,doocs,documentation,github,gitee,advanced-java,yanglbme"
+        />
+        <meta
+            name="description"
+            content="互联网 Java 工程师进阶知识完全扫盲，项目维护者：杨立滨"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/themes/vue.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-darklight-theme@latest/dist/style.min.css"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="images/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="images/favicon-16x16.png"
+        />
+        <style>
+            .markdown-section code {
+                font-weight: 400;
             }
 
-            const github = `[GitHub](${url})`;
-            const gitee = `[Gitee](${url.replace("github", "gitee")})`;
-
-            const editHtml = en
-              ? `:memo: Edit on ${github} / ${gitee}\n`
-              : `:memo: 在 ${github} / ${gitee} 编辑\n`;
-
-            if (vm.route.path == "/") {
-              return editHtml + content;
+            article > p > img {
+                background-color: #f4f4f4;
             }
-            const subscription = `---
+        </style>
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    分类
+                    <ul>
+                        <li><a href="#/?id=高并发架构">高并发</a></li>
+                        <li><a href="#/?id=分布式系统">分布式</a></li>
+                        <li><a href="#/?id=高可用架构">高可用</a></li>
+                        <li><a href="#/?id=微服务架构">微服务</a></li>
+                        <li><a href="#/?id=海量数据处理">海量数据</a></li>
+                    </ul>
+                </li>
+                <li>
+                    页面
+                    <ul>
+                        <li><a href="#">封面</a></li>
+                        <li><a href="#/README">首页</a></li>
+                        <li><a href="#/docs/extra-page/advanced">进阶</a></li>
+                        <li><a href="#/docs/extra-page/offer">Offer</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="app">本系列知识由 Doocs 技术社区总结发布</div>
+        <script>
+            window.$docsify = {
+                name: 'advanced-java',
+                maxLevel: 3,
+                auto2top: true,
+                coverpage: true,
+                coverpage: 'docs/extra-page/cover.md',
+                loadSidebar: 'summary.md',
+                alias: {
+                    '/.*/.*/summary': 'summary.md',
+                    '/.*/summary.md': 'summary.md',
+                },
+                pagination: {
+                    previousText: '上一篇',
+                    nextText: '下一篇',
+                    crossChapter: true,
+                    crossChapterText: true,
+                },
+                contributors: {
+                    repo: 'doocs/advanced-java',
+                    ignores: ['/README.md'],
+                    image: {
+                        margin: '0.2em',
+                        isRound: true,
+                    },
+                },
+                search: {
+                    maxAge: 1800000,
+                    paths: [
+                        '/docs/high-concurrency/',
+                        '/docs/distributed-system/',
+                        '/docs/high-availability/',
+                        '/docs/micro-services/',
+                        '/docs/big-data/',
+                    ],
+                    depth: 3,
+                },
+                darklightTheme: {
+                    defaultTheme: 'light',
+                    siteFont: 'Source Sans Pro,Helvetica Neue,Arial,sans-serif',
+                    codeFontFamily: 'Roboto Mono, Monaco, courier, monospace',
+                    bodyFontSize: '15px',
+                    dark: {
+                        background: 'rgb(28,32,34)',
+                        highlightColor: '#e96900',
+                        codeBackgroundColor: 'rgb(34,39,46)',
+                        codeTextColor: '#b4b4b4',
+                    },
+                    light: {
+                        highlightColor: '#e96900',
+                    },
+                },
+                plugins: [
+                    function (hook, vm) {
+                        hook.beforeEach(function (content) {
+                            const en = vm.route.file.indexOf('README_EN') > -1;
+                            if (/githubusercontent\.com/.test(vm.route.file)) {
+                                url = vm.route.file
+                                    .replace(
+                                        'raw.githubusercontent.com',
+                                        'github.com',
+                                    )
+                                    .replace(/\/main/, '/blob/main');
+                            } else {
+                                url =
+                                    'https://github.com/doocs/advanced-java/blob/main/' +
+                                    vm.route.file;
+                            }
+
+                            const github = `[GitHub](${url})`;
+                            const gitee = `[Gitee](${url.replace(
+                                'github',
+                                'gitee',
+                            )})`;
+
+                            const editHtml = en
+                                ? `:memo: Edit on ${github} / ${gitee}\n`
+                                : `:memo: 在 ${github} / ${gitee} 编辑\n`;
+
+                            if (vm.route.path == '/') {
+                                return editHtml + content;
+                            }
+                            const subscription = `---
 ## 公众号
 
 [Doocs](https://github.com/doocs) 技术社区旗下唯一公众号「**Doocs**」​，欢迎扫码关注，**专注分享技术领域相关知识及业内最新资讯**。当然，也可以加我个人微信（备注：GitHub），拉你进技术交流群。
@@ -149,34 +178,33 @@
     </tr>
 </table>
             `;
-            return editHtml + content + `\n` + subscription;
-          });
+                            return editHtml + content + `\n` + subscription;
+                        });
 
-          hook.afterEach(function (html) {
-            const currentYear = new Date().getFullYear()
-            const footer = `<footer><span>Copyright © 2018-${currentYear} <a href="https://github.com/doocs" target="_blank">Doocs</a>. All Rights Reserved.</footer>`
-            return html + footer;
-          });
-        },
-      ],
-    };
-  </script>
-  <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/docsify.min.js"></script>
-  <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/prismjs/components/prism-java.min.js"></script>
-  <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-copy-code@2.1.1/dist/docsify-copy-code.min.js"></script>
-  <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
-  <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-contributors@latest/dist/index.min.js"></script>
-</body>
+                        hook.afterEach(function (html) {
+                            const currentYear = new Date().getFullYear();
+                            const footer = `<footer><span>Copyright © 2018-${currentYear} <a href="https://github.com/doocs" target="_blank">Doocs</a>. All Rights Reserved.</footer>`;
+                            return html + footer;
+                        });
+                    },
+                ],
+            };
+        </script>
+        <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/docsify.min.js"></script>
+        <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/prismjs/components/prism-java.min.js"></script>
+        <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-copy-code@2.1.1/dist/docsify-copy-code.min.js"></script>
+        <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/plugins/search.min.js"></script>
+        <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+        <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+        <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
+        <script src="https://cdn-doocs.oss-cn-shenzhen.aliyuncs.com/npm/docsify-contributors@latest/dist/index.min.js"></script>
+    </body>
 
-<!-- 
+    <!-- 
 cdn.jsdelivr.net
 test1.jsdelivr.net
 testingcf.jsdelivr.net
 fastly.jsdelivr.net
 gcore.jsdelivr.net
  -->
-
 </html>

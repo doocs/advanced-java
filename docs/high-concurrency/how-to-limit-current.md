@@ -288,25 +288,25 @@ public class TokenBucket {
 
 ```yaml
 spring:
-  cloud:
-    gateway:
-      routes:
-        - id: requestratelimiter_route
-          
-          uri: lb://pigx-upms
-          order: 10000
-          predicates:
-            - Path=/admin/**
-          
-          filters:
-            - name: RequestRateLimiter
-              
-              args:
-                redis-rate-limiter.replenishRate: 1 # 令牌桶的容积
-                redis-rate-limiter.burstCapacity: 3 # 流速 每秒
-                key-resolver: '#{@remoteAddrKeyResolver}' #SPEL表达式去的对应的bean
+    cloud:
+        gateway:
+            routes:
+                - id: requestratelimiter_route
 
-            - StripPrefix=1
+                  uri: lb://pigx-upms
+                  order: 10000
+                  predicates:
+                      - Path=/admin/**
+
+                  filters:
+                      - name: RequestRateLimiter
+
+                        args:
+                            redis-rate-limiter.replenishRate: 1 # 令牌桶的容积
+                            redis-rate-limiter.burstCapacity: 3 # 流速 每秒
+                            key-resolver: '#{@remoteAddrKeyResolver}' #SPEL表达式去的对应的bean
+
+                      - StripPrefix=1
 ```
 
 ```java
@@ -329,37 +329,37 @@ KeyResolver remoteAddrKeyResolver() {
 
 ```yaml
 spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-    sentinel:
-      transport:
-        dashboard: localhost:8080
-        port: 8720
-      datasource:
-        ds:
-          nacos:
-            server-addr: localhost:8848
-            dataId: spring-cloud-sentinel-nacos
-            groupId: DEFAULT_GROUP
-            rule-type: flow
-            namespace: xxxxxxxx
+    cloud:
+        nacos:
+            discovery:
+                server-addr: localhost:8848
+        sentinel:
+            transport:
+                dashboard: localhost:8080
+                port: 8720
+            datasource:
+                ds:
+                    nacos:
+                        server-addr: localhost:8848
+                        dataId: spring-cloud-sentinel-nacos
+                        groupId: DEFAULT_GROUP
+                        rule-type: flow
+                        namespace: xxxxxxxx
 ```
 
 -   配置内容在 nacos 上进行编辑
 
 ```json
 [
-  {
-    "resource": "/hello",
-    "limitApp": "default",
-    "grade": 1,
-    "count": 1,
-    "strategy": 0,
-    "controlBehavior": 0,
-    "clusterMode": false
-  }
+    {
+        "resource": "/hello",
+        "limitApp": "default",
+        "grade": 1,
+        "count": 1,
+        "strategy": 0,
+        "controlBehavior": 0,
+        "clusterMode": false
+    }
 ]
 ```
 

@@ -25,7 +25,6 @@ yarn-debug.log*
 yarn-error.log*
 
 dist
-package-lock.json
 lib
 
 node_modules
