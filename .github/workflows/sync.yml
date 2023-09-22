@@ -17,10 +17,10 @@ jobs:
           source-repo: git@github.com:doocs/advanced-java.git
           destination-repo: git@gitee.com:Doocs/advanced-java.git
 
-      - name: Build Gitee Pages
-        uses: yanglbme/gitee-pages-action@main
-        with:
-          gitee-username: yanglbme
-          gitee-password: ${{ secrets.GITEE_PASSWORD }}
-          gitee-repo: doocs/advanced-java
-          branch: main
+      # - name: Build Gitee Pages
+      #   uses: yanglbme/gitee-pages-action@main
+      #   with:
+      #     gitee-username: yanglbme
+      #     gitee-password: ${{ secrets.GITEE_PASSWORD }}
+      #     gitee-repo: doocs/advanced-java
+      #     branch: main
