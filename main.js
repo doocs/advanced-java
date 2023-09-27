@@ -1,5 +1,5 @@
 const giscusTheme = () =>
-    localStorage.getItem('DARK_LIGHT_THEME') === 'light' ? 'light' : 'noborder_dark';
+    localStorage.getItem('DARK_LIGHT_THEME') === 'dark' ? 'noborder_dark' : 'light';
 
 window.$docsify = {
     name: 'advanced-java',
@@ -31,11 +31,14 @@ window.$docsify = {
     giscus: {
         repo: "doocs/advanced-java",
         repoId: "MDEwOlJlcG9zaXRvcnkxNTE4MzQwNjI=",
-        mapping: "pathname",
+        mapping: "number",
+        term: "9",
         reactionsEnabled: "1",
+        emitMetadata: "0",
         inputPosition: "top",
         theme: giscusTheme(),
         lang: "zh-CN",
+        crossorgin: "anonymous"
     },
     search: {
         maxAge: 1800000,
