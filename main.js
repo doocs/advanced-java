@@ -1,7 +1,9 @@
+const giscusTheme = () =>
+    localStorage.getItem('DARK_LIGHT_THEME') === 'dark' ? 'noborder_dark' : 'light';
+
 window.$docsify = {
     name: 'advanced-java',
     repo: 'doocs/advanced-java',
-    lastModifiedText: '最近更新时间：',
     maxLevel: 3,
     auto2top: true,
     coverpage: true,
@@ -11,6 +13,7 @@ window.$docsify = {
         '/.*/.*/summary': 'summary.md',
         '/.*/summary.md': 'summary.md',
     },
+    lastModifiedText: '最近更新时间：',
     pagination: {
         previousText: '上一篇',
         nextText: '下一篇',
@@ -68,7 +71,7 @@ window.$docsify = {
                 }
 
                 const github = `[GitHub](${url})`;
-                const gitee = `[Gitee](${url.replace('github', 'gitee' )})`;
+                const gitee = `[Gitee](${url.replace('github', 'gitee')})`;
 
                 const editHtml = en
                     ? `:memo: Edit on ${github} / ${gitee}\n`
@@ -108,6 +111,35 @@ window.$docsify = {
                 const footer = `<footer><span>Copyright © 2018-${currentYear} <a href="https://github.com/doocs" target="_blank">Doocs</a>. All Rights Reserved.</footer>`;
                 return html + footer;
             });
+            hook.doneEach(() => {
+                const giscusScript = document.createElement('script');
+                giscusScript.type = 'text/javascript';
+                giscusScript.async = true;
+                giscusScript.setAttribute('src', 'https://giscus.app/client.js');
+                giscusScript.setAttribute('data-repo', 'doocs/advanced-java');
+                giscusScript.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkxNTE4MzQwNjI=');
+                giscusScript.setAttribute('data-mapping', 'number');
+                giscusScript.setAttribute('data-reactions-enabled', '1');
+                giscusScript.setAttribute('data-strict', '1');
+                giscusScript.setAttribute('data-emit-metadata', '0');
+                giscusScript.setAttribute('data-input-position', 'top');
+                giscusScript.setAttribute('crossorigin', 'anonymous');
+                giscusScript.setAttribute('data-term', '9');
+                giscusScript.setAttribute('data-lang', 'zh-CN');
+                giscusScript.setAttribute('data-theme', giscusTheme());
+
+                document
+                    .getElementById('main')
+                    .insertBefore(giscusScript, document.getElementById('main').lastChild);
+
+                document.getElementById('docsify-darklight-theme').addEventListener('click', () => {
+                    const frame = document.querySelector('.giscus-frame');
+                    frame.contentWindow.postMessage(
+                        { giscus: { setConfig: { theme: giscusTheme() } } },
+                        'https://giscus.app',
+                    );
+                });
+            })
         },
     ],
 };
