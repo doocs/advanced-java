@@ -28,18 +28,6 @@ window.$docsify = {
             isRound: true,
         },
     },
-    giscus: {
-        repo: "doocs/advanced-java",
-        repoId: "MDEwOlJlcG9zaXRvcnkxNTE4MzQwNjI=",
-        mapping: "number",
-        term: "9",
-        reactionsEnabled: "1",
-        emitMetadata: "0",
-        inputPosition: "top",
-        theme: giscusTheme(),
-        lang: "zh-CN",
-        crossorgin: "anonymous"
-    },
     search: {
         maxAge: 1800000,
         paths: [
@@ -124,6 +112,26 @@ window.$docsify = {
                 return html + footer;
             });
             hook.doneEach(() => {
+                const giscusScript = document.createElement('script');
+                giscusScript.type = 'text/javascript';
+                giscusScript.async = true;
+                giscusScript.setAttribute('src', 'https://giscus.app/client.js');
+                giscusScript.setAttribute('data-repo', 'doocs/advanced-java');
+                giscusScript.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkxNTE4MzQwNjI=');
+                giscusScript.setAttribute('data-mapping', 'number');
+                giscusScript.setAttribute('data-reactions-enabled', '1');
+                giscusScript.setAttribute('data-strict', '1');
+                giscusScript.setAttribute('data-emit-metadata', '0');
+                giscusScript.setAttribute('data-input-position', 'top');
+                giscusScript.setAttribute('crossorigin', 'anonymous');
+                giscusScript.setAttribute('data-term', '9');
+                giscusScript.setAttribute('data-lang', 'zh-CN');
+                giscusScript.setAttribute('data-theme', giscusTheme());
+
+                document
+                    .getElementById('main')
+                    .insertBefore(giscusScript, document.getElementById('main').lastChild);
+
                 document.getElementById('docsify-darklight-theme').addEventListener('click', () => {
                     const frame = document.querySelector('.giscus-frame');
                     frame.contentWindow.postMessage(
