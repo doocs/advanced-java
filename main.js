@@ -1,7 +1,9 @@
+const giscusTheme = () =>
+    localStorage.getItem('DARK_LIGHT_THEME') === 'light' ? 'light' : 'noborder_dark';
+
 window.$docsify = {
     name: 'advanced-java',
     repo: 'doocs/advanced-java',
-    lastModifiedText: '最近更新时间：',
     maxLevel: 3,
     auto2top: true,
     coverpage: true,
@@ -11,6 +13,7 @@ window.$docsify = {
         '/.*/.*/summary': 'summary.md',
         '/.*/summary.md': 'summary.md',
     },
+    lastModifiedText: '最近更新时间：',
     pagination: {
         previousText: '上一篇',
         nextText: '下一篇',
@@ -24,6 +27,15 @@ window.$docsify = {
             margin: '0.2em',
             isRound: true,
         },
+    },
+    giscus: {
+        repo: "doocs/advanced-java",
+        repoId: "MDEwOlJlcG9zaXRvcnkxNTE4MzQwNjI=",
+        mapping: "pathname",
+        reactionsEnabled: "1",
+        inputPosition: "top",
+        theme: giscusTheme(),
+        lang: "zh-CN",
     },
     search: {
         maxAge: 1800000,
@@ -68,7 +80,7 @@ window.$docsify = {
                 }
 
                 const github = `[GitHub](${url})`;
-                const gitee = `[Gitee](${url.replace('github', 'gitee' )})`;
+                const gitee = `[Gitee](${url.replace('github', 'gitee')})`;
 
                 const editHtml = en
                     ? `:memo: Edit on ${github} / ${gitee}\n`
@@ -108,6 +120,15 @@ window.$docsify = {
                 const footer = `<footer><span>Copyright © 2018-${currentYear} <a href="https://github.com/doocs" target="_blank">Doocs</a>. All Rights Reserved.</footer>`;
                 return html + footer;
             });
+            hook.doneEach(() => {
+                document.getElementById('docsify-darklight-theme').addEventListener('click', () => {
+                    const frame = document.querySelector('.giscus-frame');
+                    frame.contentWindow.postMessage(
+                        { giscus: { setConfig: { theme: giscusTheme() } } },
+                        'https://giscus.app',
+                    );
+                });
+            })
         },
     ],
 };
