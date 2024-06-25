@@ -7,9 +7,7 @@
 
 ## 项目 Pages 站点
 
--   [Netlify](https://adjava.netlify.app)
--   [Gitee Pages](https://doocs.gitee.io/advanced-java)
--   [GitHub Pages](https://doocs.github.io/advanced-java)
+https://doocs.github.io/advanced-java
 
 ## 维权行动
 
