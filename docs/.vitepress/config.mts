@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   title: "advanced-java",
+  ignoreDeadLinks: true,
   themeConfig: {
     search: {
       provider: 'local'

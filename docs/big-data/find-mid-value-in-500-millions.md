@@ -53,7 +53,7 @@ class MedianFinder {
 }
 ```
 
-> 见 LeetCode No.295：https://leetcode.com/problems/find-median-from-data-stream/
+> 见 [LeetCode No.295](https://leetcode.com/problems/find-median-from-data-stream/)
 
 以上这种方法，需要把所有数据都加载到内存中。当数据量很大时，就不能这样了，因此，这种方法**适用于数据量较小的情况**。5 亿个数，每个数字占用 4B，总共需要 2G 内存。如果可用内存不足 2G，就不能使用这种方法了，下面介绍另一种方法。
 
