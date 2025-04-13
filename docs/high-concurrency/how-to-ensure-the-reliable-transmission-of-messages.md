@@ -6,7 +6,7 @@
 
 ## 面试官心理分析
 
-这个是肯定的，用 MQ 有个基本原则，就是**数据不能多一条，也不能少一条**，不能多，就是前面说的[重复消费和幂等性问题](/docs/high-concurrency/how-to-ensure-that-messages-are-not-repeatedly-consumed.md)。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。
+这个是肯定的，用 MQ 有个基本原则，就是**数据不能多一条，也不能少一条**，不能多，就是前面说的[重复消费和幂等性问题](./how-to-ensure-that-messages-are-not-repeatedly-consumed.md)。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。
 
 如果说你这个是用 MQ 来传递非常核心的消息，比如说计费、扣费的一些消息，那必须确保这个 MQ 传递过程中**绝对不会把计费消息给弄丢**。
 

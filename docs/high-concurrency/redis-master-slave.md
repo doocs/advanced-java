@@ -15,9 +15,9 @@ Redis replication -> 主从架构 -> 读写分离 -> 水平扩容支撑读高并
 -   slave node 在做复制的时候，也不会 block 对自己的查询操作，它会用旧的数据集来提供服务；但是复制完成的时候，需要删除旧数据集，加载新数据集，这个时候就会暂停对外服务了；
 -   slave node 主要用来进行横向扩容，做读写分离，扩容的 slave node 可以提高读的吞吐量。
 
-注意，如果采用了主从架构，那么建议必须**开启** master node 的[持久化](/docs/high-concurrency/redis-persistence.md)，不建议用 slave node 作为 master node 的数据热备，因为那样的话，如果你关掉 master 的持久化，可能在 master 宕机重启的时候数据是空的，然后可能一经过复制， slave node 的数据也丢了。
+注意，如果采用了主从架构，那么建议必须**开启** master node 的[持久化](./redis-persistence.md)，不建议用 slave node 作为 master node 的数据热备，因为那样的话，如果你关掉 master 的持久化，可能在 master 宕机重启的时候数据是空的，然后可能一经过复制， slave node 的数据也丢了。
 
-另外，master 的各种备份方案，也需要做。万一本地的所有文件丢失了，从备份中挑选一份 rdb 去恢复 master，这样才能**确保启动的时候，是有数据的**，即使采用了后续讲解的[高可用机制](/docs/high-concurrency/redis-sentinel.md)，slave node 可以自动接管 master node，但也可能 sentinel 还没检测到 master failure，master node 就自动重启了，还是可能导致上面所有的 slave node 数据被清空。
+另外，master 的各种备份方案，也需要做。万一本地的所有文件丢失了，从备份中挑选一份 rdb 去恢复 master，这样才能**确保启动的时候，是有数据的**，即使采用了后续讲解的[高可用机制](./redis-sentinel.md)，slave node 可以自动接管 master node，但也可能 sentinel 还没检测到 master failure，master node 就自动重启了，还是可能导致上面所有的 slave node 数据被清空。
 
 ## Redis 主从复制的核心原理
 
@@ -100,4 +100,4 @@ Redis 的高可用架构，叫做 `failover` **故障转移**，也可以叫做�
 
 master node 在故障时，自动检测，并且将某个 slave node 自动切换为 master node 的过程，叫做主备切换。这个过程，实现了 Redis 的主从架构下的高可用。
 
-后面会详细说明 Redis [基于哨兵的高可用性](/docs/high-concurrency/redis-sentinel.md)。
+后面会详细说明 Redis [基于哨兵的高可用性](./redis-sentinel.md)。

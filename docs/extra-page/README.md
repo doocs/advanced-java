@@ -7,7 +7,7 @@
 
 ## 项目 Pages 站点
 
-https://doocs.github.io/advanced-java
+https://java.doocs.org
 
 ## 维权行动
 
