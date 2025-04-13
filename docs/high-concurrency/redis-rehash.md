@@ -1,3 +1,5 @@
+# Redis rehash 过程
+
 ## 面试题
 
 有了解过 Redis rehash 的过程吗？
