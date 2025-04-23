@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  docs:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,7 +34,7 @@ jobs:
           path: docs/.vitepress/dist
 
   deploy:
-    needs: docs
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -46,16 +46,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  build:
-    runs-on: ubuntu-latest
-    if: github.repository == 'doocs/advanced-java'
-    needs: docs
-    steps:
-      - name: Sync to Gitee
-        uses: wearerequired/git-mirror-action@master
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
-        with:
-          source-repo: git@github.com:doocs/advanced-java.git
-          destination-repo: git@gitee.com:Doocs/advanced-java.git
