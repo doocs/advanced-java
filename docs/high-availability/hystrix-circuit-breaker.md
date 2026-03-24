@@ -1,4 +1,4 @@
-## 深入 Hystrix 断路器执行原理
+# 深入 Hystrix 断路器执行原理
 
 ### 状态机
 
@@ -7,8 +7,8 @@ Hystrix 断路器有三种状态，分别是关闭（Closed）、打开（Open�
 ![image-20191104211642271](./images/hystrix-circuit-breaker-state-machine.png)
 
 1. `Closed` 断路器关闭：调用下游的请求正常通过
-2. `Open` 断路器打开：阻断对下游服务的调用，直接走 Fallback 逻辑
-3. `Half-Open` 断路器处于半开状态：[SleepWindowInMilliseconds](#circuitBreaker.sleepWindowInMilliseconds)
+1. `Open` 断路器打开：阻断对下游服务的调用，直接走 Fallback 逻辑
+1. `Half-Open` 断路器处于半开状态：[SleepWindowInMilliseconds](#circuitBreaker.sleepWindowInMilliseconds)
 
 ### [Enabled](https://github.com/Netflix/Hystrix/wiki/Configuration#circuitbreakerenabled)
 
@@ -77,11 +77,12 @@ Hystrix 并不是只要有一条请求经过就去统计，而是将整个滑动
 ## 实例 Demo
 
 ### HystrixCommand 配置参数
+
 在 GetProductInfoCommand 中配置 Setter 断路器相关参数。
 
-- 滑动窗口中，最少 20 个请求，才可能触发断路。
-- 异常比例达到 40% 时，才触发断路。
-- 断路后 3000ms 内，所有请求都被 reject，直接走 fallback 降级，不会调用 run() 方法。3000ms 过后，变为 half-open 状态。
+-   滑动窗口中，最少 20 个请求，才可能触发断路。
+-   异常比例达到 40% 时，才触发断路。
+-   断路后 3000ms 内，所有请求都被 reject，直接走 fallback 降级，不会调用 run() 方法。3000ms 过后，变为 half-open 状态。
 
 run() 方法中，我们判断一下 productId 是否为 -1，是的话，直接抛出异常。这么写，我们之后测试的时候就可以传入 productId=-1，**模拟服务执行异常**了。
 
@@ -132,6 +133,7 @@ public class GetProductInfoCommand extends HystrixCommand<ProductInfo> {
 ```
 
 ### 断路测试类
+
 我们在测试类中，前 30 次请求，传入 productId=-1，然后休眠 3s，之后 70 次请求，传入 productId=1。
 
 ```java
@@ -163,7 +165,7 @@ public class CircuitBreakerTest {
 
 测试结果，我们可以明显看出系统断路与恢复的整个过程。
 
-```c
+```java
 调用接口查询商品数据，productId=-1
 ProductInfo(id=null, name=降级商品, price=null, pictureList=null, specification=null, service=null, color=null, size=null, shopId=null, modifiedTime=null, cityId=null, cityName=null, brandId=null, brandName=null)
 // ...
@@ -184,7 +186,7 @@ ProductInfo(id=1, name=iphone7手机, price=5599.0, pictureList=a.jpg,b.jpg, spe
 
 前 30 次请求，我们传入的 productId 为 -1，所以服务执行过程中会抛出异常。我们设置了最少 20 次请求通过断路器并且异常比例超出 40% 就触发断路。因此执行了 21 次接口调用，每次都抛异常并且走降级，21 次过后，断路器就被打开了。
 
-之后的 9 次请求，都不会执行 run() 方法，也就不会打印以下信息。
+之后的 9 次请求，都不会执行 `run()` 方法，也就不会打印以下信息。
 
 ```c
 调用接口查询商品数据，productId=-1
@@ -197,4 +199,4 @@ ProductInfo(id=1, name=iphone7手机, price=5599.0, pictureList=a.jpg,b.jpg, spe
 ### 参考内容
 
 1. [Hystrix issue 1459](https://github.com/Netflix/Hystrix/issues/1459)
-2. [Hystrix Metrics](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics)
+1. [Hystrix Metrics](https://github.com/Netflix/Hystrix/wiki/Configuration#metrics)

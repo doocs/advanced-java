@@ -1,0 +1,36 @@
+name: Compress
+
+on:
+  schedule:
+    - cron: "0 0 * * 3"
+  workflow_dispatch:
+
+jobs:
+  compress:
+    runs-on: ubuntu-latest
+    if: github.repository == 'doocs/advanced-java'
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v6
+
+      - name: Compress Images
+        id: calibre
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          compressOnly: true
+
+      - name: Commit Files
+        if: |
+          steps.calibre.outputs.markdown != ''
+        run: |
+          git config --local user.email "szuyanglb@outlook.com"
+          git config --local user.name "yanglbme"
+          git commit -m "chore: auto compress images" -a
+
+      - name: Push Changes
+        if: |
+          steps.calibre.outputs.markdown != ''
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
