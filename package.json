@@ -1,16 +1,18 @@
 {
   "name": "advanced-java",
   "private": true,
-  "packageManager": "pnpm@9.12.3",
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "vitepress-plugin-comment-with-giscus": "^1.1.15"
   },
   "devDependencies": {
+    "typescript": "^6.0.3",
     "vitepress": "2.0.0-alpha.17"
   }
 }
