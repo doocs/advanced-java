@@ -18,7 +18,12 @@
   "pnpm": {
     "overrides": {
       "vite": "7.3.5",
-      "esbuild": "0.28.1"
-    }
+      "esbuild": "0.28.1",
+      "@vueuse/core": "14.2.1",
+      "@vueuse/integrations": "14.2.1"
+    },
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

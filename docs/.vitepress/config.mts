@@ -479,5 +479,11 @@ export default defineConfig({
   cleanUrls: true,
   sitemap: {
     hostname: 'https://java.doocs.org'
-  }
+  },
+  vite: {
+    build: {
+      // Local search index (~860 kB) is lazy-loaded; size is expected for this doc set.
+      chunkSizeWarningLimit: 1000,
+    },
+  },
 });
