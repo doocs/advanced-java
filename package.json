@@ -14,5 +14,11 @@
   "devDependencies": {
     "typescript": "^6.0.3",
     "vitepress": "2.0.0-alpha.17"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "7.3.5",
+      "esbuild": "0.28.1"
+    }
   }
 }
