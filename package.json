@@ -12,15 +12,15 @@
     "vitepress-plugin-comment-with-giscus": "^1.1.15"
   },
   "devDependencies": {
-    "typescript": "^6.0.3",
-    "vitepress": "2.0.0-alpha.17"
+    "typescript": "^7.0.2",
+    "vitepress": "2.0.0-alpha.19"
   },
   "pnpm": {
     "overrides": {
-      "vite": "7.3.5",
-      "esbuild": "0.28.1",
-      "@vueuse/core": "14.2.1",
-      "@vueuse/integrations": "14.2.1"
+      "vite": "8.2.2",
+      "esbuild": "0.28.2",
+      "postcss": "8.5.26",
+      "nanoid": "3.3.18"
     },
     "onlyBuiltDependencies": [
       "esbuild"
