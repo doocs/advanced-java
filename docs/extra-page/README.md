@@ -2,8 +2,8 @@
 
 ## Offer 与进阶
 
--   [我的 Offer 在哪里？](https://doocs.gitee.io/advanced-java/#/docs/extra-page/offer)
--   [让我们同步进阶！](https://doocs.gitee.io/advanced-java/#/docs/extra-page/advanced)
+-   [我的 Offer 在哪里？](./offer.md)
+-   [让我们同步进阶！](./advanced.md)
 
 ## 项目 Pages 站点
 

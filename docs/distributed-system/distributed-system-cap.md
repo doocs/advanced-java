@@ -52,4 +52,4 @@ Zookeeper 在选举 leader 时会停止服务，只有成功选举 leader 成功
 和 Zookeeper 一样数据 CP
 
 Consul 注册时候只有过半的节点都写入成功才认为注册成功；leader 挂掉时，重新选举期间整个 Consul 不可用,保证了强一致性但牺牲了可用性  
-有很多 blog 说 Consul 属于 ap，官方已经确认他为 CP 机制 原文地址：https://www.consul.io/docs/intro/vs/serf
+有很多 blog 说 Consul 属于 ap，官方已经确认他为 CP 机制 原文地址：https://developer.hashicorp.com/consul/docs/concept/consensus
