@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "typescript": "^7.0.2",
-    "vitepress": "2.0.0-alpha.19"
+    "vitepress": "2.0.0-alpha.20"
   },
   "pnpm": {
     "overrides": {
