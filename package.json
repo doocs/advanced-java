@@ -1,7 +1,7 @@
 {
   "name": "advanced-java",
   "private": true,
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.34.5",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
@@ -20,10 +20,10 @@
   },
   "pnpm": {
     "overrides": {
-      "vite": "8.2.2",
+      "vite": "8.3.0",
       "esbuild": "0.28.2",
-      "postcss": "8.5.26",
-      "nanoid": "3.3.18"
+      "postcss": "8.5.28",
+      "nanoid": "3.3.19"
     },
     "onlyBuiltDependencies": [
       "esbuild"
