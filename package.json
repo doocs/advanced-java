@@ -23,7 +23,9 @@
       "vite": "8.3.4",
       "esbuild": "0.28.2",
       "postcss": "8.5.30",
-      "nanoid": "3.3.19"
+      "nanoid": "3.3.19",
+      "vue": "3.5.44",
+      "source-map-js": "1.2.2"
     },
     "onlyBuiltDependencies": [
       "esbuild"
